@@ -1,0 +1,44 @@
+{
+    "name": "birko/minishop-bundle",
+    "type": "symfony-bundle",
+    "description": "Main libraries for MiniShop web application",
+    "keywords": ["birko", "shop", "minishop", "symfony2"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ing. František Bereň",
+            "email": "birko@live.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Core": ""
+            "Site": ""
+        }
+    },
+    "target-dir": "",
+    "require": {
+        "symfony/framework-bundle": "~2.3",
+        "symfony/twig-bundle": "~2.3",
+        "symfony/form": "~2.3",
+        "symfony/console": "~2.3",
+        "mopa/composer-bridge": "~1.3"
+    },
+    "suggest":  {
+        "twbs/bootstrap": ">2.0,<4.0-dev",
+        "knplabs/knp-paginator-bundle": "~2.3",
+        "knplabs/knp-menu-bundle": "~2.0@dev",
+        "mopa/bootstrap-sandbox-bundle": "~2.3",
+        "craue/formflow-bundle": "~2.0",
+        "jlong/sass-twitter-bootstrap": "dev-master",
+        "whiteoctober/tcpdf-bundle": "dev-master",
+        "tecnick.com/tcpdf": "dev-master"
+    },
+    "repositories": [
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "Core\\CommonBundle\\Composer\\ScriptHandler::postInstall"
+        ]
+    },
+}
