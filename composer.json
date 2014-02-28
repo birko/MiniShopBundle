@@ -27,10 +27,8 @@
     "suggest":  {
         "twbs/bootstrap": ">2.0,<4.0-dev",
         "knplabs/knp-paginator-bundle": "~2.3",
-        "knplabs/knp-menu-bundle": "~2.0@dev",
         "mopa/bootstrap-sandbox-bundle": "~2.3",
         "craue/formflow-bundle": "~2.0",
-        "jlong/sass-twitter-bootstrap": "dev-master",
         "whiteoctober/tcpdf-bundle": "dev-master",
         "tecnick.com/tcpdf": "dev-master"
     },
