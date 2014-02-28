@@ -335,7 +335,7 @@ abstract class Media extends TranslateEntity
     protected function getUploadRootDir($dir = null)
     {
         // the absolute directory path where uploaded documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir($dir);
+        return __DIR__.'/../../../../../../web/'.$this->getUploadDir($dir);
     }
 
     abstract protected function getUploadDir($dir = null);
