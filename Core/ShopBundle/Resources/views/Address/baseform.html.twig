@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        {{ form_row(form.name)}}
+        {{ form_errors(form.name) }}
+        {{ form_row(form.surname)}}
+        {{ form_errors(form.surname) }}
+        {{ form_row(form.company)}}
+        {{ form_errors(form.company) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                {{ form_row(form.street)}}
+                {{ form_errors(form.street) }}
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                {{ form_row(form.houseNumber)}}
+                {{ form_errors(form.houseNumber) }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        {{ form_row(form.city)}}
+        {{ form_errors(form.city) }}
+        {{ form_row(form.ZIP)}}
+        {{ form_errors(form.ZIP) }}
+        {{ form_row(form.state)}}
+        {{ form_errors(form.state) }}
+    </div>
+</div>

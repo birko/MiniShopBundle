@@ -1,0 +1,11 @@
+CoreNewsletterBundle_newsletter:
+        resource: "@CoreNewsletterBundle/Resources/config/routing/newsletter.yml"
+        prefix:   /newsletter
+
+CoreNewsletterBundle_newsletter_group:
+    resource: "@CoreNewsletterBundle/Resources/config/routing/newslettergroup.yml"
+    prefix:   /newsletter/group
+
+CoreNewsletterBundle_newsletter_email:
+    resource: "@CoreNewsletterBundle/Resources/config/routing/newsletteremail.yml"
+    prefix:   /newsletter/email

@@ -1,0 +1,5 @@
+{% if entity.type == 'image'%}
+{% include "CoreMediaBundle:Image:path.html.twig" with {'image': entity, 'dir': dir} %}
+{% elseif entity.type == 'video'%}
+{% include "CoreMediaBundle:Video:path.html.twig" with {'video': entity } %}
+{% endif %}

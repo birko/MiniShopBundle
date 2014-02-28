@@ -1,0 +1,33 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Message list{% endtrans %}</h1>
+{{ knp_pagination_render(entities)}}
+<table class="records_list table table-striped table-hover tabe-condensed">
+    <thead>
+        <tr>
+            <th>{% trans %}Title{% endtrans %}</th>
+            <th>{% trans %}Created at{% endtrans %}</th>
+            <th>{% trans %}Updated at{% endtrans %}</th>
+            <th colspan="2">{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr class="{% if entity.updatedAt %}success{% else%}error{% endif %}">
+            <td>{{ entity.title }}</td>
+            <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                {% if 'orderId' in entity.message|keys %}
+                <a href="{{ path('order_show', { 'id': entity.message.orderId }) }}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-search"></span> {% trans %}Order detail{% endtrans %}</a>
+                {% endif %}
+            </td>
+            <td>
+                <a href="{{ path('message_show', { 'id': entity.id }) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-envelope"></span> {% trans %}Show{% endtrans %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(entities)}}
+{% endblock %}

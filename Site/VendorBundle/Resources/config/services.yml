@@ -1,0 +1,7 @@
+parameters:
+#    site_vendor.example.class: Site\VendorBundle\Example
+
+services:
+#    site_vendor.example:
+#        class: %site_vendor.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

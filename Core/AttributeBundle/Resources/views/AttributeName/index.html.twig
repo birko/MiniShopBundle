@@ -1,0 +1,38 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{%trans%}Attribute name list{%endtrans%}</h1>
+{{ knp_pagination_render(entities) }}
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+		<tr>
+			<td colspan="2">
+				<a href="{{ path('attributename_new') }}" class="btn btn-primary btn-xs pull-right">
+					<span class="glyphicon glyphicon-plus"></span>  {%trans%}Create a new entry{%endtrans%}
+				</a>
+			</td>
+		</tr>
+        <tr>
+            <th>{% trans %}Name{% endtrans%}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.name }}</td>
+            <td>
+				<div class="btn-group">
+					<a href="{{ path('attributename_edit', { 'id': entity.id}) }}" class="btn btn-warning btn-xs">
+						<span class="glyphicon glyphicon-edit"></span> {%trans%}Edit{%endtrans%}
+					</a>
+                    <a href="{{ path('attributevalue', { 'attribute': entity.id}) }}" class="btn btn-default btn-xs">
+						<span class="glyphicon glyphicon-list-alt"></span> {%trans%}Values{%endtrans%}
+					</a>
+				</div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(entities) }}
+{% endblock %}

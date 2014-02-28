@@ -1,0 +1,10 @@
+<form action="{{path('coupon_add')}}" method="post" class="nolabel">
+    {{form_label(form.code)}}
+    <div class="input-group coupon">
+        {{form_widget(form.code)}}
+        <button type="submit" class="btn input-group-addon">
+            <span class="glyphicon glyphicon-ok"></span>
+        </button>
+    </div>
+    {{form_rest(form)}}
+</form>

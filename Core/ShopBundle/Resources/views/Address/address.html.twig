@@ -1,0 +1,15 @@
+{% if entity is not empty %}
+<address>
+    {{ entity.name }} {{ entity.surname }} <br />
+    {% if entity.company is not empty  %}{{ entity.company }}{% endif %}
+    {{ entity.street }} {{ entity.houseNumber }}<br />
+    {{ entity.city }}<br />
+    {{ entity.ZIP }}<br />
+    {{ entity.state }}<br />
+    {% if entity.OIN is not empty  %}<span>{% trans %}OIN{% endtrans %}:</span> {{ entity.OIN }}<br />{% endif %}
+    {% if entity.TIN  is not empty %}<span>{% trans %}TIN{% endtrans %}:</span> {{ entity.TIN }}<br />{% endif %}
+    {% if entity.VATIN is not empty  %}<span>{% trans %}VATIN{% endtrans %}:</span> {{ entity.VATIN }}<br />{% endif %}
+    {% if entity.email is not empty %}<span>{% trans %}Email{% endtrans %}:</span> {{ entity.email }}<br />{% endif %}
+    {% if entity.phone is not empty  %}<span>{% trans %}Phone{% endtrans %}:</span> {{ entity.phone }}<br />{% endif %}
+</address>
+{% endif %}

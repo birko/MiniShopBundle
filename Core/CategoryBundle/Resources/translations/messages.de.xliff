@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Categories</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Create a new child category</source>
+                <target>Create a new child category</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Create a new top category</source>
+                <target>Create a new top category</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Move up</source>
+                <target>Move up</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Move down</source>
+                <target>Move down</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Home category</source>
+                <target>Home category</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Back to the category list</source>
+                <target>Back to the category list</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Raw</source>
+                <target>Raw</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Category creation</source>
+                <target>Category creation</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Category edit</source>
+                <target>Category edit</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Category list</source>
+                <target>Category list</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>External</source>
+                <target>External</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

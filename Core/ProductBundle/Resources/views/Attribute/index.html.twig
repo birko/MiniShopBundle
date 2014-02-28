@@ -1,0 +1,43 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Attribute list{% endtrans %}</h1>
+
+<table class="records_list table table-striped table-condensed">
+    <thead>
+        <tr>
+            <td colspan="4">
+                <a href="{{ path('attribute_new', {'category': category, 'product': product}) }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %} </a>
+            </td>
+        </tr>
+        <tr>
+            <th>{% trans %}Name{% endtrans %}</th>
+            <th>{% trans %}Value{% endtrans %}</th>
+            <th>{% trans %}Group{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+     <tfoot>
+        <tr>
+            <td colspan="4">
+                <a href="{{ path('product', {'category': category}) }}" class=""> {% trans %}Back to the list{% endtrans %}</a>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.name.name }}</td>
+            <td>{{ entity.value.value }}</td>
+            <td>{{ entity.group }}</td>
+            <td>
+                <div class="btn-group">
+                    <a href="{{ path('attribute_edit', { 'id': entity.id, 'category': category, 'product': product }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+                    <a href="{{ path('attribute_up', { 'id': entity.id, 'position': 1, 'product': product, 'category': category }) }}" class="move-up btn btn-default btn-xs"><span class="glyphicon glyphicon-arrow-up"></span> {% trans %}Move up{% endtrans %}</a>
+                    <a href="{{ path('attribute_down', { 'id': entity.id, 'position': 1, 'product': product, 'category': category }) }}" class="move-down btn btn-default btn-xs"><span class="glyphicon glyphicon-arrow-down"></span> {% trans %}Move down{% endtrans %}</a>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

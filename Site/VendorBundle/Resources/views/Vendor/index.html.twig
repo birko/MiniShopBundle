@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+{% if entity %}
+<div id="vendor">
+    <h1>{{ entity.title}}</h1>
+    <div class="description">
+        {{ entity.description | raw}}
+    </div>
+    <div class="class="row-fluid">
+        {% render controller("SiteProductBundle:Product:vendor", {'vendor': entity.id, 'page': page }) %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}

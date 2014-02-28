@@ -1,0 +1,30 @@
+orderstatus:
+    pattern:  /
+    defaults: { _controller: "CoreShopBundle:OrderStatus:index" }
+
+orderstatus_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreShopBundle:OrderStatus:show" }
+
+orderstatus_new:
+    pattern:  /new
+    defaults: { _controller: "CoreShopBundle:OrderStatus:new" }
+
+orderstatus_create:
+    pattern:  /create
+    defaults: { _controller: "CoreShopBundle:OrderStatus:create" }
+    requirements: { _method: post }
+
+orderstatus_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreShopBundle:OrderStatus:edit" }
+
+orderstatus_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreShopBundle:OrderStatus:update" }
+    requirements: { _method: post }
+
+orderstatus_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreShopBundle:OrderStatus:delete" }
+    requirements: { _method: post }

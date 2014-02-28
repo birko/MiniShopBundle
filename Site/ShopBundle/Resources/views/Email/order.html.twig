@@ -1,0 +1,6 @@
+{% extends '::email.html.twig' %}
+{% block content%}
+{% render controller('CoreUserTextBundle:UserText:display', {'name': 'order-thankyou', 'create': 1}) %}
+{% include 'CoreShopBundle:Order:detail.html.twig' with {'entity': order}%}
+{% render controller('CoreUserTextBundle:UserText:display', {'name': 'email-footer', 'create': 1}) %}
+{% endblock %}

@@ -1,0 +1,8 @@
+newsletter_email_subscribe:
+    pattern:  /{_locale}/newsletter/subscribe
+    defaults: { _controller: "SiteNewsletterBundle:Newsletter:subscribe", _locale: %locale% }
+    requirements: { _method: post }
+
+newsletter_email_unsubscribe:
+    pattern:  /{_locale}/newsletter/unsubscribe
+    defaults: { _controller: "SiteNewsletterBundle:Newsletter:unsubscribe", _locale: %locale% }

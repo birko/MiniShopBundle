@@ -1,0 +1,4 @@
+groupon_add:
+    pattern:  /{product}
+    defaults: { _controller: "SiteShopBundle:Groupon:add", _locale: %locale% }
+    requirements: { _method: post }

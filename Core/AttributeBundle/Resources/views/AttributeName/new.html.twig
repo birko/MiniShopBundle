@@ -1,0 +1,15 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Attribute creation{% endtrans %}</h1>
+{{ form_start(form) }}
+{{ form_errors(form) }}
+{% if cultures | length > 0 %}
+{% include 'CoreCommonBundle:Form:translations.html.twig' with {'form': form.translations, 'cultures': cultures } %}
+{% endif %}
+{{ form_widget(form) }}
+<p>
+    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>{% trans %}Create{% endtrans %}</button>
+    <a href="{{ path('attributename') }}"> {% trans %}Back to the list{% endtrans %}</a>
+</p>
+{{ form_end(form) }}
+{% endblock %}

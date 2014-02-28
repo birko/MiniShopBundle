@@ -1,0 +1,30 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Order Status list{% endtrans %}</h1>
+
+<table class="records_list table table-striped table-condensed">
+    <thead>
+        <tr>
+            <td colspan="2">
+                <a href="{{ path('orderstatus_new') }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %} </a>
+            </td>
+        </tr>
+        <tr>
+            <th>{% trans %}Name{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.name }}</td>
+            <td>
+                <a href="{{ path('orderstatus_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

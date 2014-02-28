@@ -1,0 +1,31 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Coupon products add list{% endtrans %}</h1>
+{{ knp_pagination_render(products)}}
+<table class="records_list table table-striped table-condensed">
+    <thead>
+        <tr>
+            <td colspan="2">
+                <a href="{{ path('coupon_products', {'id': entity.id}) }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-backward"></span> {% trans %}Back to the coupon products list{% endtrans %}</a>
+            </td>
+        </tr>
+        <tr>
+            <th>{% trans %}Title{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+    {% for product in products %}
+        <tr>
+            <td>{{ product.title }}</td>
+            <td>
+                <a href="{{ path('coupon_products_add', { 'id': entity.id, 'product': product.id }) }}" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"></span> {% trans %}Add{% endtrans %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(products)}}
+{% endblock %}

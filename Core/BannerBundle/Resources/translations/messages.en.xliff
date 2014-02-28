@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Banner</source>
+                <target>Banner</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Create a new banner</source>
+                <target>Create a new banner</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Banners</source>
+                <target>Banners</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Banner list</source>
+                <target>Banner list</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Banner creation</source>
+                <target>Banner creation</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Banner edit</source>
+                <target>Banner edit</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Banner position edit</source>
+                <target>Banner position edit</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

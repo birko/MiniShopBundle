@@ -1,0 +1,100 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Product list{% endtrans %}</h1>
+<form action="" method="post" class="filter form-actions">
+<div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3">
+         {{ form_row(filter.words, {'attr': {'class': 'input-sm'}}) }}
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+         {{ form_row(filter.vendor, {'attr': {'class': 'input-sm'}}) }}
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2 input-append">
+         {{ form_row(filter.order, {'attr': {'class': 'input-sm'}}) }}
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1">
+        <div>
+            <label> &nbsp; </label><br />
+            {{ form_rest(filter) }}
+            <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok icon-white"></span></button>
+        </div>
+    </div>
+</div>
+</form>
+{{ knp_pagination_render(entities)}}
+<table class="records_list table table-striped table-hover table-condensed">
+    <thead>
+    <tr>
+            <td colspan="3">
+                <div class="btn-group pull-right">
+                    <a href="{{ path('product_new', {'category': category}) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %}</a>
+                    {% if category is not empty %}
+                    <a href="{{path('product_addlist',  {'category': category })}}" class="btn btn-xs btn-info">
+                       <span class="glyphicon glyphicon-plus"></span> {%trans%}Add existing product{%endtrans%}
+                    </a>
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>{% trans %}Title{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+	{% set minishopkeys = minishop|keys %}
+    {% for entity in entities %}
+        <tr>
+            <td>{% if entity.enabled %}<span class="glyphicon glyphicon-ok"></span>{% else %}<span class="glyphicon glyphicon-remove"></span>{% endif %}</td>
+            <td>{{ entity.title }}</td>
+            <td class="btn-toolbar">
+                <div class="btn-group">
+                    <a href="{{ path('product_edit', { 'id': entity.id, 'category': category }) }}" class="btn btn-xs btn-warning "><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+                    <a href="{{ path('product_copy', { 'id': entity.id, 'category': category }) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-leaf"></span> {% trans %}Copy{% endtrans %}</a>
+                    {% if category is not empty %}
+                    <a href="{{ path('product_position', { 'id': entity.id, 'category': category }) }}" class="btn btn-default btn-xs">{{entity.getProductCategory(category).position}}</a>
+                    <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Move{% endtrans%} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('product_up', { 'id': entity.id, 'category': category, 'position': 1 }) }}" class="move-up"><span class="glyphicon glyphicon-arrow-up"></span> {% trans %}Move up{% endtrans %}</a></li>
+                        <li><a href="{{ path('product_down', { 'id': entity.id, 'category': category, 'position': 1 }) }}" class="move-down"><span class="glyphicon glyphicon-arrow-down"></span> {% trans %}Move down{% endtrans %}</a></li>
+                    </ul>
+                    <a href="{{ path('product_remove', { 'id': entity.id, 'category': category  }) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus"></span> {%trans%}Remove{%endtrans%}</a>
+                    {% endif %}
+                </div>
+                <div class="btn-group">
+					{% if 'media' in minishopkeys %}
+                    <a href="{{ path('product_media', { 'product': entity.id, 'category': category }) }}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span> {% trans %}Media{% endtrans %}</a>
+                    {% endif %}
+					{% if 'attribute' in minishopkeys %}
+					<a href="{{ path('attribute', { 'product': entity.id, 'category': category }) }}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span> {% trans %}Attributes{% endtrans %}</a>
+                    {% endif %}
+					{% if 'price' in minishopkeys %}
+					<a href="{{ path('price', { 'product': entity.id, 'category': category }) }}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span> {% trans %}Prices{% endtrans %}</a>
+					{% endif %}
+					{% if 'marketing' in minishopkeys %}
+					<a href="{{ path('groupon', { 'product': entity.id, 'category': category }) }}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span> {% trans %}Groupons{% endtrans %}</a>
+					{% endif %}
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" href="#">{% trans %}Stock{% endtrans %} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        {% if entity.stock %}
+                        <li><a href="{{ path('stock_edit', { 'id': entity.stock.id, 'product': entity.id, 'category': category }) }}"><span class="glyphicon glyphicon-edit"></span> {% trans %}Stock{% endtrans %}</a></li>
+                        {% else %}
+                        <li><a href="{{ path('stock_new', {'product': entity.id, 'category': category }) }}"><span class="glyphicon glyphicon-edit"></span> {% trans %}Stock{% endtrans %}</a></li>
+                        {% endif %}
+						{% if 'attribute' in minishopkeys %}
+                        <li><a href="{{ path('option', { 'product': entity.id, 'category': category }) }}"><span class="glyphicon glyphicon-list"></span> {% trans %}Options{% endtrans %}</a></li>
+						{% endif %}
+					</ul>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(entities)}}
+{% endblock %}

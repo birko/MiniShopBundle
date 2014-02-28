@@ -1,0 +1,13 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{%trans%}Newsletter send{%endtrans%}</h1>
+
+<form action="{{ path('newsletter_dosendemail', {'id': entity.newsletter.id, 'page': page}) }}" method="post" {{ form_enctype(form) }}>
+    {{ knp_pagination_render(entities)}}
+    {{ form_widget(form) }}
+    {{ knp_pagination_render(entities)}}
+    <p>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-envelope"></span> {%trans%}Send{%endtrans%}</button>
+    </p>
+</form>
+{% endblock %}

@@ -1,0 +1,40 @@
+option:
+    pattern:  /{category}
+    defaults: { _controller: "CoreProductBundle:ProductOption:index", category: ~ }
+    requirements:
+        category: \d+
+
+option_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreProductBundle:ProductOption:show" }
+
+option_new:
+    pattern:  /new/{category}
+    defaults: { _controller: "CoreProductBundle:ProductOption:new", category: ~ }
+
+option_create:
+    pattern:  /create/{category}
+    defaults: { _controller: "CoreProductBundle:ProductOption:create", category: ~ }
+    requirements: { _method: post }
+
+option_edit:
+    pattern:  /{id}/edit/{category}
+    defaults: { _controller: "CoreProductBundle:ProductOption:edit", category: ~ }
+
+option_update:
+    pattern:  /{id}/update/{category}
+    defaults: { _controller: "CoreProductBundle:ProductOption:update", category: ~ }
+    requirements: { _method: post }
+
+option_delete:
+    pattern:  /{id}/delete/{category}
+    defaults: { _controller: "CoreProductBundle:ProductOption:delete", category: ~ }
+    requirements: { _method: post }
+
+option_up:
+    pattern:  /{id}/up/{position}/{category}
+    defaults: { _controller: "CoreProductBundle:ProductOption:moveUp", position: 1, category: ~ }
+
+option_down:
+    pattern:  /{id}/down/{position}/{category}
+    defaults: { _controller: "CoreProductBundle:ProductOption:moveDown", position: 1, category: ~ }

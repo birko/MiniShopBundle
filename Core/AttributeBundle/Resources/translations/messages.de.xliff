@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Attributes</source>
+                <target>Attributes</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Create a new attribute</source>
+                <target>Create a new attribute</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Attribute list</source>
+                <target>Attribute list</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Attribute creation</source>
+                <target>Attribute creation</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Attribute edit</source>
+                <target>Attribute edit</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Attribute name list</source>
+                <target>Attribute name list</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Attribute value list</source>
+                <target>Attribute value list</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Values</source>
+                <target>Values</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Attribute name creation</source>
+                <target>Attribute name creation</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Attribute name edit</source>
+                <target>Attribute name edit</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Attribute value creation</source>
+                <target>Attribute value creation</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Attribute value edit</source>
+                <target>Attribute value edit</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

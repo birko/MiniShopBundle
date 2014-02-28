@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>The password must have at least 6 characters.</source>
+                <target>Heslo musí mať aspoň 6 znakov.</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>general.submit</source>
+                <target>odoslať</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>general.contact.submit</source>
+                <target>odoslať</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Verification code does not match. You must enter %code%</source>
+                <target>Overovací kód sa nezhoduje. Musíte zadať %code%</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>general.logout</source>
+                <target>odhlásiť</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>general.login</source>
+                <target>prihlásiť</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Username</source>
+                <target>Užívateľské meno</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Password</source>
+                <target>Heslo</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Old Password</source>
+                <target>Staré heslo</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>New Password</source>
+                <target>Nové heslo</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Login</source>
+                <target>Prihlásiť</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Users</source>
+                <target>Užívatelia</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Add user</source>
+                <target>Pridať uživateľa</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Add users</source>
+                <target>Pridať uživateľov</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Roles</source>
+                <target>Roly</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>User edit</source>
+                <target>Úprava užívateľa</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>User list</source>
+                <target>Zoznam užívateľov</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Back to the user list</source>
+                <target>Späť na zoznam užívateľov</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Current password</source>
+                <target>Súčasné heslo</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Register</source>
+                <target>Registrácia</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Price group</source>
+                <target>Cenová skupina</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Price groups</source>
+                <target>Cenové skupiny</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Price Group list</source>
+                <target>Zoznam cenových skupín</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Price Group creation</source>
+                <target>Tvorba cenovej skupin</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Price Group edit</source>
+                <target>Upraviť cenovú skupinu</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Create a new price group</source>
+                <target>Vytvoriť novú cenovú skupinu</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Back to the price group list</source>
+                <target>Späť na zoznam cenových skupín</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Rate</source>
+                <target>Sadzba</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Not logged in</source>
+                <target>Neprihlásený</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Logged in</source>
+                <target>Prihlásený</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Repeat Password</source>
+                <target>Opakovať Heslo</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>User</source>
+                <target>Užívateľ</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

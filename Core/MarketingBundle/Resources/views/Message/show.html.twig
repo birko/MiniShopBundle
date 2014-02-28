@@ -1,0 +1,40 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Message{% endtrans%}</h1>
+<h2>{{ entity.title }}</h2>
+<table class="record_properties">
+        <tr>
+            <th>{% trans %}Created at{% endtrans%}:</th>
+            <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        {% if entity.updatedAt %}
+        <tr>
+            <th>{% trans %}Updated at{% endtrans%}:</th>
+            <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+<hr />
+{% include 'CoreMarketingBundle:Message:'~ entity.type ~'.html.twig' with {'data': entity.message} %}
+<hr />
+{% if entity.answer is empty %}
+<h2>{% trans %}Answer {% endtrans%}</h2>
+<form action="" method="post" class="">
+{{ form_widget(form)}}
+    <div class="form-actions">
+         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-envelope"></span> {% trans %}Send{% endtrans %}</button>
+         {% if entity.updatedAt is empty %}
+          <a href="{{ path('message_updatedate', {'id': entity.id}) }}" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> {% trans %}Update{% endtrans %}</a>
+         {% endif %}
+    </div>
+</form>
+{% else %}
+{% include 'CoreMarketingBundle:Message:answer.html.twig' with {'data': entity.answer} %}
+{% endif %}
+<form action="{{ path('message_delete', { 'id': entity.id }) }}" method="post" class="form-actions">
+    {{ form_widget(delete_form) }}
+    <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> {% trans %}Delete{% endtrans %}</button>
+    <a href="{{ path('message', {'type': entity.type}) }}" class="btn">{% trans %}Back to the list{% endtrans %}</a>
+</form>
+{% endblock %}

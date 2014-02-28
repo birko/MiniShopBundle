@@ -1,0 +1,7 @@
+parameters:
+#    core_banner.example.class: Core\BannerBundle\Example
+
+services:
+#    core_banner.example:
+#        class: %core_banner.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

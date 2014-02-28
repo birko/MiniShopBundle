@@ -1,0 +1,9 @@
+{% if node.home %}
+<a href="{{ path('category_homepage') }}">
+{% elseif node.external %}
+<a href="{{ node.slug }}">
+{% else %}
+<a href="{{ path('category_site', { 'slug': node.slug }) }}">
+{% endif %}
+    <span>{{ node.title }}</span>
+</a>

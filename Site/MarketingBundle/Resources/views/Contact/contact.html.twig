@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div id="contact">
+    <div class="info">
+        <h1>{% trans %}Contact us{% endtrans %}</h1>
+        <h2>{% trans %}Customer service{% endtrans %}</h2>
+        <div class="tabbable">
+            <ul class="nav nav-tabs" id="contact-tabs">
+                <li class="active"><a href="#form-contact-multi" data-toggle="tab">{% trans %}Contact{% endtrans %}</a></li>
+                <li><a href="#form-contact-claim" data-toggle="tab">{% trans %}Claim{% endtrans %}</a></li>
+            </ul>
+            <div class="tab-content well well-small">
+                <div class="tab-pane fade in active" id="form-contact-multi">
+                    {% render controller('SiteMarketingBundle:Contact:contactMultiForm') %}
+                </div>
+                <div class="tab-pane" id="form-contact-claim">
+                    {% render controller('SiteMarketingBundle:Contact:contactClaimForm') %}
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+{% javascripts
+'@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+'@MopaBootstrapBundle/Resources/public/bootstrap/js/tab.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script type="text/javascript">
+  $(function(){
+      $('#contact-tabs a').click(function(e){
+          e.preventDefault();
+          $(this).tab("show");
+      });
+    })
+</script>
+{% endblock %}

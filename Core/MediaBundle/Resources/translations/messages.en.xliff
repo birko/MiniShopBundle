@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Media</source>
+                <target>Media</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Media list</source>
+                <target>Media list</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Upload media</source>
+                <target>Upload media</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Image upload</source>
+                <target>Image upload</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Source</source>
+                <target>Source</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Used count</source>
+                <target>Used count</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>File</source>
+                <target>File</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Image creation</source>
+                <target>Image creation</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Image edit</source>
+                <target>Image edit</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Back to the image list</source>
+                <target>Back to the image list</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Width</source>
+                <target>Width</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Height</source>
+                <target>Height</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Create a new image</source>
+                <target>Create a new image</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Images</source>
+                <target>Images</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Image list</source>
+                <target>Image list</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Galleries</source>
+                <target>Galleries</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Gallery list</source>
+                <target>Gallery list</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Create a gallery</source>
+                <target>Create a gallery</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Add Gallery</source>
+                <target>Add Gallery</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Gallery creation</source>
+                <target>Gallery creation</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Gallery edit</source>
+                <target>Gallery edit</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Gallery</source>
+                <target>Gallery</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Back to the gallery list</source>
+                <target>Back to the gallery list</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Add to gallery</source>
+                <target>Add to gallery</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Remove gallery</source>
+                <target>Remove gallery</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Add Existing Media</source>
+                <target>Add Existing Media</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>No media</source>
+                <target>No media</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Image</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Create a new video</source>
+                <target>Create a new video</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Video type</source>
+                <target>Video type</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Media edit</source>
+                <target>Media edit</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Media creation</source>
+                <target>Media creation</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

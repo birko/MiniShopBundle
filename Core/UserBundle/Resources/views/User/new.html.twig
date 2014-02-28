@@ -1,0 +1,14 @@
+{% extends 'NwsUserBundle::layout.html.twig' %}
+{% block content %}
+<h1>{% trans %}User creation{% endtrans %}</h1>
+
+<form action="{{ path('user_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">{% trans %}Create{% endtrans %}</button>
+		<a href="{{ path('user') }}">
+            {% trans %}Back to the list{% endtrans %}
+        </a>
+    </p>
+</form>
+{% endblock %}

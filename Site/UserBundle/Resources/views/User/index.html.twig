@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div id="content-container">
+<h1>{% trans %}Customer section{% endtrans %}</h1>
+    <div class="well well-sm" >
+        <ul>
+            <li><a href="{{ path('order_index') }}">{% trans %}Orders{% endtrans %}</a></li>
+            <li><a href="{{ path('address') }}">{% trans %}Addresses{% endtrans %}</a></li>
+            <li><a href="{{ path('SiteUserBundle_password') }}">{% trans %}Change password{% endtrans %}</a></li>
+            <li><a href="{{ path("SiteUserBundle_logout") }}">{% trans %}general.logout{% endtrans %}</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

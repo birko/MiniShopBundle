@@ -1,0 +1,45 @@
+<tr>
+    <td class="image">
+        {% if item.productId is not empty %}
+        {% render controller("SiteProductBundle:Product:productMainMedia", {'product': item.productId, 'dir': 'product-small'}) %}
+        {% endif %}
+    </td>
+    <td class="name">
+      {% block cartitemtext %}
+      {{ item.name }}
+      {% if item.description %}
+      <br /> {{item.description}}
+      {% endif %}
+      {% if item.options.count > 0 %}
+      <br />{% for option in item.options %}{% if loop.index0 > 0 %}, {% endif %}{{option}}{% endfor %}
+      {% endif %}
+	    {% if item.variations is not empty %}
+	    <br />{{ item.variations }}
+	    {% endif %}
+      {% endblock cartitemtext %}
+    </td>
+    <td class="price">
+      {{ item.priceVAT()|number_format(2, ',') }} €
+    </td>
+    <td class="form">
+		{% if form is not empty %}
+        <div  class="{% if item.changeAmount %}input-group{% endif %}">
+        {{ form_widget(form.amount)}}
+        {% if item.changeAmount %}
+        <button type="submit" class="btn btn-default input-group-addon"><span class="glyphicon glyphicon-refresh"></span></button>
+        {% endif %}
+        {{ form_rest(form)}}
+        </div>
+		{% else %}
+		{{ item.amount }}
+		{% endif %}
+    </td>
+    <td class="total">
+        {{ item.priceVATTotal()|number_format(2, ',') }} €
+    </td>
+	{% if form is not empty %}
+    <td>
+        <a href="{{ path('cart_remove', {'index': index})}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+    </td>
+	{% endif %}
+</tr>

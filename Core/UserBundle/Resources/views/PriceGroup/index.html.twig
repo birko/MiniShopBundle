@@ -1,0 +1,36 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Price Group list{% endtrans %}</h1>
+
+<table class="records_list table table-striped table-condensed">
+    <thead>
+        <tr>
+            <td colspan="4">
+                <a href="{{ path('pricegroup_new') }}" class="btn btn-xs btn-primary pull-right">
+                <span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th>{% trans %}Default{% endtrans %}</th>
+            <th>{% trans %}Name{% endtrans %}</th>
+            <th>{% trans %}Rate{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{% if entity.default %}<span class="glyphicon glyphicon-ok"></span>{% endif %}</td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.rate }}</td>
+            <td>
+                <a href="{{ path('pricegroup_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

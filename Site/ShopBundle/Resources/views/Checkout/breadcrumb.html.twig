@@ -1,0 +1,4 @@
+<ol class="breadcrumb">
+  <li class="home"><a href="{{ path('category_homepage')}}">{% trans%}Home{% endtrans %}</a></li>
+{% if end is not empty %}<li class="active">{{end | trans }}</li>{% endif %}
+</ol>

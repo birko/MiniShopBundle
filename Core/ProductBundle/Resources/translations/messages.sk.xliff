@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Products</source>
+                <target>Produkty</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Product list</source>
+                <target>Zoznam produktov</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Tags</source>
+                <target>Tagy</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Add existing product</source>
+                <target>Pridať existujúcí produkt</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Create a new product</source>
+                <target>Vytvoriť nový produkt</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Short description</source>
+                <target>Krátky popis</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Product</source>
+                <target>Produkt</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Add product</source>
+                <target>Pridať produkt</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Add products</source>
+                <target>Pridať produkty</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Product creation</source>
+                <target>Tvorba produktu</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Product edit</source>
+                <target>Úprava produktu</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Weight</source>
+                <target>Váha</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Capacity</source>
+                <target>Objem</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Price</source>
+                <target>Cena bez DPH</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Price VAT</source>
+                <target>Cena s DPH</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Prices</source>
+                <target>Ceny</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Options</source>
+                <target>Voľby</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Product Option list</source>
+                <target>Zoznam volieb</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Product Option creation</source>
+                <target>Tvorba voľby</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Product Option edit</source>
+                <target>Úprava voľby</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Product Media list</source>
+                <target>Zoznam médii</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Product Media creation</source>
+                <target>Tvorba média</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Product Media edit</source>
+                <target>Úprava média</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Price amount</source>
+                <target>Cenové množstvo</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Price creation</source>
+                <target>Tvorba ceny</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Price edit</source>
+                <target>Úprava ceny</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Amount</source>
+                <target>Množstvo</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Availability</source>
+                <target>Dostupnosť</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Stock</source>
+                <target>Sklad</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Stock creation</source>
+                <target>Tvorba skladu</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Stock edit</source>
+                <target>Úprava skladu</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Available</source>
+                <target>Skladom</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>Not available</source>
+                <target>Nedostupný</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>Price list</source>
+                <target>Zoznam cien</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Product media position edit</source>
+                <target>Úprava pozície média</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Product position edit</source>
+                <target>Úprava pozície produktu</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

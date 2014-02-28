@@ -1,0 +1,57 @@
+newsletter:
+    pattern:  /
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:index" }
+
+newsletter_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:show" }
+
+newsletter_new:
+    pattern:  /new
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:new" }
+
+newsletter_create:
+    pattern:  /create
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:create" }
+    requirements: { _method: post }
+
+newsletter_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:edit" }
+
+newsletter_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:update" }
+    requirements: { _method: post }
+
+newsletter_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:delete" }
+    requirements: { _method: post }
+
+newsletter_send:
+    pattern:   /{id}/send
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:send" }
+
+newsletter_dosend:
+    pattern:   /{id}/dosend
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:doSend" }
+    requirements: { _method: post }
+
+newsletter_sendgroup:
+    pattern:   /{id}/sendgroup
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:sendGroup" }
+
+newsletter_dosendgroup:
+    pattern:   /{id}/dosendgroup
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:doSendGroup" }
+    requirements: { _method: post }
+
+newsletter_sendemail:
+    pattern:  /{id}/sendemail
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:sendEmail" }
+
+newsletter_dosendemail:
+    pattern:   /{id}/dosendemail
+    defaults: { _controller: "CoreNewsletterBundle:Newsletter:doSendEmail" }
+    requirements: { _method: post }

@@ -1,0 +1,4 @@
+{% extends '::pdf.html.twig' %}
+{% block body %}
+{% include "CoreShopBundle:Order:invoice.html.twig" with {"enity": entity} %}
+{% endblock %}

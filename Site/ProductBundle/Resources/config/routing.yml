@@ -1,0 +1,7 @@
+product_search:
+    pattern:  /{_locale}/product/search
+    defaults: { _controller: SiteProductBundle:Product:search, _locale: %locale% }
+
+product_site:
+    pattern:  /{_locale}/product/{slug}
+    defaults: { _controller: SiteProductBundle:Product:index, _locale: %locale% }

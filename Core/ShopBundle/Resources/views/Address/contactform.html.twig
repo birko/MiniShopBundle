@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        {{ form_row(form.email)}}
+        {{ form_errors(form.email) }}
+        <span class="help-block"><small><small>{% trans %}Phone contact is used exclusively to contact the customer about the status of his order.{% endtrans %}</small></small></span>
+        {{ form_row(form.phone)}}
+        {{ form_errors(form.phone) }}
+    </div>
+</div>

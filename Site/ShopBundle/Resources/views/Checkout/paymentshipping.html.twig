@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+{% include "SiteShopBundle:Checkout:breadcrumb.html.twig" with {'end' : 'Payment and shipping'} %}
+<div  id="cart">
+    <h1>{% trans %}Payment and shipping{% endtrans %}</h1>
+    <form action="{{ path('checkout_savepaymentshipping')}}" method="post">
+        <div class="row">
+            {{ form_errors(form) }}
+			{% if not cart.skipPayment %}
+            <div class="payment col-sm-5 col-md-5 col-lg-5">
+                <table class="table">
+                    <caption>{{ form_label(form.payment) }}</caption>
+                    <tbody>
+                        {% for widget in form.payment %}
+                        <tr>
+                            <td>{{ form_widget(widget) }}</td>
+                            <td>{{payment[loop.index0].name}}</td>
+                            <td><strong>{{payment[loop.index0].price | number_format(2)}} € s DPH</strong></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+			{% endif %}
+			{% if not cart.skipShipping %}
+            <div class="shipping col-sm-5 col-md-5 col-lg-5 {% if not cart.skipPayment %}pull-right{% endif %}">
+                <table class="table">
+                    <caption>{{ form_label(form.shipping) }}</caption>
+                    <tbody>
+                        {% for widget in form.shipping %}
+                        <tr>
+                            <td>{{ form_widget(widget) }}</td>
+                            <td>{{shipping[loop.index0].name}} </td>
+                            <td><strong>{{shipping[loop.index0].priceVAT | number_format(2)}} € s DPH</strong></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+			{% endif %}
+            <div class="cleaner"></div>
+            {{ form_rest(form) }}
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <a href="{{path('cart')}}" class="btn btn-default pull-left"><span class="glyphicon glyphicon-arrow-left icon-white"></span> {% trans %}Back to cart{% endtrans %} </a>
+            <button type="submit" class="btn btn-default pull-right">{% trans %}Continue{% endtrans %} <span class="glyphicon glyphicon-arrow-right"></span></button>
+            {{ form_rest(form) }}
+          </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

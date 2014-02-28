@@ -1,0 +1,23 @@
+SiteShopBundle_cart:
+    resource: "@SiteShopBundle/Resources/config/routing/cart.yml"
+    prefix:   /{_locale}/cart
+
+SiteShopBundle_coupon:
+    resource: "@SiteShopBundle/Resources/config/routing/coupon.yml"
+    prefix:   /{_locale}/coupon
+
+SiteShopBundle_groupon:
+    resource: "@SiteShopBundle/Resources/config/routing/groupon.yml"
+    prefix:   /{_locale}/groupon
+
+SiteShopBundle_checkout:
+    resource: "@SiteShopBundle/Resources/config/routing/checkout.yml"
+    prefix:   /{_locale}/checkout
+
+SiteShopBundle_address:
+    resource: "@SiteShopBundle/Resources/config/routing/address.yml"
+    prefix:   /{_locale}/address
+
+SiteShopBundle_order:
+    resource: "@SiteShopBundle/Resources/config/routing/order.yml"
+    prefix:   /{_locale}/order

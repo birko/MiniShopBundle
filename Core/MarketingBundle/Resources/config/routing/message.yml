@@ -1,0 +1,34 @@
+message:
+    pattern:  /{type}
+    defaults: { _controller: "CoreMarketingBundle:Message:index", type: ~ }
+
+message_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreMarketingBundle:Message:show" }
+
+#message_new:
+#    pattern:  /new
+#    defaults: { _controller: "CoreMarketingBundle:Message:new" }
+
+#message_create:
+#    pattern:  /create
+#    defaults: { _controller: "CoreMarketingBundle:Message:create" }
+#    requirements: { _method: post }
+
+#message_edit:
+#    pattern:  /{id}/edit
+#    defaults: { _controller: "CoreMarketingBundle:Message:edit" }
+
+#message_update:
+#    pattern:  /{id}/update
+#    defaults: { _controller: "CoreMarketingBundle:Message:update" }
+#    requirements: { _method: post }
+
+message_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreMarketingBundle:Message:delete" }
+    requirements: { _method: post }
+
+message_updatedate:
+    pattern:  /{id}/updatedate
+    defaults: { _controller: "CoreMarketingBundle:Message:updateDate" }

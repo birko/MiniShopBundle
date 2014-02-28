@@ -1,0 +1,15 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Payment creation{% endtrans %}</h1>
+
+<form action="{{ path('payment_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+    {% if cultures | length > 0 %}
+	{% include 'CoreCommonBundle:Form:translations.html.twig' with {'form': form.translations, 'cultures': cultures } %}
+	{% endif %}
+	{{ form_widget(form) }}
+    <p>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {% trans %}Create{% endtrans %}</button>
+    </p>
+</form>
+{% endblock %}

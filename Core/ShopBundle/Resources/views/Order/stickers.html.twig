@@ -1,0 +1,22 @@
+{% extends '::print.html.twig' %}
+{% block body %}
+<table class="records_list table ">
+    <tbody>
+        <tr>
+        {% for entity in entities %}
+            <td style="width:52.25mm; height: 29.7mm;">
+                {{entity.deliveryAddress.name}} <br />
+                {{entity.deliveryAddress.street}} <br />
+                {{entity.deliveryAddress.city}} <br />
+                {{entity.deliveryAddress.ZIP}} <br />
+                {{entity.deliveryAddress.state}}
+            </td>
+        {% if loop.index % 4 == 0 %}
+        <tr />
+        <tr>
+        {% endif %}
+        {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

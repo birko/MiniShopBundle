@@ -1,0 +1,40 @@
+attribute:
+    pattern:  /{category}
+    defaults: { _controller: "CoreProductBundle:Attribute:index", category: ~ }
+    requirements:
+        category: \d+
+
+attribute_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreProductBundle:Attribute:show" }
+
+attribute_new:
+    pattern:  /new/{category}
+    defaults: { _controller: "CoreProductBundle:Attribute:new", category: ~ }
+
+attribute_create:
+    pattern:  /create/{category}
+    defaults: { _controller: "CoreProductBundle:Attribute:create", category: ~ }
+    requirements: { _method: post }
+
+attribute_edit:
+    pattern:  /{id}/edit/{category}
+    defaults: { _controller: "CoreProductBundle:Attribute:edit", category: ~ }
+
+attribute_update:
+    pattern:  /{id}/update/{category}
+    defaults: { _controller: "CoreProductBundle:Attribute:update", category: ~ }
+    requirements: { _method: post }
+
+attribute_delete:
+    pattern:  /{id}/delete/{category}
+    defaults: { _controller: "CoreProductBundle:Attribute:delete", category: ~ }
+    requirements: { _method: post }
+
+attribute_up:
+    pattern:  /{id}/up/{position}/{category}
+    defaults: { _controller: "CoreProductBundle:Attribute:moveUp", position: 1, category: ~ }
+
+attribute_down:
+    pattern:  /{id}/down/{position}/{category}
+    defaults: { _controller: "CoreProductBundle:Attribute:moveDown", position: 1, category: ~ }

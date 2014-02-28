@@ -1,0 +1,146 @@
+{% spaceless %}
+{% if entity is not empty %}
+<table style="border-collapse:collapse; width:100%;">
+    <tr>
+        <td style="border-collapse:collapse; border: 1px solid black; width:50%; ">
+            <strong><u>{% trans %}Supplier{% endtrans %}</u></strong>
+            <p>
+                {% render controller('CoreUserTextBundle:UserText:display', {'name': 'fakturacia-info', 'create': 1}) %}
+            </p>
+            <strong><u>{% trans %}Reciever{% endtrans %}</u></strong>
+            <p>
+                {% include "CoreShopBundle:Address:address.html.twig" with {'entity': entity.invoiceAddress} %}
+            </p>
+        </td>
+        <td style="border-collapse:collapse; border: 1px solid black; width:50%;">
+            <table style="border-collapse:collapse; width:100%;">
+                <tr>
+                    <td><h3>{%trans%}Invoice number{% endtrans %}:</h3></td>
+                    <td style="text-align:right"><h3>{{entity.invoiceNumber}}</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-collapse:collapse; border-top: 1px solid black;">
+                        <strong><u>{% trans %}Delivery address{% endtrans %}</u></strong>
+                        <p>
+                            {% include "CoreShopBundle:Address:address.html.twig" with {'entity': entity.deliveryAddress} %}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-top:1px solid black;">
+                       <table style="border-collapsed:collapsed; width:100%;">
+                            <tr>
+                                <th style="border-right:1px solid black; border-bottom: 1px solid black; text-align:center; width:33.3%">
+                                    {% trans %}Order date{% endtrans%}:
+                                </th>
+                                <th style="border-right:1px solid black; border-bottom: 1px solid black; text-align:center; width:33.3%">
+                                    {% trans %}Invoice date{% endtrans%}:
+                                </th>
+                                <th style="border-bottom: 1px solid black; text-align:center; width:33.3%">
+                                     {% trans %}Due date{% endtrans%}:
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="border-right:1px solid black; text-align:center; width:33.3%">
+                                    {% if entity.createdAt %}{{ entity.createdAt|date('d.m.Y') }}{% endif %}
+                                </td>
+                                <td style="border-right:1px solid black; text-align:center; width:33.3%">
+                                    {% if entity.invoicedAt %}{{ entity.invoicedAt|date('d.m.Y') }}{% endif %}
+                                </td>
+                                <td style="text-align:center; width:33.3%">
+                                    {% if entity.dueAt %}{{ entity.dueAt|date('d.m.Y') }}{% endif %}
+                                </td>
+                            </tr>
+                       </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="border-top:1px solid black; border-right:1px solid black; text-align:left; ">{%trans%}Payment{% endtrans %}:</th>
+                    <td style="border-top:1px solid black;">{{ entity.payment.name }}</td>
+                </tr>
+                <tr>
+                    <th style="border-top:1px solid black; border-right:1px solid black; text-align:left;">{%trans%}Shipping{% endtrans %}:</th>
+                    <td style="border-top:1px solid black;">{{ entity.shipping.name }}</td>
+                </tr>
+                <tr>
+                    <th style="border-top:1px solid black; border-right:1px solid black; text-align:left;">{%trans%}Order number{% endtrans %}:</th>
+                    <td style="border-top:1px solid black;">{{ entity.orderNumber }}</td>
+                </tr>
+                <tr>
+                    <th style="border-top:1px solid black; border-right:1px solid black; text-align:left;">{%trans%}Variable number{% endtrans %}:</th>
+                    <td style="border-top:1px solid black;">{{ entity.variableNumber }}</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+{% if entity.items is not empty %}
+<p>
+    {% render controller('CoreUserTextBundle:UserText:display', {'name': 'fakturacia-text', 'create': 1}) %}
+</p>
+<table style="border-collapse:collapse; width:100%;">
+        <tr>
+            <th style="width:67%; border: 1px solid black;">{% trans %}Product{% endtrans %}</th>
+            <th style="width:11%; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">{% trans %}Amount{% endtrans %}</th>
+            <th style="width:11%; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">{% trans %}Price{% endtrans %}</th>
+            <th style="width:11%; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">{% trans %}Price VAT{% endtrans %}</th>
+        </tr>
+        {% for item in entity.items %}
+        <tr>
+            <td style="width:67%; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                {{ item.name }}
+                {% if item.options is not empty %}
+                    <hr />
+                    {{ item.options }}
+                {% endif %}
+            </td>
+            <td style="width:11%; border-right: 1px solid black; border-bottom: 1px solid black;">
+                {{ item.amount }}
+            </td>
+            <td style="width:11%; border-right: 1px solid black; border-bottom: 1px solid black;; text-align:right;">
+                {{ item.priceVAT | number_format(2) }} €
+            </td>
+            <td style="width:11%; border-right: 1px solid black; border-bottom: 1px solid black;; text-align:right;">
+                {{ item.priceVATTotal | number_format(2) }} €
+            </td>
+        </tr>
+        {% endfor %}
+</table>
+<p>
+<br />
+</p>
+<table style="width:100%; border-collapse:collapse">
+    <tr>
+       <td style="width:50%;"></td>
+       <td style="width:39%; border: 1px solid black; text-align:left;">
+            {% trans %}Total price{% endtrans %}
+        </td>
+        <th style="width:11%; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;  text-align:right;">
+            {{entity.price | number_format(2) }} €
+        </th>
+    </tr>
+    <tr>
+       <td style="width:50%;"></td>
+       <td style="width:39%; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;  text-align:left;">
+            {% trans %}VAT{% endtrans %}
+        </td>
+        <th style="width:11%; border-right: 1px solid black; border-bottom: 1px solid black;  text-align:right;">
+            {{ (entity.priceVAT - entity.price) | number_format(2) }} €
+        </th>
+    </tr>
+    <tr>
+        <td style="width:50%;"></td>
+        <td style="width:39%; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; text-align:left;">
+            {% trans %}Total price VAT{% endtrans %}
+        </td>
+        <th style="width:11%; border-right: 1px solid black; border-bottom: 1px solid black; text-align:right;">
+            {{ entity.priceVAT | number_format(2) }} €
+        </th>
+    </tr>
+</table>
+<p>
+    {% render controller('CoreUserTextBundle:UserText:display', {'name': 'fakturacia-footer', 'create': 1}) %}
+</p>
+{% endif %}
+{% endif %}
+{% endspaceless %}

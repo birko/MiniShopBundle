@@ -1,0 +1,45 @@
+product_media:
+    pattern:  /{category}
+    defaults: { _controller: "CoreProductBundle:Media:index", category: ~}
+    requirements:
+        category: \d+
+
+product_media_new:
+    pattern:  /new/{type}/{category}
+    defaults: { _controller: "CoreProductBundle:Media:new", category: ~ }
+
+product_media_create:
+    pattern:  /create/{type}/{category}
+    defaults: { _controller: "CoreProductBundle:Media:create", category: ~ }
+    requirements: { _method: post }
+
+product_media_edit:
+    pattern:  /{id}/edit/{type}/{category}
+    defaults: { _controller: "CoreProductBundle:Media:edit", category: ~ }
+
+product_media_update:
+    pattern:  /{id}/update/{type}/{category}
+    defaults: { _controller: "CoreProductBundle:Media:update", category: ~ }
+    requirements: { _method: post }
+
+product_media_delete:
+    pattern:  /{id}/delete/{type}/{category}
+    defaults: { _controller: "CoreProductBundle:Media:delete", category: ~ }
+    requirements: { _method: post }
+
+product_media_up:
+    pattern:  /{id}/moveup/{position}/{category}
+    defaults: { _controller: "CoreProductBundle:Media:moveUp", category: ~  }
+
+product_media_down:
+    pattern:  /{id}/movedown/{position}/{category}
+    defaults: { _controller: "CoreProductBundle:Media:moveDown", category: ~  }
+
+product_media_position:
+    pattern:  /{id}/position/{category}
+    defaults: { _controller: "CoreProductBundle:Media:position", category: ~  }
+
+product_media_position_update:
+    pattern:  /{id}/positionupdate/{category}
+    defaults: { _controller: "CoreProductBundle:Media:positionUpdate", category: ~  }
+    requirements: { _method: post }

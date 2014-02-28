@@ -1,0 +1,30 @@
+state:
+    pattern:  /
+    defaults: { _controller: "CoreShopBundle:State:index" }
+
+state_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreShopBundle:State:show" }
+
+state_new:
+    pattern:  /new
+    defaults: { _controller: "CoreShopBundle:State:new" }
+
+state_create:
+    pattern:  /create
+    defaults: { _controller: "CoreShopBundle:State:create" }
+    requirements: { _method: post }
+
+state_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreShopBundle:State:edit" }
+
+state_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreShopBundle:State:update" }
+    requirements: { _method: post }
+
+state_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreShopBundle:State:delete" }
+    requirements: { _method: post }

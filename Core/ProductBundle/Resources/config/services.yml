@@ -1,0 +1,30 @@
+parameters:
+#    core_product.example.class: Core\ProductBundle\Example
+
+services:
+    core_product.form.flow.attributeType:
+        class: Core\ProductBundle\Form\AttributeType
+        tags:
+            - {name: 'form.type', alias: 'core_productbundle_attributetype'}
+
+    core_product.form.flow.attributeFlow:
+        class: Core\ProductBundle\Form\AttributeFlow
+        parent: "craue.form.flow"
+        scope: "request"
+        calls:
+            - [setFormType, [@core_product.form.flow.attributeType]]
+
+    core_product.form.flow.productOptionType:
+        class: Core\ProductBundle\Form\ProductOptionType
+        tags:
+            - {name: 'form.type', alias: 'core_productbundle_productoptiontype'}
+
+    core_product.form.flow.productOptionFlow:
+        class: Core\ProductBundle\Form\ProductOptionFlow
+        parent: "craue.form.flow"
+        scope: "request"
+        calls:
+            - [setFormType, [@core_product.form.flow.productOptionType]]
+#    core_product.example:
+#        class: %core_product.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,7 @@
+CoreContentBundle_content:
+        resource: "@CoreContentBundle/Resources/config/routing/content.yml"
+        prefix:   /content
+
+CoreContentBundle_media:
+        resource: "@CoreContentBundle/Resources/config/routing/media.yml"
+        prefix:   /content/{content}/media

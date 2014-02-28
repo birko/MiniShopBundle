@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>New</source>
+                <target>New</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Create</source>
+                <target>Create</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Remove</source>
+                <target>Remove</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Enabled</source>
+                <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Visible</source>
+                <target>Visible</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Slug</source>
+                <target>Url</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Value</source>
+                <target>Value</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>System</source>
+                <target>System</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Group</source>
+                <target>Group</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Back to the list</source>
+                <target>Back to the list</target>
+            </trans-unit>
+             <trans-unit id="21">
+                <source>Create a new entry</source>
+                <target>Create a new entry</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Short description</source>
+                <target>Short description</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Long description</source>
+                <target>Long description</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Revert</source>
+                <target>Revert</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>List</source>
+                <target>List</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Created at</source>
+                <target>Created at</target>
+            </trans-unit> 
+            <trans-unit id="28">
+                <source>Type</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Create a new group</source>
+                <target>Create a new group</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Groups</source>
+                <target>Groups</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Default</source>
+                <target>Default</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>Add</source>
+                <target>Add</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>View</source>
+                <target>View</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Count</source>
+                <target>Count</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Active</source>
+                <target>Active</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>Confirm</source>
+                <target>Confirm</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>Change</source>
+                <target>Change</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>Previous</source>
+                <target>Previous</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>Next</source>
+                <target>Next</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>optional</source>
+                <target>Optional</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>Move</source>
+                <target>Move</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>Copy</source>
+                <target>Copy</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>Show</source>
+                <target>Show</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>Updated at</source>
+                <target>Updated at</target>
+            </trans-unit> 
+            <trans-unit id="46">
+                <source>Update</source>
+                <target>Update</target>
+            </trans-unit> 
+            <trans-unit id="47">
+                <source>Search</source>
+                <target>Search</target>
+            </trans-unit> 
+            <trans-unit id="48">
+                <source>Position</source>
+                <target>Position</target>
+            </trans-unit> 
+            <trans-unit id="49">
+                <source>Choose name</source>
+                <target>Choose name</target>
+            </trans-unit> 
+            <trans-unit id="50">
+                <source>Choose value</source>
+                <target>Choose value</target>
+            </trans-unit> 
+        </body>
+    </file>
+</xliff>

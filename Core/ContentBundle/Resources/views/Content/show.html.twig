@@ -1,0 +1,41 @@
+<h1>Content</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Title{% endtrans %}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Short description{% endtrans %}</th>
+            <td>{{ entity.shortDescription }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Long description{% endtrans %}</th>
+            <td>{{ entity.longDescription }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('content') }}">
+            {% trans %}Back to the list{% endtrans %}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('content_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('content_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">{% trans %}Delete{% endtrans %}</button>
+        </form>
+    </li>
+</ul>

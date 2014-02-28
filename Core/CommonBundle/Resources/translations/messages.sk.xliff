@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>New</source>
+                <target>Nový</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Create</source>
+                <target>Vytvoriť</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Edit</source>
+                <target>Upraviť</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Delete</source>
+                <target>Vymazať</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Remove</source>
+                <target>Odobrať</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Title</source>
+                <target>Názov</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Enabled</source>
+                <target>Povolený</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Visible</source>
+                <target>Viditeľný</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Slug</source>
+                <target>Url</target>
+            </trans-unit>
+
+            <trans-unit id="11">
+                <source>Name</source>
+                <target>Meno</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Value</source>
+                <target>Hodnota</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>System</source>
+                <target>Systémový</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Group</source>
+                <target>Skupina</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Actions</source>
+                <target>Akcie</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Back to the list</source>
+                <target>Späť na zoznam</target>
+            </trans-unit>
+             <trans-unit id="21">
+                <source>Create a new entry</source>
+                <target>Vytvoriť nový záznam</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Short description</source>
+                <target>Krátky popis</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Long description</source>
+                <target>Dlhý popis</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Revert</source>
+                <target>Vrátiť</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Description</source>
+                <target>Popis</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>List</source>
+                <target>Zoznam</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Created at</source>
+                <target>Vytvorené o</target>
+            </trans-unit> 
+            <trans-unit id="28">
+                <source>Type</source>
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Create a new group</source>
+                <target>Vytvoriť novú skupinu</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Groups</source>
+                <target>Skupiny</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Default</source>
+                <target>Východzý</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Code</source>
+                <target>Kód</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>Add</source>
+                <target>Pridať</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>View</source>
+                <target>Zobraziť</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Count</source>
+                <target>Počet</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Active</source>
+                <target>Aktívny</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>Confirm</source>
+                <target>Potvrdiť</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>Change</source>
+                <target>Zmeniť</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>Previous</source>
+                <target>Späť</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>Next</source>
+                <target>Ďalej</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>optional</source>
+                <target>Voliteľné</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>Move</source>
+                <target>Presunúť</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>Copy</source>
+                <target>Kopírovať</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>Show</source>
+                <target>Zobraziť</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>Updated at</source>
+                <target>Upravené o</target>
+            </trans-unit> 
+            <trans-unit id="46">
+                <source>Update</source>
+                <target>Aktualizovať</target>
+            </trans-unit> 
+            <trans-unit id="47">
+                <source>Search</source>
+                <target>Vyhľadávať</target>
+            </trans-unit> 
+            <trans-unit id="48">
+                <source>Position</source>
+                <target>Pozícia</target>
+            </trans-unit> 
+            <trans-unit id="49">
+                <source>Choose name</source>
+                <target>Vybrať názov</target>
+            </trans-unit> 
+            <trans-unit id="50">
+                <source>Choose value</source>
+                <target>Vybrať hodnotu</target>
+            </trans-unit> 
+        </body>
+    </file>
+</xliff>

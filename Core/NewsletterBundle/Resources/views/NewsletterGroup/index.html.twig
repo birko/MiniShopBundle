@@ -1,0 +1,32 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{%trans%}Newsletter Group list{%endtrans%}</h1>
+
+<table class="records_list table table-striped table-condensed">
+    <thead>
+        <tr>
+            <td colspan="2">
+                <a href="{{ path('newsletter_group_new') }}" class="btn btn-xs btn-primary pull-right">
+                    <span class="glyphicon glyphicon-plus"></span> {%trans%}Create a new group{%endtrans%}
+                </a>
+           </td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.name }}</td>
+            <td>
+                 <a href="{{ path('newsletter_group_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {%trans%}Edit{%endtrans%}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

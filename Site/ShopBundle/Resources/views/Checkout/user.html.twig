@@ -1,0 +1,8 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+{% include "SiteShopBundle:Checkout:breadcrumb.html.twig" with {'end' : 'User'} %}
+<div id="cart">
+    <h2>{% trans %}User{% endtrans %}</h2>
+    {% render controller('SiteShopBundle:Checkout:userform') %}
+</div>
+{% endblock %}

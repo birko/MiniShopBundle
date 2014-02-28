@@ -1,0 +1,21 @@
+{% if entities| length > 0 %}
+<div class="product-list col-sm-12 col-md-12 col-lg-12">
+    <div class="row">
+        <div class="sorter col-sm-3 col-md-3 col-lg-3">
+          <span>{% trans%}Sort by{% endtrans %}:</span>
+          <span {% if entities.isSorted('p.Title') %}class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Title'|trans, 'p.title') }} </span>
+          <span {% if entities.isSorted('p.CreatedAt') %}class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Newie'| trans, 'p.createdAt') }} </span>
+        </div>
+        {{ knp_pagination_render(entities)}}
+    </div>
+    <div class="">
+    {% for product in entities %}
+    {% include 'SiteProductBundle:Product:item.html.twig' with {'entity': product} %}
+    {% endfor %}
+    </div>
+    <div class="row">
+        {{ knp_pagination_render(entities)}}
+    </div>
+</div>
+{% elseif not recursive %}
+{% endif %}

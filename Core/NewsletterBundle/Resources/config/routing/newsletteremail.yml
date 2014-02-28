@@ -1,0 +1,39 @@
+newsletter_email:
+    pattern:  /
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterEmail:index" }
+
+newsletter_email_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterEmail:show" }
+
+newsletter_email_new:
+    pattern:  /new
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterEmail:new" }
+
+newsletter_email_create:
+    pattern:  /create
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterEmail:create" }
+    requirements: { _method: post }
+
+newsletter_email_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterEmail:edit" }
+
+newsletter_email_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterEmail:update" }
+    requirements: { _method: post }
+
+newsletter_email_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterEmail:delete" }
+    requirements: { _method: post }
+
+newsletter_email_batch:
+    pattern:  /batch
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterEmail:batch" }
+
+newsletter_email_batch_create:
+    pattern:  /batchcreate
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterEmail:batchCreate" }
+    requirements: { _method: post }

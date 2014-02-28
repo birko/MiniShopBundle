@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="box" id="content-container">
+    <h1>{%trans%}Registration{% endtrans %}</h1>
+    <form action="{{ path('SiteUserBundle_create') }}" method="post" {{ form_enctype(form) }} class="full">
+        {{ form_errors(form) }}
+        <div class="row">
+            {{ form_errors(form) }}
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="col-sm-4 col-md-4 col-lg-4 nolabel">
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.password) }}
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 nolabel">
+                    {% include "CoreShopBundle:Address:baseform.html.twig" with {'form': form.addresses.0} %}
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 nolabel">
+                    {% include "CoreShopBundle:Address:contactform.html.twig" with {'form': form.addresses.0} %}
+                    {% include "CoreShopBundle:Address:companyform.html.twig" with {'form': form.addresses.0} %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> {%trans %}Register{% endtrans %}</button>
+                {{ form_rest(form) }}
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

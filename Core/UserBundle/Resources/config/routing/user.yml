@@ -1,0 +1,30 @@
+CoreUserBundle_login:
+    pattern:  /login
+    defaults: { _controller: CoreUserBundle:User:login }
+
+CoreUserBundle_logout:
+    pattern:  /logout
+    defaults: { _controller: CoreUserBundle:User:logout }
+
+CoreUserBundle_logincheck:
+    pattern:  /login_check
+    defaults: { _controller: CoreUserBundle:User:securityCheck }
+    requirements:
+        _method:  POST
+
+CoreUserBundle_locale:
+    pattern:  /locale/{_locale}
+    defaults: { _controller: CoreUserBundle:User:setLocale }
+
+user:
+    pattern:  /
+    defaults: { _controller: "CoreUserBundle:User:index" }
+
+user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreUserBundle:User:edit" }
+
+user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreUserBundle:User:update" }
+    requirements: { _method: post }

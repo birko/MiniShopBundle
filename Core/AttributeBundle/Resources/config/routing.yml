@@ -1,0 +1,7 @@
+core_attribute_attributename:
+    resource: "@CoreAttributeBundle/Resources/config/routing/attributename.yml"
+    prefix:   /attributename
+
+core_attribute_attributevalue:
+    resource: "@CoreAttributeBundle/Resources/config/routing/attributevalue.yml"
+    prefix:   /attributevalue

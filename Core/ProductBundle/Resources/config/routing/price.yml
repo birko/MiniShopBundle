@@ -1,0 +1,32 @@
+price:
+    pattern:  /{category}
+    defaults: { _controller: "CoreProductBundle:Price:index",  category: ~}
+    requirements:
+        category: \d+
+
+price_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreProductBundle:Price:show"}
+
+price_new:
+    pattern:  /new/{category}
+    defaults: { _controller: "CoreProductBundle:Price:new", category: ~ }
+
+price_create:
+    pattern:  /create/{category}
+    defaults: { _controller: "CoreProductBundle:Price:create", category: ~ }
+    requirements: { _method: post }
+
+price_edit:
+    pattern:  /{id}/edit/{category}
+    defaults: { _controller: "CoreProductBundle:Price:edit", category: ~ }
+
+price_update:
+    pattern:  /{id}/update/{category}
+    defaults: { _controller: "CoreProductBundle:Price:update", category: ~ }
+    requirements: { _method: post }
+
+price_delete:
+    pattern:  /{id}/delete/{category}
+    defaults: { _controller: "CoreProductBundle:Price:delete", category: ~}
+    requirements: { _method: post }

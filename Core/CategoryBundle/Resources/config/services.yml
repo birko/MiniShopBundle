@@ -1,0 +1,7 @@
+parameters:
+#    core_category.example.class: Core\CategoryBundle\Example
+
+services:
+#    core_category.example:
+#        class: %core_category.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

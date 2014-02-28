@@ -1,0 +1,39 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Content list{% endtrans %}</h1>
+{{ knp_pagination_render(entities)}}
+<table class="records_list table table-striped table-condensed">
+    <thead>
+        {% if category is not empty %}
+        <tr>
+            <td colspan="2">
+                <a href="{{ path('content_new', {'category': category}) }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new content{% endtrans %}</a>
+            </td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th>{% trans %}Title{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+	{% set minishopkeys = minishop|keys %}
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.title }}</td>
+            <td>
+                <div class="btn-group">
+                    <a href="{{ path('content_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+                    {% if 'media' in minishopkeys %}
+					<a href="{{ path('content_media', { 'content': entity.id, 'category': category }) }}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-list"></span> {% trans %}Media{% endtrans %}</a>
+					{% endif %}
+				</div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(entities)}}
+{% endblock %}

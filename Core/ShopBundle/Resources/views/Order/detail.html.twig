@@ -1,0 +1,132 @@
+{% if entity is not empty %}
+<h3><small>{%trans%}Order number{% endtrans %}:</small> {% if entity.orderNumber %}{{ entity.orderNumber }}{% else %}{{ entity.id }}{% endif%}</h3>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="cart table table-bordered table-stripped">
+            <thead>
+                <tr>
+                    <th class="shipping address">{% trans %}Delivery address{% endtrans %}</th>
+                    <td class="payment address">{% trans %}Invoice address{% endtrans %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="shipping address">{% include "CoreShopBundle:Address:address.html.twig" with {'entity': entity.deliveryAddress} %}</td>
+                    <td class="payment address">{% include "CoreShopBundle:Address:address.html.twig" with {'entity': entity.invoiceAddress} %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% if entity.items is not empty %}
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="cart table table-bordered table-stripped">
+            <thead>
+                <tr>
+                    <th class="col-sm-9 col-md-9 col-lg-9">{% trans %}Product{% endtrans %}</th>
+                    <th class="col-sm-1 col-md-1 col-lg-1">{% trans %}Amount{% endtrans %}</th>
+                    <th class="col-sm-1 col-md-1 col-lg-1">{% trans %}Price{% endtrans %}</th>
+                    <th class="col-sm-1 col-md-1 col-lg-1">{% trans %}Price VAT{% endtrans %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in entity.items %}
+                <tr>
+                    <td class="col-sm-9 col-md-9 col-lg-9">
+                        {{ item.name }}
+                        {% if item.options is not empty %}
+                            <hr />
+                            {{ item.options }}
+                        {% endif %}
+                        {% if item.description is not empty %}
+                            <hr />
+                            {{ item.description|raw }}
+                        {% endif %}
+                    </td>
+                    <td class="col-sm-1 col-md-1 col-lg-1">
+                        {{ item.amount| number_format }}
+                    </td>
+                    <td  class="col-sm-1 col-md-1 col-lg-1 text-right">
+                        {{ item.priceVAT| number_format(2) }} €
+                    </td>
+                    <td  class="col-sm-1 col-md-1 col-lg-1 text-right">
+                        {{ item.priceVATTotal | number_format(2) }} €
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3 col-sm-offset-9 col-md-offset-9 col-lg-offset-9">
+        <table class="cart table table-bordered table-stripped">
+            <tr>
+                <td>
+                    {% trans %}Total price{% endtrans %}
+                </td>
+                <th  class="text-right">
+                    {{entity.price| number_format(2) }} €
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% trans %}Total price VAT{% endtrans %}
+                </td>
+                <th class="text-right">
+                    {{ entity.priceVAT| number_format(2) }} €
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
+{% if entity.comment %}
+<hr />
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		{{ entity.comment | raw }}
+	</div>
+</div>
+{% endif %}
+
+{% if entity.orderStatus is not empty or  entity.shippingStatus is not empty or  entity.trackingId is not empty%}
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="cart table table-bordered table-stripped">
+            {% if entity.orderStatus is not empty %}
+            <tr>
+                <td>
+                   <strong>Stav objednávky</strong>
+                </td>
+                <td>
+                    {{entity.orderStatus}}
+                </td>
+            </tr>
+            {% endif %}
+            {% if entity.shippingStatus is not empty %}
+            <tr>
+                <td>
+                   <strong>Stav doručenia</strong>
+                </td>
+                <td>
+                    {{entity.shippingStatus}}
+                </td>
+            </tr>
+            {% endif %}
+            {% if entity.trackingId is not empty %}
+            <tr>
+                <td>
+                   <strong>Tracking ID objednávky</strong>
+                </td>
+                <td>
+                    {{entity.trackingId}}
+                </td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+{% endif %}

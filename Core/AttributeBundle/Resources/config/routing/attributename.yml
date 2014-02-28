@@ -1,0 +1,30 @@
+attributename:
+    pattern:  /
+    defaults: { _controller: "CoreAttributeBundle:AttributeName:index" }
+
+attributename_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreAttributeBundle:AttributeName:show" }
+
+attributename_new:
+    pattern:  /new
+    defaults: { _controller: "CoreAttributeBundle:AttributeName:new" }
+
+attributename_create:
+    pattern:  /create
+    defaults: { _controller: "CoreAttributeBundle:AttributeName:create" }
+    requirements: { _method: post }
+
+attributename_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreAttributeBundle:AttributeName:edit" }
+
+attributename_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreAttributeBundle:AttributeName:update" }
+    requirements: { _method: post|put }
+
+attributename_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreAttributeBundle:AttributeName:delete" }
+    requirements: { _method: post|delete }

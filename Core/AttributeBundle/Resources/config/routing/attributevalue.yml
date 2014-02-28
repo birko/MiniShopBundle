@@ -1,0 +1,30 @@
+attributevalue:
+    pattern:  /{attribute}
+    defaults: { _controller: "CoreAttributeBundle:AttributeValue:index", attribute: ~ }
+
+attributevalue_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreAttributeBundle:AttributeValue:show" }
+
+attributevalue_new:
+    pattern:  /new/{attribute}
+    defaults: { _controller: "CoreAttributeBundle:AttributeValue:new" }
+
+attributevalue_create:
+    pattern:  /create/{attribute}
+    defaults: { _controller: "CoreAttributeBundle:AttributeValue:create" }
+    requirements: { _method: post }
+
+attributevalue_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreAttributeBundle:AttributeValue:edit" }
+
+attributevalue_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreAttributeBundle:AttributeValue:update" }
+    requirements: { _method: post|put }
+
+attributevalue_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreAttributeBundle:AttributeValue:delete" }
+    requirements: { _method: post|delete }

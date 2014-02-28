@@ -1,0 +1,55 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{%trans%}Banner list{% endtrans %}</h1>
+
+<table class="records_list table table-striped table-condensed">
+    <thead>
+        {% if category is not empty %}
+        <tr>
+            <td colspan="4">
+                <a href="{{ path('banner_new', { 'category': category }) }}" class="btn btn-primary btn-xs pull-right">
+                    <span class="glyphicon glyphicon-plus"></span> {%trans%}Create a new banner{% endtrans %}
+                </a>
+           </td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th class="col-sm-2 col-md-2 col-lg-2">{%trans%}Media{% endtrans %}</th>
+            <th>{%trans%}Title{% endtrans %}</th>
+            <th>{%trans%}Link{% endtrans %}</th>
+            <th>{%trans%}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    {% if category is not empty %}
+    <tfoot>
+    </tfoot>
+    {% endif %}
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td class="col-sm-2 col-md-2 col-lg-2">
+                {% if entity.media %}
+                {% include "CoreMediaBundle:Media:display.html.twig" with {'entity' : entity.media, 'dir': 'thumb', 'link_path': '', 'gallery': '' }%}
+                {% endif %}
+            </td>
+            <td>{{ entity.title }}</td>
+            <td>{{ entity.link }}</td>
+            <td>
+                <div class="btn-group">
+                    <a href="{{ path('banner_edit', { 'id': entity.id }) }}" class="btn btn-warning btn-xs"><span class="glyphicon glyhicon-edit"></span> {%trans%}Edit{%endtrans%}</a>
+                    {% if entity.media %}
+					<a href="{{ path('media_source', { 'id': entity.media.id, 'type': entity.media.type}) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Source{% endtrans %}</a>
+					{% endif %}
+					<a href="{{ path('banner_position', { 'id': entity.id, 'category': category }) }}" class="btn btn-default btn-xs">{{entity.position}}</a>
+                    <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Move{% endtrans%} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('banner_up', { 'id': entity.id, 'category': category, 'position': 1 }) }}" class="move-up"><span class="glyphicon glyphicon-arrow-up"></span> {% trans %}Move up{% endtrans %}</a></li>
+                        <li><a href="{{ path('banner_down', { 'id': entity.id, 'category': category, 'position': 1 }) }}" class="move-down"><span class="glyphicon glyphicon-arrow-down"></span> {% trans %}Move down{% endtrans %}</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

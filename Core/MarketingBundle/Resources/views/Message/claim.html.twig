@@ -1,0 +1,13 @@
+<p>
+    <strong>Adresa:</strong><br />
+    {% include "CoreShopBundle:Address:address.html.twig" with {'entity': data.address} %}
+</p>
+<p>
+    <strong>Objednávka č.:</strong> {{ data.orderNumber}} <br />
+    <strong>Produkt:</strong> {{ data.productNumber}} <br />
+    <strong>Číslo účtu:</strong> {{ data.accountNumber}} <br />
+</p>
+<p>
+    <strong>Správa:</strong><br />
+    {{ data.message}} <br />
+</p>

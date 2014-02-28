@@ -1,0 +1,10 @@
+{% extends '::email.html.twig' %}
+{% block content%}
+{% if text %}
+{{ text.text| raw }}
+{% else %}
+{% render controller('CoreUserTextBundle:UserText:display',{'name': 'order-change', 'create': 1}) %}
+{% endif %}
+{% include 'CoreShopBundle:Order:detail.html.twig' with {'entity': order}%}
+{% render controller('CoreUserTextBundle:UserText:display', {'name': 'email-footer', 'create': 1}) %}
+{% endblock %}

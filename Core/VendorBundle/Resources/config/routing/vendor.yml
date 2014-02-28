@@ -1,0 +1,30 @@
+vendor:
+    pattern:  /
+    defaults: { _controller: "CoreVendorBundle:Vendor:index" }
+
+vendor_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreVendorBundle:Vendor:show" }
+
+vendor_new:
+    pattern:  /new
+    defaults: { _controller: "CoreVendorBundle:Vendor:new" }
+
+vendor_create:
+    pattern:  /create
+    defaults: { _controller: "CoreVendorBundle:Vendor:create" }
+    requirements: { _method: post }
+
+vendor_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreVendorBundle:Vendor:edit" }
+
+vendor_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreVendorBundle:Vendor:update" }
+    requirements: { _method: post }
+
+vendor_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreVendorBundle:Vendor:delete" }
+    requirements: { _method: post }

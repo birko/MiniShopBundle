@@ -1,0 +1,30 @@
+payment:
+    pattern:  /
+    defaults: { _controller: "CoreShopBundle:Payment:index" }
+
+payment_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreShopBundle:Payment:show" }
+
+payment_new:
+    pattern:  /new
+    defaults: { _controller: "CoreShopBundle:Payment:new" }
+
+payment_create:
+    pattern:  /create
+    defaults: { _controller: "CoreShopBundle:Payment:create" }
+    requirements: { _method: post }
+
+payment_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreShopBundle:Payment:edit" }
+
+payment_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreShopBundle:Payment:update" }
+    requirements: { _method: post }
+
+payment_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreShopBundle:Payment:delete" }
+    requirements: { _method: post }

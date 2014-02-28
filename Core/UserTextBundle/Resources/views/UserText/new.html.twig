@@ -1,0 +1,16 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}User Text creation{% endtrans %}</h1>
+
+<form action="{{ path('usertext_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+	{{ form_row(form.name) }}
+    {% if cultures | length > 0 %}
+	{% include 'CoreCommonBundle:Form:translations.html.twig' with {'form': form.translations, 'cultures': cultures } %}
+	{% endif %}
+	{{ form_widget(form) }}
+    <div class="form-actions">
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {% trans %}Create{% endtrans %}</button>
+    </div>
+</form>
+{% endblock body %}

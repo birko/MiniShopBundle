@@ -1,0 +1,14 @@
+{% if form.offsetExists('videoType') %}
+{{ form_row(form.videoType) }}
+{% endif %}
+{% if form.offsetExists('file') %}
+{{ form_row(form.file) }}
+{% endif %}
+{% if form.offsetExists('source') %}
+{{ form_row(form.source) }}
+{% endif %}
+{% if form.offsetExists('translations') %}
+{% if cultures | length > 0 %}
+{% include 'CoreCommonBundle:Form:translations.html.twig' with {'form': form.translations, 'cultures': cultures } %}
+{% endif %}
+{% endif %}

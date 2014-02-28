@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="box" id="content-container">
+<h1>Objednávky</h1>
+{{ knp_pagination_render(entities) }}
+<table class="records_list table table-striped table-condensed">
+    <thead>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                <a href="{{ path('SiteUserBundle_index') }}" class="btn btn-default btn-inverse">{% trans %}Customer section{% endtrans %}</a>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{% if entity.createdAt %}{{ entity.createdAt|date('d.m.Y H:i:s') }}{% endif%}</td>
+            <td>
+                <a href="{{ path('order_detail', { 'id': entity.id }) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-asterisk"></span> {% trans %}Show{% endtrans %}</a>
+                {% if entity.invoicedAt %}
+                <a href="{{ path('order_pdf', { 'id': entity.id }) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-print"></span> {% trans %}Invoice{% endtrans %}</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(entities) }}
+{% endblock %}

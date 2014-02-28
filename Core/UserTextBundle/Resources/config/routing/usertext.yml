@@ -1,0 +1,34 @@
+usertext:
+    pattern:  /
+    defaults: { _controller: "CoreUserTextBundle:UserText:index" }
+
+usertext_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreUserTextBundle:UserText:show" }
+
+usertext_new:
+    pattern:  /new
+    defaults: { _controller: "CoreUserTextBundle:UserText:new" }
+
+usertext_create:
+    pattern:  /create
+    defaults: { _controller: "CoreUserTextBundle:UserText:create" }
+    requirements: { _method: post }
+
+usertext_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreUserTextBundle:UserText:edit" }
+
+usertext_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreUserTextBundle:UserText:update" }
+    requirements: { _method: post }
+
+usertext_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreUserTextBundle:UserText:delete" }
+    requirements: { _method: post }
+
+usertext_display:
+    pattern:  /{id}/display/{create}
+    defaults: { _controller: "CoreUserTextBundle:UserText:display", create: true }

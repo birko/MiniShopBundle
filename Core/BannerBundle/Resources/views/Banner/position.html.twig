@@ -1,0 +1,12 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Banner position edit{% endtrans %}</h1>
+
+<form action="{{ path('banner_position_update', { 'id': id, 'category': category }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {% trans %}Edit{% endtrans %}</button>
+        <a href="{{ path('banner', {'category': category}) }}"> {% trans %}Back to the list{% endtrans %}</a>
+    </p>
+</form>
+{% endblock %}

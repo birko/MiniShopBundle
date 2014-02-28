@@ -1,0 +1,7 @@
+vendor_slug:
+    pattern:  /{_locale}/vendor/{slug}
+    defaults: { _controller: SiteVendorBundle:Vendor:index, _locale: %locale% }
+
+vendor_list:
+    pattern:  /{_locale}/vendor
+    defaults: { _controller: SiteVendorBundle:Vendor:list _locale: %locale%}

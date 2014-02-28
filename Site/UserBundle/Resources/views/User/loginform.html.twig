@@ -1,0 +1,16 @@
+<form action="{{ path("SiteUserBundle_logincheck") }}" method="post" id="form-login">
+<h1>{% trans %}general.login.title{% endtrans %}</h1>
+    <div class="form-group">
+        <label for="username">{% trans %}general.username{% endtrans %}</label>
+        <input type="text" id="username" name="_username" value="" class="form-control"/>
+    </div>
+   <div class="form-group">
+        <label for="password">{% trans %}general.password{% endtrans %}</label>
+        <input type="password" id="password" name="_password" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default" name="submit" value="LOGIN"><span class="glyphicon glyphicon-ok"></span> {% trans %}general.login{% endtrans %}</button>
+    </div>
+    <p><a href="{{ path('SiteUserBundle_password_recovery') }}">{% trans %}I forget my password{% endtrans %}</a></p>
+    <p><a href="{{ path('SiteUserBundle_new') }}">{% trans %}Register{% endtrans %}</a></p>
+</form>

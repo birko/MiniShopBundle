@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>general.logout</source>
+                <target>logout</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>general.login</source>
+                <target>login</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>general.not.logged.in</source>
+                <target>Not logged in</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Register</source>
+                <target>Registration</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>I forget my password</source>
+                <target>I forgot my password</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>general.username</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>general.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>general.login.title</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Repeat password</source>
+                <target>Repeat password</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Customer section</source>
+                <target>Customer section</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Change password</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Password recovery</source>
+                <target>Password recovery</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>If you forgot your password, type in your email address and we will send you instructions for password recovery.</source>
+                <target>f you forgot your password, type in your email address and we will send you instructions for password recovery.</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Instructions for password recovery were sent to your email. Please follow instructions for password recovery.</source>
+                <target>Instructions for password recovery were sent to your email. Please follow instructions for password recovery.</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>User with supplied email not found.</source>
+                <target>User with supplied email not found.</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>You have requested for password recovery at %portal%.</source>
+                <target>You have requested for password recovery at %portal%.</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Please visit link %link% for password recovery.</source>
+                <target>Please visit link %link% for password recovery.</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>change.password</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>New registration - %subject%</source>
+                <target>New registration - %subject%</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>You have been registered at %portal%.</source>
+                <target>You have been registered at %portal%.</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Your login information are</source>
+                <target>Your login information are</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Registration</source>
+                <target>Registration</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

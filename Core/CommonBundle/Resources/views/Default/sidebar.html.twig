@@ -1,0 +1,83 @@
+{% set minishopkeys = minishop|keys %}
+<ul class="nav list-group">
+    <li class="list-group-item">
+        {% trans %}Content{% endtrans %}
+        <ul class="nav">
+		    {% if 'category' in minishopkeys %}
+            <li><a href="{{ path('category') }}">{% trans %}Categories{% endtrans %}</a></li>
+			{% endif %}
+			{% if 'content' in minishopkeys %}
+			<li><a href="{{ path('content') }}">{% trans %}Contents{% endtrans %}</a></li>
+			{% endif %}
+			{% if 'product' in minishopkeys %}
+            <li><a href="{{ path('product') }}">{% trans %}Products{% endtrans %}</a></li>
+			{% endif %}
+			{% if 'vendor' in minishopkeys %}
+            <li><a href="{{ path('vendor') }}">{% trans %}Vendors{% endtrans %}</a></li>
+			{% endif %}
+			{% if 'usertext' in minishopkeys %}
+            <li><a href="{{ path('usertext') }}">{% trans %}Texts{% endtrans %}</a></li>
+			{% endif %}
+			{% if 'attribute' in minishopkeys %}
+			<li><a href="{{ path('attributename') }}">{% trans %}Attributes{% endtrans %}</a></li>
+			{% endif %}
+			{% if 'media' in minishopkeys %}
+			<li><a href="{{ path('media') }}">{% trans %}Media{% endtrans %}</a></li>
+			{% endif %}
+        </ul>
+    </li>
+	{% if 'shop' in minishopkeys %}
+    <li class="list-group-item">
+        {% trans %}Shop{% endtrans %}
+        <ul class="nav">
+            <li><a href="{{path('order')}}">{% trans %}Orders{% endtrans %}</a></li>
+			{% if 'marketing' in minishopkeys %}
+            <li><a href="{{path('coupon')}}">{% trans %}Coupons{% endtrans %}</a></li>
+			{% endif %}
+        </ul>
+    </li>
+    <li class="list-group-item">
+        {% trans %}Settings{% endtrans %}
+        <ul class="nav">
+            <li><a href="{{path('orderstatus')}}">{% trans %}Order status{% endtrans %}</a></li>
+            <li><a href="{{path('payment')}}">{% trans %}Payment{% endtrans %}</a></li>
+            <li><a href="{{path('shipping')}}">{% trans %}Shipping{% endtrans %}</a></li>
+            <li><a href="{{path('shippingstatus')}}">{% trans %}Shipping status{% endtrans %}</a></li>
+            <li><a href="{{path('state')}}">{% trans %}States{% endtrans %}</a></li>
+        </ul>
+    </li>
+	{% endif %}
+	{% if 'marketing' in minishopkeys  or 'newsletter' in minishopkeys%}
+    <li class="list-group-item">
+        {% trans %}Marketing{% endtrans %}
+		{% if 'marketing' in minishopkeys %}
+        <ul class="nav">
+            <li><a href="{{path('message', {'type': 'claim'})}}">{% trans %}Claims{% endtrans %}</a></li>
+            <li><a href="{{path('message', {'type': 'contactmulti'})}}">{% trans %}Contact{% endtrans %}</a></li>
+        </ul>
+		{% endif %}
+		{% if 'newsletter' in minishopkeys %}
+        <ul class="nav">
+            <li><a href="{{path('newsletter')}}">{% trans %}Newsletter{% endtrans %}</a></li>
+            <li><a href="{{path('newsletter_group')}}">{% trans %}Newsletter groups{% endtrans %}</a></li>
+            <li><a href="{{path('newsletter_email')}}">{% trans %}Newsletter emails{% endtrans %}</a></li>
+        </ul>
+		{% endif %}
+    </li>
+	{% endif %}
+	{% if 'shop' in minishopkeys %}
+	{% if 'user' in minishopkeys  or 'price' in minishopkeys%}
+    <li class="list-group-item">
+         <ul class="nav">
+		    {% if 'user' in minishopkeys %}
+            <li><a href="{{path('user')}}">{% trans %}Users{% endtrans %}</a></li>
+            <li><a href="{{path('pricegroup')}}">{% trans %}Price groups{% endtrans %}</a></li>
+			{% endif %}
+			{% if 'price' in minishopkeys %}
+            <li><a href="{{path('vat')}}">{% trans %}VAT{% endtrans %}</a></li>
+			{% endif %}
+        </ul>
+    </li>
+	{% endif %}
+	{% endif %}
+</ul>

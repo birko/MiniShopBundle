@@ -1,0 +1,23 @@
+<div class="col-sm-3 col-md-3 col-lg-3">
+    <div class="product thumbnail">
+        <div class="row text-center">
+            <a href="{{path('product_site', {'slug': entity.slug})}}" class="image">
+              {% if entity.media is not empty%}
+              {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity.media.0.media, 'dir': 'thumb', 'link_path':'', 'gallery': ''} %}
+              {% endif %}
+            </a>
+        </div>
+        <h3>
+            <a href="{{path('product_site', {'slug': entity.slug})}}">{{entity.title}}</a>
+        </h3>
+        <div class="row">
+            {% set price  = entity.getMinimalPrice(pricegroup) %}
+            <div class="price pull-right col-sm-6 col-md-6 col-lg-6">
+              {% if price is not empty %}{{price.priceVAT |number_format(2)}}{% else %}0{% endif %} €
+            </div>
+            <div class="price pull-left col-sm-6 col-md-6 col-lg-6">
+                {% include "SiteShopBundle:Cart:addsmall.html.twig" with {'productId': entity.id} %}
+            </div>
+        </div>
+    </div>
+</div>

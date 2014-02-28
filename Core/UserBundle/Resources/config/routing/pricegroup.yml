@@ -1,0 +1,30 @@
+pricegroup:
+    pattern:  /
+    defaults: { _controller: "CoreUserBundle:PriceGroup:index" }
+
+pricegroup_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreUserBundle:PriceGroup:show" }
+
+pricegroup_new:
+    pattern:  /new
+    defaults: { _controller: "CoreUserBundle:PriceGroup:new" }
+
+pricegroup_create:
+    pattern:  /create
+    defaults: { _controller: "CoreUserBundle:PriceGroup:create" }
+    requirements: { _method: post }
+
+pricegroup_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreUserBundle:PriceGroup:edit" }
+
+pricegroup_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreUserBundle:PriceGroup:update" }
+    requirements: { _method: post }
+
+pricegroup_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreUserBundle:PriceGroup:delete" }
+    requirements: { _method: post }

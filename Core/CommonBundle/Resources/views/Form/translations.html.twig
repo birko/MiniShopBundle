@@ -1,0 +1,18 @@
+{% if cultures | length > 0 %}
+ <div class="tabbable translations">
+    <ul class="nav nav-tabs">
+        {% for widget in form %}
+        <li class="{% if loop.index0 == 0 %}active{% endif %}"><a href="#translation-widget-{{loop.index0}}" data-toggle="tab">{{ cultures[loop.index0] | capitalize }}</a></li>
+        {% endfor %}
+    </ul>
+    <div class="tab-content">
+        {% for widget in form %}
+        <div class="tab-pane {% if loop.index0 == 0 %}active{% endif %} fade in" id="translation-widget-{{loop.index0}}">
+            {% block translateformwidget %}
+            {{ form_widget(widget) }}
+            {% endblock translateformwidget %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

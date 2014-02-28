@@ -1,0 +1,16 @@
+{% if entities| length > 0 %}
+<div class="content-list">
+    {{ knp_pagination_render(entities)}}
+    <div class="clear"></div>
+    {% for entity in entities %}
+    <div class="content">
+        <h3><a href="{{path('content_slug', {'slug': entity.slug})}}">{{entity.title}}</a></h3>
+        <div class="shortdescription">
+          {{entity.shortDescription|raw}}
+        </div>
+    </div>
+    {% endfor %}
+    {{ knp_pagination_render(entities)}}
+    <div class="clear"></div>
+</div>
+{% endif %}

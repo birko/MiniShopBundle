@@ -1,0 +1,29 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{%trans%}Banner edit{%endtrans%}</h1>
+
+<form action="{{ path('banner_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10">
+			{{ form_errors(edit_form) }}
+			{% if cultures | length > 0 %}
+			{% include 'CoreCommonBundle:Form:translations.html.twig' with {'form': edit_form.translations, 'cultures': cultures } %}
+			{% endif %}
+			{{ form_widget(edit_form) }}
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2">
+			{% if entity.media %}
+			{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity.media, 'dir': 'thumb', 'link_path': '', 'gallery': ''} %}
+			{% endif %}
+		</div>
+    </div>
+	<p>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {%trans%}Edit{%endtrans%}</button>
+    </p>
+</form>
+
+<form action="{{ path('banner_delete', { 'id': entity.id}) }}" method="post">
+    {{ form_widget(delete_form) }}
+    <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> {%trans%}Delete{%endtrans%}</button>
+</form>
+{% endblock %}

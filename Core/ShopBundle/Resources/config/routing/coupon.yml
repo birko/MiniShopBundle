@@ -1,0 +1,47 @@
+coupon:
+    pattern:  /
+    defaults: { _controller: "CoreShopBundle:Coupon:index" }
+
+coupon_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreShopBundle:Coupon:show" }
+
+coupon_new:
+    pattern:  /new
+    defaults: { _controller: "CoreShopBundle:Coupon:new" }
+
+coupon_create:
+    pattern:  /create
+    defaults: { _controller: "CoreShopBundle:Coupon:create" }
+    requirements: { _method: post }
+
+coupon_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreShopBundle:Coupon:edit" }
+
+coupon_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreShopBundle:Coupon:update" }
+    requirements: { _method: post }
+
+coupon_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreShopBundle:Coupon:delete" }
+    requirements: { _method: post }
+
+
+coupon_products:
+    pattern:  /{id}/products
+    defaults: { _controller: "CoreShopBundle:Coupon:products" }
+
+coupon_products_addlist:
+    pattern:  /{id}/products/addlist
+    defaults: { _controller: "CoreShopBundle:Coupon:productsAddList" }
+
+coupon_products_add:
+    pattern:  /{id}/products/{product}/add
+    defaults: { _controller: "CoreShopBundle:Coupon:productAdd" }
+
+coupon_products_remove:
+    pattern:  /{id}/products/{product}/remove
+    defaults: { _controller: "CoreShopBundle:Coupon:productRemove" }

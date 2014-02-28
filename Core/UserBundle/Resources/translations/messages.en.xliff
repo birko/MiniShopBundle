@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>The password must have at least 6 characters.</source>
+                <target>HThe password must have at least 6 characters.</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>general.submit</source>
+                <target>submit</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>general.contact.submit</source>
+                <target>submit</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Verification code does not match. You must enter %code%</source>
+                <target>Verification code does not match. You must enter %code%</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>general.logout</source>
+                <target>logout</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>general.login</source>
+                <target>login</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Old Password</source>
+                <target>Old Password</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>New Password</source>
+                <target>New Password</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Login</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Users</source>
+                <target>Users</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Add user</source>
+                <target>Add user</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Add users</source>
+                <target>Add users</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Roles</source>
+                <target>Roles</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>User edit</source>
+                <target>User edit</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>User list</source>
+                <target>User list</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Back to the user list</source>
+                <target>Back to the user list</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Current password</source>
+                <target>Current password</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Register</source>
+                <target>Register</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Price group</source>
+                <target>Price group</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Price groups</source>
+                <target>Price groups</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Price Group list</source>
+                <target>Price Group list</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Price Group creation</source>
+                <target>Price Group creation</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Price Group edit</source>
+                <target>Price Group edit</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Create a new price group</source>
+                <target>Create a new price group</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Back to the price group list</source>
+                <target>Back to the price group list</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Rate</source>
+                <target>Rate</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Not logged in</source>
+                <target>Not logged in</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Logged in</source>
+                <target>Logged in</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Repeat Password</source>
+                <target>Repeat Password</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>User</source>
+                <target>User</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

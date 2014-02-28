@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>general.contact.verification_code %code%</source>
+                <target>please rewrite verification code %code%</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>general.contact.submit</source>
+                <target>send</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Verification code does not match. You must enter %code%</source>
+                <target>Verification code does not match. You must enter %code%</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Your message was sent succesfuly.</source>
+                <target>Your message was sent succesfuly.</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Message sent</source>
+                <target>Message sent</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Message</source>
+                <target>Your message</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Fields marked with star are mandatory</source>
+                <target>Fields marked with star are mandatory</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Send copy to your email</source>
+                <target>Send copy to your email</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Order number</source>
+                <target>Order number</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Product number</source>
+                <target>Product number</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Account number</source>
+                <target>Account number</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Home</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Search</source>
+                <target>Search</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Sort by</source>
+                <target>Sort by</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Newie</source>
+                <target>Newie</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

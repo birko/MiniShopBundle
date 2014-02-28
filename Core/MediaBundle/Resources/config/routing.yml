@@ -1,0 +1,35 @@
+media:
+    pattern:  /media
+    defaults: { _controller: "CoreMediaBundle:Media:index"}
+
+media_new:
+    pattern:  /media/new/{type}
+    defaults: { _controller: "CoreMediaBundle:Media:new"}
+
+media_create:
+    pattern:  /media/create/{type}
+    defaults: { _controller: "CoreMediaBundle:Media:create"}
+    requirements: { _method: post }
+
+media_edit:
+    pattern:  /media/{id}/edit
+    defaults: { _controller: "CoreMediaBundle:Media:edit"}
+
+media_update:
+    pattern:  /media/{id}/update
+    defaults: { _controller: "CoreMediaBundle:Media:update"}
+    requirements: { _method: post }
+
+media_source:
+    pattern:  /media/{id}/source/{type}
+    defaults: { _controller: "CoreMediaBundle:Media:source"}
+
+media_source_update:
+    pattern:  /media/{id}/sourceupdate/{type}
+    defaults: { _controller: "CoreMediaBundle:Media:sourceUpdate"}
+    requirements: { _method: post }
+
+media_delete:
+    pattern:  /media/{id}/delete
+    defaults: { _controller: "CoreMediaBundle:Media:delete"}
+    requirements: { _method: post }

@@ -1,0 +1,32 @@
+content:
+    pattern:  /{category}
+    defaults: { _controller: "CoreContentBundle:Content:index", category: ~}
+    requirements:
+        category: \d+
+
+content_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreContentBundle:Content:show" }
+
+content_new:
+    pattern:  /new/{category}
+    defaults: { _controller: "CoreContentBundle:Content:new", category: ~ }
+
+content_create:
+    pattern:  /create/{category}
+    defaults: { _controller: "CoreContentBundle:Content:create", category: ~ }
+    requirements: { _method: post }
+
+content_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreContentBundle:Content:edit" }
+
+content_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreContentBundle:Content:update" }
+    requirements: { _method: post }
+
+content_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreContentBundle:Content:delete" }
+    requirements: { _method: post }

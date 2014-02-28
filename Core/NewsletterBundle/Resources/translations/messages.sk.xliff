@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Newsletter</source>
+                <target>Newsletter</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Newsletter list</source>
+                <target>Zoznam newslettrov</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Newsletter Emails</source>
+                <target>Emaily newslettra</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Newsletter Groups</source>
+                <target>Skupiny newslettra</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Newsletters</source>
+                <target>Newslettre</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Send</source>
+                <target>Odoslať</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Send to group</source>
+                <target>Odoslať skupine</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Send to email</source>
+                <target>Odoslať vybraným emailom</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Create a new newsletter</source>
+                <target>Vytvoriť nový newsletter</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Newsletter creation</source>
+                <target>Tvorba newslettra</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Newsletter edit</source>
+                <target>Úprava newslettra</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Newsletter Group list</source>
+                <target>Zoznam skupín newslettra</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Newsletter Group creation</source>
+                <target>Tvorba skupiny newslettra</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Newsletter Group edit</source>
+                <target>Úprava skupiny newslettra</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Create a new email</source>
+                <target>Vytvoriť nový email</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Newsletter emails</source>
+                <target>Emaily newslettra</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Newsletter groups</source>
+                <target>Skupiny newslettra</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Newsletter %title% %subject%'</source>
+                <target>Newsletter %title% %subject%'</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Newsletter Email list</source>
+                <target>Zoznam emailov newslettra</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Newsletter Email creation</source>
+                <target>Tvorba emailu newslettra</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Newsletter Email edit</source>
+                <target>Úprava emailu newslettra</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Create batch emails</source>
+                <target>Vytvoriť emaily hromadne</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

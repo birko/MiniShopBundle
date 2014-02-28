@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<h1>{% trans %}Newsletter{% endtrans %}</h1>
+<div class="box">
+{% if result %}
+    <h3>{% trans %}Thank you for subscribing our newsletter{% endtrans %}</h3>
+{% else %}
+    <h3>{% trans %}We were unable to add your email into our newsletter database{% endtrans %}</h3>
+{% endif %}
+</div>
+{% endblock %}

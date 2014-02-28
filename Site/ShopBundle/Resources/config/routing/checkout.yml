@@ -1,0 +1,36 @@
+checkout:
+    pattern:  /
+    defaults: { _controller: "SiteShopBundle:Checkout:index",  _locale: %locale%}
+
+checkout_guestaddress:
+    pattern:  /guestaddress
+    defaults: { _controller: "SiteShopBundle:Checkout:guestAddress",  _locale: %locale%}
+    requirements: { _method: post }
+
+checkout_user:
+    pattern:  /user
+    defaults: { _controller: "SiteShopBundle:Checkout:user",  _locale: %locale% }
+
+checkout_useraddress:
+    pattern:  /useraddress
+    defaults: { _controller: "SiteShopBundle:Checkout:userAddress",  _locale: %locale% }
+    requirements:
+        _method: post
+
+checkout_paymentshipping:
+    pattern:  /paymentshipping
+    defaults: { _controller: "SiteShopBundle:Checkout:paymentShipping",  _locale: %locale%}
+
+checkout_savepaymentshipping:
+    pattern:  /savepaymentshipping
+    defaults: { _controller: "SiteShopBundle:Checkout:savePaymentShipping",  _locale: %locale% }
+    requirements:
+        _method: post
+
+checkout_confirm:
+    pattern:  /confirm
+    defaults: { _controller: "SiteShopBundle:Checkout:confirm",  _locale: %locale% }
+
+checkout_order:
+    pattern:  /order
+    defaults: { _controller: "SiteShopBundle:Checkout:order",  _locale: %locale% }

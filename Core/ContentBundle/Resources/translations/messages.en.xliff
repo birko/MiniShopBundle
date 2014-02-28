@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Content creation</source>
+                <target>Content creation</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Content edit</source>
+                <target>Content edit</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Article</source>
+                <target>Article</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Article list</source>
+                <target>Article list</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Article creation</source>
+                <target>Article creation</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Article edit</source>
+                <target>Article edit</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Content list</source>
+                <target>Content list</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Texts</source>
+                <target>Texts</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Content Media list</source>
+                <target>Content Media list</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Content Media creation</source>
+                <target>Content Media creation</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Content Media edit</source>
+                <target>Content Media edit</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Create a new content</source>
+                <target>Create a new content</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Content media position edit</source>
+                <target>Content media position edit</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Contents</source>
+                <target>Contents</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

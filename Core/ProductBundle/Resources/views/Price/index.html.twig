@@ -1,0 +1,43 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Price list{% endtrans %}</h1>
+
+<table class="records_list table table-striped table-condensed">
+    <thead>
+         <tr>
+            <td colspan="6">
+                <a href="{{ path('price_new', {'category': category, 'product': product}) }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %}</a>
+            </td>
+        </tr>
+        <tr>
+            <td>{% trans %}Default{% endtrans %}</td>
+            <th>{% trans %}Price group{% endtrans %}</th>
+            <th>{% trans %}Type{% endtrans %}</th>
+            <th>{% trans %}Price{% endtrans %}</th>
+            <th>{% trans %}Price VAT{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                <a href="{{ path('product', {'category': category}) }}" class=""> {% trans %}Back to the list{% endtrans %}</a>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{% if entity.default %}<span class="glyphicon glyphicon-ok"></span>{% endif %}</td>
+            <td>{{ entity.priceGroup }}</td>
+            <td>{{ entity.type }}</td>
+            <td>{{ entity.price | number_format(2) }}</td>
+            <td>{{ entity.priceVAT | number_format(2) }}</td>
+            <td>
+                <a href="{{ path('price_edit', { 'id': entity.id, 'category': category, 'product': product }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

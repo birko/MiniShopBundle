@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="vendor-list">
+    <h1>{% trans %}Vendor list{% endtrans %}</h1>
+    {% if entities %}
+    <ul>
+        {% for entity in entities %}
+        <li><a href="{{path('vendor_slug', {'slug': entity.slug })}}">{{ entity.title}}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

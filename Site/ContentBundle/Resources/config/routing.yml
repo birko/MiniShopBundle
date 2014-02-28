@@ -1,0 +1,7 @@
+content_slug:
+    pattern:  /{_locale}/content/{slug}
+    defaults: { _controller: SiteContentBundle:Content:index, _locale: %locale% }
+
+content_list:
+    pattern:  /{_locale}/content/list/{category}
+    defaults: { _controller: SiteContentBundle:Content:list, _locale: %locale%, category: ~ }

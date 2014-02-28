@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Products</source>
+                <target>Products</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Product list</source>
+                <target>Product list</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Tags</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Add existing product</source>
+                <target>Add existing product</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Create a new product</source>
+                <target>Create a new product</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Short description</source>
+                <target>Short description</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Product</source>
+                <target>Product</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Add product</source>
+                <target>Add product</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Add products</source>
+                <target>Add products</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Product creation</source>
+                <target>Product creation</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Product edit</source>
+                <target>Product edit</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Weight</source>
+                <target>Weight</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Capacity</source>
+                <target>Capacity</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Price</source>
+                <target>Price without VAT</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Price VAT</source>
+                <target>Price with DPH</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Prices</source>
+                <target>Prices</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Options</source>
+                <target>Options</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Product Option list</source>
+                <target>Product Option list</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Product Option creation</source>
+                <target>Product Option creation</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Product Option edit</source>
+                <target>Product Option edit</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Product Media list</source>
+                <target>Product Media list</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Product Media creation</source>
+                <target>Product Media creation</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Product Media edit</source>
+                <target>Product Media edit</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Price amount</source>
+                <target>Price amount</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Price creation</source>
+                <target>Price creation</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Price edit</source>
+                <target>Price edit</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Amount</source>
+                <target>Amount</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Availability</source>
+                <target>Availability</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Stock</source>
+                <target>Stock</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Stock creation</source>
+                <target>Stock creation</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Stock edit</source>
+                <target>Stock edit</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Available</source>
+                <target>Available</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>Not available</source>
+                <target>Not available</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>Price list</source>
+                <target>Price list</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Product media position edit</source>
+                <target>Product media position edit</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Product position edit</source>
+                <target>Product position edit</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

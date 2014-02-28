@@ -1,0 +1,51 @@
+category:
+    pattern:  /
+    defaults: { _controller: "CoreCategoryBundle:Category:index" }
+
+category_menu:
+    pattern:  /menu/{menu}
+    defaults: { _controller: "CoreCategoryBundle:Category:menu"}
+    requirements:
+        menu: \d+
+
+
+category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreCategoryBundle:Category:show" }
+
+category_new:
+    pattern:  /new/{menu}/{parent}
+    defaults: { _controller: "CoreCategoryBundle:Category:new", parent:~ }
+    requirements:
+        menu: \d+
+        parent: \d+
+
+category_create:
+    pattern:  /create/{menu}/{parent}
+    defaults: { _controller: "CoreCategoryBundle:Category:create", parent:~ }
+    requirements:
+        _method: post
+        menu: \d+
+        parent: \d+
+
+category_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreCategoryBundle:Category:edit" }
+
+category_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreCategoryBundle:Category:update" }
+    requirements: { _method: post }
+
+category_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreCategoryBundle:Category:delete" }
+    requirements: { _method: post }
+
+category_up:
+    pattern:  /{id}/moveup/{position}
+    defaults: { _controller: "CoreCategoryBundle:Category:moveUp" }
+
+category_down:
+    pattern:  /{id}/movedown/{position}
+    defaults: { _controller: "CoreCategoryBundle:Category:moveDown" }

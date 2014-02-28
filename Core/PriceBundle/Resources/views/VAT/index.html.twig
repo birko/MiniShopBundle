@@ -1,0 +1,31 @@
+{% extends '::admin.html.twig' %}
+
+{% block body -%}
+    <h1>{% trans %}VAT list{% endtrans %}</h1>
+
+    <table class="records_list table table-striped table-hover table-condensed">
+        <thead>
+            <tr>
+                <td colspan="3">
+                    <a href="{{ path('vat_new') }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %}</a>
+                </td>
+            </tr>
+            <tr>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <th>{% trans %}Rate{% endtrans %} %</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.ratePercentage }}</td>
+                <td>
+                    <a href="{{ path('vat_edit', {'id': entity.id}) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

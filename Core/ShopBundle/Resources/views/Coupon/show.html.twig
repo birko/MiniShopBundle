@@ -1,0 +1,49 @@
+<h1>{% trans %}Coupon{% endtrans %}</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Code{% endtrans %}</th>
+            <td>{{ entity.code }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Discount{% endtrans %}</th>
+            <td>{{ entity.discount }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Price{% endtrans %}</th>
+            <td>{{ entity.price }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Pricevat{% endtrans %}</th>
+            <td>{{ entity.priceVAT }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Active{% endtrans %}</th>
+            <td>{{ entity.active }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('coupon') }}">
+            {% trans %}Back to the list{% endtrans %}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('coupon_edit', { 'id': entity.id }) }}">
+            {% trans %}Edit{% endtrans %}
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('coupon_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">{% trans %}Delete{% endtrans %}</button>
+        </form>
+    </li>
+</ul>

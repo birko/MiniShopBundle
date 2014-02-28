@@ -1,0 +1,11 @@
+order_index:
+    pattern:  /
+    defaults: { _controller: "SiteShopBundle:Order:index", _locale: %locale% }
+
+order_detail:
+    pattern:  /{id}/show
+    defaults: { _controller: "SiteShopBundle:Order:show", _locale: %locale% }
+
+order_pdf:
+    pattern:  /{id}/pdf
+    defaults: { _controller: "SiteShopBundle:Order:pdf", _locale: %locale% }

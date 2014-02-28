@@ -1,0 +1,6 @@
+{% extends '::email.html.twig' %}
+{% block content%}
+{% render controller('CoreUserTextBundle:UserText:display', {'name': 'kontakt-header', 'create': 1}) %}
+{% include 'CoreMarketingBundle:Message:answer.html.twig' with {'data': data} %}
+{% render controller('CoreUserTextBundle:UserText:display', {'name': 'email-footer', 'create': 1}) %}
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Order detail{% endtrans %}</h1>
+{% include "CoreShopBundle:Order:detail.html.twig" with {"enity": entity} %}
+<a href="{{ path('order') }}">{% trans %}Back to the list{% endtrans %}</a>
+{% endblock %}

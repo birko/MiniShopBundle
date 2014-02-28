@@ -1,0 +1,3 @@
+CorePriceBundle_vat:
+    resource: "@CorePriceBundle/Resources/config/routing/vat.yml"
+    prefix:   /vat

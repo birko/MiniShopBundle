@@ -1,0 +1,73 @@
+product:
+    pattern:  /{category}
+    defaults: { _controller: "CoreProductBundle:Product:index" , category: ~}
+    requirements:
+        category: \d+
+
+product_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreProductBundle:Product:show" }
+
+product_new:
+    pattern:  /new/{category}
+    defaults: { _controller: "CoreProductBundle:Product:new", category: ~ }
+
+product_create:
+    pattern:  /create/{category}
+    defaults: { _controller: "CoreProductBundle:Product:create", category: ~ }
+    requirements: { _method: post }
+
+product_edit:
+    pattern:  /{id}/edit/{category}
+    defaults: { _controller: "CoreProductBundle:Product:edit", category: ~  }
+
+product_update:
+    pattern:  /{id}/update/{category}
+    defaults: { _controller: "CoreProductBundle:Product:update", category: ~  }
+    requirements: { _method: post }
+
+product_delete:
+    pattern:  /{id}/delete/{category}
+    defaults: { _controller: "CoreProductBundle:Product:delete", category: ~  }
+    requirements: { _method: post }
+
+product_copy:
+    pattern:  /{id}/copy/{category}
+    defaults: { _controller: "CoreProductBundle:Product:copy", category: ~  }
+
+product_addlist:
+    pattern: /addlist/{category}
+    defaults: { _controller: "CoreProductBundle:Product:addList" }
+    requirements:
+        category: \d+
+
+product_add:
+    pattern: /{id}/add/{category}
+    defaults: { _controller: "CoreProductBundle:Product:add" }
+    requirements:
+        category: \d+
+        id: \d+
+
+product_remove:
+    pattern: /{id}/remove/{category}
+    defaults: { _controller: "CoreProductBundle:Product:remove" }
+    requirements:
+        category: \d+
+        id: \d+
+
+product_up:
+    pattern:  /{id}/moveup/{position}/{category}
+    defaults: { _controller: "CoreProductBundle:Product:moveUp", category: ~  }
+
+product_down:
+    pattern:  /{id}/movedown/{position}/{category}
+    defaults: { _controller: "CoreProductBundle:Product:moveDown", category: ~  }
+
+product_position:
+    pattern:  /{id}/position/{category}
+    defaults: { _controller: "CoreProductBundle:Product:position", category: ~  }
+
+product_position_update:
+    pattern:  /{id}/positionupdate/{category}
+    defaults: { _controller: "CoreProductBundle:Product:positionUpdate", category: ~  }
+    requirements: { _method: post }

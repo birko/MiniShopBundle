@@ -1,0 +1,30 @@
+shipping:
+    pattern:  /
+    defaults: { _controller: "CoreShopBundle:Shipping:index" }
+
+shipping_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreShopBundle:Shipping:show" }
+
+shipping_new:
+    pattern:  /new
+    defaults: { _controller: "CoreShopBundle:Shipping:new" }
+
+shipping_create:
+    pattern:  /create
+    defaults: { _controller: "CoreShopBundle:Shipping:create" }
+    requirements: { _method: post }
+
+shipping_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreShopBundle:Shipping:edit" }
+
+shipping_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreShopBundle:Shipping:update" }
+    requirements: { _method: post }
+
+shipping_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreShopBundle:Shipping:delete" }
+    requirements: { _method: post }

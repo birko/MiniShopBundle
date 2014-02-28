@@ -1,0 +1,40 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{%trans%}Newsletter list{%endtrans%}</h1>
+{{ knp_pagination_render(entities)}}
+<table class="records_list table table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>{%trans%}Title{%endtrans%}</th>
+            <th>{%trans%}Created at{%endtrans%}</th>
+            <th>{%trans%}Actions{%endtrans%}</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <a href="{{ path('newsletter_new') }}" class="btn btn-xs btn-primary pull-right">
+                    <span class="glyphicon glyphicon-plus"></span> {%trans%}Create a new newsletter{%endtrans%}
+                </a>
+           </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.title }}</td>
+            <td>{% if entity.createdAt %}{{ entity.createdAt|date('d.m.Y H:i:s') }}{% endif %}</td>
+            <td>
+                 <div class="btn-group">
+                     <a href="{{ path('newsletter_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {%trans%}Edit{%endtrans%}</a>
+                     <a href="{{ path('newsletter_send', { 'id': entity.id }) }}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-envelope"></span> {%trans%}Send{%endtrans%}</a>
+                     <a href="{{ path('newsletter_sendgroup', { 'id': entity.id }) }}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-envelope"></span> {%trans%}Send to group{%endtrans%}</a>
+                     <a href="{{ path('newsletter_sendemail', { 'id': entity.id }) }}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-envelope"></span> {%trans%}Send to email{%endtrans%}</a>
+                 </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(entities)}}
+{% endblock %}

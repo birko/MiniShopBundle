@@ -1,0 +1,46 @@
+{% set minishopkeys = minishop|keys %}
+<div class="tree-node">
+    <div class="node-text pull-left">
+    {% if node.enabled %}
+    <span class="glyphicon glyphicon-ok"></span>
+    {% else %}
+    <span class="glyphicon glyphicon-remove"></span>
+    {% endif %}
+    </div>
+    <div class="node-text pull-left">
+    {{ node.title }}
+    </div>
+    <div class="node-text pull-right btn-toolbar">
+        {% if node.home %}
+        <div class="btn-group">
+          <span class="btn btn-xs btn-default"><span class="glyphicon glyphicon-home"></span></span>
+        </div>
+        {% endif %}
+        <div class="btn-group">
+          <a class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Content{% endtrans %} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                {% if 'content' in minishopkeys %}
+                <li><a href="{{ path('content', { 'category': node.id }) }}" class=""><span class="glyphicon glyphicon-list"></span> {% trans %}Texts{% endtrans %}</a></li>
+                {% endif %}
+                {% if 'product' in minishopkeys %}
+                <li><a href="{{ path('product', { 'category': node.id }) }}" class=""><span class="glyphicon glyphicon-list"></span> {% trans %}Products{% endtrans %}</a></li>
+                {% endif %}
+                {% if 'category' in minishopkeys %}
+                <li><a href="{{ path('banner', { 'category': node.id }) }}" class=""><span class="glyphicon glyphicon-list"></span> {% trans %}Banners{% endtrans %}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="btn-group">
+            <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Move{% endtrans%} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="{{ path('category_up', { 'id': node.id, 'position': 1 }) }}" class="move-up"><span class="glyphicon glyphicon-arrow-up"></span> {% trans %}Move up{% endtrans %}</a></li>
+                <li><a href="{{ path('category_down', { 'id': node.id, 'position': 1 }) }}" class="move-down"><span class="glyphicon glyphicon-arrow-down"></span> {% trans %}Move down{% endtrans %}</a></li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <a href="{{ path('category_edit', { 'id': node.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+            <a href="{{ path('category_new', {'menu': node.menu, 'parent': node.id}) }}" class="btn btn-xs  btn-primary"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new child category{% endtrans %}</a>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

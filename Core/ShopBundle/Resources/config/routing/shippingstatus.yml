@@ -1,0 +1,30 @@
+shippingstatus:
+    pattern:  /
+    defaults: { _controller: "CoreShopBundle:ShippingStatus:index" }
+
+shippingstatus_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreShopBundle:ShippingStatus:show" }
+
+shippingstatus_new:
+    pattern:  /new
+    defaults: { _controller: "CoreShopBundle:ShippingStatus:new" }
+
+shippingstatus_create:
+    pattern:  /create
+    defaults: { _controller: "CoreShopBundle:ShippingStatus:create" }
+    requirements: { _method: post }
+
+shippingstatus_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreShopBundle:ShippingStatus:edit" }
+
+shippingstatus_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreShopBundle:ShippingStatus:update" }
+    requirements: { _method: post }
+
+shippingstatus_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreShopBundle:ShippingStatus:delete" }
+    requirements: { _method: post }

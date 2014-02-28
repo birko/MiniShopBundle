@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Newsletter</source>
+                <target>Newsletter</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Newsletter list</source>
+                <target>Newsletter list</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Newsletter Emails</source>
+                <target>Newsletter Emails</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Newsletter Groups</source>
+                <target>Newsletter Groups</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Newsletters</source>
+                <target>Newsletters</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Send</source>
+                <target>Send</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Send to group</source>
+                <target>Send to group</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Send to email</source>
+                <target>Send to email</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Create a new newsletter</source>
+                <target>Create a new newsletter</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Newsletter creation</source>
+                <target>Newsletter creation</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Newsletter edit</source>
+                <target>Newsletter edit</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Newsletter Group list</source>
+                <target>Newsletter Group list</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Newsletter Group creation</source>
+                <target>Newsletter Group creation</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Newsletter Group edit</source>
+                <target>Newsletter Group edit</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Create a new email</source>
+                <target>Create a new email</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Newsletter emails</source>
+                <target>Newsletter emails</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Newsletter groups</source>
+                <target>Newsletter groups</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Newsletter %title% %subject%'</source>
+                <target>Newsletter %title% %subject%'</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Newsletter Email list</source>
+                <target>Newsletter Email list</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Newsletter Email creation</source>
+                <target>Newsletter Email creation</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Newsletter Email edit</source>
+                <target>Newsletter Email edit</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

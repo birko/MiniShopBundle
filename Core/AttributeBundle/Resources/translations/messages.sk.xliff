@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Attributes</source>
+                <target>Atribúty</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Create a new attribute</source>
+                <target>Pridať nový atribút</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Attribute list</source>
+                <target>Zoznam atribútov</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Attribute creation</source>
+                <target>Tvorba atribútu</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Attribute edit</source>
+                <target>Úprava atribútu</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Attribute name list</source>
+                <target>Zoznam názvov atribútov</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Attribute value list</source>
+                <target>Zoznam hodnôt atribútov</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Values</source>
+                <target>Hodnoty</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Attribute name creation</source>
+                <target>Tvorba názvu atribútu</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Attribute name edit</source>
+                <target>Úprava názvu atribútu</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Attribute value creation</source>
+                <target>Tvorba hodnoty atribútu</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Attribute value edit</source>
+                <target>Úprava hodnoty atribútu</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

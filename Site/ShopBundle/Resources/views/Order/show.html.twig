@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="box" id="content-container">
+    <h1>{% trans %}Detail{% endtrans %}</h1>
+    {% include "CoreShopBundle:Order:detail.html.twig" with {"enity": entity} %}
+    <a href="{{ path('order_pdf', { 'id': entity.id }) }}" class="btn btn-default"><span class="glyphicon glyphicon-print"></span> {% trans %}Invoice{% endtrans %}</a>
+    <a href={{path('order_index')}} class="btn btn-default">{% trans %}Back to the list{% endtrans %}</a>
+</div>
+{% endblock %}

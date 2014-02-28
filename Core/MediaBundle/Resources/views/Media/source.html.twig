@@ -1,0 +1,35 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Source{% endtrans %}</h1>
+{% if cultures is not empty %}
+<form action="{{ path('media_source_update', {'type': type, 'id': entity.id}) }}" method="post" {{ form_enctype(form) }}>
+     <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10">
+			{{ form_errors(form) }}
+			{% include 'CoreMediaBundle:Media:form.html.twig' with {'form': form, 'cultures': cultures } %}
+			{{ form_widget(form) }}
+        </div>
+     </div>
+     <p>
+         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {% trans %}Update{% endtrans %}</button>
+         <a href="{{ path('media') }}"> {% trans %}Back to the list{% endtrans %}</a>
+     </p>
+</form>
+{% endif %}
+<div class="row">
+	<div class="col-sm-2 col-lg-2 col-md-2">
+		<div class="thumbnail">
+			{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity, 'dir': 'thumb', 'link_path': '', 'gallery': ''} %}
+			<h5 class="text-center">{{entity.translatableLocale}}</h5>
+		</div>
+	</div>
+	{% for media in entity.translations %}
+	<div class="col-sm-2 col-lg-2 col-md-2">
+		<div class="thumbnail">
+			{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media, 'dir': 'thumb', 'link_path': '', 'gallery': ''} %}
+			<h5 class="text-center">{{media.translatableLocale}}</h5>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

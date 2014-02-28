@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+{% block title %}{% trans %}general.login.title{% endtrans %}{% endblock %}
+{% block body %}
+<div class="box" id="content-container">
+    {% if error %}
+    <div class="alert alert-danger">{{ error.message|trans({}, 'messages') }}</div>
+    {% endif %}
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            {%include  'SiteUserBundle:User:loginform.html.twig' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

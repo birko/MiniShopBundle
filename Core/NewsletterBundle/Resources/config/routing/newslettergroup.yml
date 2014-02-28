@@ -1,0 +1,30 @@
+newsletter_group:
+    pattern:  /
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterGroup:index" }
+
+newsletter_group_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterGroup:show" }
+
+newsletter_group_new:
+    pattern:  /new
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterGroup:new" }
+
+newsletter_group_create:
+    pattern:  /create
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterGroup:create" }
+    requirements: { _method: post }
+
+newsletter_group_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterGroup:edit" }
+
+newsletter_group_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterGroup:update" }
+    requirements: { _method: post }
+
+newsletter_group_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreNewsletterBundle:NewsletterGroup:delete" }
+    requirements: { _method: post }

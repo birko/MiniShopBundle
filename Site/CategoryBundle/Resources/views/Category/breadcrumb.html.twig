@@ -1,0 +1,17 @@
+<ol class="breadcrumb">
+  <li class="home"><a href="{{ path('category_homepage') }}">{% trans %}Home{% endtrans %}</a></li>
+  {% if category is not empty %}
+  {% if path is not empty %}
+  {% for entity in path %}
+  {% if loop.index == path|length and end is empty %}
+  <li class="active">{{entity.title}}</li>
+  {% else %}
+  <li><a href="{{ path('category_site', {'slug': entity.slug}) }}">{{entity.title}}</a></li>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endif %}
+  {% if end is not empty %}
+  <li class="active">{{end}}</li>
+  {% endif %}
+</ol>

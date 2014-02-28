@@ -1,0 +1,9 @@
+{% extends '::email.html.twig' %}
+{% block content%}
+{% trans with { '%portal%' : site_title } %}You have been registered at %portal%.{% endtrans %}
+<br />
+{% trans %}Your login information are{% endtrans %}:<br />
+{%trans%}Login{% endtrans %}: {{login}}<br />
+{%trans%}Password{% endtrans %}: {{password}}<br />
+{% render controller('CoreUserTextBundle:UserText:display', {'name': 'email-footer', 'create': 1}) %}
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+{% include "SiteShopBundle:Checkout:breadcrumb.html.twig" with {'end' : 'Confirm order'} %}
+<div id="cart">
+    <h1>{% trans %}Confirm order{% endtrans %}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{% trans %}Shipping address{% endtrans %}</th>
+                <th>{% trans %}Payment address{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="shipping address">
+                        {% include "CoreShopBundle:Address:address.html.twig" with {'entity': cart.shippingAddress} %}
+                    </div>
+                </td>
+                <td>
+                    <div class="payment address">
+                        {% include "CoreShopBundle:Address:address.html.twig" with {'entity': cart.paymentAddress} %}
+                    </div>
+               </td>
+            </tr>
+        </tbody>
+    </table>
+    {% if cart.items is not empty %}
+    <table class="table">
+        <thead>
+            <tr>
+				<th class="image"></th>
+                <th>{% trans %}Title{% endtrans %}</th>
+                <th>{% trans %}Amount{% endtrans %}</th>
+                <th>{% trans %}Price VAT{% endtrans %}</th>
+                <th>{% trans %}Total price{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td>
+                    {% trans %}Total Price{% endtrans %}
+                </td>
+				<td>
+				</td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    {{ cart.priceVAT|number_format(2, ',') }}  €
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for item in cart.items %}
+			{% set index = cart.items|keys[loop.index0] %}
+			{% include "SiteShopBundle:Cart:item.html.twig" with {'item': item, 'form': '', 'index': index }%}
+			{% endfor %}
+            {% if cart.shipping is not empty %}
+            <tr>
+				<td>
+                </td>
+                <td>
+                    {{ cart.shipping.name }}
+                </td>
+                <td>
+                </td>
+                <td>
+                    {{ cart.shipping.priceVAT|number_format(2, ',') }}  €
+                </td>
+                <td>
+                    {{ cart.shipping.priceVAT|number_format(2, ',') }} €
+                </td>
+            </tr>
+            {% endif %}
+            {% if cart.payment is not empty %}
+            <tr>
+				<td>
+                </td>
+                <td>
+                    {{ cart.payment.name }}
+                </td>
+                <td>
+                </td>
+                <td>
+                    {{ cart.payment.priceVAT|number_format(2, ',') }}  €
+                </td>
+                <td>
+                    {{ cart.payment.priceVAT|number_format(2, ',') }}  €
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <form action="{{ path('checkout_order')}}" method="post">
+        {{ form_errors(form) }}
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+        <div class="row cart-navigation">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <a href="{{path('cart')}}" class="btn btn-default pull-left"><span class="glyphicon glyphicon-arrow-left icon-white"></span> {% trans %}Back to cart{% endtrans %} </a>
+            <button type="submit" class="btn btn-default pull-right">{% trans %}Confirm{% endtrans %} <span class="glyphicon glyphicon-arrow-right"></span></button>
+            {{ form_rest(form) }}
+          </div>
+        </div>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

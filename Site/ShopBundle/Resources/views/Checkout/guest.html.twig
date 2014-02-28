@@ -1,0 +1,8 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+{% include "SiteShopBundle:Checkout:breadcrumb.html.twig" with {'end' : 'Guest'} %}
+<div id="cart">
+    <h2>{% trans %}Guest shopping{% endtrans %}</h2>
+    {% include 'SiteShopBundle:Checkout:guestform.html.twig' with {'form': form }%}
+</div>
+{% endblock %}

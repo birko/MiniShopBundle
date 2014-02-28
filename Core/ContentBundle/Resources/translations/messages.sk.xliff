@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Content</source>
+                <target>Obsah</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Content creation</source>
+                <target>Tvorba obsahu</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Content edit</source>
+                <target>Úprava obsahu</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Article</source>
+                <target>Článok</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Article list</source>
+                <target>Zoznam článkov</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Article creation</source>
+                <target>Tvorba článku</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Article edit</source>
+                <target>Úprava článku</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Content list</source>
+                <target>Zoznam obsahu</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Texts</source>
+                <target>Texty</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Content Media list</source>
+                <target>Zoznam médii</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Content Media creation</source>
+                <target>Tvorba média</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Content Media edit</source>
+                <target>Úprava média</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Create a new content</source>
+                <target>Vytvoriť nový obsah</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Content media position edit</source>
+                <target>Úprava pozície média</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Contents</source>
+                <target>Obsahy</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,17 @@
+<div class="user-info">
+  {% if entity is empty %}
+  <span class="name">{% trans %}Not logged in{% endtrans %}</span>
+  <a href="{{path('SiteUserBundle_login')}}"><span class="glyphicon glyphicon-ok"></span> {% trans %}general.login{% endtrans %}</a>
+  {% else %}
+  <span class="name">
+    <a href="{{path('SiteUserBundle_index')}}">
+      {% if 'category' is not empty %}
+      {% render controller("SiteShopBundle:Address:info" ,{'id': entity.id}) %}
+      {% else %}
+      {{entity.login}}
+      {% endif %}
+    </a>
+  </span>
+  <a href="{{path('SiteUserBundle_logout')}}"><span class="glyphicon glyphicon-off"></span> {% trans %}general.logout{% endtrans %}</a>
+  {% endif %}
+</div>

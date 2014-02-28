@@ -1,0 +1,21 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Vendor edit{% endtrans %}</h1>
+
+<form action="{{ path('vendor_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_errors(edit_form) }}
+	{{ form_row(edit_form.title) }}
+	{% if cultures | length > 0 %}
+	{% include 'CoreCommonBundle:Form:translations.html.twig' with {'form': edit_form.translations, 'cultures': cultures } %}
+	{% endif %}
+	{{ form_widget(edit_form) }}
+    <p>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {% trans %}Edit{% endtrans %}</button>
+    </p>
+</form>
+
+<form action="{{ path('vendor_delete', { 'id': entity.id}) }}" method="post">
+    {{ form_widget(delete_form) }}
+    <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> {% trans %}Delete{% endtrans %}</button>
+</form>
+{% endblock %}

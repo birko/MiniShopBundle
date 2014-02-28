@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Newsletter unsubscribe</source>
+                <target>Odhlásenie newslettra</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Unsubscribe</source>
+                <target>Odhlásiť</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>You were successfully removed from newsletter</source>
+                <target>Boli ste úspešne odhlásený z newslettra</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Thank you for subscribing our newsletter</source>
+                <target>Ďakujeme za registráciu do newslettra</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>We were unable to add your email into our newsletter database</source>
+                <target>Nepodarilo sa nám pridať Váš email do databázy newslettra</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Put your email to usubscribe from newsletter</source>
+                <target>Vložte Váš email na odhlásenie z newslettra</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

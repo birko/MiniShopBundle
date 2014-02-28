@@ -1,0 +1,20 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{%trans%}Banner creation{%endtrans%}</h1>
+
+<form action="{{ path('banner_create', {'category': category}) }}" method="post" {{ form_enctype(form) }}>
+     <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10">
+			{{ form_errors(form) }}
+			{% include 'CoreMediaBundle:Media:form.html.twig' with {'form': form.media, 'cultures': cultures } %}
+			{% if cultures | length > 0 %}
+			{% include 'CoreCommonBundle:Form:translations.html.twig' with {'form': form.translations, 'cultures': cultures } %}
+			{% endif %}
+			{{ form_widget(form) }}
+		</div>
+	</div>
+    <p>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {%trans%}Create{%endtrans%}</button>
+    </p>
+</form>
+{% endblock%}

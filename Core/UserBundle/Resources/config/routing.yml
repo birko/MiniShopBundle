@@ -1,0 +1,7 @@
+CoreUserBundle_user:
+    resource: "@CoreUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+CoreUserBundle_pricegroup:
+    resource: "@CoreUserBundle/Resources/config/routing/pricegroup.yml"
+    prefix:   /pricegroup

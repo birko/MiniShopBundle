@@ -1,0 +1,3 @@
+CoreCommonBundle_homepage:
+    pattern:  /
+    defaults: { _controller: CoreCommonBundle:Default:index }

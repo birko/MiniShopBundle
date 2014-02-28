@@ -1,0 +1,16 @@
+{% if cultures | length > 1%}
+<div class="cultures">
+    <a class="btn btn-default btn-xs dropdown-toggle culture {{app.request.locale}}" data-toggle="dropdown" href="#"><span class="culture-text">{{app.request.locale}}</span> <span class="caret"></span></a>
+    <ul class="dropdown-menu pull-right">
+      {% for culture in cultures %}
+      {% if culture != app.request.locale %}
+      <li>
+          <a href="{{path('SiteUserBundle_locale', {'_locale': culture})}}" class="culture {{culture}}">
+              <span class="culture-text">{{culture}}</span>
+          </a>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+</div>
+{% endif %}

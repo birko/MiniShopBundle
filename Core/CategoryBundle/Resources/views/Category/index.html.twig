@@ -1,0 +1,24 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Category list{% endtrans %}</h1>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <ul class="nav nav-tabs">
+          {% for mid in menus %}
+            <li {% if menu == loop.index0 %}class="active" {% endif %}><a href={{ path('category_menu', {'menu': loop.index0 }) }}>{{ mid }}</a></li>
+          {% endfor %}
+        </ul>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <a href="{{ path('category_new', {'menu': menu}) }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new top category{% endtrans %} </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        {% include 'CoreCategoryBundle:Category:Tree/tree.html.twig' with {'tree': tree} %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Shipping list{% endtrans %}</h1>
+
+<table class="records_list table table-striped table-condensed">
+    <thead>
+       <tr>
+            <td colspan="5">
+                <a href="{{ path('shipping_new') }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %} </a>
+            </td>
+        </tr>
+        <tr>
+            <th>{% trans %}Enabled{% endtrans %}</th>
+            <th>{% trans %}Name{% endtrans %}</th>
+            <th>{% trans %}Price{% endtrans %}</th>
+            <th>{% trans %}Price VAT{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{% if entity.enabled %}<span class="glyphicon glyphicon-ok"></span>{% else %}<span class="glyphicon glyphicon-remove"></span>{% endif %}</td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.price }}</td>
+            <td>{{ entity.priceVAT }}</td>
+            <td>
+                <a href="{{ path('shipping_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

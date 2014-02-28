@@ -1,0 +1,41 @@
+<h1>{% trans %}Vendor{% endtrans %}</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Title{% endtrans %}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Slug{% endtrans %}</th>
+            <td>{{ entity.slug }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Description{% endtrans %}</th>
+            <td>{{ entity.description }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('vendor') }}">
+            {% trans %}Back to the list{% endtrans %}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('vendor_edit', { 'id': entity.id }) }}">
+            {% trans %}Edit{% endtrans %}
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('vendor_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">{% trans %}Delete{% endtrans %}</button>
+        </form>
+    </li>
+</ul>

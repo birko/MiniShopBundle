@@ -1,0 +1,12 @@
+{% if categories is not empty %}
+<ul class="list nav">
+    {%for category in categories %}
+        <li class="list-item-{{loop.index}}">
+            {% include "SiteCategoryBundle:Category:Tree/nodeDecoration.html.twig" with {'node': category} %}
+            {% if children %}
+            {% include "SiteCategoryBundle:Category:list.html.twig" with {'categories': category.children, 'children': children} %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}

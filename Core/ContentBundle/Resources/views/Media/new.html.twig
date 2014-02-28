@@ -1,0 +1,18 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Content Media creation{% endtrans %}</h1>
+
+<form action="{{ path('content_media_create', {'category': category, 'content': content, 'type': type}) }}" method="post" {{ form_enctype(form) }}>
+     <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10">
+			{{ form_errors(form) }}
+			{% include 'CoreMediaBundle:Media:form.html.twig' with {'form': form, 'cultures': cultures } %}
+			{{ form_widget(form) }}
+        </div>
+     </div>
+     <p>
+         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {% trans %}Create{% endtrans %}</button>
+         <a href="{{ path('content_media', {'category': category, 'content': content}) }}"> {% trans %}Back to the list{% endtrans %}</a>
+     </p>
+</form>
+{% endblock %}

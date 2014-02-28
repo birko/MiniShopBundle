@@ -1,0 +1,27 @@
+CoreProductBundle_product:
+    resource: "@CoreProductBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+
+CoreProductBundle_price:
+    resource: "@CoreProductBundle/Resources/config/routing/price.yml"
+    prefix:   /product/{product}/price
+
+CoreProductBundle_option:
+    resource: "@CoreProductBundle/Resources/config/routing/productoption.yml"
+    prefix:   /product/{product}/option
+
+CoreContentBundle_media:
+    resource: "@CoreProductBundle/Resources/config/routing/media.yml"
+    prefix:   /product/{product}/media
+
+CoreProductBundle_attribute:
+    resource: "@CoreProductBundle/Resources/config/routing/attribute.yml"
+    prefix:   /product/{product}/attribute
+
+CoreProductBundle_stock:
+    resource: "@CoreProductBundle/Resources/config/routing/stock.yml"
+    prefix:   /product/{product}/stock
+
+CoreProductBundle_groupon:
+    resource: "@CoreProductBundle/Resources/config/routing/groupon.yml"
+    prefix:   /product/{product}/groupon

@@ -1,0 +1,7 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+{% if content %}
+{% render  controller("SiteCategoryBundle:Category:breadcrumb" , {'id': content.category.id, 'end': content.title}) %}
+{% include "SiteContentBundle:Content:content.html.twig" with {'content': content} %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,45 @@
+<h1>{% trans %}Shipping{% endtrans %}</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Name{% endtrans %}</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Description{% endtrans %}</th>
+            <td>{{ entity.description }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Price{% endtrans %}</th>
+            <td>{{ entity.price }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Price VAT{% endtrans %}</th>
+            <td>{{ entity.priceVAT }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('shipping') }}">
+            {% trans %}Back to the list{% endtrans %}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('shipping_edit', { 'id': entity.id }) }}">
+            {% trans %}Edit{% endtrans %}
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('shipping_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">{% trans %}Delete{% endtrans %}</button>
+        </form>
+    </li>
+</ul>

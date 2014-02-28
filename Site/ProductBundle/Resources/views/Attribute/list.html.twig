@@ -1,0 +1,21 @@
+{% if entities| length > 0 %}
+<div class="attribute-list">
+    <table class="table table-striped table-bordered table-condensed">
+        <tbody>
+        {% for attributearray in entities %}
+        <tr>
+            <th>{{attributearray.0.name.name}}</th>
+            <td>
+                {% for attribute in attributearray %}
+                    {% if loop.index0 != 0 %}
+                    ,
+                    {% endif %}
+                    {{ attribute.value.value}}
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}

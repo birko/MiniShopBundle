@@ -1,0 +1,33 @@
+{% if entities is not empty %}
+<div id="banner-{{entities.0.id}}" class="banner {% if entities| length > 1 %}carousel slide{% endif %}">
+    <div class="carousel-inner">
+        {% for entity in entities %}
+        <div class="item {% if loop.index0 == 0 %}active{% endif %}">
+            {% if entity.media %}
+            <div class="banner-media">
+            {% include "CoreMediaBundle:Media:display.html.twig" with {'entity' : entity.media, 'dir': type, 'link_path': '', 'gallery': '' }%}
+            </div>
+            {% endif %}
+            {% if entity.title %}
+            <h5 class="banner-title">{{entity.title}}</h5>
+            {% endif %}
+            {% if entity.description %}
+            <div class="banner-description">{{entity.description|raw}}</div>
+            {% endif %}
+            {% if entity.link is not empty %}
+            <a href="{{entity.link}}" class="banner-link"> &nbsp;</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% if entities| length > 1 %}
+    <!-- Controls -->
+    <a class="left carousel-control" href="#banner-{{entities.0.id}}" data-slide="prev">
+        <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#banner-{{entities.0.id}}" data-slide="next">
+        <span class="icon-next"></span>
+    </a>
+    {% endif %}
+</div>
+{% endif %}

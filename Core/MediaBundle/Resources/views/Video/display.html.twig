@@ -1,0 +1,5 @@
+{%if video.videoType == 1 %} {# youtube #}
+<a href="http://www.youtube.com/watch?v={{video.source}}" class="fancybox-media thumbnail" {% if gallery is not empty%} rel="gallery-{{gallery}}"{% endif %}>
+	<img src="//i{{video.id % 4 + 1 }}.ytimg.com/vi/{{video.source}}/mqdefault.jpg"  alt ="{{ video.title }}" class="img-responsive"/>
+</a>
+{% endif %}

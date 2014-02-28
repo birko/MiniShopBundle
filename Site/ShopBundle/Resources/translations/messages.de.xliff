@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="58">
+                <source>Total price</source>
+                <target>Total price without VAT</target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>Total price VAT</source>
+                <target>Total price with VAT</target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>Add to cart</source>
+                <target>Add to cart</target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>Create Address</source>
+                <target>Create Address</target>
+            </trans-unit>
+            <trans-unit id="62">
+                <source>Address creation</source>
+                <target>Address creation</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>Address edit</source>
+                <target>Address edit</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>Address list</source>
+                <target>Address list</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>Name Surname</source>
+                <target>Vor- und Nachname</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>Total Price</source>
+                <target>Total Price without VAT</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>Total Price VAT</source>
+                <target>Total Price with VAT</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>Your cart is empty.</source>
+                <target>Your cart is empty.</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>Shipping address</source>
+                <target>Shipping address</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>Payment address</source>
+                <target>Payment address</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>Addresses</source>
+                <target>Addresses</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>Back to shop</source>
+                <target>Back to shop</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>Checkout order</source>
+                <target>Checkout Bestellung</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>Back to cart</source>
+                <target>Back to cart</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>Continue</source>
+                <target>Continue</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>Payment and shipping</source>
+                <target>Payment and shipping</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>Confirm order</source>
+                <target>Confirm Bestellung</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>Company information</source>
+                <target>Company information</target>
+            </trans-unit>
+            <trans-unit id="80">
+                <source>Invoice</source>
+                <target>IRechnung</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>Thank you for your order.</source>
+                <target>Thank you for your Bestellung.</target>
+            </trans-unit>
+            <trans-unit id="82">
+                <source>%date% - New order No.: %title%</source>
+                <target>%date% - New Bestellung Nu.: %title%</target>
+            </trans-unit>
+            <trans-unit id="83">
+                <source>Coupon code</source>
+                <target>Coupon code</target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>Groupon code</source>
+                <target>Groupon code</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

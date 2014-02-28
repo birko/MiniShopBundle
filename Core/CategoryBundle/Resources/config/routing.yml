@@ -1,0 +1,3 @@
+CoreCategoryBundle_category:
+        resource: "@CoreCategoryBundle/Resources/config/routing/category.yml"
+        prefix:   /category

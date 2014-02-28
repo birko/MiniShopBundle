@@ -1,0 +1,11 @@
+{% extends '::email.html.twig' %}
+{% block content%}
+<h1>{{ entity.title | raw  }}</h1>
+<div>
+    {{entity.content | raw }}
+</div>
+<div>
+    <a href="http://{{site_url}}{{ path('newsletter_email_unsubscribe') }}">{% trans %}Newsletter unsubscribe{% endtrans %}</a>
+</div>
+{% render controller('CoreUserTextBundle:UserText:display', {'name': 'email-footer', 'create': 1}) %}
+{% endblock %}

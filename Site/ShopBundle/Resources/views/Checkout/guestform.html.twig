@@ -1,0 +1,47 @@
+<form action="{{ path('checkout_guestaddress')}}" method="post" class="full">
+    {{ form_errors(form) }}
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+          <legend class="paymentaddress">{% trans %}Payment address{% endtrans %}</legend>
+          <div class="row">
+              <div class="col-sm-6 col-md-6 col-lg-6 paymentaddress nolabel">
+                  {% include 'CoreShopBundle:Address:baseform.html.twig' with {'form': form.paymentAddress} %}
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 paymentaddress nolabel">
+                  {% include "CoreShopBundle:Address:contactform.html.twig" with {'form': form.paymentAddress} %}
+                  <div class="company row">
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        {% include "CoreShopBundle:Address:companyform.html.twig" with {'form': form.paymentAddress} %}
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 sameaddress">
+          {{ form_widget(form.sameAddress) }}
+          <a href="#" class="company-link">{% trans %}Company information{% endtrans %}</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <legend class="shippingaddress">{%trans%}Shipping address{%endtrans%}</legend>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6 shippingaddress nolabel">
+                  {% include "CoreShopBundle:Address:baseform.html.twig" with {'form': form.shippingAddress} %}
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 shippingaddress nolabel">
+                  {% include "CoreShopBundle:Address:contactform.html.twig" with {'form': form.shippingAddress} %}
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <a href="{{path('cart')}}" class="btn btn-default pull-left"><span class="glyphicon glyphicon-arrow-left icon-white"></span> {% trans %}Back to cart{% endtrans %} </a>
+        <button type="submit" class="btn btn-default pull-right">{% trans %}Continue{% endtrans %} <span class="glyphicon glyphicon-arrow-right"></span></button>
+        {{ form_rest(form) }}
+      </div>
+    </div>
+</form>

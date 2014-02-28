@@ -1,0 +1,32 @@
+stock:
+    pattern:  /{category}
+    defaults: { _controller: "CoreProductBundle:Stock:index", category: ~ }
+    requirements:
+        category: \d+
+
+stock_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreProductBundle:Stock:show" }
+
+stock_new:
+    pattern:  /new/{category}
+    defaults: { _controller: "CoreProductBundle:Stock:new", category: ~ }
+
+stock_create:
+    pattern:  /create/{category}
+    defaults: { _controller: "CoreProductBundle:Stock:create", category: ~ }
+    requirements: { _method: post }
+
+stock_edit:
+    pattern:  /{id}/edit/{category}
+    defaults: { _controller: "CoreProductBundle:Stock:edit", category: ~ }
+
+stock_update:
+    pattern:  /{id}/update/{category}
+    defaults: { _controller: "CoreProductBundle:Stock:update", category: ~ }
+    requirements: { _method: post }
+
+stock_delete:
+    pattern:  /{id}/delete/{category}
+    defaults: { _controller: "CoreProductBundle:Stock:delete", category: ~ }
+    requirements: { _method: post }

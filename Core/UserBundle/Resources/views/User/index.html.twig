@@ -1,0 +1,31 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}User list{% endtrans %}</h1>
+{{ knp_pagination_render(entities)}}
+<table class="records_list table table-stripped table-condensed">
+    <thead>
+        <tr>
+            <th>{% trans %}Enabled{% endtrans %}</th>
+            <th>{% trans %}Login{% endtrans %}</th>
+            <th>{% trans %}Email{% endtrans %}</th>
+            <th>{% trans %}Price group{% endtrans %}</th>
+            <th>{% trans %}Created at{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{% if entity.enabled %}<span class="glyphicon glyphicon-ok"></span>{% else %}<span class="glyphicon glyphicon-remove"></span>{% endif %}</td>
+            <td>{{ entity.login }}</td>
+            <td>{{ entity.email }}</td>
+            <td>{{ entity.priceGroup }}</td>
+            <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>
+                <a href="{{ path('user_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(entities)}}
+{% endblock %}

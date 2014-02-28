@@ -1,0 +1,123 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Order list{% endtrans %}</h1>
+<form action="" method="post" class="filter">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+             {{ form_row(form.words) }}
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+             {{ form_row(form.orderStatus) }}
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+             {{ form_row(form.shippingStatus) }}
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+             {{ form_row(form.shippingState) }}
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1">
+            <br />
+            {{ form_rest(form) }}
+            <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-ok icon-white"></span></button>
+        </div>
+    </div>
+</form>
+{{ knp_pagination_render(entities)}}
+<form action="{{path('order_process')}}" method="post">
+<table class="records_list table table-striped table-condensed table-hover">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>{% trans %}Created at{% endtrans %}</th>
+            <th>{% trans %}Price{% endtrans %}</th>
+            <th>{% trans %}Price VAT{% endtrans %}</th>
+            <th>{% trans %}Delivery name{% endtrans %}</th>
+            <th>{% trans %}Invoice name{% endtrans %}</th>
+            <th>{% trans %}Order status{% endtrans %}</th>
+            <th>{% trans %}Shipping status{% endtrans %}</th>
+            <th>{% trans %}Tracking ID{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tfoot>
+        {% if processConfig is not empty %}
+        <tr>
+            <td colspan="3" class="process">
+                {% if processConfig is not empty %}
+                <div class="span3 select">
+                    {{ form_widget(process.type, {'attr': {'class': 'input-sm'}}) }}
+                </div>
+                {% endif %}
+            </td>
+            <td colspan="7" class="process">
+                {% if processConfig.status %}
+                <div class="span3 orderstatus selecttype">
+                    {{ form_widget(process.orderStatus, {'attr': {'class': 'input-sm'}}) }}
+                </div>
+                {% endif %}
+                {% if processConfig.shipping %}
+                <div class="span3 shippingstatus selecttype">
+                    {{ form_widget(process.shippingStatus, {'attr': {'class': 'input-sm'}}) }}
+                </div>
+                {% endif %}
+                {% if processConfig.export %}
+                <div class="span3 export selecttype">
+                    {{ form_widget(process.export, {'attr': {'class': 'input-sm'}}) }}
+                </div>
+                {% endif %}
+            </td>
+            <td>
+                <button class="btn btn-sm btn-default" type="submit" value="Process"><span class="glyphicon glyphicon-refresh icon-white"></span> {% trans%}Process{% endtrans %}</button>
+            </td>
+        </tr>
+        {% endif %}
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td class="include">{{ form_widget(process.processOrders[loop.index0].include )}}{{ form_widget(process.processOrders[loop.index0].orderId )}}</td>
+            <td>{% if entity.orderNumber %}{{ entity.orderNumber }}{% else %}{{ entity.id }}{% endif%}</td>
+            <td>{% if entity.createdAt %}{{ entity.createdAt|date('d.m.Y H:i:s') }}{% endif %}</td>
+            <td>{{ entity.price|number_format(2) }}</td>
+            <td>{{ entity.priceVAT|number_format(2) }}</td>
+            <td>{{ entity.deliveryname }} {{ entity.deliverysurname }}</td>
+            <td>{{ entity.invoicename }} {{ entity.invoicesurname }}</td>
+            <td>{{ entity.orderstatus }}</td>
+            <td>{{ entity.shippingstatus }}</td>
+            <td>{{ entity.trackingId }}</td>
+            <td class="btn-toolbar">
+                <div class="btn-group">
+                    <a href="{{ path('order_show', { 'id': entity.id }) }}" class="btn btn-xs btn-primary btn-xs"><span class="glyphicon glyphicon-bar"></span> {% trans %}Show{% endtrans %}</a>
+                    <a href="{{ path('order_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-warning btn-xs"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+                    <a class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Billing{% endtrans%} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('order_edit_invoice', { 'id': entity.id }) }}" class=""><span class="glyphicon glyphicon-print"></span> {% trans %}Edit invoice{% endtrans %}</a></li>
+                        {% if entity.invoicedAt %}
+                        <li><a href="{{ path('order_pdfadmin', { 'id': entity.id }) }}" class=""><span class="glyphicon glyphicon-print"></span> {% trans %}Invoice{% endtrans %}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% if processConfig is not empty %}
+{{ form_rest(process) }}
+{% endif %}
+</form>
+{{ knp_pagination_render(entities)}}
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    jQuery('.process .select select').change(function(){
+        jQuery('.process .selecttype').hide();
+        val = jQuery(this).val();
+        jQuery('.process .' + val).show();
+    });
+})
+</script>
+{% endblock %}

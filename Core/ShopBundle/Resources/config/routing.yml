@@ -1,0 +1,27 @@
+CoreShopBundle_order:
+        resource: "@CoreShopBundle/Resources/config/routing/order.yml"
+        prefix:   /order
+
+CoreShopBundle_payment:
+        resource: "@CoreShopBundle/Resources/config/routing/payment.yml"
+        prefix:   /payment
+
+CoreShopBundle_shipping:
+        resource: "@CoreShopBundle/Resources/config/routing/shipping.yml"
+        prefix:   /shipping
+
+CoreShopBundle_shippingstatus:
+        resource: "@CoreShopBundle/Resources/config/routing/shippingstatus.yml"
+        prefix:   /shippingstatus
+
+CoreShopBundle_orderstatus:
+        resource: "@CoreShopBundle/Resources/config/routing/orderstatus.yml"
+        prefix:   /orderstatus
+
+CoreShopBundle_state:
+        resource: "@CoreShopBundle/Resources/config/routing/state.yml"
+        prefix:   /state
+
+CoreShopBundle_coupon:
+        resource: "@CoreShopBundle/Resources/config/routing/coupon.yml"
+        prefix:   /coupon

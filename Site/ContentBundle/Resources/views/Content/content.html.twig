@@ -1,0 +1,26 @@
+{% if content %}
+<div id="content">
+  <h1>{{content.title}}</h1>
+  <div class="content-shortdescription">
+      {{content.shortDescription|raw}}
+  </div>
+  <div class="content-longdescription">
+      {{content.longDescription|raw}}
+  </div>
+  {% if content.media is not empty %}
+  <div class="content-gallery gallery">
+      <div class="row">
+          {% for media in content.media %}
+		  {% if media.media %}
+          <div class="col-sm-4 col-md-4 col-lg-4">
+			    <div class="image">
+					{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media.media, 'dir': 'thumb', 'link_path':'large', 'gallery': 'content' ~ content.id} %}
+			    </div>
+          </div>
+		  {% endif %}
+          {% endfor %}
+      </div>
+  </div>
+  {% endif %}
+</div>
+{% endif %}

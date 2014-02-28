@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Contact</source>
+                <target>Kontakt</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Claim</source>
+                <target>Reklamation</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Contact %subject%</source>
+                <target>Contact %subject%</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Claim order no.:%order% %subject%</source>
+                <target>Reklamation Bestellung Nu.:%order% %subject%</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Contact %type% %subject%</source>
+                <target>Kontakt %type% %subject%</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Contact us</source>
+                <target>Contact us</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Customer service</source>
+                <target>Customer service</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Verification code</source>
+                <target>Verifikationskode</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

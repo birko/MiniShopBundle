@@ -1,0 +1,22 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{% trans %}Product Option creation{% endtrans %}</h1>
+{% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
+<div class="{% if flow.getLastStepNumber()  != flow.getCurrentStepNumber() %}form-step{% endif %} step-{{flow.getCurrentStepNumber()}}"{% if flow.getLastStepNumber()  != flow.getCurrentStepNumber() %} data-target=".step-{{flow.getCurrentStepNumber() + 1 }}"{% endif%}>
+	<form action="{{ path('option_create', {'product': product, 'category': category}) }}" method="post" {{ form_enctype(form) }}>
+		{{ form_errors(form) }}
+		{% if flow.getCurrentStepNumber() == 1 %}
+		{{ form_row(form.name) }}
+		{% elseif flow.getCurrentStepNumber() == 2 %}
+		{{ form_row(form.value) }}
+		{% else %}
+		{{ form_row(form.amount) }}
+		{% endif %}
+		{{ form_rest(form) }}
+		<div class="form-actions">
+			<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>{% trans %}Create{% endtrans %}</button>
+			<a href="{{ path('option',{'product': product, 'category': category}) }}"> {% trans %}Back to the list{% endtrans %}</a>
+		</div>
+	</form>
+</div>
+{% endblock %}
