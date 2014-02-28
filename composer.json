@@ -40,5 +40,5 @@
         "post-install-cmd": [
             "Core\\CommonBundle\\Composer\\ScriptHandler::postInstall"
         ]
-    },
+    }
 }
