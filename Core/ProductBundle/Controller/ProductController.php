@@ -316,10 +316,10 @@ class ProductController extends TranslateController
         $entity->setVendor($product->getVendor());
         $em->persist($entity);
         $em->flush();
-        foreach($product->getTranslations() as $translation)
-        {
+        foreach($product->getTranslations() as $translation) {
             $translation->setSlug(null);
         }
+        
         $entity->setTranslations($product->getTranslations());
         $this->saveTranslations($entity, $cultures);
         foreach ($product->getPrices() as $productprice) {
