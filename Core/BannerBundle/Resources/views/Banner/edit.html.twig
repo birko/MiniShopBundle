@@ -13,7 +13,7 @@
 		</div>
 		<div class="col-sm-2 col-md-2 col-lg-2">
 			{% if entity.media %}
-			{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity.media, 'dir': 'thumb', 'link_path': '', 'gallery': ''} %}
+			{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity.media, 'dir': 'thumb', 'link_path': 'original', 'gallery': ''} %}
 			{% endif %}
 		</div>
     </div>

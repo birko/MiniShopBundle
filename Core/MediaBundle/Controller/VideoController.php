@@ -12,15 +12,15 @@ use Core\MediaBundle\Entity\Video;
  */
 class VideoController extends Controller
 {
-    public function displayAction($id, $gallery = null)
+    public function displayAction($id, $link_path = null, $gallery = null)
     {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CoreMediaBundle:Video')->find($id);
 
-        return $this->displayEntityAction($entity, $gallery);
+        return $this->displayEntityAction($entity, $link_path, $gallery);
     }
 
-    public function displayEntityAction(Video $entity = null, $gallery = null)
+    public function displayEntityAction(Video $entity = null, $link_path = null, $gallery = null)
     {
         $webpath = null;
         if ($entity !== null) {
@@ -31,6 +31,7 @@ class VideoController extends Controller
             'video'     => $entity,
             'source'    => $webpath,
             'gallery'   => $gallery,
+            'link_path' => $link_path,
         ));
     }
 }

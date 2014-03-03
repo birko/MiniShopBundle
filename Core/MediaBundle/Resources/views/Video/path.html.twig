@@ -1,5 +1,7 @@
-{%if video.videoType == 1 %} {# youtube #}
+{% if video.videoType == 1 %} {# youtube #}
 http://www.youtube.com/watch?v={{video.source}}
+{% elseif video.videoType == 2 %} {# vimeo #}
+http://www.vimeo.com/{{video.source}}
 {% else %}
 http://{{site_url}}{{ asset(video.getWebPath(dir)) }}
 {% endif %}

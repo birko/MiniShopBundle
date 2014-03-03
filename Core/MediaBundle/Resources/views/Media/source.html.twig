@@ -19,14 +19,14 @@
 <div class="row">
 	<div class="col-sm-2 col-lg-2 col-md-2">
 		<div class="thumbnail">
-			{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity, 'dir': 'thumb', 'link_path': '', 'gallery': ''} %}
+			{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity, 'dir': 'thumb', 'link_path': 'original', 'gallery': ''} %}
 			<h5 class="text-center">{{entity.translatableLocale}}</h5>
 		</div>
 	</div>
 	{% for media in entity.translations %}
 	<div class="col-sm-2 col-lg-2 col-md-2">
 		<div class="thumbnail">
-			{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media, 'dir': 'thumb', 'link_path': '', 'gallery': ''} %}
+			{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media, 'dir': 'thumb', 'link_path': 'original', 'gallery': ''} %}
 			<h5 class="text-center">{{media.translatableLocale}}</h5>
 		</div>
 	</div>

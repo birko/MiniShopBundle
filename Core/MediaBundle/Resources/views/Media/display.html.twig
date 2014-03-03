@@ -1,5 +1,5 @@
 {% if entity.type == 'image'%}
 {% render controller("CoreMediaBundle:Image:displayEntity", {'entity': entity, 'dir': dir, 'link_path': link_path, 'gallery': gallery}) %}
 {% elseif entity.type == 'video'%}
-{% render controller("CoreMediaBundle:Video:displayEntity", {'entity': entity, 'gallery': gallery}) %}
+{% render controller("CoreMediaBundle:Video:displayEntity", {'entity': entity, 'link_path': link_path, 'gallery': gallery}) %}
 {% endif %}
