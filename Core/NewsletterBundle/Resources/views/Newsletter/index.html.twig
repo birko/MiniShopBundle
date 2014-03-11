@@ -4,6 +4,13 @@
 {{ knp_pagination_render(entities)}}
 <table class="records_list table table-striped table-condensed">
     <thead>
+		<tr>
+            <td colspan="3">
+                <a href="{{ path('newsletter_new') }}" class="btn btn-xs btn-primary pull-right">
+                    <span class="glyphicon glyphicon-plus"></span> {%trans%}Create a new newsletter{%endtrans%}
+                </a>
+           </td>
+        </tr>
         <tr>
             <th>{%trans%}Title{%endtrans%}</th>
             <th>{%trans%}Created at{%endtrans%}</th>
@@ -11,13 +18,6 @@
         </tr>
     </thead>
     <tfoot>
-        <tr>
-            <td colspan="3">
-                <a href="{{ path('newsletter_new') }}" class="btn btn-xs btn-primary pull-right">
-                    <span class="glyphicon glyphicon-plus"></span> {%trans%}Create a new newsletter{%endtrans%}
-                </a>
-           </td>
-        </tr>
     </tfoot>
     <tbody>
     {% for entity in entities %}
