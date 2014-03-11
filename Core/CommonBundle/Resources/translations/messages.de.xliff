@@ -182,6 +182,14 @@
                 <source>Choose value</source>
                 <target>Choose value</target>
             </trans-unit> 
+            <trans-unit id="51">
+                <source>All</source>
+                <target>Alles</target>
+            </trans-unit> 
+            <trans-unit id="52">
+                <source>Not</source>
+                <target>Nein</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -65,29 +65,27 @@
                     {% endif %}
                 </div>
                 <div class="btn-group">
-					{% if 'media' in minishopkeys %}
-                    <a href="{{ path('product_media', { 'product': entity.id, 'category': category }) }}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span> {% trans %}Media{% endtrans %}</a>
-                    {% endif %}
-					{% if 'attribute' in minishopkeys %}
-					<a href="{{ path('attribute', { 'product': entity.id, 'category': category }) }}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span> {% trans %}Attributes{% endtrans %}</a>
-                    {% endif %}
-					{% if 'price' in minishopkeys %}
-					<a href="{{ path('price', { 'product': entity.id, 'category': category }) }}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span> {% trans %}Prices{% endtrans %}</a>
-					{% endif %}
-					{% if 'marketing' in minishopkeys %}
-					<a href="{{ path('groupon', { 'product': entity.id, 'category': category }) }}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span> {% trans %}Groupons{% endtrans %}</a>
-					{% endif %}
-                </div>
-                <div class="btn-group">
-                    <a class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" href="#">{% trans %}Stock{% endtrans %} <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        {% if entity.stock %}
-                        <li><a href="{{ path('stock_edit', { 'id': entity.stock.id, 'product': entity.id, 'category': category }) }}"><span class="glyphicon glyphicon-edit"></span> {% trans %}Stock{% endtrans %}</a></li>
-                        {% else %}
-                        <li><a href="{{ path('stock_new', {'product': entity.id, 'category': category }) }}"><span class="glyphicon glyphicon-edit"></span> {% trans %}Stock{% endtrans %}</a></li>
-                        {% endif %}
+					<a class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" href="#">{% trans %}Product{% endtrans %} <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						{% if 'media' in minishopkeys %}
+						<li><a href="{{ path('product_media', { 'product': entity.id, 'category': category }) }}">{% trans %}Media{% endtrans %}</a></li>
+						{% endif %}
+						{% if 'price' in minishopkeys %}
+						<li><a href="{{ path('price', { 'product': entity.id, 'category': category }) }}" >{% trans %}Prices{% endtrans %}</a></li>
+						{% endif %}
 						{% if 'attribute' in minishopkeys %}
-                        <li><a href="{{ path('option', { 'product': entity.id, 'category': category }) }}"><span class="glyphicon glyphicon-list"></span> {% trans %}Options{% endtrans %}</a></li>
+						<li><a href="{{ path('attribute', { 'product': entity.id, 'category': category }) }}">{% trans %}Attributes{% endtrans %}</a></li>
+						{% endif %}
+						{% if 'attribute' in minishopkeys %}
+                        <li><a href="{{ path('option', { 'product': entity.id, 'category': category }) }}">{% trans %}Options{% endtrans %}</a></li>
+						{% endif %}
+						{% if entity.stock %}
+                        <li><a href="{{ path('stock_edit', { 'id': entity.stock.id, 'product': entity.id, 'category': category }) }}">{% trans %}Stock{% endtrans %}</a></li>
+                        {% else %}
+                        <li><a href="{{ path('stock_new', {'product': entity.id, 'category': category }) }}">{% trans %}Stock{% endtrans %}</a></li>
+                        {% endif %}
+						{% if 'marketing' in minishopkeys %}
+						<li><a href="{{ path('groupon', { 'product': entity.id, 'category': category }) }}" >{% trans %}Groupons{% endtrans %}</a></li>
 						{% endif %}
 					</ul>
                 </div>

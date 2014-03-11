@@ -3,7 +3,12 @@
 <h1>{%trans%}Newsletter send{%endtrans%}</h1>
 
 <form action="{{ path('newsletter_dosendgroup', {'id': entity.newsletter.id}) }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    {{ form_row(form.newsletter) }}
+	<div class="row">
+		<div class="col-sm-3 col-md-3 col-lg-3">{{ form_row(form.groups) }}</div>
+		<div class="col-sm-3 col-md-3 col-lg-3">{{ form_widget(form.not) }}</div>
+	</div>
+	{{ form_rest(form) }}
     <p>
         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-envelope"></span> {%trans%}Send{%endtrans%}</button>
     </p>

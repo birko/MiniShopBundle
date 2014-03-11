@@ -183,6 +183,14 @@
                 <source>Choose value</source>
                 <target>Vybrať hodnotu</target>
             </trans-unit> 
+            <trans-unit id="51">
+                <source>All</source>
+                <target>Všetko</target>
+            </trans-unit> 
+            <trans-unit id="52">
+                <source>Not</source>
+                <target>Opak</target>
+            </trans-unit> 
         </body>
     </file>
 </xliff>

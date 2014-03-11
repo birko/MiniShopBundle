@@ -446,6 +446,10 @@
                 <source>Groupons</source>
                 <target>Zľavomaty</target>
             </trans-unit>
+            <trans-unit id="114">
+                <source>Order</source>
+                <target>Objednávka</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
