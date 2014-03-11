@@ -50,6 +50,14 @@
                 <source>External</source>
                 <target>External</target>
             </trans-unit>
+            <trans-unit id="13">
+                <source>Parent</source>
+                <target>Parent</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Category</source>
+                <target>Category</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

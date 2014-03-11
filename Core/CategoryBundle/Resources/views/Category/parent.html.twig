@@ -1,0 +1,10 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{%trans%}Category edit{%endtrans%}</h1>
+<form action="{{ path('category_parent_save', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
+	{{ form_widget(form) }}
+	<p>
+		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {%trans%}Save{%endtrans%}</button>
+	</p>
+</form>
+{% endblock %}

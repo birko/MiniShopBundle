@@ -242,7 +242,7 @@ class Category extends TranslateEntity
      *
      * @param Category $parent
      */
-    public function setParent(Category $parent)
+    public function setParent(Category $parent = null)
     {
         $this->parent = $parent;
     }

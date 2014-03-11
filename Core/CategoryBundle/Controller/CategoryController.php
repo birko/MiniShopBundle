@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Core\CategoryBundle\Entity\Category;
 use Core\CategoryBundle\Form\CategoryType;
+use Core\CategoryBundle\Form\CategoryParentType;
 use Core\CommonBundle\Controller\TranslateController;
 
 /**
@@ -314,5 +315,49 @@ class CategoryController extends TranslateController
         $em->getRepository('CoreCategoryBundle:Category')->moveDown($entity, $position);
 
         return $this->redirect($this->generateUrl('category'));
+    }
+    
+    public function parentAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CoreCategoryBundle:Category')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Category entity.');
+        }
+        $form   = $this->createForm(new CategoryParentType(), $entity);
+
+        return $this->render('CoreCategoryBundle:Category:parent.html.twig', array(
+            'entity' => $entity,
+            'form' => $form->createView()
+        ));
+    }
+
+    public function parentSaveAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CoreCategoryBundle:Category')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Category entity.');
+        }
+        $form   = $this->createForm(new CategoryParentType(), $entity);
+        $request = $this->getRequest();
+        if ($request->getMethod() == "POST") {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $parententity = $entity->getParent();
+                //if parententity is not child of entity
+                if (empty($parententity) || (!($parententity->getLeft() >= $entity->getLeft() && $parententity->getLeft()<= $entity->getRight()))) {
+                    $em->persist($entity);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('category'));
+                }
+            }
+        }
+
+        return $this->render('CoreCategoryBundle:Category:parent.html.twig', array(
+            'entity' => $entity,
+            'form' => $form->createView()
+        ));
     }
 }

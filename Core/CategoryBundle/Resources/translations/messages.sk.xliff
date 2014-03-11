@@ -50,6 +50,14 @@
                 <source>External</source>
                 <target>Externá</target>
             </trans-unit>
+            <trans-unit id="13">
+                <source>Parent</source>
+                <target>Nadradená</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Category</source>
+                <target>Kategória</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

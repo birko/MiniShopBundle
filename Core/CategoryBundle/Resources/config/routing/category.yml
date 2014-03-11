@@ -49,3 +49,12 @@ category_up:
 category_down:
     pattern:  /{id}/movedown/{position}
     defaults: { _controller: "CoreCategoryBundle:Category:moveDown" }
+
+category_parent:
+    pattern:  /{id}/parent
+    defaults: { _controller: "CoreCategoryBundle:Category:parent" }
+
+category_parent_save:
+    pattern:  /{id}/parentsave
+    defaults: { _controller: "CoreCategoryBundle:Category:parentSave" }
+    requirements: { _method: post }

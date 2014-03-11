@@ -37,9 +37,13 @@
                 <li><a href="{{ path('category_down', { 'id': node.id, 'position': 1 }) }}" class="move-down"><span class="glyphicon glyphicon-arrow-down"></span> {% trans %}Move down{% endtrans %}</a></li>
             </ul>
         </div>
-        <div class="btn-group">
-            <a href="{{ path('category_edit', { 'id': node.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
-            <a href="{{ path('category_new', {'menu': node.menu, 'parent': node.id}) }}" class="btn btn-xs  btn-primary"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new child category{% endtrans %}</a>
+        <div class="btn-group pull-right">
+			<a class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-edit"></span> {% trans %}Category{% endtrans%} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+				<li><a href="{{ path('category_edit', { 'id': node.id }) }}">{% trans %}Edit{% endtrans %}</a></li>
+                <li><a href="{{ path('category_new', {'menu': node.menu, 'parent': node.id}) }}">{% trans %}Create a new child category{% endtrans %}</a></li>
+			    <li><a href="{{ path('category_parent', { 'id': node.id, }) }}">{% trans %}Parent{% endtrans %}</a></li>
+			</ul>
         </div>
     </div>
     <div class="clearfix"></div>
