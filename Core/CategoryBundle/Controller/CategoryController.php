@@ -347,6 +347,9 @@ class CategoryController extends TranslateController
                 $parententity = $entity->getParent();
                 //if parententity is not child of entity
                 if (empty($parententity) || (!($parententity->getLeft() >= $entity->getLeft() && $parententity->getLeft()<= $entity->getRight()))) {
+                    if (!empty($parententity)) {
+                        $entity->setMenu($parententity->getMenu());
+                    }
                     $em->persist($entity);
                     $em->flush();
 
