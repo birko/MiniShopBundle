@@ -14,7 +14,7 @@ class BaseNewsletterEmailType extends AbstractType
             ->add('email', 'email', array(
                 'required' => true,
                 'attr' => array(
-                    'placeholder' => 'Email pre odber noviniek'
+                    'placeholder' => 'Newsletter email'
             )))
         ;
     }
