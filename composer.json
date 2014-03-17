@@ -29,8 +29,8 @@
         "knplabs/knp-paginator-bundle": "~2.3",
         "mopa/bootstrap-sandbox-bundle": "~2.3",
         "craue/formflow-bundle": "~2.0",
-        "whiteoctober/tcpdf-bundle": "dev-master",
-        "tecnick.com/tcpdf": "dev-master"
+        "whiteoctober/tcpdf-bundle": "@dev",
+        "tecnick.com/tcpdf": "@dev"
     },
     "repositories": [
     ],
