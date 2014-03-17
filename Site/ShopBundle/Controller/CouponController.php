@@ -33,7 +33,7 @@ class CouponController extends ShopController
                             $item = new CouponItem();
                             $item->setCode($coupon->getCode());
                             $item->setName($product->getTitle(). "({$coupon->getCode()})");
-                            $item->getProductId($product->getId());
+                            $item->setProductId($product->getId());
                             $item->setChangeAmount(true);
                             $item->setAmount(1);
                             $item->setChangeAmount(false);

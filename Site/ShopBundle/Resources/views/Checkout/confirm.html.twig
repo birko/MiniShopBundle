@@ -31,8 +31,8 @@
             <tr>
 				<th class="image"></th>
                 <th>{% trans %}Title{% endtrans %}</th>
-                <th>{% trans %}Amount{% endtrans %}</th>
                 <th>{% trans %}Price VAT{% endtrans %}</th>
+                <th>{% trans %}Amount{% endtrans %}</th>
                 <th>{% trans %}Total price{% endtrans %}</th>
             </tr>
         </thead>
@@ -65,9 +65,9 @@
                     {{ cart.shipping.name }}
                 </td>
                 <td>
+                    {{ cart.shipping.priceVAT|number_format(2, ',') }}  €
                 </td>
                 <td>
-                    {{ cart.shipping.priceVAT|number_format(2, ',') }}  €
                 </td>
                 <td>
                     {{ cart.shipping.priceVAT|number_format(2, ',') }} €
@@ -82,9 +82,9 @@
                     {{ cart.payment.name }}
                 </td>
                 <td>
+                    {{ cart.payment.priceVAT|number_format(2, ',') }}  €
                 </td>
                 <td>
-                    {{ cart.payment.priceVAT|number_format(2, ',') }}  €
                 </td>
                 <td>
                     {{ cart.payment.priceVAT|number_format(2, ',') }}  €

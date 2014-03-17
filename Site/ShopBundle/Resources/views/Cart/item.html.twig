@@ -31,7 +31,7 @@
         {{ form_rest(form)}}
         </div>
 		{% else %}
-		{{ item.amount }}
+		{{ item.amount|number_format }}
 		{% endif %}
     </td>
     <td class="total">

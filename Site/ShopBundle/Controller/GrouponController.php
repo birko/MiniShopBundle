@@ -25,15 +25,15 @@ class GrouponController extends ShopController
                 $coupon = current($entities);
                 $product = $coupon->getProduct();
                 $item = new GrouponItem();
-                $item->setCode($coupon->getCode());
-                $item->setName($product->getTitle() . "({$coupon->getCode()})");
-                $item->getProductId($product->getId());
+                $item->setCode($entity->code);
+                $item->setName($product->getTitle() . "({$entity->code})");
+                $item->setProductId($product->getId());
                 $item->setChangeAmount(true);
                 $item->setAmount($coupon->getAmount());
                 $item->setChangeAmount(false);
                 if ($coupon->getPrice()) { // price coupon
-                    $item->setPrice($coupon->getPrice() / $count);
-                    $item->setPriceVAT($coupon->getPriceVAT() / $count);
+                    $item->setPrice($coupon->getPrice());
+                    $item->setPriceVAT($coupon->getPriceVAT());
                 } else {  //percentage coupon
                     $price = $product->getPrices()->first();
                     if ($price) {
