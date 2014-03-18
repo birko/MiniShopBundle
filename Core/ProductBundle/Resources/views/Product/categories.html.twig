@@ -1,0 +1,14 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+
+<h1>{%trans%}Categories{%endtrans%}</h1>
+<form action="{{ path('product_categories_update', { 'id': entity.id, 'category': category }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <div class="tags">
+    {{ form_widget(edit_form) }}
+    </div>
+    <p>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {%trans%}Edit{%endtrans%}</button>
+		<a href="{{ path('product', {'category': category}) }}"> {% trans %}Back to the list{% endtrans %}</a>
+    </p>
+</form>
+{% endblock body %}

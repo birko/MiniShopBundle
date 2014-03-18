@@ -12,6 +12,7 @@ use Core\ProductBundle\Entity\Filter;
 use Core\ProductBundle\Form\ProductType;
 use Core\ProductBundle\Form\FilterType;
 use Core\ProductBundle\Form\ProductCategoryType;
+use Core\ProductBundle\Form\ProductCategoriesType;
 use Core\CommonBundle\Controller\TranslateController;
 
 /**
@@ -521,6 +522,61 @@ class ProductController extends TranslateController
             'entity' => $entity,
             'category' => $category,
             'form' => $form->createView()
+        ));
+    }
+    
+    public function categoriesAction($id, $category)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('CoreProductBundle:Product')->getProduct($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+        $editForm = $this->createForm(new ProductCategoriesType(), $entity);
+
+        return $this->render('CoreProductBundle:Product:categories.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'category' => $category,
+        ));
+    }
+    
+    public function categoriesUpdateAction($id, $category)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('CoreProductBundle:Product')->getProduct($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+
+        $editForm = $this->createForm(new ProductCategoriesType(), $entity);
+        $request = $this->getRequest();
+        $list = $entity->getCategories();
+        $editForm->bind($request);
+
+        if ($editForm->isValid()) {
+            $em->persist($entity);
+            foreach ($entity->getCategories() as $categoryEntity) {
+                $list = $list->filter(function($entry) use ($categoryEntity) {
+                    return $entry->getId() != $categoryEntity->getId();
+                });
+            }
+            $em->flush();
+            foreach($list as $categoryEntity)
+            {
+                $em->getRepository('CoreProductBundle:ProductCategory')->removeProductCategory($categoryEntity->getId(), $entity->getId());
+            }
+            return $this->redirect($this->generateUrl('product_categories', array('id' => $id, 'category' => $category)));
+        }
+
+        return $this->render('CoreProductBundle:Product:categories.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'category' => $category,
         ));
     }
 }

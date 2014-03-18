@@ -71,3 +71,18 @@ product_position_update:
     pattern:  /{id}/positionupdate/{category}
     defaults: { _controller: "CoreProductBundle:Product:positionUpdate", category: ~  }
     requirements: { _method: post }
+
+product_categories:
+    pattern:  /{id}/categories/{category}
+    defaults: { _controller: "CoreProductBundle:Product:categories", category: ~   }
+    requirements:
+        id: \d+
+        category: \d+
+
+product_categories_update:
+    pattern:  /{id}/categoriesupdate/{category}
+    defaults: { _controller: "CoreProductBundle:Product:categoriesUpdate", category: ~ }
+    requirements:
+        _method: post
+        category: \d+
+        id: \d+

@@ -64,9 +64,10 @@ class Product extends TranslateEntity
      */
     private $createdAt;
 
-     /**
-      * @ORM\OneToMany(targetEntity="ProductCategory", mappedBy="product")
-      */
+    /**
+     * @ORM\OneToMany(targetEntity="ProductCategory", mappedBy="product", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"default" = "DESC", "position" = "ASC"})
+     */
 
      protected $productCategories;
     /**
@@ -247,6 +248,34 @@ class Product extends TranslateEntity
 
         return $productCategory;
     }
+    
+    public function getCategories()
+    {
+        $list = new ArrayCollection();
+        foreach ($this->getProductCategories() as $productCategory)
+        {
+            $list->add($productCategory->getCategory());
+        }
+        
+        return $list;
+    }
+    
+    public function setCategories($categories)
+    {
+        $list = $this->getCategories();
+        foreach ($categories as $category) {
+            $list = $list->filter(function($entry) use ($category) {
+                return $entry->getId() != $category->getId();
+            });
+            $this->addCategory($category);
+        }
+        foreach ($list as $category) {
+            $this->removeCategory($category);
+        }
+        
+        return $this;
+    }
+
 
     /**
      * Get ProductCategories
