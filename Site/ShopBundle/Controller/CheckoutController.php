@@ -359,7 +359,7 @@ class CheckoutController extends ShopController
             $orderItem = new OrderItem();
             $orderItem->setAmount(1);
             $orderItem->setPrice($cart->getPayment()->getPrice());
-            $orderItem->setPriceVAT($cart->getPayment()->getPrice());
+            $orderItem->setPriceVAT($cart->getPayment()->getPriceVAT());
             $orderItem->setName($cart->getPayment()->getName());
             $orderItem->setPayment($cart->getPayment());
             $orderItem->setDescription($cart->getPayment()->getDescription());
