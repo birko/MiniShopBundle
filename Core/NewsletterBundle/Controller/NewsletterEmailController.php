@@ -248,19 +248,22 @@ class NewsletterEmailController extends Controller
                     $email = trim($value);
                     if (!in_array($email, $imported)) {
                         if (!empty($email)) {
-                            $entity2 = $em->getRepository('CoreNewsletterBundle:NewsletterEmail')->getEmail($email);
-                            if (!$entity2) {
-                                $entity2 = new NewsletterEmail();
-                                $entity2->setEmail($email);
-                                $entity2->setEnabled($entity->isEnabled());
-                            }
-                            if ($entity2->isEnabled()) {
-                                foreach ($entity->getGroups() as $g) {
-                                    $entity2->addGroup($g);
+                            $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+                            if ($email !== false) {
+                                $entity2 = $em->getRepository('CoreNewsletterBundle:NewsletterEmail')->getEmail($email);
+                                if (!$entity2) {
+                                    $entity2 = new NewsletterEmail();
+                                    $entity2->setEmail($email);
+                                    $entity2->setEnabled($entity->isEnabled());
                                 }
-                                $em->persist($entity2);
+                                if ($entity2->isEnabled()) {
+                                    foreach ($entity->getGroups() as $g) {
+                                        $entity2->addGroup($g);
+                                    }
+                                    $em->persist($entity2);
+                                }
+                                $imported[] = $email;
                             }
-                            $imported[] = $email;
                         }
                     }
                 }
