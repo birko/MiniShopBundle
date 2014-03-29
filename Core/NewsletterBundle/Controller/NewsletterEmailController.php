@@ -241,7 +241,7 @@ class NewsletterEmailController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $emails = $entity->getEmail();
-            $emails = explode(",", $emails);
+            $emails = preg_split('/([\s\,:;\/\(\)\[\]{}<>\r\n"])/', $emails, null, PREG_SPLIT_NO_EMPTY);
             $imported = array();
             if (!empty($emails)) {
                 foreach ($emails as $value) {
@@ -253,6 +253,8 @@ class NewsletterEmailController extends Controller
                                 $entity2 = new NewsletterEmail();
                                 $entity2->setEmail($email);
                                 $entity2->setEnabled($entity->isEnabled());
+                            }
+                            if ($entity2->isEnabled()) {
                                 foreach ($entity->getGroups() as $g) {
                                     $entity2->addGroup($g);
                                 }
