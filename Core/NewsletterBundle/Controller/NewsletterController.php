@@ -375,6 +375,10 @@ class NewsletterController extends Controller
         ));
         $title = $newsletter->getTitle();
         $sitetitle = $this->container->getParameter('site_title');
+        $per_message = $this->container->getParameter('newsletter.emails.per_message');
+        $i = 0;
+        $first = array();
+        $copy = array();
         foreach ($emails as $row) {
             $send = true;
             $email = ($isQuery) ? $row[0]: $row;
@@ -391,19 +395,49 @@ class NewsletterController extends Controller
             if ($send) {
                 $email = filter_var($email, FILTER_VALIDATE_EMAIL);
                 if ($email !== false) {
-                   try {
-                        $message = \Swift_Message::newInstance()
-                            ->setSubject($title)
-                            ->setFrom($demails['default'], $sitetitle)   //settings
-                            ->setTo(array($email)) //settings admin
-                            ->setBody($body, 'text/html')
-                            ->setContentType("text/html");
-                        $this->get('swiftmailer.mailer.newsletter_mailer')->send($message);
-                        $count++;
-                        $message = null;
-                    } catch (\Exception $ex) {
+                    $i ++;
+                    if($i == 1) {
+                        $first[]  = $email;
+                    } else {
+                        $copy[] = $email;
+                    }
+                    if ($i == $per_message) {
+                        try {
+                            $message = \Swift_Message::newInstance()
+                                ->setSubject($title)
+                                ->setFrom($demails['default'], $sitetitle)   //settings
+                                ->setTo($first)
+                                ->setBcc($copy)
+                                ->setBody($body, 'text/html')
+                                ->setContentType("text/html");
+                            $this->get('swiftmailer.mailer.newsletter_mailer')->send($message);
+                            $count++;
+                            $message = null;
+                        }
+                        catch (\Exception $ex) {
+                        }
+                        $i = 0;
+                        $first = array();
+                        $copy = array();
                     }
                 }
+            }
+        }
+        
+        if (!empty($first)) {
+            try {
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($title)
+                    ->setFrom($demails['default'], $sitetitle)   //settings
+                    ->setTo($first)
+                    ->setBcc($copy)
+                    ->setBody($body, 'text/html')
+                    ->setContentType("text/html");
+                $this->get('swiftmailer.mailer.newsletter_mailer')->send($message);
+                $count++;
+                $message = null;
+            }
+            catch (\Exception $ex) {
             }
         }
 

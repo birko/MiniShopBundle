@@ -25,6 +25,9 @@ class CoreNewsletterExtension extends Extension
         $nws = ($container->hasParameter('minishop')) ? $container->getParameter('minishop') : array();
         $nws['newsletter'] = true;
         $container->setParameter('minishop', $nws);
+        if (isset($config['emails_per_message'])) {
+            $container->setParameter('newsletter.emails.per_message', $config['emails_per_message']);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

@@ -18,7 +18,10 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('core_newsletter');
+        $rootNode = $treeBuilder->root('core_newsletter')
+            ->children()
+                ->scalarNode('emails_per_message')->defaultValue(2)->end()
+            ->end();
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
