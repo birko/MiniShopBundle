@@ -6,7 +6,7 @@ class VideoType
 {
     const FILE      = 0;
     const YOUTUBE   = 1;
-    const VIMEO   = 1;
+    const VIMEO   = 2;
 
     public static function getTypes()
     {
