@@ -377,7 +377,6 @@ class NewsletterController extends Controller
         $sitetitle = $this->container->getParameter('site_title');
         $per_message = $this->container->getParameter('newsletter.emails.per_message');
         $i = 0;
-        $first = array();
         $copy = array();
         foreach ($emails as $row) {
             $send = true;
@@ -396,17 +395,12 @@ class NewsletterController extends Controller
                 $email = filter_var($email, FILTER_VALIDATE_EMAIL);
                 if ($email !== false) {
                     $i ++;
-                    if($i == 1) {
-                        $first[]  = $email;
-                    } else {
-                        $copy[] = $email;
-                    }
+                    $copy[] = $email;
                     if ($i == $per_message) {
                         try {
                             $message = \Swift_Message::newInstance()
                                 ->setSubject($title)
                                 ->setFrom($demails['default'], $sitetitle)   //settings
-                                ->setTo($first)
                                 ->setBcc($copy)
                                 ->setBody($body, 'text/html')
                                 ->setContentType("text/html");
@@ -417,19 +411,17 @@ class NewsletterController extends Controller
                         catch (\Exception $ex) {
                         }
                         $i = 0;
-                        $first = array();
                         $copy = array();
                     }
                 }
             }
         }
         
-        if (!empty($first)) {
+        if (!empty($copy)) {
             try {
                 $message = \Swift_Message::newInstance()
                     ->setSubject($title)
                     ->setFrom($demails['default'], $sitetitle)   //settings
-                    ->setTo($first)
                     ->setBcc($copy)
                     ->setBody($body, 'text/html')
                     ->setContentType("text/html");
