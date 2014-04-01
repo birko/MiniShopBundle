@@ -215,7 +215,7 @@ class Cart implements \Serializable
             }
         }
         if (!empty($this->payment)) {
-            $price += $this->payment->getPrice();
+            $price += $this->payment->getPriceVAT();
         }
         if (!empty($this->shipping)) {
             $price += $this->shipping->getPriceVAT();
