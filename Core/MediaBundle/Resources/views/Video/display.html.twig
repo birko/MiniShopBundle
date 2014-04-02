@@ -1,15 +1,15 @@
 {% if video.videoType == 1 %} {# youtube #}
 	{% if link_path is not empty %}
-	<a href="http://www.youtube.com/watch?v={{video.source}}">
+	<a href="http://www.youtube.com/watch?v={{video.source}}" class="thumbnail"{% if gallery is not empty%}  data-fancybox-group="{{gallery}}"{% endif %}>
 		<img src="//i{{video.id % 4 + 1 }}.ytimg.com/vi/{{video.source}}/mqdefault.jpg"  alt ="{{ video.title }}" class="img-responsive"/>
 	</a>
 	{% elseif link_path is empty %}
-	<iframe src="//www.youtube.com/embed/{{video.source}}" frameborder="0" allowfullscreen></iframe>
+	<iframe src="//www.youtube.com/embed/{{video.source}}"{% if gallery is not empty%}  data-fancybox-group="{{gallery}}"{% endif %} frameborder="0" allowfullscreen></iframe>
 	{% endif %}
 	{% elseif video.videoType == 2 %} {# vimeo #}
 	{% if link_path is not empty %}
-	<a href="http://www.vime.com/{{video.source}}">
-		<img src="{{ data['thumbnail_medium']}}" alt="{{data['title']}}" class="img-responsive"/>
+	<a href="http://www.vime.com/{{video.source}}" class="thumbnail"{% if gallery is not empty%}  data-fancybox-group="{{gallery}}"{% endif %}>
+		<img src="{{ data['thumbnail_medium']}}"{% if gallery is not empty%}  data-fancybox-group="{{gallery}}"{% endif %} alt="{{data['title']}}" class="img-responsive"/>
 	</a>
 	{% elseif link_path is empty %}
 	<iframe src="//player.vimeo.com/video/{{video.source}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
