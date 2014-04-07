@@ -5,7 +5,7 @@ namespace Site\MarketingBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
-class MarketingSiteController extends Controller
+class MarketingController extends Controller
 {
 
     public function googleAnalyticsAction()
