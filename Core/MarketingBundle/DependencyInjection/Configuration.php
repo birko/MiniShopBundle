@@ -18,7 +18,15 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('core_marketing');
+        $rootNode = $treeBuilder->root('core_marketing')
+            ->children()
+                ->arrayNode('google')
+                        ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode("analytics")->defaultNull()->end()
+                        ->end()
+                    ->end()
+            ->end();
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

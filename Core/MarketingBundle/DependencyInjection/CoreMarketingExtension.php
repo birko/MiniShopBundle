@@ -25,6 +25,10 @@ class CoreMarketingExtension extends Extension
         $nws = ($container->hasParameter('minishop')) ? $container->getParameter('minishop') : array();
         $nws['marketing'] = true;
         $container->setParameter('minishop', $nws);
+        
+        if (!empty($config['google'])) {
+            $container->setParameter('marketing.google', $config['google']);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
