@@ -398,6 +398,6 @@ class CheckoutController extends ShopController
         $cart->clearItems();
         $this->setCart($cart);
         // TODO: payment methods
-        return $this->render('SiteShopBundle:Checkout:order.html.twig');
+        return $this->render('SiteShopBundle:Checkout:order.html.twig', array('order' => $order));
     }
 }

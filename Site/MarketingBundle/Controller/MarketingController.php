@@ -17,7 +17,7 @@ class MarketingController extends Controller
         ));
     }
     
-    public function facebookPixelAction($order)
+    public function facebookPixelAction($order = null)
     {
         $config = $this->container->getParameter('marketing.facebook');
         
