@@ -29,6 +29,10 @@ class CoreMarketingExtension extends Extension
         if (!empty($config['google'])) {
             $container->setParameter('marketing.google', $config['google']);
         }
+        
+        if (!empty($config['facebook'])) {
+            $container->setParameter('marketing.facebook', $config['facebook']);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

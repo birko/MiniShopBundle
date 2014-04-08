@@ -21,11 +21,17 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('core_marketing')
             ->children()
                 ->arrayNode('google')
-                        ->addDefaultsIfNotSet()
-                        ->children()
-                            ->scalarNode("analytics")->defaultNull()->end()
-                        ->end()
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode("analytics")->defaultNull()->end()
                     ->end()
+                ->end()
+                ->arrayNode('facebook')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode("pixel")->defaultNull()->end()
+                    ->end()
+                ->end()
             ->end();
 
         // Here you should define the parameters that are allowed to

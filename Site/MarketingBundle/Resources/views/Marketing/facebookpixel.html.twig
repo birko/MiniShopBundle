@@ -1,0 +1,17 @@
+{% if facebook.pixel is not empty  and order is not empty %}
+<!-- Facebook Conversion Code for Nakup -->
+<script type="text/javascript">
+var fb_param = {};
+fb_param.pixel_id = '{{facebook.pixel}}';
+fb_param.value = '{{order.priceVAT| number_format(2)}}';
+fb_param.currency = 'EUR';
+(function(){
+  var fpw = document.createElement('script');
+  fpw.async = true;
+  fpw.src = '//connect.facebook.net/en_US/fp.js';
+  var ref = document.getElementsByTagName('script')[0];
+  ref.parentNode.insertBefore(fpw, ref);
+})();
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id={{facebook.pixel}}&amp;value={{order.priceVAT}}&amp;currency=EUR" /></noscript>
+{% endif %}

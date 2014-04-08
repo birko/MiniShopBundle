@@ -16,4 +16,14 @@ class MarketingController extends Controller
             'google' => $config,
         ));
     }
+    
+    public function facebookPixelAction($order)
+    {
+        $config = $this->container->getParameter('marketing.facebook');
+        
+        return $this->render("SiteMarketingBundle:Marketing:facebookpixel.html.twig", array(
+            'facebook' => $config,
+            'order' => $order
+        ));
+    }
 }
