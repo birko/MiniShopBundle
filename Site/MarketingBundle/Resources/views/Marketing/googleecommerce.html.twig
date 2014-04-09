@@ -1,0 +1,31 @@
+{% if google.analytics is not empty  and order is not empty %}
+<script>
+	ga('require', 'ecommerce', 'ecommerce.js');
+	ga('ecommerce:addTransaction', {
+	  'id': '{{order.id}}',
+	  'affiliation': '{{site_title}}',
+	  'revenue': '{{order.priceVAT}}',
+	  'shipping': '{{order.shipping.priceVAT}}',
+	  'tax': '{{order.priceVAT - order.price}}',
+	  'currency': 'EUR'  
+	});
+	{% for item in order.items %}
+	{% if item.payment is empty and item.shipping is empty %}
+	ga('ecommerce:addItem', {
+	  'id': '{{order.id}}', 
+	  'name': '{{item.name}}',
+	  {% if item.product is not empty %}
+	  'sku': '{{item.product.id}}',
+	  {% if  item.product.productCategories | length > 0 %}
+	  'category': '{{item.product.productCategories.0.category.title}}',
+	  {% endif %}
+	  {% endif %}
+	  'price': 'item.priceVAT',
+	  'quantity': '{{item.amount}}',
+	  'currency': 'EUR'  
+	});
+	{% endif %}
+	{% endfor %}
+	ga('ecommerce:send');
+</script>
+{% endif %}

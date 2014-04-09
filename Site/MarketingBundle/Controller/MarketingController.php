@@ -17,6 +17,16 @@ class MarketingController extends Controller
         ));
     }
     
+    public function googleEcommerceAction($order = null)
+    {
+        $config = $this->container->getParameter('marketing.google');
+        
+        return $this->render("SiteMarketingBundle:Marketing:googleecommerce.html.twig", array(
+            'google' => $config,
+            'order' => $order
+        ));
+    }
+    
     public function facebookPixelAction($order = null)
     {
         $config = $this->container->getParameter('marketing.facebook');
