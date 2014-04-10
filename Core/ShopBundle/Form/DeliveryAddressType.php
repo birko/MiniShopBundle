@@ -10,7 +10,7 @@ class DeliveryAddressType extends BaseAddressType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('email', 'text', array(
+        $builder->add('email', 'email', array(
                 'required' => isset($options['requiredFields']['email']) ? $options['requiredFields']['email'] : true,
                 'constraints' => array(
                     new Constraints\NotBlank(),
