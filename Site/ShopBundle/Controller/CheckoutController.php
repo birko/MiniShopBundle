@@ -233,6 +233,9 @@ class CheckoutController extends ShopController
         $form = $this->createForm(new CartOrderType(), $cart);
         $form->bind($this->getRequest());
         $form->isValid();
+        if (!$cart->getPaymentAddress()){
+            return $this->redirect($this->generateUrl('cart'));
+        }
         if ($cart->isSameAddress()) {
             $cart->setShippingAddress($cart->getPaymentAddress());
         }
