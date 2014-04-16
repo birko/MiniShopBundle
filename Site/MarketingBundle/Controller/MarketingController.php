@@ -27,11 +27,20 @@ class MarketingController extends Controller
         ));
     }
     
-    public function facebookPixelAction($order = null)
+    public function facebookRemarketingAction()
     {
         $config = $this->container->getParameter('marketing.facebook');
         
-        return $this->render("SiteMarketingBundle:Marketing:facebookpixel.html.twig", array(
+        return $this->render("SiteMarketingBundle:Marketing:facebookremarketing.html.twig", array(
+            'facebook' => $config,
+        ));
+    }
+    
+    public function facebookConversionAction($order = null)
+    {
+        $config = $this->container->getParameter('marketing.facebook');
+        
+        return $this->render("SiteMarketingBundle:Marketing:facebookconversion.html.twig", array(
             'facebook' => $config,
             'order' => $order
         ));

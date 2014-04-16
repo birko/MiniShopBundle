@@ -29,7 +29,8 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('facebook')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode("pixel")->defaultNull()->end()
+                        ->scalarNode("conversion")->defaultNull()->end()
+                        ->scalarNode("remarketing")->defaultNull()->end()
                     ->end()
                 ->end()
             ->end();
