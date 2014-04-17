@@ -60,7 +60,7 @@
                 {% for media in product.media %}
 				{% if media.media and loop.index0 > 0 %}
                 <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="image">
+                    <div class="{{media.media.type}}">
                         {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media.media, 'dir': 'thumb', 'link_path':'large', 'gallery': 'product-' ~ product.id} %}
                     </div>
                 </div>
