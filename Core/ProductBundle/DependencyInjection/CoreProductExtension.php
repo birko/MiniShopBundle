@@ -32,6 +32,9 @@ class CoreProductExtension extends Extension
         if (isset($config['tags'])) {
             $container->setParameter('product.tags', $config['tags']);
         }
+        if (isset($config['prices'])) {
+            $container->setParameter('product.prices', $config['prices']);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

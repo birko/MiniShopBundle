@@ -9,6 +9,7 @@ use Gedmo\Translatable\Translatable;
 use Core\CommonBundle\Entity\TranslateEntity;
 use Core\CategoryBundle\Entity\Category;
 use Core\MediaBundle\Entity\Media;
+use Core\UserBundle\Entity\PriceGroup;
 
 /**
  * Core\ProductBundle\Entity\Product
@@ -72,7 +73,7 @@ class Product extends TranslateEntity
      protected $productCategories;
     /**
      * @ORM\OneToMany(targetEntity="Core\ProductBundle\Entity\Price", mappedBy="product")
-     * @ORM\OrderBy({ "priceVAT" = "ASC"})
+     * @ORM\OrderBy({ "priceAmount" = "ASC",  "priceVAT" = "ASC"})
      */
     private $prices;
 
@@ -414,7 +415,7 @@ class Product extends TranslateEntity
         return $this->createdAt;
     }
 
-    public function getPricesByPriceGroup($priceGroup = null, $type =null)
+    public function getPricesByPriceGroup(PriceGroup $priceGroup = null, $type =null)
     {
         if ($priceGroup !== null) {
             return $this->getPrices($type)->filter(
@@ -427,20 +428,37 @@ class Product extends TranslateEntity
         }
     }
 
-    public function getMinimalPrice($priceGroup = null, $type = null)
+    public function getMinimalPrice(PriceGroup $priceGroup = null, $type = null)
     {
-        $price = null;
         if ($this->getPrices()!== null && $this->getPrices()->count() > 0) {
-            $price = $this->getPricesByPriceGroup($priceGroup, $type)->first();
-            if ($price === null) {
-                $price = $this->getPrices($type)->first();
+            $minprice = $this->getPricesByPriceGroup($priceGroup, $type)->first();
+            if ($minprice === null) {
+                $minprice = $this->getPrices($type)->first();
+            }
+            if ($minprice){
+                $price = new Price();
+                $price->setPriceGroup($priceGroup);
+                $price->setType($minprice->getType());
+                $price->setPriceAmount($minprice->getPriceAmount());
+                $price->setVAT($minprice->getVat());
+                
+                if($priceGroup){
+                    $price->setPrice($minprice->getPrice() * $priceGroup->getRate());
+                    $price->setPriceVAT($minprice->getPriceVAT() * $priceGroup->getRate());
+                    $price->recalculate();
+                } else{
+                    $price->setPrice($minprice->getPrice());
+                    $price->setPriceVAT($minprice->getPriceVAT());
+                }
+                
+                
+                $price->setProduct($this);
+                
+                return $price;
             }
         }
-        if ($price === null) {
-            $price = new Price();
-        }
-
-        return $price;
+        return null;
+        
     }
 
      /**

@@ -97,7 +97,7 @@ class Cart implements \Serializable
     {
         if ($item->getAmount() > 0) {
             $cartItem = $this->findItem($item);
-            if ($cartItem) {
+            if ($cartItem && $cartItem->isChangeAmount()) {
                 $cartItem->addAmount($item->getAmount());
                 $cartItem->setPrice($item->getPrice());
                 $cartItem->setPriceVAT($item->getPriceVAT());

@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
                                 ->children()
                                     ->variableNode("tags")->defaultValue(array())->end()
                                     ->variableNode("images")->defaultValue(array('thumb', 'large', 'small'))->end()
+                                    ->variableNode("prices")->defaultValue(array('normal'))->end()
                                 ->end();
 
         // Here you should define the parameters that are allowed to

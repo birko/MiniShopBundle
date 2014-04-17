@@ -60,7 +60,8 @@ class PriceController extends Controller
     public function newAction($product, $category = null)
     {
         $entity = new Price();
-        $form   = $this->createForm(new PriceType(), $entity);
+        $types = $this->container->getParameter('product.prices'); 
+        $form   = $this->createForm(new PriceType(), $entity, array('types' => $types));
 
         return $this->render('CoreProductBundle:Price:new.html.twig', array(
             'entity' => $entity,
@@ -78,7 +79,8 @@ class PriceController extends Controller
     {
         $entity  = new Price();
         $request = $this->getRequest();
-        $form    = $this->createForm(new PriceType(), $entity);
+        $types = $this->container->getParameter('product.prices'); 
+        $form   = $this->createForm(new PriceType(), $entity, array('types' => $types));
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -120,7 +122,8 @@ class PriceController extends Controller
             throw $this->createNotFoundException('Unable to find Price entity.');
         }
 
-        $editForm = $this->createForm(new PriceType(), $entity);
+        $types = $this->container->getParameter('product.prices'); 
+        $editForm = $this->createForm(new PriceType(), $entity, array('types' => $types));
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('CoreProductBundle:Price:edit.html.twig', array(
@@ -146,7 +149,8 @@ class PriceController extends Controller
             throw $this->createNotFoundException('Unable to find Price entity.');
         }
 
-        $editForm   = $this->createForm(new PriceType(), $entity);
+        $types = $this->container->getParameter('product.prices'); 
+        $editForm = $this->createForm(new PriceType(), $entity, array('types' => $types));
         $deleteForm = $this->createDeleteForm($id);
 
         $request = $this->getRequest();

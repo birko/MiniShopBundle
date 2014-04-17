@@ -18,6 +18,10 @@
                 <source>VAT edit</source>
                 <target>Úprava DPH</target>
             </trans-unit>
+            <trans-unit id="5">
+                <source>with VAT</source>
+                <target>s DPH</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

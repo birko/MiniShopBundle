@@ -31,7 +31,7 @@ class Price extends AbstractPrice
 
     /**
      * @ORM\ManyToOne(targetEntity="Core\ProductBundle\Entity\Product", inversedBy="prices")
-     * @ORM\JoinColumn(name="price_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $product;
 

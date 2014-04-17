@@ -11,12 +11,14 @@
             <a href="{{path('product_site', {'slug': entity.slug})}}">{{entity.title}}</a>
         </h3>
         <div class="row">
-            {% set price  = entity.getMinimalPrice(pricegroup) %}
+            {% set price  = entity.getMinimalPrice(pricegroup, 'normal') %}
             <div class="price pull-right col-sm-6 col-md-6 col-lg-6">
               {% if price is not empty %}{{price.priceVAT |number_format(2)}}{% else %}0{% endif %} €
             </div>
             <div class="price pull-left col-sm-6 col-md-6 col-lg-6">
-                {% include "SiteShopBundle:Cart:addsmall.html.twig" with {'productId': entity.id} %}
+                {% if price is not empty %}
+                {% include "SiteShopBundle:Cart:addsmall.html.twig" with {'productId': entity.id, 'type': 'normal'} %}
+                {% endif %}
             </div>
         </div>
     </div>

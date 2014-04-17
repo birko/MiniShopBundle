@@ -94,8 +94,10 @@ class CartController extends ShopController
         $entity->setAmount($amount);
         $entity->setName($product->getTitle());
         $entity->setProductId($product->getId());
-        $entity->setPrice($price->getPrice());
-        $entity->setPriceVAT($price->getPriceVAT());
+        if ($price) {
+            $entity->setPrice($price->getPrice());
+            $entity->setPriceVAT($price->getPriceVAT());
+        }
         $options = $em->getRepository('CoreProductBundle:ProductOption')->getOptionsNamesByProduct($product->getId());
         $form = $this->createForm(new CartItemAddType(), $entity, array(
             'product'=>$product->getId(),
@@ -107,10 +109,11 @@ class CartController extends ShopController
             'entity' => $entity,
             'form' => $form->createView(),
             'options' => $options,
+            'type' => ($price) ? $price->getType(): null,
         ));
     }
 
-    public function addItemAction($product)
+    public function addItemAction($product, $type = null)
     {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
@@ -118,13 +121,15 @@ class CartController extends ShopController
         if (!($product instanceof Product)) {
             $product = $em->getRepository('CoreProductBundle:Product')->find($product);
         }
-        $price = $product->getMinimalPrice($pricegroup);
+        $price = $product->getMinimalPrice($pricegroup, $type);
         $entity = new CartItem();
         $entity->setAmount(1);
         $entity->setName($product->getTitle());
         $entity->setProductId($product->getId());
-        $entity->setPrice($price->getPrice());
-        $entity->setPriceVAT($price->getPriceVAT());
+        if ($price) {
+            $entity->setPrice($price->getPrice());
+            $entity->setPriceVAT($price->getPriceVAT());
+        }
         $options = $em->getRepository('CoreProductBundle:ProductOption')->getOptionsNamesByProduct($product->getId());
         $form = $this->createForm(new CartItemAddType(), $entity, array(
             'product'=>$product->getId(),

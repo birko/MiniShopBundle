@@ -12,8 +12,8 @@ cart_clear:
     defaults: { _controller: "SiteShopBundle:Cart:clear", _locale: %locale% }
 
 cart_add:
-    pattern:  /addItem/{product}
-    defaults: { _controller: "SiteShopBundle:Cart:addItem", _locale: %locale% }
+    pattern:  /addItem/{product}/{type}
+    defaults: { _controller: "SiteShopBundle:Cart:addItem", _locale: %locale%, type: ~ }
     requirements: { _method: post }
 
 cart_info:

@@ -29,11 +29,11 @@
             </div>
 			{% if 'price' in minishopkeys %}
             <div class="row">
-            {% set price  = product.getMinimalPrice(pricegroup) %}
+            {% set price  = product.getMinimalPrice(pricegroup, 'normal') %}
             {% if price is not empty %}
             <div class="price pull-left lead col-sm-5 col-md-5 col-lg-5">
                 <strong>{{price.priceVAT |number_format(2)}} €</strong>
-                <small>vrátane DPH</small>
+                <small>{% trans %}with VAT{% endtrans %}</small>
                 <span class="stock">
                 {% include "SiteProductBundle:Stock:info.html.twig" with {'entity': product.stock }%}
                 </span>
@@ -41,9 +41,9 @@
 			{% if 'shop' in minishopkeys %}
             <div class="cart pull-right col-sm-7 col-md-7 col-lg-7">
                 {% render controller("SiteShopBundle:Cart:add", {'product': product, 'price':  price }) %}
-				{% if 'marketing' in minishopkeys %}
-				{% render controller ("SiteShopBundle:Groupon:form", {'product': product.id}) %}
-				{% endif %}
+                {% if 'marketing' in minishopkeys %}
+                {% render controller ("SiteShopBundle:Groupon:form", {'product': product.id}) %}
+                {% endif %}
             </div>
             {% endif %}
 			{% endif %}

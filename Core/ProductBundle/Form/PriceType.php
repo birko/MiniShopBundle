@@ -14,10 +14,7 @@ class PriceType extends AbstractPriceType
 
         $builder
             ->add('type', 'choice', array(
-                'choices' => array(
-                    'normal' => "Normal",
-                    'special' => "Special",
-                ),
+                'choices' => array_combine($options['types'],$options['types']) ,
                 'required'    => true,
                 'empty_value' => 'Choose price type',
                 'empty_data'  => null));
@@ -50,6 +47,7 @@ class PriceType extends AbstractPriceType
         parent::setDefaultOptions($resolver);
         $resolver->setDefaults(array(
             'data_class' => 'Core\ProductBundle\Entity\Price',
+            'types' => array(),
         ));
     }
 }

@@ -46,8 +46,8 @@ class CartItem implements \Serializable
     {
         $this->amount = $array[0];
         $this->productID = $array[1];
-        $this->price = $array[2];
-        $this->priceVAT = $array[3];
+        $this->price = (float)$array[2];
+        $this->priceVAT = (float)$array[3];
         $this->name = $array[4];
         $this->description = $array[5];
         $this->setOptions($array[6]);
@@ -93,7 +93,7 @@ class CartItem implements \Serializable
 
     public function setProductId($productid)
     {
-        $this->productID = $productid;
+        $this->productID = ($productid) ? (int)$productid : null;
     }
     public function getProductId()
     {
@@ -102,7 +102,7 @@ class CartItem implements \Serializable
 
     public function setPrice($price)
     {
-        $this->price = $price;
+        $this->price = (float)$price;
     }
 
     public function getPrice()
@@ -112,7 +112,7 @@ class CartItem implements \Serializable
 
     public function setPriceVAT($pricevat)
     {
-        $this->priceVAT = $pricevat;
+        $this->priceVAT = (float)$pricevat;
     }
 
     public function getPriceVAT()
@@ -196,10 +196,12 @@ class CartItem implements \Serializable
 
     public function compareData($entity)
     {
-        if ($entity->getProductId() !== $this->getProductId()) {
+        if ($entity->getProductId() != $this->getProductId()) {
             return false;
         }
-
+        if (round($entity->getPriceVAT(), 6) != round($this->getPriceVAT(), 6)) {
+            return false;
+        }
         if ($this->getOptions()->count() == $entity->getOptions()->count()) {
             if ($this->getOptions()->count() > 0) {
                 foreach ($entity->getOptions() as $key => $option) {

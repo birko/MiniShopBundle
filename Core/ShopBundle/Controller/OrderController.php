@@ -370,7 +370,7 @@ class OrderController extends BaseOrderController
                 case "csv":
                 default:
                     {
-                        $select =array();
+                        $select = array();
                         foreach ($definition['fields'] as $key => $field) {
                             foreach ($field['value'] as $key => $val) {
                                 $select[]= $field['alias'].".".$val. " as " . $field['alias'].$val;
