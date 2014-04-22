@@ -3,7 +3,24 @@ body { padding-top:70px;}
 .gallery {
     .image,
     .video {
+        position: relative;
         height: 120px;
         img {max-height:120px; width: auto;}
+        &:after {
+            position: absolute; 
+            top: 0px; 
+            left: 0px; 
+            right: 0px;
+            bottom: 0px;
+            width:100%;
+            height: 100%;
+            texg-align: center;
+        }
+    }
+    .image:after{
+        content: '<span class="glyphicon glyphicon-picture"></span>'
+    }
+    .video:after{
+         content: '<span class="glyphicon glyphicon-facetime-video"></span>'
     }
 }

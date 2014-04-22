@@ -17,28 +17,26 @@
             <h1>
                 {{product.title}}
             </h1>
-			{% if 'vendor' in minishopkeys %}
+            {% if 'vendor' in minishopkeys %}
             {% if product.vendor %}
             <h5>
                 {% trans %}Vendor{% endtrans %}: {% include "SiteVendorBundle:Vendor:info.html.twig" with {'entity': product.vendor} %}
             </h5>
-			{% endif %}
+            {% endif %}
             {% endif %}
             <div id="shortdescription">
                 {{product.shortDescription|raw}}
             </div>
-			{% if 'price' in minishopkeys %}
+            {% if 'price' in minishopkeys %}
             <div class="row">
             {% set price  = product.getMinimalPrice(pricegroup, 'normal') %}
             {% if price is not empty %}
             <div class="price pull-left lead col-sm-5 col-md-5 col-lg-5">
                 <strong>{{price.priceVAT |number_format(2)}} €</strong>
                 <small>{% trans %}with VAT{% endtrans %}</small>
-                <span class="stock">
                 {% include "SiteProductBundle:Stock:info.html.twig" with {'entity': product.stock }%}
-                </span>
             </div>
-			{% if 'shop' in minishopkeys %}
+            {% if 'shop' in minishopkeys %}
             <div class="cart pull-right col-sm-7 col-md-7 col-lg-7">
                 {% render controller("SiteShopBundle:Cart:add", {'product': product, 'price':  price }) %}
                 {% if 'marketing' in minishopkeys %}
@@ -46,8 +44,8 @@
                 {% endif %}
             </div>
             {% endif %}
-			{% endif %}
-			{% endif %}
+            {% endif %}
+            {% endif %}
             </div>
         </div>
     </div>
@@ -58,13 +56,13 @@
         <div class="product-gallery gallery col-sm-4 col-md-4 col-lg-4">
             <div class="row">
                 {% for media in product.media %}
-				{% if media.media and loop.index0 > 0 %}
+                {% if media.media and loop.index0 > 0 %}
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="{{media.media.type}}">
                         {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media.media, 'dir': 'thumb', 'link_path':'large', 'gallery': 'product-' ~ product.id} %}
                     </div>
                 </div>
-				{% endif %}
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
