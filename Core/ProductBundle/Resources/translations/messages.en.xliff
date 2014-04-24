@@ -146,6 +146,10 @@
                 <source>Product position edit</source>
                 <target>Product position edit</target>
             </trans-unit>
+            <trans-unit id="37">
+                <source>pc</source>
+                <target>pc</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

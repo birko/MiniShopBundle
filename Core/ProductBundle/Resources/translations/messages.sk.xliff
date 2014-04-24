@@ -146,6 +146,10 @@
                 <source>Product position edit</source>
                 <target>Úprava pozície produktu</target>
             </trans-unit>
+            <trans-unit id="37">
+                <source>pc</source>
+                <target>ks</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
