@@ -383,9 +383,15 @@ class Product extends TranslateEntity
      *
      * @return ArrayCollection
      */
-    public function getMedia()
+    public function getMedia($type = null)
     {
-        return $this->media;
+        if ($type !== null) {
+            return $this->getMedia()->filter(function ($entry) use ($type) {
+                return ($entry->getMedia()->getType() == $type);
+            });
+        } else {
+            return $this->media;
+        }
     }
 
     public function getProductMedia($mediaID)
