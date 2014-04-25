@@ -47,7 +47,7 @@
         </ul>
     </li>
 	{% endif %}
-	{% if 'marketing' in minishopkeys  or 'newsletter' in minishopkeys%}
+	{% if 'marketing' in minishopkeys  or ('newsletter' in minishopkeys and minishop['newsletter'])%}
     <li class="list-group-item">
         {% trans %}Marketing{% endtrans %}
 		{% if 'marketing' in minishopkeys %}
@@ -56,7 +56,7 @@
             <li><a href="{{path('message', {'type': 'contactmulti'})}}">{% trans %}Contact{% endtrans %}</a></li>
         </ul>
 		{% endif %}
-		{% if 'newsletter' in minishopkeys %}
+		{% if 'newsletter' in minishopkeys and minishop['newsletter'] %}
         <ul class="nav">
             <li><a href="{{path('newsletter')}}">{% trans %}Newsletter{% endtrans %}</a></li>
             <li><a href="{{path('newsletter_group')}}">{% trans %}Newsletter groups{% endtrans %}</a></li>

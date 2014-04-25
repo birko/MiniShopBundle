@@ -28,6 +28,12 @@ class CoreNewsletterExtension extends Extension
         if (isset($config['emails_per_message'])) {
             $container->setParameter('newsletter.emails.per_message', $config['emails_per_message']);
         }
+        if (isset($config['sendy'])) {
+            $container->setParameter('newsletter.sendy', $config['sendy']);
+            if (!empty($config['sendy']['api_key'])) {
+                $nws['newsletter'] = false;
+            }
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

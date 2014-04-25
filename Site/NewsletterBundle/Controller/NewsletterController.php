@@ -31,18 +31,25 @@ class NewsletterController extends Controller
             $form->isValid();
             $email = filter_var($entity->getEmail(), FILTER_VALIDATE_EMAIL);
             if ($email !== false) {
-                $em = $this->getDoctrine()->getManager();
-                $entity2 = $em->getRepository('CoreNewsletterBundle:NewsletterEmail')->getEmail($email);
-                if (!$entity2) {
-                    $entity->setEnabled(true);
-                    $em->persist($entity);
-                    $result = true;
+                $sendy = $this->container->getParameter('newsletter.sendy');
+                if (!empty($sendy['api_key'])) {
+                    $sendy = new \SendyPHP\SendyPHP($sendy);
+                    $status = $sendy->subscribe(array( "email" => $email ));
+                    $result = $status['status'];
                 } else {
-                    $entity2->setEnabled(true);
-                    $em->persist($entity2);
-                    $result = true;
+                    $em = $this->getDoctrine()->getManager();
+                    $entity2 = $em->getRepository('CoreNewsletterBundle:NewsletterEmail')->getEmail($email);
+                    if (!$entity2) {
+                        $entity->setEnabled(true);
+                        $em->persist($entity);
+                        $result = true;
+                    } else {
+                        $entity2->setEnabled(true);
+                        $em->persist($entity2);
+                        $result = true;
+                    }
+                    $em->flush();
                 }
-                $em->flush();
             }
         }
         $target= $request->get('_target', null);
@@ -67,12 +74,18 @@ class NewsletterController extends Controller
             $em = $this->getDoctrine()->getManager();
             $email = filter_var($entity->getEmail(), FILTER_VALIDATE_EMAIL);
             if ($email !== false) {
-                $entity2 = $em->getRepository('CoreNewsletterBundle:NewsletterEmail')->getEmail($email);
-                if ($entity2) {
-                    $entity2->setEnabled(false);
-                    $em->persist($entity2);
-                    $em->flush();
-                    $result = true;
+                if (!empty($sendy['api_key'])) {
+                    $sendy = new \SendyPHP\SendyPHP($sendy);
+                    $status = $sendy->unsubscribe($email);
+                    $result = $status['status'];
+                } else {
+                    $entity2 = $em->getRepository('CoreNewsletterBundle:NewsletterEmail')->getEmail($email);
+                    if ($entity2) {
+                        $entity2->setEnabled(false);
+                        $em->persist($entity2);
+                        $em->flush();
+                        $result = true;
+                    }
                 }
             }
         }

@@ -21,6 +21,14 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('core_newsletter')
             ->children()
                 ->scalarNode('emails_per_message')->defaultValue(2)->end()
+                ->arrayNode('sendy')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode("installation_url")->defaultNull()->end()
+                        ->scalarNode("list_id")->defaultNull()->end()
+                        ->scalarNode("api_key")->defaultNull()->end()
+                    ->end()
+                ->end()
             ->end();
 
         // Here you should define the parameters that are allowed to
