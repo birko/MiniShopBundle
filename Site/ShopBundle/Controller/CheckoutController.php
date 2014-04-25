@@ -320,6 +320,10 @@ class CheckoutController extends ShopController
                 $productEntity = $em->getRepository('CoreProductBundle:Product')->find($item->getProductId());
                 if ($productEntity !== null) {
                     $orderItem->setProduct($productEntity);
+                    if($productEntity->getStock() && $productEntity->getStock()->getAmount() > 0) {
+                        $productEntity->getStock()->setAmount($productEntity->getStock()->getAmount() - $item->getAmount());
+                        $em->persist($productEntity->getStock());
+                    }
                 }
                 // stock options
                 $options = $item->getOptions();
@@ -328,6 +332,11 @@ class CheckoutController extends ShopController
                     foreach ($item->getOptions() as $option) {
                         if ($option) {
                             $options[] = "{$option->getName()->getName()}: {$option->getValue()->getValue()}";
+                            $optionEntity = $em->getRepository('CoreProductBundle:ProductOption')->find($option->getId());
+                            if ($optionEntity && $optionEntity->getAmount() > 0) {
+                                $optionEntity->setAmount($optionEntity->getAmount() - $item->getAmount());
+                                $em->persist($optionEntity);
+                            }
                         }
                     }
                     $orderItem->setOptions(implode(', ', $options));

@@ -123,7 +123,7 @@ class ProductOption implements \Serializable
      */
     public function setAmount($amount)
     {
-        $this->amount = $amount;
+        $this->amount = ($amount > 0) ? $amount : 0;
     }
 
     /**

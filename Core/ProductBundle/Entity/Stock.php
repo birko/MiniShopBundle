@@ -62,7 +62,7 @@ class Stock extends TranslateEntity
      */
     public function setAmount($amount)
     {
-        $this->amount = $amount;
+        $this->amount = ($amount > 0) ? $amount : 0;
     }
 
     /**
