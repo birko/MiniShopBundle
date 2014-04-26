@@ -147,11 +147,11 @@ class ProductRepository extends EntityRepository
                 $i = 0;
                 foreach ($words as $word) {
                     $where = $queryBuilder->expr()->orX(
-                        $queryBuilder->expr()->like("lower({$selector}.title)", ':word1'.$i),
-                        $queryBuilder->expr()->like("lower({$selector}.shortDescription)", ':word2'.$i),
-                        $queryBuilder->expr()->like("lower({$selector}.longDescription)", ':word3'.$i),
-                        $queryBuilder->expr()->like("lower({$selector}.tags)", ':word4'.$i),
-                        $queryBuilder->expr()->like("lower(v.title)", ':word5'.$i)
+                        $queryBuilder->expr()->like("lower({$selector}.title)", 'lower(:word1'.$i.')'),
+                        $queryBuilder->expr()->like("lower({$selector}.shortDescription)", 'lower(:word2'.$i.')'),
+                        $queryBuilder->expr()->like("lower({$selector}.longDescription)", 'lower(:word3'.$i.')'),
+                        $queryBuilder->expr()->like("lower({$selector}.tags)", 'lower(:word4'.$i.')'),
+                        $queryBuilder->expr()->like("lower(v.title)", 'lower(:word5'.$i.')')
                     );
                     $queryBuilder->andWhere($where);
                     $queryBuilder->setParameter('word1'.$i, '%' . strtolower($word) . '%');

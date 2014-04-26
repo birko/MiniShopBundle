@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->variableNode('per_page')->defaultValue(12)->end()
                 ->booleanNode('recursive')->defaultTrue()->end()
+                ->booleanNode('show_disabled')->defaultTrue()->end()
             ->end();
 
         // Here you should define the parameters that are allowed to

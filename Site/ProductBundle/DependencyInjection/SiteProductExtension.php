@@ -27,6 +27,9 @@ class SiteProductExtension extends Extension
         if (isset($config['recursive'])) {
             $container->setParameter("site.product.recursive", $config['recursive']);
         }
+        if (isset($config['show_disabled'])) {
+            $container->setParameter("site.product.show_disabled", $config['show_disabled']);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

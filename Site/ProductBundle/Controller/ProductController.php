@@ -15,7 +15,7 @@ class ProductController extends ShopController
         $priceGroup = $this->getPriceGroup();
         $em = $this->getDoctrine()->getManager();
         $product  = $em->getRepository("CoreProductBundle:Product")->getBySlug($slug);
-        if (!$product) {
+        if (!$product || (!$product->isEnabled() && !$this->container->getParameter("site.product.show_disabled"))) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
         $options = array();
