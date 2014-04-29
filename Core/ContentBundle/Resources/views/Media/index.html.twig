@@ -7,11 +7,11 @@
         {% if content is not empty %}
         <tr>
             <td colspan="3">
-				<div class="btn-group  pull-right">
-					<a href="{{ path('content_media_new', {'category': category, 'content': content.id, 'type': 'image'}) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new image{% endtrans %}</a>
-					<a href="{{ path('content_media_new', {'category': category, 'content': content.id, 'type': 'video'}) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new video{% endtrans %}</a>
-				</div>
-			</td>
+                <div class="btn-group  pull-right">
+                    <a href="{{ path('content_media_new', {'category': category, 'content': content.id, 'type': 'image'}) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new image{% endtrans %}</a>
+                    <a href="{{ path('content_media_new', {'category': category, 'content': content.id, 'type': 'video'}) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new video{% endtrans %}</a>
+                </div>
+            </td>
         </tr>
         {% endif %}
         <tr>
@@ -26,17 +26,20 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-			<td class="col-sm-2 col-md-2 col-lg-2">
-				<div>
-					{% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity, 'dir': 'thumb', 'link_path': 'original', 'gallery': ''} %}
-				</div>
-			</td>
-            <td>{{ entity.title }}</td>
+            <td class="col-sm-2 col-md-2 col-lg-2">
+                <div>
+                    {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity, 'dir': 'thumb', 'link_path': 'original', 'gallery': ''} %}
+                </div>
+            </td>
+            <td>
+                {{ entity.title }}<br />
+                <strong>{% trans %}Source{% endtrans %}:</strong> {% include "CoreMediaBundle:Media:path.html.twig" with {'entity': entity, 'dir': 'original'} %}
+            </td>
             <td class="col-sm-3 col-md-3 col-lg-3">
                 <div class="btn-group">
                     <a href="{{ path('content_media_edit', { 'id': entity.id , 'category': category, 'content': content.id, 'type': entity.type}) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
                     <a href="{{ path('media_source', { 'id': entity.id, 'type': entity.type}) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Source{% endtrans %}</a>
-					<a href="{{ path('content_media_position', { 'id': entity.id, 'category': category, 'content': content.id }) }}" class="btn btn-default btn-xs">{{content.getContentMedia(entity.id).position}}</a>
+                    <a href="{{ path('content_media_position', { 'id': entity.id, 'category': category, 'content': content.id }) }}" class="btn btn-default btn-xs">{{content.getContentMedia(entity.id).position}}</a>
                     <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Move{% endtrans%} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ path('content_media_up', { 'id': entity.id, 'category': category, 'position': 1, 'content': content.id }) }}" class="move-up"><span class="glyphicon glyphicon-arrow-up"></span> {% trans %}Move up{% endtrans %}</a></li>
