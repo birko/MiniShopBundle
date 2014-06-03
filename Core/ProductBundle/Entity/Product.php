@@ -120,6 +120,7 @@ class Product extends TranslateEntity
 
     public function __construct()
     {
+        $this->setEnabled(true);
         $this->setCreatedAt(new \DateTime());
         $this->productCategories = new ArrayCollection();
         $this->prices = new ArrayCollection();

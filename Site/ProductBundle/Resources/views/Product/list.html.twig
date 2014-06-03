@@ -8,7 +8,7 @@
         </div>
         {{ knp_pagination_render(entities)}}
     </div>
-    <div class="">
+    <div class="row">
     {% for product in entities %}
     {% include 'SiteProductBundle:Product:item.html.twig' with {'entity': product} %}
     {% endfor %}

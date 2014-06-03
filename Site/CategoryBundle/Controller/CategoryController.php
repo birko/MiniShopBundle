@@ -83,7 +83,9 @@ class CategoryController extends Controller
             $controller = $this; // $this cannot be used
             $options = array(
                 'decorate' => true,
-                'rootOpen' => $controller->renderView("SiteCategoryBundle:Category:Tree/rootOpen.html.twig"),
+                'rootOpen' => function ($nodes) use ($controller) {
+                                    return $controller->renderView("SiteCategoryBundle:Category:Tree/rootOpen.html.twig", array("nodes" => $nodes));
+                                },
                 'rootClose' => $controller->renderView("SiteCategoryBundle:Category:Tree/rootClose.html.twig"),
                 'childOpen' =>  function ($node) use ($controller, $category) {
                                     $active = false;
