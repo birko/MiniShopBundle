@@ -205,7 +205,10 @@ class Image extends Media
         if (isset($values["watermark"]) && !empty($values["watermark"])) {
             $im = ImageManipulation::watermarkResource($im, $values["watermark"]);
         }
-
+        if (isset($values["unsharp"]) && $values["unsharp"]) {
+            $im = ImageManipulation::unsharpMaskResource($im, 1, 0, 0.05);
+        }
+        
         $im = ImageManipulation::saveResource($im, $this->getAbsolutePath($dir), $format, $quality);
         unset($im);
     }

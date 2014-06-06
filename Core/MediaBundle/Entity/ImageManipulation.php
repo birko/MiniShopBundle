@@ -37,7 +37,6 @@ class ImageManipulation
     public static function saveResource($imageResource, $path = null, $format="jpeg", $quality = 80)
     {
         if ($imageResource) {
-            $imageResource = self::unsharpMaskResource($imageResource, 1, 0, 0.05);
             if (extension_loaded('imagick')) {
                 $imageResource->setImageCompressionQuality($quality);
                 $imageResource->setImageFormat($format);

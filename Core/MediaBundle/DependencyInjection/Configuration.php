@@ -44,6 +44,7 @@ class Configuration implements ConfigurationInterface
                                 ->booleanNode('sepia')->defaultValue(false)->end()
                                 ->booleanNode('greyscale')->defaultValue(false)->end()
                                 ->booleanNode('enlarge')->defaultValue(false)->end()
+                                ->booleanNode('unsharp')->defaultValue(false)->end()
                                 ->scalarNode('watermark')->end()
                             ->end()
                         ->end()
