@@ -194,11 +194,11 @@ class Image extends Media
             $im = ImageManipulation::fillResource($im, $values["width"], $values["height"], $values["fill"]);
         }
 
-        if (isset($values["sepia"]) && !empty($values["sepia"])) {
+        if (isset($values["sepia"]) && $values["sepia"]) {
             $im = ImageManipulation::sepiaResource($im);
         }
 
-        if (isset($values["greyscale"]) && !empty($values["greyscale"])) {
+        if (isset($values["greyscale"]) && $values["greyscale"]) {
             $im = ImageManipulation::greyscaleResource($im);
         }
 
