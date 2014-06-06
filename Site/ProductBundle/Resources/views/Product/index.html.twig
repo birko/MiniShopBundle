@@ -50,30 +50,30 @@
         </div>
     </div>
     <hr />
-    <div class="info">
+    <div class="info row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-        {% if product.media is not empty %}
-        <div class="product-gallery gallery col-sm-4 col-md-4 col-lg-4">
-            <div class="row">
-                {% for media in product.media %}
-                {% if media.media and loop.index0 > 0 %}
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="{{media.media.type}}">
-                        {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media.media, 'dir': 'thumb', 'link_path':'large', 'gallery': 'product-' ~ product.id} %}
+            {% if product.media is not empty %}
+            <div class="product-gallery gallery col-sm-4 col-md-4 col-lg-4">
+                <div class="row">
+                    {% for media in product.media %}
+                    {% if media.media and loop.index0 > 0 %}
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        <div class="{{media.media.type}}">
+                            {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media.media, 'dir': 'thumb', 'link_path':'large', 'gallery': 'product-' ~ product.id} %}
+                        </div>
                     </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
-                {% endif %}
-                {% endfor %}
             </div>
-        </div>
-        {% endif %}
-        <div class="tab-pane active fade in" id="longdescription">
-            {{product.longDescription|raw}}
+            {% endif %}
+            <div class="tab-pane active fade in" id="longdescription">
+                {{product.longDescription|raw}}
+            </div>
+            <div class="clearfix"></div>
+            {% include "SiteProductBundle:Attribute:list.html.twig" with {'entities': product.getGroupedAttributes()} %}
         </div>
         <div class="clearfix"></div>
-        {% include "SiteProductBundle:Attribute:list.html.twig" with {'entities': product.getGroupedAttributes()} %}
-        <div class="clearfix"></div>
-        </div>
     </div>
 </div>
 {% endblock %}
