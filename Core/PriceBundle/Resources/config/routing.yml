@@ -1,3 +1,8 @@
 CorePriceBundle_vat:
     resource: "@CorePriceBundle/Resources/config/routing/vat.yml"
     prefix:   /vat
+    
+CorePriceBundle_currency:
+    resource: "@CorePriceBundle/Resources/config/routing/currency.yml"
+    prefix:   /currency
+

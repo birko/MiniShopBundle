@@ -44,6 +44,8 @@ class GrouponController extends ShopController
                         $item->setPriceVAT(0);
                     }
                 }
+                $item->setPrice($item->calculatePrice($cart->getCurrency()));
+                $item->setPriceVAT($item->calculatePriceVAT($cart->getCurrency()));
                 $cart->addItem($item);
                 if ($coupon->getPayment()) {
                     $cart->setPayment($coupon->getPayment());

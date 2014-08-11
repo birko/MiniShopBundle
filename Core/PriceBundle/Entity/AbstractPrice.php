@@ -38,6 +38,12 @@ class AbstractPrice
      * @ORM\JoinColumn(name="vat_id", referencedColumnName="id")
      */
     protected $vat;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Core\PriceBundle\Entity\Currency")
+     * @ORM\JoinColumn(name="currency_id", referencedColumnName="id")
+     */
+    protected $currency;
 
     /**
      * Get id
@@ -110,6 +116,28 @@ class AbstractPrice
     {
         return $this->vat;
     }
+    
+    /**
+     * Set Currency
+     *
+     * @param Currency $currency
+     */
+    public function setCurrency(Currency $currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get Currency
+     *
+     * @return Currency
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
 
     public function recalculate($vat = true)
     {
@@ -127,5 +155,21 @@ class AbstractPrice
                 $this->setPrice($this->getPriceVAT() / (1 + $rate));
             }
         }
+    }
+    
+    public function calculatePrice(Currency $currency) 
+    {
+        $rateFrom  =  $this->getCurrency()->getRate();
+        $rateTo = $currency->getRate();
+        
+        return $this->getPrice() /  $rateFrom * $rateTo; 
+    }
+    
+    public function calculatePriceVAT(Currency $currency) 
+    {
+        $rateFrom  =  $this->getCurrency()->getRate();
+        $rateTo = $currency->getRate();
+        
+        return $this->getPriceVAT() /  $rateFrom * $rateTo; 
     }
 }

@@ -5,13 +5,14 @@
 <table class="records_list table table-striped table-condensed">
     <thead>
          <tr>
-            <td colspan="6">
+            <td colspan="7">
                 <a href="{{ path('price_new', {'category': category, 'product': product}) }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %}</a>
             </td>
         </tr>
         <tr>
             <td>{% trans %}Default{% endtrans %}</td>
             <th>{% trans %}Price group{% endtrans %}</th>
+			<th>{% trans %}Currency{% endtrans %}</th>
             <th>{% trans %}Type{% endtrans %}</th>
             <th>{% trans %}Price{% endtrans %}</th>
             <th>{% trans %}Price VAT{% endtrans %}</th>
@@ -20,7 +21,7 @@
     </thead>
     <tfoot>
         <tr>
-            <td colspan="6">
+            <td colspan="7">
                 <a href="{{ path('product', {'category': category}) }}" class=""> {% trans %}Back to the list{% endtrans %}</a>
             </td>
         </tr>
@@ -30,6 +31,7 @@
         <tr>
             <td>{% if entity.default %}<span class="glyphicon glyphicon-ok"></span>{% endif %}</td>
             <td>{{ entity.priceGroup }}</td>
+			<td>{{ entity.currency }}</td>
             <td>{{ entity.type }}</td>
             <td>{{ entity.price | number_format(2) }}</td>
             <td>{{ entity.priceVAT | number_format(2) }}</td>

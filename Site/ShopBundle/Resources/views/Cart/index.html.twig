@@ -19,7 +19,7 @@
 				{% for widget in form.items %}
 				{% set index = cart.items|keys[loop.index0] %}
 				{% set item = cart.items[index] %}
-				{% include "SiteShopBundle:Cart:item.html.twig" with {'item': item, 'form': widget, 'index': index }%}
+				{% include "SiteShopBundle:Cart:item.html.twig" with {'item': item, 'form': widget, 'index': index, 'currency': currency }%}
 				{% endfor %}
 			</tbody>
 		</table>

@@ -3,6 +3,9 @@
 namespace Core\ShopBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Core\PriceBundle\Entity\Currency;
+use Core\UserBundle\Entity\PriceGroup;
+
 /**
  * Core\ShopBundle\Entity\OrderItem
  *
@@ -85,6 +88,18 @@ class OrderItem
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $product;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Core\UserBundle\Entity\PriceGroup")
+     * @ORM\JoinColumn(name="pricegroup_id", referencedColumnName="id")
+     */
+    private $priceGroup;
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Core\PriceBundle\Entity\Currency")
+     * @ORM\JoinColumn(name="currency_id", referencedColumnName="id")
+     */
+    private $currency;
 
     public function __construct()
     {
@@ -98,6 +113,48 @@ class OrderItem
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Set PriceGroup
+     *
+     * @param priceGroup $pricegroup
+     */
+    public function setPriceGroup(PriceGroup $pricegroup)
+    {
+        $this->priceGroup = $pricegroup;
+    }
+
+    /**
+     * Get priceGroup
+     *
+     * @return PriceGroup
+     */
+    public function getPriceGroup()
+    {
+        return $this->priceGroup;
+    }
+    
+    /**
+     * Set Currency
+     *
+     * @param Currency $currency
+     */
+    public function setCurrency(Currency $currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get Currency
+     *
+     * @return Currency
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /**

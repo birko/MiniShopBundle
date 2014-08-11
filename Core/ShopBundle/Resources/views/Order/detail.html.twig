@@ -48,10 +48,10 @@
                         {{ item.amount| number_format }}
                     </td>
                     <td  class="col-sm-1 col-md-1 col-lg-1 text-right">
-                        {{ item.priceVAT| number_format(2) }} €
+                        {{ item.priceVAT| number_format(2) }} {{item.currency.symbol}}
                     </td>
                     <td  class="col-sm-1 col-md-1 col-lg-1 text-right">
-                        {{ item.priceVATTotal | number_format(2) }} €
+                        {{ item.priceVATTotal | number_format(2) }} {{item.currency.symbol}}
                     </td>
                 </tr>
                 {% endfor %}
@@ -67,7 +67,7 @@
                     {% trans %}Total price{% endtrans %}
                 </td>
                 <th  class="text-right">
-                    {{entity.price| number_format(2) }} €
+                    {{entity.price| number_format(2) }} {{entity.currency.symbol}}
                 </td>
             </tr>
             <tr>
@@ -75,7 +75,7 @@
                     {% trans %}Total price VAT{% endtrans %}
                 </td>
                 <th class="text-right">
-                    {{ entity.priceVAT| number_format(2) }} €
+                    {{ entity.priceVAT| number_format(2) }} {{entity.currency.symbol}}
                 </th>
             </tr>
         </table>

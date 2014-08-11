@@ -19,7 +19,7 @@
       {% endblock cartitemtext %}
     </td>
     <td class="price">
-      {{ item.priceVAT()|number_format(2, ',') }} €
+      {{ item.priceVAT()|number_format(2, ',') }} {{ currency.symbol }}
     </td>
     <td class="form">
 		{% if form is not empty %}
@@ -35,7 +35,7 @@
 		{% endif %}
     </td>
     <td class="total">
-        {{ item.priceVATTotal()|number_format(2, ',') }} €
+      {{ item.priceVATTotal()|number_format(2, ',') }} {{ currency.symbol }}
     </td>
 	{% if form is not empty %}
     <td>

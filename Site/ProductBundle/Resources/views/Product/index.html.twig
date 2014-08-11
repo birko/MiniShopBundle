@@ -29,10 +29,10 @@
             </div>
             {% if 'price' in minishopkeys %}
             <div class="row">
-            {% set price  = product.getMinimalPrice(pricegroup, 'normal') %}
+            {% set price  = product.getMinimalPrice(currency, pricegroup, 'normal') %}
             {% if price is not empty %}
             <div class="price pull-left lead col-sm-5 col-md-5 col-lg-5">
-                <strong>{{price.priceVAT |number_format(2)}} €</strong>
+                <strong>{{price.priceVAT |number_format(2)}} {{currency.symbol}}</strong>
                 <small>{% trans %}with VAT{% endtrans %}</small>
                 {% include "SiteProductBundle:Stock:info.html.twig" with {'entity': product.stock }%}
             </div>

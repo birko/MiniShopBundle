@@ -1,0 +1,18 @@
+{% extends '::admin.html.twig' %}
+
+{% block body -%}
+<h1>{%trans%}Currency creation{%endtrans%}</h1>
+
+<form action="{{ path('currency_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_row(form.name) }}
+    {{ form_row(form.symbol) }}
+    {{ form_row(form.rate) }}
+    {{ form_row(form.code) }}
+    {{ form_widget(form.default) }}
+    {{ form_rest(form) }}
+    <p>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {%trans%}Create{%endtrans%}</button>
+		<a href="{{ path('currency') }}" class="btn btn-default">{% trans %}Back to the currency list{% endtrans %}</a>
+    </p>
+</form>
+{% endblock %}

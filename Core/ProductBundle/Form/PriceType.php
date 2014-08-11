@@ -27,8 +27,7 @@ class PriceType extends AbstractPriceType
                     return $er->createQueryBuilder('pg')->orderBy('pg.name', 'ASC');
                 },
                 'required'    => true,
-                'empty_value' => 'Choose Price Group',
-                'empty_data'  => null))
+            ))
             ->add('priceAmount', 'number', array(
                 'required' => false,
                 'label' => 'Price amount',

@@ -20,8 +20,9 @@ class ShippingRepository extends EntityRepository
     public function getShippingQueryBuilder($state = null, $enabled = false)
     {
         $queryBuilder = $this->getEntityManager()->createQueryBuilder()
-            ->select("s")
+            ->select("s, c")
             ->from("CoreShopBundle:Shipping", "s")
+            ->leftJoin("s.currency", "c")
             ->orderBy('s.name', 'ASC');
         if ($state !== null) {
             $queryBuilder->andWhere('s.state =:state')

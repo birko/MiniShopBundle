@@ -22,6 +22,34 @@
                 <source>with VAT</source>
                 <target>s DPH</target>
             </trans-unit>
+            <trans-unit id="6">
+                <source>Currency</source>
+                <target>Mena</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Currency list</source>
+                <target>Zoznam mien</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Currency creation</source>
+                <target>Tvorba meny</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Currency edit</source>
+                <target>Úprava meny</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Create a new currency</source>
+                <target>Vytvoriť novú menu</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Symbol</source>
+                <target>Symbol</target>
+            </trans-unit>
+             <trans-unit id="12">
+                <source>Back to the currency list</source>
+                <target>Späť na zoznam mien</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

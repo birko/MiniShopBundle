@@ -1,0 +1,30 @@
+currency:
+    pattern:  /
+    defaults: { _controller: "CorePriceBundle:Currency:index" }
+
+currency_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CorePriceBundle:Currency:show" }
+
+currency_new:
+    pattern:  /new
+    defaults: { _controller: "CorePriceBundle:Currency:new" }
+
+currency_create:
+    pattern:  /create
+    defaults: { _controller: "CorePriceBundle:Currency:create" }
+    requirements: { _method: post }
+
+currency_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CorePriceBundle:Currency:edit" }
+
+currency_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CorePriceBundle:Currency:update" }
+    requirements: { _method: post }
+
+currency_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CorePriceBundle:Currency:delete" }
+    requirements: { _method: post }

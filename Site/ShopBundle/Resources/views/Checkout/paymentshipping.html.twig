@@ -15,7 +15,7 @@
                         <tr>
                             <td>{{ form_widget(widget) }}</td>
                             <td>{{payment[loop.index0].name}}</td>
-                            <td><strong>{{payment[loop.index0].priceVAT | number_format(2)}} € s DPH</strong></td>
+                            <td><strong>{{payment[loop.index0].calculatePriceVAT(currency) | number_format(2)}} {{ currency.symbol }} {% trans %}with VAT{% endtrans %}</strong></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ form_widget(widget) }}</td>
                             <td>{{shipping[loop.index0].name}} </td>
-                            <td><strong>{{shipping[loop.index0].priceVAT | number_format(2)}} € s DPH</strong></td>
+                            <td><strong>{{shipping[loop.index0].calculatePriceVAT(currency) | number_format(2)}} {{ currency.symbol }} {% trans %}with VAT{% endtrans %}</strong></td>
                         </tr>
                         {% endfor %}
                     </tbody>

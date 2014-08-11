@@ -6,7 +6,7 @@
 	<thead>
 		{% if product is not empty %}
 		<tr>
-			<td colspan="6">
+			<td colspan="7">
 				<div class="btn-group  pull-right">
 					<a href="{{ path('groupon_new', {'category': category, 'product': product.id}) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %}</a>
 				</div>
@@ -19,6 +19,7 @@
 			<th>{% trans %}Discount percentage{% endtrans %}</th>
 			<th>{% trans %}Price{% endtrans %}</th>
 			<th>{% trans %}Price VAT{% endtrans %}</th>
+			<th>{% trans %}Currency{% endtrans %}</th>
 			<th>{% trans %}Actions{% endtrans %}</th>
 		</tr>
 	</thead>
@@ -31,6 +32,7 @@
 			<td>{{ entity.discountPerc }}</td>
 			<td>{{ entity.price }}</td>
 			<td>{{ entity.priceVAT }}</td>
+			<td>{{ entity.currency }}</td>
 			<td>
 				<div class="btn-group">
 					<a href="{{ path('groupon_edit', { 'id': entity.id, 'category': category, 'product': product.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>

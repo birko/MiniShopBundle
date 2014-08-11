@@ -50,6 +50,8 @@ class CouponController extends ShopController
                                     $item->setPriceVAT(0);
                                 }
                             }
+                            $item->setPrice($item->calculatePrice($cart->getCurrency()));
+                            $item->setPriceVAT($item->calculatePriceVAT($cart->getCurrency()));
                             $cart->addItem($item);
                         }
                     } else { //discount coupon
@@ -66,6 +68,8 @@ class CouponController extends ShopController
                             $item->setPrice($coupon->getDiscount() * $cart->getPrice() * (-1));
                             $item->setPriceVAT($coupon->getDiscount() * $cart->getPriceVAT() * (-1));
                         }
+                        $item->setPrice($item->calculatePrice($cart->getCurrency()));
+                        $item->setPriceVAT($item->calculatePriceVAT($cart->getCurrency()));
                         $cart->addItem($item);
                     }
                 }

@@ -20,8 +20,9 @@ class PaymentRepository extends EntityRepository
     public function getPaymentQueryBuilder($enabled = false)
     {
         $queryBuilder = $this->getEntityManager()->createQueryBuilder()
-            ->select("p")
+            ->select("p, c")
             ->from("CoreShopBundle:Payment", "p")
+            ->leftJoin("p.currency", "c")
             ->orderBy('p.name', 'ASC');
         if ($enabled) {
             $queryBuilder->andWhere('p.enabled =:enabled')

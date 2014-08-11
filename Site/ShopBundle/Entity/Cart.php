@@ -13,6 +13,7 @@ class Cart implements \Serializable
     protected $paymentAddress = null;
     protected $sameAddress = true;
     protected $items =  null;
+    protected $currency =  null;
     protected $payment = null;
     protected $shipping = null;
     protected $comment = null;
@@ -26,7 +27,23 @@ class Cart implements \Serializable
         $this->sameAddress = true;
         $this->items = new ArrayCollection();
     }
+    
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
 
+    public function setCurrency($currency = null)
+    {
+        if ($currency  && $this->currency && $this->currency->getId() != $currency->getId()) {
+            foreach ($this->getItems() as $item) {
+                $item->setPrice($item->calculatePrice($this->currency, $currency));
+                $item->setPriceVAT($item->calculatePriceVAT($this->currency, $currency));
+            }
+        }
+        $this->currency = $currency;
+    }
+    
     public function getShippingAddress()
     {
         return $this->shippingAddress;
@@ -197,10 +214,10 @@ class Cart implements \Serializable
             }
         }
         if (!empty($this->payment)) {
-            $price += $this->payment->getPrice();
+            $price += $this->payment->calculatePrice($this->getCurrency());
         }
         if (!empty($this->shipping)) {
-            $price += $this->shipping->getPrice();
+            $price += $this->shipping->calculatePrice($this->getCurrency());
         }
 
         return $price;
@@ -215,10 +232,10 @@ class Cart implements \Serializable
             }
         }
         if (!empty($this->payment)) {
-            $price += $this->payment->getPriceVAT();
+            $price += $this->payment->calculatePriceVAT($this->getCurrency());
         }
         if (!empty($this->shipping)) {
-            $price += $this->shipping->getPriceVAT();
+            $price += $this->shipping->calculatePriceVAT($this->getCurrency());
         }
 
         return $price;
@@ -259,6 +276,7 @@ class Cart implements \Serializable
             $this->payment,
             $this->shipping,
             $this->comment,
+            $this->currency
         ));
     }
     public function unserialize($serialized)
@@ -274,6 +292,7 @@ class Cart implements \Serializable
             $this->payment,
             $this->shipping,
             $this->comment,
+            $this->currency
         ) = unserialize($serialized);
         $this->setItems($items);
     }

@@ -149,6 +149,8 @@ class CheckoutController extends ShopController
     {
         $this->testCart();
         $cart = $this->getCart();
+        $pricegroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         if ($cart->isSkipPayment() && $cart->isSkipShipping()) {
             return $this->redirect($this->generateUrl('checkout_confirm'));
         } else {
@@ -174,7 +176,9 @@ class CheckoutController extends ShopController
                 'form'   => $form->createView(),
                 'payment' => $payments,
                 'shipping' => $shippings,
-                'cart' => $cart
+                'cart' => $cart,
+                'currency' => $currency,
+                'priceGroup' => $pricegroup,
             ));
         }
     }
@@ -183,6 +187,8 @@ class CheckoutController extends ShopController
     {
         $this->testCart();
         $cart = $this->getCart();
+        $pricegroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         $state = $cart->getShippingAddress()->getState();
         $form = $this->createForm(new CartPaymentShippingType(), $cart, array(
             'state' => $state->getId(),
@@ -207,6 +213,8 @@ class CheckoutController extends ShopController
             'cart' => $cart,
             'payment' => $payments,
             'shipping' => $shippings,
+            'currency'=> $currency,
+            'pricegroup'=> $pricegroup,
         ));
 
     }
@@ -215,6 +223,8 @@ class CheckoutController extends ShopController
     {
         $this->testCart();
         $cart = $this->getCart();
+        $pricegroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         $form = $this->createForm(new CartOrderType(), $cart);
         if ($cart->isSameAddress()) {
             $cart->setShippingAddress($cart->getPaymentAddress());
@@ -223,6 +233,8 @@ class CheckoutController extends ShopController
         return $this->render('SiteShopBundle:Checkout:confirm.html.twig', array(
             'cart'   => $cart,
             'form' => $form->createView(),
+            'currency'=> $currency,
+            'pricegroup'=> $pricegroup,
         ));
     }
 
@@ -230,6 +242,8 @@ class CheckoutController extends ShopController
     {
         $this->testCart();
         $cart = $this->getCart();
+        $pricegroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         $form = $this->createForm(new CartOrderType(), $cart);
         $form->bind($this->getRequest());
         $form->isValid();
@@ -265,6 +279,8 @@ class CheckoutController extends ShopController
         }
         $order->setPrice($cart->getPrice());
         $order->setPriceVAT($cart->getPriceVAT());
+        $order->setCurrency($currency);
+        $order->setPriceGroup($pricegroup);
         $order->setComment($cart->getComment());
         if (!empty($user)) {
            $order->setUser($user);
@@ -316,6 +332,8 @@ class CheckoutController extends ShopController
             $orderItem->setPriceVAT($item->getPriceVAT());
             $orderItem->setName($item->getName());
             $orderItem->setDescription($item->getDescription());
+            $orderItem->setCurrency($currency);
+            $orderItem->setPriceGroup($pricegroup);
             if ($item->getProductId() != null) {
                 $productEntity = $em->getRepository('CoreProductBundle:Product')->find($item->getProductId());
                 if ($productEntity !== null) {
@@ -357,8 +375,10 @@ class CheckoutController extends ShopController
         if ($cart->getShipping() != null) {
             $orderItem = new OrderItem();
             $orderItem->setAmount(1);
-            $orderItem->setPrice($cart->getShipping()->getPrice());
-            $orderItem->setPriceVAT($cart->getShipping()->getPriceVAT());
+            $orderItem->setCurrency($currency);
+            $orderItem->setPriceGroup($pricegroup);
+            $orderItem->setPrice($cart->getShipping()->calculatePrice($currency));
+            $orderItem->setPriceVAT($cart->getShipping()->calculatePriceVAT($currency));
             $orderItem->setName($cart->getShipping()->getName());
             $orderItem->setDescription($cart->getShipping()->getDescription());
             $orderItem->setShipping($cart->getShipping());
@@ -370,8 +390,10 @@ class CheckoutController extends ShopController
         if ($cart->getPayment() != null) {
             $orderItem = new OrderItem();
             $orderItem->setAmount(1);
-            $orderItem->setPrice($cart->getPayment()->getPrice());
-            $orderItem->setPriceVAT($cart->getPayment()->getPriceVAT());
+            $orderItem->setCurrency($currency);
+            $orderItem->setPriceGroup($pricegroup);
+            $orderItem->setPrice($cart->getPayment()->calculatePrice($currency));
+            $orderItem->setPriceVAT($cart->getPayment()->calculatePriceVAT($currency));
             $orderItem->setName($cart->getPayment()->getName());
             $orderItem->setPayment($cart->getPayment());
             $orderItem->setDescription($cart->getPayment()->getDescription());

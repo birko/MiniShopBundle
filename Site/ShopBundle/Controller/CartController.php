@@ -23,11 +23,15 @@ class CartController extends ShopController
         $this->testCart();
         $user = $this->getShopUser();
         $form = $this->createForm(new CartType(), $cart);
+        $pricegroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
 
         return $this->render('SiteShopBundle:Cart:index.html.twig', array(
             'cart' => $cart,
             'form' => (!$cart->isEmpty()) ? $form->createView() : null,
             'user' => $user,
+            'pricegroup' => $priceGroup,
+            'currency' => $currency,
         ));
     }
 
@@ -73,9 +77,14 @@ class CartController extends ShopController
             return $this->redirect($this->generateUrl('checkout_order'));
         }
 
+        $pricegroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
+        
         return $this->render('SiteShopBundle:Cart:index.html.twig', array(
             'form'   => $form2->createView(),
             'cart' => $cart,
+            'pricegroup' => $priceGroup,
+            'currency' => $currency,
         ));
     }
 
@@ -83,11 +92,12 @@ class CartController extends ShopController
     {
         $em = $this->getDoctrine()->getManager();
         $pricegroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         if (!($product instanceof Product)) {
             $product = $em->getRepository('CoreProductBundle:Product')->find($product);
         }
         if (!$price) {
-            $price = $product->getMinimalPrice($pricegroup);
+            $price = $product->getMinimalPrice($currency, $pricegroup);
         }
 
         $entity = new CartItem();
@@ -118,10 +128,11 @@ class CartController extends ShopController
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
         $pricegroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         if (!($product instanceof Product)) {
             $product = $em->getRepository('CoreProductBundle:Product')->find($product);
         }
-        $price = $product->getMinimalPrice($pricegroup, $type);
+        $price = $product->getMinimalPrice($currency, $pricegroup, $type);
         $entity = new CartItem();
         $entity->setAmount(1);
         $entity->setName($product->getTitle());
@@ -194,8 +205,13 @@ class CartController extends ShopController
     {
         $cart = $this->getCart();
 
+        $pricegroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
+        
         return $this->render('SiteShopBundle:Cart:info.html.twig', array(
             'cart' => $cart,
+            'pricegroup' => $priceGroup,
+            'currency' => $currency,
         ));
     }
 }

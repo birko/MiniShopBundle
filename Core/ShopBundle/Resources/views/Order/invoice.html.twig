@@ -98,10 +98,10 @@
                 {{ item.amount }}
             </td>
             <td style="width:11%; border-right: 1px solid black; border-bottom: 1px solid black;; text-align:right;">
-                {{ item.priceVAT | number_format(2) }} €
+                {{ item.priceVAT | number_format(2) }} {{item.currency.symbol}}
             </td>
             <td style="width:11%; border-right: 1px solid black; border-bottom: 1px solid black;; text-align:right;">
-                {{ item.priceVATTotal | number_format(2) }} €
+                {{ item.priceVATTotal | number_format(2) }} {{item.currency.symbol}}
             </td>
         </tr>
         {% endfor %}
@@ -116,7 +116,7 @@
             {% trans %}Total price{% endtrans %}
         </td>
         <th style="width:11%; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;  text-align:right;">
-            {{entity.price | number_format(2) }} €
+            {{entity.price | number_format(2) }} {{entity.currency.symbol}}
         </th>
     </tr>
     <tr>
@@ -125,7 +125,7 @@
             {% trans %}VAT{% endtrans %}
         </td>
         <th style="width:11%; border-right: 1px solid black; border-bottom: 1px solid black;  text-align:right;">
-            {{ (entity.priceVAT - entity.price) | number_format(2) }} €
+            {{ (entity.priceVAT - entity.price) | number_format(2) }} {{entity.currency.symbol}}
         </th>
     </tr>
     <tr>
@@ -134,7 +134,7 @@
             {% trans %}Total price VAT{% endtrans %}
         </td>
         <th style="width:11%; border-right: 1px solid black; border-bottom: 1px solid black; text-align:right;">
-            {{ entity.priceVAT | number_format(2) }} €
+            {{ entity.priceVAT | number_format(2) }} {{entity.currency.symbol}}
         </th>
     </tr>
 </table>

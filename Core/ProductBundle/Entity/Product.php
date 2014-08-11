@@ -10,6 +10,7 @@ use Core\CommonBundle\Entity\TranslateEntity;
 use Core\CategoryBundle\Entity\Category;
 use Core\MediaBundle\Entity\Media;
 use Core\UserBundle\Entity\PriceGroup;
+use Core\PriceBundle\Entity\Currency;
 
 /**
  * Core\ProductBundle\Entity\Product
@@ -421,8 +422,21 @@ class Product extends TranslateEntity
     {
         return $this->createdAt;
     }
+    
+    public function getPricesByCurrency(Currency $currency = null, $type = null) 
+    {
+        if ($currency !== null) {
+            return $this->getPrices($type)->filter(
+                function ($entry) use ($currency) {
+                    return ($entry->getCurrency()->getId() == $currency->getId());
+                }
+            );
+        } else {
+            return $this->getPrices($type);
+        }
+    }
 
-    public function getPricesByPriceGroup(PriceGroup $priceGroup = null, $type =null)
+    public function getPricesByPriceGroup(PriceGroup $priceGroup = null, $type = null)
     {
         if ($priceGroup !== null) {
             return $this->getPrices($type)->filter(
@@ -434,38 +448,59 @@ class Product extends TranslateEntity
             return $this->getPrices($type);
         }
     }
+    
+    public function getPricesByCurrencyAndPriceGroup(Currency $currency = null, PriceGroup $priceGroup = null, $type = null)
+    {
+        $prices = $this->getPricesByCurrency($currency, $type);
+        if ($priceGroup !== null) {
+            return $prices->filter(
+                function ($entry) use ($priceGroup) {
+                    return ($entry->getPriceGroup()->getId() == $priceGroup->getId());
+                }
+            );
+        } else {
+             return $prices;
+        }
+    }
 
-    public function getMinimalPrice(PriceGroup $priceGroup = null, $type = null)
+    public function getMinimalPrice(Currency $currency = null, PriceGroup $priceGroup = null, $type = null)
     {
         if ($this->getPrices()!== null && $this->getPrices()->count() > 0) {
-            $minprice = $this->getPricesByPriceGroup($priceGroup, $type)->first();
+            $minprice = $this->getPricesByCurrencyAndPriceGroup($currency, $priceGroup, $type)->first();
             if ($minprice === null) {
                 $minprice = $this->getPrices($type)->first();
             }
-            if ($minprice){
+            if ($minprice) {
                 $price = new Price();
                 $price->setPriceGroup($priceGroup);
+                $price->setCurrency($currency);
                 $price->setType($minprice->getType());
                 $price->setPriceAmount($minprice->getPriceAmount());
                 $price->setVAT($minprice->getVat());
+                $price->setPrice($minprice->getPrice());
+                $price->setPriceVAT($minprice->getPriceVAT());
                 
-                if($priceGroup){
-                    $price->setPrice($minprice->getPrice() * $priceGroup->getRate());
-                    $price->setPriceVAT($minprice->getPriceVAT() * $priceGroup->getRate());
-                    $price->recalculate();
-                } else{
-                    $price->setPrice($minprice->getPrice());
-                    $price->setPriceVAT($minprice->getPriceVAT());
+                if ($currency) {
+                    $price->setPrice($price->getPrice() * $currency->getRate());
+                    $price->setPriceVAT($price->getPriceVAT() * $currency->getRate());
+                }
+                    
+                if ($priceGroup) {
+                    $price->setPrice($price->getPrice() * $priceGroup->getRate());
+                    $price->setPriceVAT($price->getPriceVAT() * $priceGroup->getRate());
                 }
                 
+                if ($priceGroup || $currency) {
+                    $price->recalculate();
+                }
                 
                 $price->setProduct($this);
                 
                 return $price;
             }
         }
-        return null;
         
+        return null;
     }
 
      /**

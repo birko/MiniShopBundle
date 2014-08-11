@@ -4,6 +4,7 @@ namespace Site\ShopBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Site\ShopBundle\Entity\Cart;
+use Core\PriceBundle\Entity\Currency;
 use Core\ShopBundle\Controller\BaseOrderController;
 
 class ShopController extends BaseOrderController
@@ -15,6 +16,7 @@ class ShopController extends BaseOrderController
         if (empty($cart)) {
             $cart = new Cart();
         }
+        $cart->setCurrency($this->getCurrency());
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         if ($cart->getPaymentAddress() != null) {
@@ -84,6 +86,8 @@ class ShopController extends BaseOrderController
         }
         if ($pricegroup === null) {
            $pricegroup  =  $em->getRepository('CoreUserBundle:PriceGroup')->findOneByDefault(true);
+        } else {
+            $pricegroup = $em->merge($pricegroup);
         }
         if ($pricegroup === null) {
             $pricegroup  =  $em->getRepository('CoreUserBundle:PriceGroup')->createQueryBuilder("pg")
@@ -94,5 +98,36 @@ class ShopController extends BaseOrderController
         }
 
         return $pricegroup;
+    }
+    
+    protected function getCurrency()
+    {
+        $currency = null;
+        $em = $this->getDoctrine()->getManager();
+        //session
+        $session = $this->getRequest()->getSession();
+        $currency = $session->get('currency');
+        //defaults
+        if ($currency === null) {
+           $currency = $em->getRepository('CorePriceBundle:Currency')->findOneByDefault(true);
+        } else {
+           $currency = $em->merge($currency);
+        }
+        if ($currency === null) {
+            $currency =  $em->getRepository('CorePriceBundle:Currency')->createQueryBuilder("c")
+            ->orderBy('c.id')
+            ->getQuery()
+            ->setMaxResults(1)
+            ->getOneOrNullResult();
+        }
+        $this->setCurrency($currency);
+        
+        return $currency;
+    }
+    
+    protected function setCurrency(Currency $currency)
+    {
+        $session = $this->getRequest()->getSession();
+        $session->set('currency', $currency);
     }
 }

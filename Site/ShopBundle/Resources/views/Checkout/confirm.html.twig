@@ -48,15 +48,16 @@
                 <td>
                 </td>
                 <td>
-                    {{ cart.priceVAT|number_format(2, ',') }}  €
+                    {{ cart.priceVAT|number_format(2, ',') }}  {{currency.symbol}}
                 </td>
             </tr>
         </tfoot>
         <tbody>
             {% for item in cart.items %}
 			{% set index = cart.items|keys[loop.index0] %}
-			{% include "SiteShopBundle:Cart:item.html.twig" with {'item': item, 'form': '', 'index': index }%}
+			{% include "SiteShopBundle:Cart:item.html.twig" with {'item': item, 'form': '', 'index': index, 'currency' : currency }%}
 			{% endfor %}
+		
             {% if cart.shipping is not empty %}
             <tr>
 				<td>
@@ -65,12 +66,12 @@
                     {{ cart.shipping.name }}
                 </td>
                 <td>
-                    {{ cart.shipping.priceVAT|number_format(2, ',') }}  €
+                    {{ cart.shipping.calculatePriceVAT(currency)|number_format(2, ',') }}  {{currency.symbol}}
                 </td>
                 <td>
                 </td>
                 <td>
-                    {{ cart.shipping.priceVAT|number_format(2, ',') }} €
+                    {{ cart.shipping.calculatePriceVAT(currency)|number_format(2, ',') }} {{ currency.symbol }}
                 </td>
             </tr>
             {% endif %}
@@ -82,12 +83,12 @@
                     {{ cart.payment.name }}
                 </td>
                 <td>
-                    {{ cart.payment.priceVAT|number_format(2, ',') }}  €
+                    {{ cart.payment.calculatePriceVAT(currency)|number_format(2, ',') }}  {{ currency.symbol }}
                 </td>
                 <td>
                 </td>
                 <td>
-                    {{ cart.payment.priceVAT|number_format(2, ',') }}  €
+                    {{ cart.payment.calculatePriceVAT(currency)|number_format(2, ',') }}  {{ currency.symbol }}
                 </td>
             </tr>
             {% endif %}

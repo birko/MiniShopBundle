@@ -3,6 +3,7 @@
 namespace Site\ShopBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Core\PriceBundle\Entity\Currency;
 
 /**
  * Description of CartItem
@@ -229,5 +230,21 @@ class CartItem implements \Serializable
     public function getPriceVATTotal()
     {
         return $this->getAmount()* $this->getPriceVAT();
+    }
+    
+    public function calculatePrice(Currency $currencyFrom, Currency $currency) 
+    {
+        $rateFrom  =  $currencyFrom->getRate();
+        $rateTo = $currency->getRate();
+        
+        return $this->getPrice() /$rateFrom * $rateTo; 
+    }
+    
+    public function calculatePriceVAT(Currency $currencyFrom, Currency $currency) 
+    {
+        $rateFrom  =  $currencyFrom->getRate();
+        $rateTo = $currency->getRate();
+        
+        return $this->getPriceVAT() /$rateFrom * $rateTo; 
     }
 }

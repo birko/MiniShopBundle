@@ -30,6 +30,17 @@ class AbstractPriceType extends AbstractType
             }
         ))
         ;
+        $builder->add('Currency', 'entity', array(
+            'required' => true,
+            'label' => 'Currency',
+            'class' => 'CorePriceBundle:Currency',
+            'query_builder' => function (EntityRepository $repository) {
+                return $repository->createQueryBuilder('c')
+                        ->add('orderBy', 'c.id ASC');
+
+            }
+        ))
+        ;
     }
 
     public function getName()

@@ -1,0 +1,46 @@
+{% extends '::admin.html.twig' %}
+
+{% block body -%}
+<h1>{%trans%}Currency list{%endtrans%}</h1>
+<table class="table table-striped table-condensed table-hover">
+    <thead>
+        <tr>
+            <td colspan="6">
+                <a href="{{ path('currency_new') }}" class="btn btn-primary btn-xs pull-right">
+                    <span class="glyphicon glyphicon-plus"></span> {%trans%}Create a new currency{%endtrans%}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th>{%trans%}Name{%endtrans%}</th>
+            <th>{%trans%}Symbol{%endtrans%}</th>
+            <th>{%trans%}Code{%endtrans%}</th>
+            <th>{%trans%}Rate{%endtrans%}</th>
+            <th>{%trans%}Default{%endtrans%}</th>
+            <th>{%trans%}Actions{%endtrans%}</th>
+        </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('currency_edit', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+            <td>{{ entity.symbol }}</td>
+            <td>{{ entity.code }}</td>
+            <td>{{ entity.ratePercentage }}%</td>
+            <td>
+                 {% if entity.default %}
+                    <span class="glyphicon glyphicon-ok"></span>
+                 {% endif %}
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a href="{{ path('currency_edit', { 'id': entity.id }) }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit"></span> {%trans%}Edit{%endtrans%}</a>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}

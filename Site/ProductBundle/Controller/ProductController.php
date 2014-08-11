@@ -13,6 +13,7 @@ class ProductController extends ShopController
     public function indexAction($slug)
     {
         $priceGroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         $em = $this->getDoctrine()->getManager();
         $product  = $em->getRepository("CoreProductBundle:Product")->getBySlug($slug);
         if (!$product || (!$product->isEnabled() && !$this->container->getParameter("site.product.show_disabled"))) {
@@ -29,6 +30,7 @@ class ProductController extends ShopController
             'product' => $product,
             'options' => $options,
             'pricegroup' => $priceGroup,
+            'currency' => $currency,
             'minishop'  => $minishop,
         ));
     }
@@ -36,6 +38,7 @@ class ProductController extends ShopController
     public function listAction($category, $page = 1)
     {
         $priceGroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository("CoreProductBundle:Product")->findByCategoryQuery($category, $this->container->getParameter("site.product.recursive"), true);
         $paginator = $this->get('knp_paginator');
@@ -48,6 +51,7 @@ class ProductController extends ShopController
         return $this->render('SiteProductBundle:Product:list.html.twig', array(
             'entities' => $pagination,
             'pricegroup' => $priceGroup,
+            'currency' => $currency,
             'category' =>$category,
             'recursive' => $this->container->getParameter("site.product.recursive"),
         ));
@@ -56,6 +60,7 @@ class ProductController extends ShopController
     public function vendorAction($vendor, $page = 1)
     {
         $priceGroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         $em = $this->getDoctrine()->getManager();
         $filter = new Filter();
         $filter->setVendor($vendor);
@@ -69,12 +74,17 @@ class ProductController extends ShopController
             $this->container->getParameter("site.product.perpage") /*limit per page*/
         );
 
-        return $this->render('SiteProductBundle:Product:list.html.twig', array('entities' => $pagination, 'pricegroup' => $priceGroup));
+        return $this->render('SiteProductBundle:Product:list.html.twig', array(
+            'entities' => $pagination, 
+            'pricegroup' => $priceGroup,
+            'currency' => $currency,
+        ));
     }
 
     public function searchAction()
     {
         $priceGroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
         if ($request->getMethod() == "POST") {
@@ -96,12 +106,17 @@ class ProductController extends ShopController
             array('disctinct' => false)
         );
 
-        return $this->render('SiteProductBundle:Product:search.html.twig', array('entities' => $pagination, 'pricegroup' => $priceGroup));
+        return $this->render('SiteProductBundle:Product:search.html.twig', array(
+            'entities' => $pagination, 
+            'pricegroup' => $priceGroup,
+            'currency' => $currency,
+        ));
     }
 
     public function topAction()
     {
         $priceGroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         $em = $this->getDoctrine()->getManager();
         $query  = $em->getRepository("CoreProductBundle:Product")->createQueryBuilder("p")
                 ->orderBy("p.createdAt", "desc")
@@ -111,12 +126,17 @@ class ProductController extends ShopController
                 ->setMaxResults(6)
                 ->getResult();
 
-        return $this->render('SiteProductBundle:Product:top.html.twig', array('entities' => $entities, 'pricegroup' => $priceGroup));
+        return $this->render('SiteProductBundle:Product:top.html.twig', array(
+            'entities' => $entities, 
+            'pricegroup' => $priceGroup,
+            'currency' => $currency,
+       ));
     }
 
     public function tagAction($tag, $limit = null)
     {
         $priceGroup = $this->getPriceGroup();
+        $currency = $this->getCurrency();
         $em = $this->getDoctrine()->getManager();
         $qb  = $em->getRepository("CoreProductBundle:Product")->findByCategoryQueryBuilder(null, false, true, true);
         $qb->andWhere($qb->expr()->like('p.tags', ":tag"))
@@ -128,7 +148,12 @@ class ProductController extends ShopController
         }
         $entities = $query->getResult();
 
-        return $this->render('SiteProductBundle:Product:top.html.twig', array('entities' => $entities, 'pricegroup' => $priceGroup, 'tag' => $tag, 'slug' => GedmoUrlizer::urlize($tag)));
+        return $this->render('SiteProductBundle:Product:top.html.twig', array(
+        'entities' => $entities, 
+        'pricegroup' => $priceGroup,
+        'currency' => $currency,
+        'tag' => $tag, 
+        'slug' => GedmoUrlizer::urlize($tag)));
     }
 
     public function productMainMediaAction($product, $type = 'thumb', $link_path=null, $gallery = null)
