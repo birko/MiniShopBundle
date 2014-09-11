@@ -39,9 +39,11 @@ class ShopController extends BaseOrderController
         }
         if ($cart->getPayment() != null) {
             $cart->setPayment($em->merge($cart->getPayment()));
+            $cart->getPayment()->setCurrency($em->merge($cart->getPayment()->getCurrency()));
         }
         if ($cart->getShipping() != null) {
             $cart->setShipping($em->merge($cart->getShipping()));
+            $cart->getShipping()->setCurrency($em->merge($cart->getShipping()->getCurrency()));
         }
 
         return $cart;

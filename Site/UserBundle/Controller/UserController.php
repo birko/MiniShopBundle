@@ -141,16 +141,18 @@ class UserController extends Controller
         if ($this->get('security.context')->getToken()) {
             $form = $this->createForm(new ChangePasswordType());
             $auth = $this->get('security.context')->getToken()->getUser();
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository("CoreUserBundle:User")->find($auth->getId());
+            if ($auth) {
+                $em = $this->getDoctrine()->getManager();
+                $entity = $em->getRepository("CoreUserBundle:User")->find($auth->getId());
 
-            return $this->render('SiteUserBundle:User:password.html.twig', array(
-            // last username entered by the user
-            'form' => $form->createView(),
-            ));
-        } else {
-            return $this->createNotFoundException();
+                return $this->render('SiteUserBundle:User:password.html.twig', array(
+                    // last username entered by the user
+                    'form' => $form->createView(),
+                ));
+            }   
         }
+        
+        return $this->createNotFoundException();
     }
 
     public function changePasswordAction()

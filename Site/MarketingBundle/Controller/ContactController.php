@@ -189,8 +189,8 @@ class ContactController extends Controller
                     $t = $this->get('translator')->trans('Claim order no.:%order% %subject%', array('%subject%' => $request->getHost(), '%order%' => $data['orderNumber']));
                     $emails = $this->container->getParameter('default.emails');
                     $send = array($emails['contact']);
-                    if ($data['copy']) {
-                        $send[] =$data['email'];
+                    if ($data['copy'] && isset($data['email'])) {
+                        $send[] = $data['email'];
                     }
                     $message = \Swift_Message::newInstance()
                             ->setSubject($t)
