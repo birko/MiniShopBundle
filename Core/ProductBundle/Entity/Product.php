@@ -11,6 +11,7 @@ use Core\CategoryBundle\Entity\Category;
 use Core\MediaBundle\Entity\Media;
 use Core\UserBundle\Entity\PriceGroup;
 use Core\PriceBundle\Entity\Currency;
+use Core\ShopBundle\Entity\OrderItem;
 
 /**
  * Core\ProductBundle\Entity\Product
@@ -118,6 +119,11 @@ class Product extends TranslateEntity
      * @ORM\Column(name="tags", type="string", length=255, nullable = true)
      */
     private $tags;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="OrderItem", mappedBy="product")
+     **/
+    private $orderItems;
 
     public function __construct()
     {
@@ -128,6 +134,7 @@ class Product extends TranslateEntity
         $this->options = new ArrayCollection();
         $this->media = new ArrayCollection();
         $this->attributes = new ArrayCollection();
+        $this->orderItems = new ArrayCollection();
     }
     /**
      * Get id
@@ -531,6 +538,11 @@ class Product extends TranslateEntity
         }
 
         return $result;
+    }
+    
+    public function getOrderItems()
+    {
+        return $this->orderItems;
     }
 
     /**
