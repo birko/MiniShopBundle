@@ -1,0 +1,49 @@
+<tr>
+    <td>{% if entity.enabled %}<span class="glyphicon glyphicon-ok"></span>{% else %}<span class="glyphicon glyphicon-remove"></span>{% endif %}</td>
+    <td>{{ entity.title }}</td>
+    <td class="btn-toolbar">
+        <div class="btn-group">
+            <a href="{{ path('product_edit', { 'id': entity.id, 'category': category }) }}" class="btn btn-xs btn-warning "><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
+            <a href="{{ path('product_copy', { 'id': entity.id, 'category': category }) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-leaf"></span> {% trans %}Copy{% endtrans %}</a>
+            <a href="{{ path('product_categories', { 'id': entity.id, 'category': category }) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-list"></span> {% trans %}Categories{% endtrans %}</a>
+            {% if category is not empty %}
+            <a href="{{ path('product_remove', { 'id': entity.id, 'category': category  }) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus"></span> {%trans%}Remove{%endtrans%}</a>
+            <a href="{{ path('product_position', { 'id': entity.id, 'category': category }) }}" class="btn btn-default btn-xs">{{entity.getProductCategory(category).position}}</a>
+            <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Move{% endtrans%} <span class="caret"></span></a>
+            <ul class="dropdown-menu pull-right">
+                <li><a href="{{ path('product_up', { 'id': entity.id, 'category': category, 'position': 1 }) }}" class="move-up"><span class="glyphicon glyphicon-arrow-up"></span> {% trans %}Move up{% endtrans %}</a></li>
+                <li><a href="{{ path('product_down', { 'id': entity.id, 'category': category, 'position': 1 }) }}" class="move-down"><span class="glyphicon glyphicon-arrow-down"></span> {% trans %}Move down{% endtrans %}</a></li>
+            </ul>
+            {% endif %}
+        </div>
+        <div class="btn-group">
+            {% block actions %}
+            <a class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" href="#">{% trans %}Product{% endtrans %} <span class="caret"></span></a>
+            <ul class="dropdown-menu pull-right">
+                {% if 'media' in minishopkeys %}
+                <li><a href="{{ path('product_media', { 'product': entity.id, 'category': category }) }}">{% trans %}Media{% endtrans %}</a></li>
+                {% endif %}
+                {% if 'price' in minishopkeys %}
+                <li><a href="{{ path('price', { 'product': entity.id, 'category': category }) }}" >{% trans %}Prices{% endtrans %}</a></li>
+                {% endif %}
+                {% if 'attribute' in minishopkeys %}
+                <li><a href="{{ path('attribute', { 'product': entity.id, 'category': category }) }}">{% trans %}Attributes{% endtrans %}</a></li>
+                {% endif %}
+                {% if 'attribute' in minishopkeys %}
+                <li><a href="{{ path('option', { 'product': entity.id, 'category': category }) }}">{% trans %}Options{% endtrans %}</a></li>
+                {% endif %}
+                {% if entity.stock %}
+                <li><a href="{{ path('stock_edit', { 'id': entity.stock.id, 'product': entity.id, 'category': category }) }}">{% trans %}Stock{% endtrans %}</a></li>
+                {% else %}
+                <li><a href="{{ path('stock_new', {'product': entity.id, 'category': category }) }}">{% trans %}Stock{% endtrans %}</a></li>
+                {% endif %}
+                {% if 'marketing' in minishopkeys %}
+                <li><a href="{{ path('groupon', { 'product': entity.id, 'category': category }) }}" >{% trans %}Groupons{% endtrans %}</a></li>
+                {% endif %}
+                {% block actions-dropdown %}
+                {% endblock %}
+            </ul>
+            {% endblock %}
+        </div>
+    </td>
+</tr>
