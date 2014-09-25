@@ -544,6 +544,16 @@ class Product extends TranslateEntity
     {
         return $this->orderItems;
     }
+    
+    public function getOrderAmount()
+    {
+        $amount = 0;
+        foreach($this->getOrderItems() as $item) {
+            $amount += $item->getAmount();
+        }
+        
+        return $amount;
+    }
 
     /**
      * Set stock
