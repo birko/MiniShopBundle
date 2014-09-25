@@ -108,7 +108,7 @@ class Product extends TranslateEntity
     private $stock;
 
     /**
-     * @var boolean $anabled
+     * @var boolean $enabled
      *
      * @ORM\Column(name="enabled", type="boolean", nullable = true)
      */
@@ -121,7 +121,8 @@ class Product extends TranslateEntity
     private $tags;
     
     /**
-     * @ORM\OneToMany(targetEntity="OrderItem", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="Core\ShopBundle\Entity\OrderItem", mappedBy="product")
+     * @ORM\OrderBy({"id" = "ASC"})
      **/
     private $orderItems;
 
