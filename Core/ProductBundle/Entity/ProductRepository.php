@@ -53,7 +53,7 @@ class ProductRepository extends EntityRepository
                 ->leftJoin("p.options", "po")
                 ->leftJoin("p.media", "pm")
                 ->leftJoin("pm.media", "m")
-                ->leftJoin("p.orderItems", "poi");
+                ->leftJoin("p.orderItems", "poi")
                 ->leftJoin("p.vendor", "v");
         }
         if ($category !== null) {
