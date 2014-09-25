@@ -20,6 +20,7 @@
             {% block actions %}
             <a class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" href="#">{% trans %}Product{% endtrans %} <span class="caret"></span></a>
             <ul class="dropdown-menu pull-right">
+                {% block actionsdropdown %}
                 {% if 'media' in minishopkeys %}
                 <li><a href="{{ path('product_media', { 'product': entity.id, 'category': category }) }}">{% trans %}Media{% endtrans %}</a></li>
                 {% endif %}
@@ -40,7 +41,6 @@
                 {% if 'marketing' in minishopkeys %}
                 <li><a href="{{ path('groupon', { 'product': entity.id, 'category': category }) }}" >{% trans %}Groupons{% endtrans %}</a></li>
                 {% endif %}
-                {% block actions-dropdown %}
                 {% endblock %}
             </ul>
             {% endblock %}
