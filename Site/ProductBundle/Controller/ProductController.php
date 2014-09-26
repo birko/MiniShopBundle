@@ -118,7 +118,7 @@ class ProductController extends ShopController
         $priceGroup = $this->getPriceGroup();
         $currency = $this->getCurrency();
         $em = $this->getDoctrine()->getManager();
-        $query  = $em->getRepository("CoreProductBundle:Product")->createQueryBuilder("p")
+        $query  = $em->getRepository("CoreProductBundle:Product")->findByCategoryQueryBuilder(null, false, true)
                 ->orderBy("p.createdAt", "desc")
                 ->distinct()
                 ->getQuery();
