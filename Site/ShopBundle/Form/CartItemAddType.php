@@ -21,6 +21,8 @@ class CartItemAddType extends CartItemType
         $builder->add('productId', 'hidden');
         $builder->add('options', new OptionCartItemAddType(), array(
                 'required' => $options['requireOptions'],
+                'expanded' => $options['expandedOptions'],
+                'multiple' => $options['multipleOptions'],
                 'options' => $options['options'],
                 'product' => $options['product'],
                 'label' => false,
@@ -39,6 +41,8 @@ class CartItemAddType extends CartItemType
             'options' => array(),
             'product' => null,
             'requireOptions' => true,
+            'expandedOptions' => false,
+            'multipleOptions' => false,
         ));
     }
 }

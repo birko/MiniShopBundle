@@ -17,6 +17,8 @@ class OptionCartItemAddType extends AbstractType
                     'class'=> "CoreProductBundle:ProductOption",
                     'label' => $name,
                     'required' => $options['required'],
+                    'expanded' => $options['expanded'],
+                    'multiple' => $options['multiple'],
                     'property' => 'value',
                     'empty_value' => $name,
                     'query_builder' => function (EntityRepository $er) use ($product, $name) {
