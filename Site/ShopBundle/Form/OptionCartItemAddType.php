@@ -43,6 +43,8 @@ class OptionCartItemAddType extends AbstractType
         $resolver->setDefaults(array(
             'options' => array(),
             'product' => null,
+            'expanded' => false,
+            'multiple' => false,
         ));
     }
 }
