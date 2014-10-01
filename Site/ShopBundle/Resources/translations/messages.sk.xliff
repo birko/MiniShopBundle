@@ -236,7 +236,7 @@
             </trans-unit>
             <trans-unit id="74">
                 <source>Checkout order</source>
-                <target>Potvrdiť objednávku</target>
+                <target>Potvrdenie objednávky</target>
             </trans-unit>
             <trans-unit id="75">
                 <source>Back to cart</source>
@@ -252,7 +252,7 @@
             </trans-unit>
             <trans-unit id="78">
                 <source>Confirm order</source>
-                <target>Potvrdiť objednávku</target>
+                <target>Potvrdenie objednávky</target>
             </trans-unit>
             <trans-unit id="79">
                 <source>Company information</source>
