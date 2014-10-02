@@ -164,7 +164,7 @@ class AbstractPrice
         $rate = ($rate) ? $rate : 1;
         $rateFrom = ($rateFrom) ? $rateFrom: 1;
         
-        return $this->getPriceVAT() / $$rateFrom * $rate; 
+        return $this->getPriceVAT() / $rateFrom * $rate; 
     }
     
     public function calculatePriceVAT(Currency $currency) 
