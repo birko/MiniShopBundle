@@ -1,8 +1,8 @@
 {% if image is not empty %}
 {% if link_path is not empty %}
-<a href="{{ asset(image.getWebPath(link_path)) }}" class="thumbnail"{% if gallery is not empty%}  data-fancybox-group="{{gallery}}"{% endif %}>
+<a href="{{ asset(image.getWebPath(link_path)) }}" class="thumbnail"{% if gallery is not empty%}  title="{{ image.title }}" data-fancybox-group="{{gallery}}"{% endif %}>
 {% endif %}
-<img src="{{ asset(source)}}"  alt ="{{ image.title }}" class="img-responsive"/>
+<img src="{{ asset(source)}}"  alt="{{ image.title }}" title="{{ image.title }}" class="img-responsive"/>
 {% if link_path is not empty %}
 </a>
 {% endif %}
