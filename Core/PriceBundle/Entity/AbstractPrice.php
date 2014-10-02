@@ -160,14 +160,20 @@ class AbstractPrice
     public function calculatePrice(Currency $currency) 
     {   
         $rate = $currency->getRate();
+        $rateFrom = $this->getCurrency()->getRate();
+        $rate = ($rate) ? $rate : 1;
+        $rateFrom = ($rateFrom) ? $rateFrom: 1;
         
-        return $this->getPriceVAT() /  $this->getCurrency()->getRate() * $rate; 
+        return $this->getPriceVAT() / $$rateFrom * $rate; 
     }
     
     public function calculatePriceVAT(Currency $currency) 
     {
         $rate = $currency->getRate();
+        $rateFrom = $this->getCurrency()->getRate();
+        $rate = ($rate) ? $rate : 1;
+        $rateFrom = ($rateFrom) ? $rateFrom: 1;
         
-        return $this->getPriceVAT() /  $this->getCurrency()->getRate() * $rate; 
+        return $this->getPriceVAT() / $rateFrom * $rate; 
     }
 }
