@@ -10,7 +10,9 @@ use Core\CommonBundle\Entity\TranslateEntity;
 /**
  * Core\ProductBundle\Entity\ProductAmount
  *
- * @ORM\Table()
+ * @ORM\Table(indexes={
+        @ORM\Index(name="stock_product_idx", columns={"product_id"})
+    })
  * @ORM\Entity(repositoryClass="Core\ProductBundle\Entity\StockRepository")
  * @Gedmo\TranslationEntity(class="Core\CommonBundle\Entity\Translation")
  */

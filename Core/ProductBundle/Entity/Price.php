@@ -8,7 +8,9 @@ use Core\PriceBundle\Entity\AbstractPrice;
 /**
  * Core\ProductBundle\Entity\Price
  *
- * @ORM\Table()
+ * @ORM\Table(indexes={
+        @ORM\Index(name="price_producttype_idx", columns={"product_id", "type"})
+   })
  * @ORM\Entity(repositoryClass="Core\ProductBundle\Entity\PriceRepository")
  */
 class Price extends AbstractPrice

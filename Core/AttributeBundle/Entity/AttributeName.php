@@ -11,7 +11,9 @@ use Core\CommonBundle\Entity\TranslateEntity;
 /**
  * Core\AttributeBundle\Entity\AttributeName
  *
- * @ORM\Table()
+ * @ORM\Table(indexes={
+        @ORM\Index(name="attributename_name_idx", columns={"name"})
+   })
  * @UniqueEntity("name")
  * @ORM\Entity(repositoryClass="Core\AttributeBundle\Entity\AttributeNameRepository")
  * @Gedmo\TranslationEntity(class="Core\CommonBundle\Entity\Translation")

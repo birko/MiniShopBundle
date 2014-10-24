@@ -7,7 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Nws\ProductBundle\Entity\ProductCategory
  *
- * @ORM\Table(name="products_categorises")
+ * @ORM\Table(name="products_categorises", indexes={
+        @ORM\Index(name="productcategory_productcategory_idx", columns={"product_id", "category_id"})
+   })
  * @ORM\Entity(repositoryClass="Core\ProductBundle\Entity\ProductCategoryRepository")
  */
 

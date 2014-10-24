@@ -9,7 +9,11 @@ use Core\CommonBundle\Entity\TranslateEntity;
 /**
  * Neonus\Nws\AttributeBundle\Entity\AttributeName
  *
- * @ORM\Table()
+ * @ORM\Table(indexes={
+        @ORM\Index(name="attributevalue_name_idx", columns={"attributename_id"}),
+        @ORM\Index(name="attributevalue_value_idx", columns={"value"}),
+        @ORM\Index(name="attributevalue_namevalue_idx", columns={"attributename_id", "value"})
+   })
  * @ORM\Entity(repositoryClass="Core\AttributeBundle\Entity\AttributeValueRepository")
  * @Gedmo\TranslationEntity(class="Core\CommonBundle\Entity\Translation")
  */

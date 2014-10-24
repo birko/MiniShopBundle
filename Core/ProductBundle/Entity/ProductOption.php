@@ -10,7 +10,10 @@ use Core\AttributeBundle\Entity\AttributeValue;
 /**
  * Core\ProductBundle\Entity\ProductOption
  *
- * @ORM\Table()
+ * @ORM\Table(indexes={
+        @ORM\Index(name="productoption_namevalue_idx", columns={"attributename_id", "attributevalue_id"}),
+        @ORM\Index(name="productoption_productnamevalue_idx", columns={"product_id", "attributename_id", "attributevalue_id"})
+    })
  * @ORM\Entity(repositoryClass="Core\ProductBundle\Entity\ProductOptionRepository")
  */
 class ProductOption implements \Serializable

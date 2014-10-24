@@ -9,7 +9,9 @@ use Core\UserBundle\Entity\PriceGroup;
 /**
  * Core\ShopBundle\Entity\OrderItem
  *
- * @ORM\Table()
+ * @ORM\Table(indexes={
+        @ORM\Index(name="oorderitem_product_idx", columns={"product_id"})
+   })
  * @ORM\Entity(repositoryClass="Core\ShopBundle\Entity\OrderItemRepository")
  */
 class OrderItem

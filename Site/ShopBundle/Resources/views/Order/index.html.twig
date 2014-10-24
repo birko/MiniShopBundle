@@ -8,7 +8,7 @@
     </thead>
     <tfoot>
         <tr>
-            <td colspan="2">
+            <td colspan="3">
                 <a href="{{ path('SiteUserBundle_index') }}" class="btn btn-default btn-inverse">{% trans %}Customer section{% endtrans %}</a>
             </td>
         </tr>
@@ -17,6 +17,7 @@
     {% for entity in entities %}
         <tr>
             <td>{% if entity.createdAt %}{{ entity.createdAt|date('d.m.Y H:i:s') }}{% endif%}</td>
+            <td>{% if entity.orderNumber %}{{ entity.orderNumber }}{% else %}{{ entity.id }}{% endif%}</td>
             <td>
                 <a href="{{ path('order_detail', { 'id': entity.id }) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-asterisk"></span> {% trans %}Show{% endtrans %}</a>
                 {% if entity.invoicedAt %}

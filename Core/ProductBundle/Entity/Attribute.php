@@ -10,7 +10,10 @@ use Core\AttributeBundle\Entity\AttributeValue;
 /**
  * Core\ProductBundle\Entity\Attribute
  *
- * @ORM\Table(name="product_attribute")
+ * @ORM\Table(name="product_attribute", indexes={
+        @ORM\Index(name="attribute_namevalue_idx", columns={"attributename_id", "attributevalue_id"}),
+        @ORM\Index(name="attribute_productnamevalue_idx", columns={"product_id", "attributename_id", "attributevalue_id"})
+   })
  * @ORM\Entity(repositoryClass="Core\ProductBundle\Entity\AttributeRepository")
  */
 class Attribute

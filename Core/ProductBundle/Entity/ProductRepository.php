@@ -47,13 +47,13 @@ class ProductRepository extends EntityRepository
                 ->leftJoin("pc.category", "c");
         if ($join) {
             $queryBuilder
-                ->select("p, ps, pp, pa, po, pm, m, v, pc, c, poi, pg, cur, va")
+                ->select("p, ps, pp, pa, po, pm, m, v, pc, c, pg, cur, va")
                 ->leftJoin("p.prices", "pp")
                 ->leftJoin("p.attributes", "pa")
                 ->leftJoin("p.options", "po")
                 ->leftJoin("p.media", "pm")
                 ->leftJoin("pm.media", "m")
-                ->leftJoin("p.orderItems", "poi")
+                //->leftJoin("p.orderItems", "poi")
                 ->leftJoin("p.vendor", "v")
                 ->leftJoin("pp.priceGroup", "pg")
                 ->leftJoin("pp.currency", "cur")

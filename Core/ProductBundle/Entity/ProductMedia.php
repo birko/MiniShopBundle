@@ -8,7 +8,10 @@ use Core\MediaBundle\Entity\Media;
 /**
  * Core\ProductBundle\Entity\ProductCategory
  *
- * @ORM\Table(name="products_medias")
+ * @ORM\Table(name="products_medias",indexes={
+        @ORM\Index(name="productmedia_product_idx", columns={"product_id"}),
+        @ORM\Index(name="productmedia_productmedia_idx", columns={"product_id", "media_id"})
+   })
  * @ORM\Entity(repositoryClass="Core\ProductBundle\Entity\ProductMediaRepository")
  */
 
