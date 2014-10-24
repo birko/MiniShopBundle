@@ -27,7 +27,7 @@ class CartBaseAddressType extends AbstractType
             ->add('shippingAddress', new DeliveryAddressType(), array(
                 'required' => !$this->sameaddress,
                 'error_bubbling' => true,
-                'requiredFields' => isset($options['address']['required']) ? $options['address']['required']: array(),
+                'requiredFields' => isset($options['address']['required']) ? $options['address']['required'] : array(),
             ))
             ->add('sameAddress', 'checkbox', array(
                 'required' => false,
@@ -36,7 +36,7 @@ class CartBaseAddressType extends AbstractType
             ->add('paymentAddress', new AddressType(), array(
                 'required' => true,
                 'error_bubbling' => true,
-                'requiredFields' => isset($options['address']['required']) ? $options['address']['required']: array(),
+                'requiredFields' => isset($options['address']['required']) ? $options['address']['required'] : array(),
             ));
     }
 

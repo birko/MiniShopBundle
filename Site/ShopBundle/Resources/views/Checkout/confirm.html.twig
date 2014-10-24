@@ -57,7 +57,7 @@
 			{% set index = cart.items|keys[loop.index0] %}
 			{% include "SiteShopBundle:Cart:item.html.twig" with {'item': item, 'form': '', 'index': index, 'currency' : currency }%}
 			{% endfor %}
-		
+
             {% if cart.shipping is not empty %}
             <tr>
 				<td>

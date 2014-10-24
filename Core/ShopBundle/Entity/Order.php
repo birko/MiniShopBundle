@@ -309,13 +309,13 @@ class Order
      * @ORM\Column(name="options", type="text", nullable=true)
      */
     private $options;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Core\UserBundle\Entity\PriceGroup")
      * @ORM\JoinColumn(name="pricegroup_id", referencedColumnName="id")
      */
     private $priceGroup;
-    
+
      /**
      * @ORM\ManyToOne(targetEntity="Core\PriceBundle\Entity\Currency")
      * @ORM\JoinColumn(name="currency_id", referencedColumnName="id")
@@ -338,7 +338,7 @@ class Order
     {
         return $this->id;
     }
-    
+
     /**
      * Set PriceGroup
      *
@@ -358,7 +358,7 @@ class Order
     {
         return $this->priceGroup;
     }
-    
+
     /**
      * Set Currency
      *

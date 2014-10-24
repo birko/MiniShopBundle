@@ -109,7 +109,7 @@ class CategoryController extends Controller
             $parentsQueryBuilder = $em->getRepository('CoreCategoryBundle:Category')->getTreeQueryBuilder($menu_index, true);
             $query = $em->getRepository('CoreCategoryBundle:Category')->setHint($parentsQueryBuilder->getQuery());
             $parents = $query->getArrayResult();
-            $tree = (count($parents)> 0) ? $em->getRepository('CoreCategoryBundle:Category')->buildTree($parents, $options): "";
+            $tree = (count($parents)> 0) ? $em->getRepository('CoreCategoryBundle:Category')->buildTree($parents, $options) : "";
 
             return $this->render("SiteCategoryBundle:Category:Tree/tree.html.twig", array(
                 'tree' => $tree,

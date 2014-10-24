@@ -43,7 +43,7 @@ class BaseOrderController extends Controller
         $pdf->setPrintHeader(false);
         $pdf->setPrintFooter(false);
         $pdf->AddPage();
-        $pdf->writeHTML($view, true, false, true, FALSE, '');
+        $pdf->writeHTML($view, true, false, true, false, '');
         $pdf->lastPage();
         $pdf->Output("order-".$entity->getId().".pdf", "D");
 

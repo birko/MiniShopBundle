@@ -101,7 +101,7 @@ class ShopController extends BaseOrderController
 
         return $pricegroup;
     }
-    
+
     protected function getCurrency()
     {
         $currency = null;
@@ -123,10 +123,10 @@ class ShopController extends BaseOrderController
             ->getOneOrNullResult();
         }
         $this->setCurrency($currency);
-        
+
         return $currency;
     }
-    
+
     protected function setCurrency(Currency $currency)
     {
         $session = $this->getRequest()->getSession();

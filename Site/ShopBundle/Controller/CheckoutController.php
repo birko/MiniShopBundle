@@ -247,7 +247,7 @@ class CheckoutController extends ShopController
         $form = $this->createForm(new CartOrderType(), $cart);
         $form->bind($this->getRequest());
         $form->isValid();
-        if (!$cart->getPaymentAddress()){
+        if (!$cart->getPaymentAddress()) {
             return $this->redirect($this->generateUrl('cart'));
         }
         if ($cart->isSameAddress()) {
@@ -338,7 +338,7 @@ class CheckoutController extends ShopController
                 $productEntity = $em->getRepository('CoreProductBundle:Product')->find($item->getProductId());
                 if ($productEntity !== null) {
                     $orderItem->setProduct($productEntity);
-                    if($productEntity->getStock() && $productEntity->getStock()->getAmount() > 0) {
+                    if ($productEntity->getStock() && $productEntity->getStock()->getAmount() > 0) {
                         $productEntity->getStock()->setAmount($productEntity->getStock()->getAmount() - $item->getAmount());
                         $em->persist($productEntity->getStock());
                     }

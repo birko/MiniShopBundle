@@ -33,7 +33,7 @@ class ProcessType extends AbstractType
 
         if (isset($options['config']['shipping']) && $options['config']['shipping']) {
             $choices['shippingstatus'] = "Shipping status";
-            $builder ->add('shippingStatus','entity',  array(
+            $builder->add('shippingStatus','entity',  array(
                 'class' => 'CoreShopBundle:ShippingStatus',
                 'label' => 'Shipping status',
                 'property' => 'name' ,

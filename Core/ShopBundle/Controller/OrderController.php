@@ -237,7 +237,7 @@ class OrderController extends BaseOrderController
         $em = $this->getDoctrine()->getManager();
         $sendEmail= $entity->getInvoiceEmail();
         $emails = $this->container->getParameter('default.emails');
-        $name = ($entity->getOrderStatus()) ? $entity->getOrderStatus()->getName(): 'order-change';
+        $name = ($entity->getOrderStatus()) ? $entity->getOrderStatus()->getName() : 'order-change';
         $ordernumber = $entity->getOrderNumber();
         $title = (!empty($ordernumber)) ? $ordernumber : $entity->getId();
         $trackingid = $entity->getTrackingId();

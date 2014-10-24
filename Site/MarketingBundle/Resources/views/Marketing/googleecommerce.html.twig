@@ -7,12 +7,12 @@
 	  'revenue': '{{order.priceVAT}}',
 	  'shipping': '{{order.shipping.priceVAT}}',
 	  'tax': '{{order.priceVAT - order.price}}',
-	  'currency': 'EUR'  
+	  'currency': 'EUR'
 	});
 	{% for item in order.items %}
 	{% if item.payment is empty and item.shipping is empty %}
 	ga('ecommerce:addItem', {
-	  'id': '{{order.id}}', 
+	  'id': '{{order.id}}',
 	  'name': '{{item.name}}',
 	  {% if item.product is not empty %}
 	  'sku': '{{item.product.id}}',
@@ -22,7 +22,7 @@
 	  {% endif %}
 	  'price': '{{item.priceVAT}}',
 	  'quantity': '{{item.amount}}',
-	  'currency': 'EUR'  
+	  'currency': 'EUR'
 	});
 	{% endif %}
 	{% endfor %}

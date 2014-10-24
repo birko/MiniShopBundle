@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class OrderItemRepository extends EntityRepository
 {
-    public function getProductsOrderCount($entities) 
+    public function getProductsOrderCount($entities)
     {
         $querybuilder = $this->createQueryBuilder('oi')
             ->select("sum(oi.amount) as amount, p.id as product_id")
@@ -22,13 +22,13 @@ class OrderItemRepository extends EntityRepository
         }
 
         $query = $querybuilder->getQuery();
-        
+
         $result = array();
         foreach ($query->itareate() as $key => $row) {
             $entity = $row[$key];
             $result[$entity['product_id']] = $entity;
         }
-        
+
         return $result;
     }
 }

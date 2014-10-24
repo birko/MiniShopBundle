@@ -47,8 +47,8 @@ class CartItem implements \Serializable
     {
         $this->amount = $array[0];
         $this->productID = $array[1];
-        $this->price = (float)$array[2];
-        $this->priceVAT = (float)$array[3];
+        $this->price = (float) $array[2];
+        $this->priceVAT = (float) $array[3];
         $this->name = $array[4];
         $this->description = $array[5];
         $this->setOptions($array[6]);
@@ -94,7 +94,7 @@ class CartItem implements \Serializable
 
     public function setProductId($productid)
     {
-        $this->productID = ($productid) ? (int)$productid : null;
+        $this->productID = ($productid) ? (int) $productid : null;
     }
     public function getProductId()
     {
@@ -103,7 +103,7 @@ class CartItem implements \Serializable
 
     public function setPrice($price)
     {
-        $this->price = (float)$price;
+        $this->price = (float) $price;
     }
 
     public function getPrice()
@@ -113,7 +113,7 @@ class CartItem implements \Serializable
 
     public function setPriceVAT($pricevat)
     {
-        $this->priceVAT = (float)$pricevat;
+        $this->priceVAT = (float) $pricevat;
     }
 
     public function getPriceVAT()
@@ -231,20 +231,20 @@ class CartItem implements \Serializable
     {
         return $this->getAmount()* $this->getPriceVAT();
     }
-    
-    public function calculatePrice(Currency $currencyFrom, Currency $currency) 
+
+    public function calculatePrice(Currency $currencyFrom, Currency $currency)
     {
         $rateFrom  =  $currencyFrom->getRate();
         $rateTo = $currency->getRate();
-        
-        return $this->getPrice() /$rateFrom * $rateTo; 
+
+        return $this->getPrice() /$rateFrom * $rateTo;
     }
-    
-    public function calculatePriceVAT(Currency $currencyFrom, Currency $currency) 
+
+    public function calculatePriceVAT(Currency $currencyFrom, Currency $currency)
     {
         $rateFrom  =  $currencyFrom->getRate();
         $rateTo = $currency->getRate();
-        
-        return $this->getPriceVAT() /$rateFrom * $rateTo; 
+
+        return $this->getPriceVAT() /$rateFrom * $rateTo;
     }
 }

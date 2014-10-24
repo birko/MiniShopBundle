@@ -79,7 +79,7 @@ class CartController extends ShopController
 
         $pricegroup = $this->getPriceGroup();
         $currency = $this->getCurrency();
-        
+
         return $this->render('SiteShopBundle:Cart:index.html.twig', array(
             'form'   => $form2->createView(),
             'cart' => $cart,
@@ -119,7 +119,7 @@ class CartController extends ShopController
             'entity' => $entity,
             'form' => $form->createView(),
             'options' => $options,
-            'type' => ($price) ? $price->getType(): null,
+            'type' => ($price) ? $price->getType() : null,
         ));
     }
 
@@ -207,7 +207,7 @@ class CartController extends ShopController
 
         $pricegroup = $this->getPriceGroup();
         $currency = $this->getCurrency();
-        
+
         return $this->render('SiteShopBundle:Cart:info.html.twig', array(
             'cart' => $cart,
             'pricegroup' => $priceGroup,

@@ -27,7 +27,7 @@ class NewUserType extends BaseUserType
                     'required' => true,
                     'widget_remove_btn' => array('label' => 'Remove'),
                     'label_render' => false,
-                    'requiredFields' => isset($options['address']['required']) ? $options['address']['required']: array(),
+                    'requiredFields' => isset($options['address']['required']) ? $options['address']['required'] : array(),
                 )));
         }
         $builder->remove('enabled');

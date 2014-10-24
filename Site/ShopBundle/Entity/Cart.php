@@ -27,7 +27,7 @@ class Cart implements \Serializable
         $this->sameAddress = true;
         $this->items = new ArrayCollection();
     }
-    
+
     public function getCurrency()
     {
         return $this->currency;
@@ -43,7 +43,7 @@ class Cart implements \Serializable
         }
         $this->currency = $currency;
     }
-    
+
     public function getShippingAddress()
     {
         return $this->shippingAddress;
@@ -107,7 +107,7 @@ class Cart implements \Serializable
 
     public function setItems($items = array())
     {
-        $this->items = ($items instanceof ArrayCollection)? $items : new ArrayCollection($items);
+        $this->items = ($items instanceof ArrayCollection) ? $items : new ArrayCollection($items);
     }
 
     public function addItem(CartItem $item, $index = null)

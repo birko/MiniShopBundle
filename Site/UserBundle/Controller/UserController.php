@@ -149,9 +149,9 @@ class UserController extends Controller
                     // last username entered by the user
                     'form' => $form->createView(),
                 ));
-            }   
+            }
         }
-        
+
         return $this->createNotFoundException();
     }
 

@@ -75,7 +75,7 @@ class ProductController extends ShopController
         );
 
         return $this->render('SiteProductBundle:Product:list.html.twig', array(
-            'entities' => $pagination, 
+            'entities' => $pagination,
             'pricegroup' => $priceGroup,
             'currency' => $currency,
         ));
@@ -107,7 +107,7 @@ class ProductController extends ShopController
         );
 
         return $this->render('SiteProductBundle:Product:search.html.twig', array(
-            'entities' => $pagination, 
+            'entities' => $pagination,
             'pricegroup' => $priceGroup,
             'currency' => $currency,
         ));
@@ -127,7 +127,7 @@ class ProductController extends ShopController
                 ->getResult();
 
         return $this->render('SiteProductBundle:Product:top.html.twig', array(
-            'entities' => $entities, 
+            'entities' => $entities,
             'pricegroup' => $priceGroup,
             'currency' => $currency,
        ));
@@ -149,10 +149,10 @@ class ProductController extends ShopController
         $entities = $query->getResult();
 
         return $this->render('SiteProductBundle:Product:top.html.twig', array(
-        'entities' => $entities, 
+        'entities' => $entities,
         'pricegroup' => $priceGroup,
         'currency' => $currency,
-        'tag' => $tag, 
+        'tag' => $tag,
         'slug' => GedmoUrlizer::urlize($tag)));
     }
 
