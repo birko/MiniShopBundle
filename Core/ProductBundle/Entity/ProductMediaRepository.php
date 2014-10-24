@@ -6,6 +6,11 @@ use Doctrine\ORM\EntityRepository;
 
 class ProductMediaRepository extends EntityRepository
 {
+    public function setHint(\Doctrine\ORM\Query $query)
+    {
+        return $query->setHint(\Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER, 'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker');
+    }
+    
     public function removeProductMedia($mediaId = null, $productId = null)
     {
         $querybuilder = $this->getEntityManager()->createQueryBuilder()
@@ -60,8 +65,8 @@ class ProductMediaRepository extends EntityRepository
    public function getProductsMediasQueryBuilder($entities = null)
    {
         $querybuilder = $this->getEntityManager()->createQueryBuilder()
-            ->select("m, p, pm")
-            ->from("CoreMediaBundle:ProductMedia", "pm")
+            ->select("m, pm")
+            ->from("CoreProductBundle:ProductMedia", "pm")
             ->leftJoin("pm.media", "m")
             ->leftJoin("pm.product", "p")
             ->addOrderBy("pm.position", "asc")
@@ -72,21 +77,21 @@ class ProductMediaRepository extends EntityRepository
             $querybuilder->andWhere($expr);
         }
 
-       return $queryBuilder;
+       return $querybuilder;
    }
 
     public function getProductsMediasQuery($entities = null)
     {
-        return $this->getProductsMediasQueryBuilder($entities)->getQuery();
+        return $this->setHint($this->getProductsMediasQueryBuilder($entities)->getQuery());
     }
 
     public function getProductsMediasArray($entities = null)
     {
         $query = $this->getProductsMediasQuery($entities);
         $result = array();
-        foreach ($query->itareate() as $key=>$row) {
-            $entity = $row[$key];
-            $result[$enntity->getProduct()->getId()][] = $entity->getMedia();
+        
+        foreach ($query->getResult() as $entity) {
+            $result[$entity->getProduct()->getId()][] = $entity->getMedia();
         }
 
         return $result;

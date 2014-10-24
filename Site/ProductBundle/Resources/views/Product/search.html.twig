@@ -4,6 +4,9 @@
 <h1>{% trans %}Search{% endtrans %}</h1>
 </div>
 <div class="class="row">
-    {% include 'SiteProductBundle:Product:list.html.twig' with {'entities': entities, 'recursive': 0} %}
+    {% set o  = [] %}{% if ordered is defined  %}{% set o = ordered %}{% endif %}
+    {% set s  = [] %}{% if stock is defined %}{% set s = stock %}{% endif %}
+    {% set m  = [] %}{% if media is defined %}{% set m = media %}{% endif %}
+    {% include 'SiteProductBundle:Product:list.html.twig' with {'entities': entities, 'recursive': 0, 'media': m, 'ordered': o, 'stock': s} %}
 </div>
 {% endblock %}

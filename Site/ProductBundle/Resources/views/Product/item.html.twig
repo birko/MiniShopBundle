@@ -2,7 +2,9 @@
     <div class="product thumbnail">
         <div class="row text-center">
             <a href="{{path('product_site', {'slug': entity.slug})}}" class="image">
-              {% if entity.media is not empty%}
+              {% if media is defined %}
+              {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media.0, 'dir': 'thumb', 'link_path':'', 'gallery': ''} %}
+              {% elseif entity.media is not empty%}
               {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity.media.0.media, 'dir': 'thumb', 'link_path':'', 'gallery': ''} %}
               {% endif %}
             </a>

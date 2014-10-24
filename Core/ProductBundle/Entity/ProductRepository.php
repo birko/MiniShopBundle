@@ -37,31 +37,35 @@ class ProductRepository extends EntityRepository
         return $this->setHint($query)->getOneOrNullResult();
     }
 
-    public function findByCategoryQueryBuilder($category = null, $recursive = false, $onlyenabled = false, $join = true, $joinMedia = true)
+    public function findByCategoryQueryBuilder($category = null, $recursive = false, $onlyenabled = false, $join = true, $joindetail = true)
     {
         $select = "p, ps";
         $queryBuilder = $this->getEntityManager()->createQueryBuilder()
-                ->from("CoreProductBundle:Product", "p")
-                ->leftJoin("p.stock", "ps")
-                ->leftJoin("p.productCategories", "pc")
-                ->leftJoin("pc.category", "c");
+            ->from("CoreProductBundle:Product", "p")
+            ->leftJoin("p.productCategories", "pc")
+            ->leftJoin("pc.category", "c")
+            ->leftJoin("p.stock", "ps")
+        ;
+                
         if ($join) {
-            $select .= ", pp, pa, po, v, pc, c, pg, cur, va";
+            $select .= ", pc, c, pp, v, pg, cur, va";
             $queryBuilder
                 ->leftJoin("p.prices", "pp")
-                ->leftJoin("p.attributes", "pa")
-                ->leftJoin("p.options", "po")
                 ->leftJoin("p.vendor", "v")
                 ->leftJoin("pp.priceGroup", "pg")
                 ->leftJoin("pp.currency", "cur")
-                ->leftJoin("pp.vat", "va");
+                ->leftJoin("pp.vat", "va")
+            ;
         }
 
-        if ($joinMedia) {
-            $select .= ", pm, m";
+        if ($joindetail) {
+            $select .= ", pm, m, pa, po";
             $queryBuilder
                 ->leftJoin("p.media", "pm")
-                ->leftJoin("pm.media", "m");
+                ->leftJoin("pm.media", "m")
+                ->leftJoin("p.attributes", "pa")
+                ->leftJoin("p.options", "po")
+            ;
         }
 
         $queryBuilder->select($select);
@@ -86,24 +90,31 @@ class ProductRepository extends EntityRepository
         }
         $queryBuilder
             ->addOrderBy("pc.position", 'asc')
-            ->addOrderBy("p.id", 'asc');
+            ->addOrderBy("p.id", 'asc')
+        ;
+        if ($join) {
+            $queryBuilder
+                ->addOrderBy("pp.priceAmount", 'asc')
+                ->addOrderBy("pp.priceVAT", 'asc')
+            ;
+        }
 
         return $queryBuilder;
     }
 
-    public function findByCategoryQuery($category = null, $recursive = false, $onlyenabled = false, $join = true)
+    public function findByCategoryQuery($category = null, $recursive = false, $onlyenabled = false, $join = true, $joindetail = true)
     {
-        return $this->setHint($this->findByCategoryQueryBuilder($category, $recursive, $onlyenabled, $join)->getQuery());
+        return $this->setHint($this->findByCategoryQueryBuilder($category, $recursive, $onlyenabled, $join, $joindetail)->getQuery());
     }
 
-    public function findByCategory($category = null, $recursive = false, $onlyenabled = false, $join = true)
+    public function findByCategory($category = null, $recursive = false, $onlyenabled = false, $join = true, $joindetail = true)
     {
-        return $this->findByCategoryQuery($category, $recursive, $onlyenabled, $join)->getResult();
+        return $this->findByCategoryQuery($category, $recursive, $onlyenabled, $join, $joindetail)->getResult();
     }
 
     public function findNotInCategoryQueryBuilder($categoryId = null, $recursive = false, $onlyenabled = false)
     {
-        $queryBuilder2 = $this->findByCategoryQueryBuilder($categoryId, $recursive, $onlyenabled, false)
+        $queryBuilder2 = $this->findByCategoryQueryBuilder($categoryId, $recursive, $onlyenabled, false, false)
                 ->select("p")
                 ->andWhere("p2 = p");
         $queryBuilder = $this->getEntityManager()->createQueryBuilder();
@@ -153,7 +164,7 @@ class ProductRepository extends EntityRepository
             }
             $vendor = $filter->getVendor();
             if ($vendor) {
-                $queryBuilder->andWhere('v.id = :vid');
+                $queryBuilder->andWhere('p.vendor = :vid');
                 if (is_integer($vendor)) {
                     $queryBuilder->setParameter('vid', $vendor);
                 } else {

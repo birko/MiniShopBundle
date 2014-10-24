@@ -10,7 +10,10 @@
     </div>
     <div class="row">
     {% for product in entities %}
-    {% include 'SiteProductBundle:Product:item.html.twig' with {'entity': product} %}
+    {% set o  = '' %}{% if ordered is defined and product.id in ordered|keys %}{% set o = ordered[product.id]  %}{% endif %}
+    {% set s  = [] %}{% if stock is defined and product.id in stock|keys %}{% set s = stock[product.id]  %}{% endif %}
+    {% set m  = [] %}{% if media is defined and product.id in media|keys %}{% set m = media[product.id]  %}{% endif %}
+    {% include 'SiteProductBundle:Product:item.html.twig' with {'entity': product, 'media': m, 'ordered' : 0, 'stock': s} %}
     {% endfor %}
     </div>
     <div class="row">

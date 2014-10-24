@@ -31,7 +31,7 @@ class StockRepository extends EntityRepository
 
     public function getStockQuery($entities = null)
     {
-        return $this->getStockQueryBuilder($entities)->getQuery();
+        return $query->setHint($this->getStockQueryBuilder($entities)->getQuery());
     }
     public function getStock($entities = null)
     {
@@ -44,11 +44,11 @@ class StockRepository extends EntityRepository
         ->select("s, p")
         ->leftJoin("s.product", "p")
         ->getQuery();
-
+        $query = $this->setHint($query);
+        
         $result = array();
-        foreach ($query->itareate() as $key=>$row) {
-            $entity = $row[$key];
-            $result[$enntity->getProduct()->getId()][] = $entity;
+        foreach ($query->getResult() as $entity) {
+            $result[$entity->getProduct()->getId()][] = $entity;
         }
 
         return $result;

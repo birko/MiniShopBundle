@@ -15,7 +15,8 @@ class OrderItemRepository extends EntityRepository
     {
         $querybuilder = $this->createQueryBuilder('oi')
             ->select("sum(oi.amount) as amount, p.id as product_id")
-            ->join("oi.product", "p");
+            ->join("oi.product", "p")
+            ->addGroupBy("p.id");
         if ($entities != null) {
             $expr = $querybuilder->expr()->in("oi.product", $entities);
             $querybuilder->andWhere($expr);
@@ -24,7 +25,7 @@ class OrderItemRepository extends EntityRepository
         $query = $querybuilder->getQuery();
 
         $result = array();
-        foreach ($query->itareate() as $key => $row) {
+        foreach ($query->iterate() as $key => $row) {
             $entity = $row[$key];
             $result[$entity['product_id']] = $entity;
         }

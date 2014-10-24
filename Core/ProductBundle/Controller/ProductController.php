@@ -69,7 +69,7 @@ class ProductController extends TranslateController
         }
 
         $querybuilder = $em->getRepository('CoreProductBundle:Product')
-                    ->findByCategoryQueryBuilder($category);
+                    ->findByCategoryQueryBuilder($category, false, false, false, false);
         $query = $em->getRepository('CoreProductBundle:Product')->filterQueryBuilder($querybuilder, $filter)->getQuery();
         $query = $em->getRepository('CoreProductBundle:Product')->setHint($query);
         $paginator = $this->get('knp_paginator');
