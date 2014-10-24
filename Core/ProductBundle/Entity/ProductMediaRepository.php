@@ -56,4 +56,40 @@ class ProductMediaRepository extends EntityRepository
 
         return $numUpdated;
     }
+    
+    
+   public function getProductsMediasQueryBuilder($entities = null)
+   {
+        $querybuilder = $this->getEntityManager()->createQueryBuilder()
+            ->select("m, p, pm")
+            ->from("CoreMediaBundle:ProductMedia", "pm")
+            ->leftJoin("pm.media", "m")
+            ->leftJoin("pm.product", "p")
+            ->addOrderBy("pm.position", "asc")
+            ->addOrderBy("m.id", "asc")
+        ;
+        if ($entities != null) {
+            $expr = $querybuilder->expr()->in("pm.product", $entities);
+            $querybuilder->andWhere($expr);
+        }
+
+       return $queryBuilder;
+   }
+
+    public function getProductsMediasQuery($entities = null)
+    {
+        return $this->getProductsMediasQueryBuilder($entities)->getQuery();
+    }
+    
+    public function getProductsMediasArray($entities = null)
+    {
+        $query = $this->getProductsMediasQuery($entities);
+        $result = array();
+        foreach ($query->itareate() as $key=>$row) {
+            $entity = $row[$key];
+            $result[$enntity->getProduct()->getId()][] = $entity->getMedia();
+        }
+        
+        return $result;
+    }
 }

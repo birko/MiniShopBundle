@@ -37,28 +37,34 @@ class ProductRepository extends EntityRepository
         return $this->setHint($query)->getOneOrNullResult();
     }
 
-    public function findByCategoryQueryBuilder($category = null, $recursive = false, $onlyenabled = false, $join = true)
+    public function findByCategoryQueryBuilder($category = null, $recursive = false, $onlyenabled = false, $join = true, $joinMedia = true)
     {
+        $select = "p, ps";
         $queryBuilder = $this->getEntityManager()->createQueryBuilder()
-                ->select("p, ps")
                 ->from("CoreProductBundle:Product", "p")
                 ->leftJoin("p.stock", "ps")
                 ->leftJoin("p.productCategories", "pc")
                 ->leftJoin("pc.category", "c");
         if ($join) {
+            $select .= ", pp, pa, po, v, pc, c, pg, cur, va";
             $queryBuilder
-                ->select("p, ps, pp, pa, po, pm, m, v, pc, c, pg, cur, va")
                 ->leftJoin("p.prices", "pp")
                 ->leftJoin("p.attributes", "pa")
                 ->leftJoin("p.options", "po")
-                ->leftJoin("p.media", "pm")
-                ->leftJoin("pm.media", "m")
-                //->leftJoin("p.orderItems", "poi")
                 ->leftJoin("p.vendor", "v")
                 ->leftJoin("pp.priceGroup", "pg")
                 ->leftJoin("pp.currency", "cur")
                 ->leftJoin("pp.vat", "va");
         }
+        
+        if ($joinMedia) {
+            $select .= ", pm, m";
+            $queryBuilder
+                ->leftJoin("p.media", "pm")
+                ->leftJoin("pm.media", "m");
+        }
+        
+        $queryBuilder ->select($select);
         if ($category !== null) {
             $expr = $queryBuilder->expr()->orX($queryBuilder->expr()->eq("pc.category",":category"));
             $queryBuilder->andWhere($expr)
@@ -120,27 +126,6 @@ class ProductRepository extends EntityRepository
     public function findNotInCategory($categoryId  = null, $recursive = false, $onlyenabled = false)
     {
         return $this->findNotInCategoryQuery($categoryId , $recursive, $onlyenabled)->getResult();
-    }
-    // obsolete
-   public function findMediaByProductQueryBuilder($product)
-   {
-       $queryBuilder = $this->getEntityManager()->createQueryBuilder()
-               ->select("m")
-               ->from("CoreProductBundle:Product", "p")
-               ->from("CoreMediaBundle:Media", "m")
-               ->leftJoin("p.media", "pm")
-               ->where("p.id = :product")
-               ->andWhere("pm.media = m")
-               ->setParameter('product', $product)
-               ->addOrderBy("pm.position", "asc")
-               ->addOrderBy("m.id", "asc");
-
-       return $queryBuilder;
-   }
-
-    public function findMediaByProduct($product)
-    {
-        return $this->findMediaByProductQueryBuilder($product)->getQuery()->getResult();
     }
 
     public function filterQueryBuilder($queryBuilder, Filter $filter = null, $selector = "p")
