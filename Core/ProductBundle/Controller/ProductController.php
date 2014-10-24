@@ -317,10 +317,10 @@ class ProductController extends TranslateController
         $entity->setVendor($product->getVendor());
         $em->persist($entity);
         $em->flush();
-        foreach($product->getTranslations() as $translation) {
+        foreach ($product->getTranslations() as $translation) {
             $translation->setSlug(null);
         }
-        
+
         $entity->setTranslations($product->getTranslations());
         $this->saveTranslations($entity, $cultures);
         foreach ($product->getPrices() as $productprice) {
@@ -524,7 +524,7 @@ class ProductController extends TranslateController
             'form' => $form->createView()
         ));
     }
-    
+
     public function categoriesAction($id, $category)
     {
         $em = $this->getDoctrine()->getManager();
@@ -542,7 +542,7 @@ class ProductController extends TranslateController
             'category' => $category,
         ));
     }
-    
+
     public function categoriesUpdateAction($id, $category)
     {
         $em = $this->getDoctrine()->getManager();
@@ -561,15 +561,15 @@ class ProductController extends TranslateController
         if ($editForm->isValid()) {
             $em->persist($entity);
             foreach ($entity->getCategories() as $categoryEntity) {
-                $list = $list->filter(function($entry) use ($categoryEntity) {
+                $list = $list->filter(function ($entry) use ($categoryEntity) {
                     return $entry->getId() != $categoryEntity->getId();
                 });
             }
             $em->flush();
-            foreach($list as $categoryEntity)
-            {
+            foreach ($list as $categoryEntity) {
                 $em->getRepository('CoreProductBundle:ProductCategory')->removeProductCategory($categoryEntity->getId(), $entity->getId());
             }
+
             return $this->redirect($this->generateUrl('product_categories', array('id' => $id, 'category' => $category)));
         }
 

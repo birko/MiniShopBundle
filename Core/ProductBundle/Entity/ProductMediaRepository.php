@@ -56,8 +56,7 @@ class ProductMediaRepository extends EntityRepository
 
         return $numUpdated;
     }
-    
-    
+
    public function getProductsMediasQueryBuilder($entities = null)
    {
         $querybuilder = $this->getEntityManager()->createQueryBuilder()
@@ -80,7 +79,7 @@ class ProductMediaRepository extends EntityRepository
     {
         return $this->getProductsMediasQueryBuilder($entities)->getQuery();
     }
-    
+
     public function getProductsMediasArray($entities = null)
     {
         $query = $this->getProductsMediasQuery($entities);
@@ -89,7 +88,7 @@ class ProductMediaRepository extends EntityRepository
             $entity = $row[$key];
             $result[$enntity->getProduct()->getId()][] = $entity->getMedia();
         }
-        
+
         return $result;
     }
 }

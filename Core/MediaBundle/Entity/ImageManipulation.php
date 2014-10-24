@@ -296,7 +296,7 @@ class ImageManipulation
                 $imageResource->unsharpMaskImage($radius, 0.5, $amount, $threshold);
             }
             // code from http://vikjavev.no/computing/ump.php
-            else if (function_exists('imagecreate')) {
+            elseif (function_exists('imagecreate')) {
                 if ($amount > 500)    $amount = 500;
                 $amount = $amount * 0.016;
                 if ($radius > 50)    $radius = 50;

@@ -3,7 +3,6 @@
 namespace Core\ProductBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Doctrine\ORM\EntityRepository;
 
 class ProductCategoriesType extends ProductTranslationType
@@ -18,7 +17,7 @@ class ProductCategoriesType extends ProductTranslationType
                 'expanded' => true,
                 'property'=> 'toOption',
                 'group_by' => 'menu',
-                'query_builder' => function(EntityRepository $er) {
+                'query_builder' => function (EntityRepository $er) {
                     return $er->getCategoriesQueryBuilder()
                         ->orderBy("c.menu")
                         ->addOrderBy("c.lft");
@@ -26,5 +25,5 @@ class ProductCategoriesType extends ProductTranslationType
             ))
         ;
     }
-    
+
 }

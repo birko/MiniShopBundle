@@ -3,7 +3,6 @@
 namespace Core\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Nws\MediaBundle\Entity\Video
  *
@@ -58,8 +57,7 @@ class Video extends Media
     {
         $type = $this->getVideoType();
         $file = $this->getFile();
-        switch($type)
-        {
+        switch ($type) {
             case VideoType::YOUTUBE:
                 $source = $this->getSource();
                 // found at http://stackoverflow.com/questions/6556559/youtube-api-extract-video-id
@@ -85,6 +83,7 @@ class Video extends Media
                 $this->setSource($source);
                 $this->setFileName($source);
                 $this->setHash(trim($source));
+
                 return true;
             case VideoType::VIMEO:
                 $source = $this->getSource();
@@ -95,9 +94,9 @@ class Video extends Media
                     (?:             # Group host alternatives
                       vimeo\.com/   # Either vimeo.com,
                       (?:           #alternatives
-                        ([\d]{8}) 
-                        | video/([\d]{8}) 
-                        | channels/[a-z]*/([\d]{8}) 
+                        ([\d]{8})
+                        | video/([\d]{8})
+                        | channels/[a-z]*/([\d]{8})
                       )
                     )               # End host alternatives.
                     $%x';
@@ -109,6 +108,7 @@ class Video extends Media
                 $this->setSource($source);
                 $this->setFileName($source);
                 $this->setHash(trim($source));
+
                 return true;
             default:
                 $status  = parent::preUpload();

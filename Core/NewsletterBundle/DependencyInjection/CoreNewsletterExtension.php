@@ -24,7 +24,7 @@ class CoreNewsletterExtension extends Extension
 
         $nws = ($container->hasParameter('minishop')) ? $container->getParameter('minishop') : array();
         $nws['newsletter'] = true;
-       
+
         if (isset($config['emails_per_message'])) {
             $container->setParameter('newsletter.emails.per_message', $config['emails_per_message']);
         }

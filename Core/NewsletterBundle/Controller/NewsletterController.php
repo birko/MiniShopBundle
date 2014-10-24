@@ -380,7 +380,7 @@ class NewsletterController extends Controller
         $copy = array();
         foreach ($emails as $row) {
             $send = true;
-            $email = ($isQuery) ? $row[0]: $row;
+            $email = ($isQuery) ? $row[0] : $row;
             if (is_object($email)) {
                 if ($email->isEnabled()) {
                     $email = $email->getEmail();
@@ -407,8 +407,7 @@ class NewsletterController extends Controller
                             $this->get('swiftmailer.mailer.newsletter_mailer')->send($message);
                             $count++;
                             $message = null;
-                        }
-                        catch (\Exception $ex) {
+                        } catch (\Exception $ex) {
                         }
                         $i = 0;
                         $copy = array();
@@ -416,7 +415,7 @@ class NewsletterController extends Controller
                 }
             }
         }
-        
+
         if (!empty($copy)) {
             try {
                 $message = \Swift_Message::newInstance()
@@ -428,8 +427,7 @@ class NewsletterController extends Controller
                 $this->get('swiftmailer.mailer.newsletter_mailer')->send($message);
                 $count++;
                 $message = null;
-            }
-            catch (\Exception $ex) {
+            } catch (\Exception $ex) {
             }
         }
 

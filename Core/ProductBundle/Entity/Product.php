@@ -119,7 +119,7 @@ class Product extends TranslateEntity
      * @ORM\Column(name="tags", type="string", length=255, nullable = true)
      */
     private $tags;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Core\ShopBundle\Entity\OrderItem", mappedBy="product")
      * @ORM\OrderBy({"id" = "ASC"})
@@ -259,23 +259,22 @@ class Product extends TranslateEntity
 
         return $productCategory;
     }
-    
+
     public function getCategories()
     {
         $list = new ArrayCollection();
-        foreach ($this->getProductCategories() as $productCategory)
-        {
+        foreach ($this->getProductCategories() as $productCategory) {
             $list->add($productCategory->getCategory());
         }
-        
+
         return $list;
     }
-    
+
     public function setCategories($categories)
     {
         $list = $this->getCategories();
         foreach ($categories as $category) {
-            $list = $list->filter(function($entry) use ($category) {
+            $list = $list->filter(function ($entry) use ($category) {
                 return $entry->getId() != $category->getId();
             });
             $this->addCategory($category);
@@ -283,10 +282,9 @@ class Product extends TranslateEntity
         foreach ($list as $category) {
             $this->removeCategory($category);
         }
-        
+
         return $this;
     }
-
 
     /**
      * Get ProductCategories
@@ -430,8 +428,8 @@ class Product extends TranslateEntity
     {
         return $this->createdAt;
     }
-    
-    public function getPricesByCurrency(Currency $currency = null, $type = null) 
+
+    public function getPricesByCurrency(Currency $currency = null, $type = null)
     {
         if ($currency !== null) {
             return $this->getPrices($type)->filter(
@@ -456,7 +454,7 @@ class Product extends TranslateEntity
             return $this->getPrices($type);
         }
     }
-    
+
     public function getPricesByCurrencyAndPriceGroup(Currency $currency = null, PriceGroup $priceGroup = null, $type = null)
     {
         $prices = $this->getPricesByCurrency($currency, $type);
@@ -487,27 +485,27 @@ class Product extends TranslateEntity
                 $price->setVAT($minprice->getVat());
                 $price->setPrice($minprice->getPrice());
                 $price->setPriceVAT($minprice->getPriceVAT());
-                
+
                 if ($currency) {
                     $price->setPrice($price->getPrice() * $currency->getRate());
                     $price->setPriceVAT($price->getPriceVAT() * $currency->getRate());
                 }
-                    
+
                 if ($priceGroup) {
                     $price->setPrice($price->getPrice() * $priceGroup->getRate());
                     $price->setPriceVAT($price->getPriceVAT() * $priceGroup->getRate());
                 }
-                
+
                 if ($priceGroup || $currency) {
                     $price->recalculate();
                 }
-                
+
                 $price->setProduct($this);
-                
+
                 return $price;
             }
         }
-        
+
         return null;
     }
 
@@ -540,19 +538,19 @@ class Product extends TranslateEntity
 
         return $result;
     }
-    
+
     public function getOrderItems()
     {
         return $this->orderItems;
     }
-    
+
     public function getOrderAmount()
     {
         $amount = 0;
-        foreach($this->getOrderItems() as $item) {
+        foreach ($this->getOrderItems() as $item) {
             $amount += $item->getAmount();
         }
-        
+
         return $amount;
     }
 

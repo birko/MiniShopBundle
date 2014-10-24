@@ -4,7 +4,6 @@ namespace Core\MediaBundle\Entity;
 
 use Symfony\Component\Validator\Constraints;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Nws\MediaBundle\Entity\Image
  *
@@ -99,7 +98,7 @@ class Image extends Media
 
     protected function getUploadDir($dir = null)
     {
-        return ($dir !== null) ? 'uploads/images/' . $dir: 'uploads/images/original';
+        return ($dir !== null) ? 'uploads/images/' . $dir : 'uploads/images/original';
     }
 
     public function removeUpload($removeTranslation = false)
@@ -208,7 +207,7 @@ class Image extends Media
         if (isset($values["unsharp"]) && $values["unsharp"]) {
             $im = ImageManipulation::unsharpMaskResource($im, 1, 0, 0.05);
         }
-        
+
         $im = ImageManipulation::saveResource($im, $this->getAbsolutePath($dir), $format, $quality);
         unset($im);
     }

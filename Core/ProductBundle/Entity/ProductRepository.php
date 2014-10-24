@@ -56,15 +56,15 @@ class ProductRepository extends EntityRepository
                 ->leftJoin("pp.currency", "cur")
                 ->leftJoin("pp.vat", "va");
         }
-        
+
         if ($joinMedia) {
             $select .= ", pm, m";
             $queryBuilder
                 ->leftJoin("p.media", "pm")
                 ->leftJoin("pm.media", "m");
         }
-        
-        $queryBuilder ->select($select);
+
+        $queryBuilder->select($select);
         if ($category !== null) {
             $expr = $queryBuilder->expr()->orX($queryBuilder->expr()->eq("pc.category",":category"));
             $queryBuilder->andWhere($expr)
@@ -164,7 +164,7 @@ class ProductRepository extends EntityRepository
             if (!empty($order)) {
                 if (!empty($order[0])) {
                     $order[0] = str_replace("p.", $selector . "." , $order[0]);
-                    $queryBuilder->orderBy($order[0], (isset($order[1]) && !empty($order[1]))? $order[1] : "asc");
+                    $queryBuilder->orderBy($order[0], (isset($order[1]) && !empty($order[1])) ? $order[1] : "asc");
                 }
             }
         }

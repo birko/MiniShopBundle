@@ -19,7 +19,7 @@ class PriceType extends AbstractPriceType
                 'empty_value' => 'Choose price type',
                 'empty_data'  => null));
         parent::buildForm($builder, $options);
-        $builder ->add('priceGroup','entity',  array(
+        $builder->add('priceGroup','entity',  array(
                 'class' => 'CoreUserBundle:PriceGroup',
                 'label' => 'Price group',
                 'property' => 'name' ,

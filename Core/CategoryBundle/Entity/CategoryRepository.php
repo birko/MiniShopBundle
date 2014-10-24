@@ -61,14 +61,14 @@ class CategoryRepository extends NestedTreeRepository
     {
         $qb = $this->getCategoriesQueryBuilder($onlyenabled);
         if ($menu !== null) {
-            $qb ->andWhere("c.menu = :menu")
+            $qb->andWhere("c.menu = :menu")
                 ->setParameter('menu', $menu);
         }
         if ($parent !== null) {
-            $qb ->andWhere("c.parent = :parent")
+            $qb->andWhere("c.parent = :parent")
                 ->setParameter('parent', $parent);
         } else {
-            $qb ->andWhere("c.parent is NULL");
+            $qb->andWhere("c.parent is NULL");
         }
 
         return $qb;

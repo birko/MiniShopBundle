@@ -19,7 +19,7 @@ class MessageRepository extends EntityRepository
                ->from("CoreMarketingBundle:Message", "m")
                ->orderBy("m.createdAt", 'desc');
         if ($type !== null) {
-            $queryBuilder ->andWhere("m.type = :type")
+            $queryBuilder->andWhere("m.type = :type")
                 ->setParameter('type', $type);
         }
 

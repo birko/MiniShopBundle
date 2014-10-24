@@ -50,7 +50,7 @@ class NewsletterEmailController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $queryBuilder ->getQuery(),
+            $queryBuilder->getQuery(),
             $page/*page number*/,
             200/*limit per page*/
         );

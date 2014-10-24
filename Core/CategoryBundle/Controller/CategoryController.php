@@ -76,7 +76,7 @@ class CategoryController extends TranslateController
 
             $parentsQuery = $em->getRepository('CoreCategoryBundle:Category')->getTreeQuery($menu);
             $parents = $parentsQuery->getArrayResult();
-            $tree = (count($parents)> 0) ? $em->getRepository('CoreCategoryBundle:Category')->buildTree($parents, $options): "";
+            $tree = (count($parents)> 0) ? $em->getRepository('CoreCategoryBundle:Category')->buildTree($parents, $options) : "";
 
             return $this->render('CoreCategoryBundle:Category:index.html.twig', array(
             'tree' => $tree,
@@ -316,7 +316,7 @@ class CategoryController extends TranslateController
 
         return $this->redirect($this->generateUrl('category'));
     }
-    
+
     public function parentAction($id)
     {
         $em = $this->getDoctrine()->getManager();

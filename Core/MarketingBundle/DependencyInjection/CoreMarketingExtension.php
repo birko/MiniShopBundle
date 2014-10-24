@@ -25,11 +25,11 @@ class CoreMarketingExtension extends Extension
         $nws = ($container->hasParameter('minishop')) ? $container->getParameter('minishop') : array();
         $nws['marketing'] = true;
         $container->setParameter('minishop', $nws);
-        
+
         if (!empty($config['google'])) {
             $container->setParameter('marketing.google', $config['google']);
         }
-        
+
         if (!empty($config['facebook'])) {
             $container->setParameter('marketing.facebook', $config['facebook']);
         }
