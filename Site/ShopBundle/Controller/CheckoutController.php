@@ -429,9 +429,28 @@ class CheckoutController extends ShopController
             )),"text/html")
             ->setContentType("text/html");
         $this->get('swiftmailer.mailer.site_mailer')->send($message);
-        $cart->clearItems();
-        $this->setCart($cart);
+        
+        $session = $this->getRequest()->getSession();
+        $session->set('order-id',  $order->getId());
+            
         // TODO: payment methods
-        return $this->render('SiteShopBundle:Checkout:order.html.twig', array('order' => $order));
+        return $this->redirect($this->generateUrl('checkout_end'));
+    }
+    
+    public function endAction()
+    {
+        $session = $this->getRequest()->getSession();
+        if ($session->has('order-id')) {
+            $order = $session->get('order-id');
+            $em = $this->getDoctrine()->getManager();
+            $orderEntity = $em->getRepository('CoreShopBundle:Order')->find($order);
+             
+            $cart->clearItems();
+            $this->setCart($cart);
+            
+            return $this->render('SiteShopBundle:Checkout:end.html.twig', array('order' => $orderEntity));
+        }
+        
+        return $this->redirect($this->generateUrl('cart'));
     }
 }

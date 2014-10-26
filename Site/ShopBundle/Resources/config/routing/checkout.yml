@@ -34,3 +34,7 @@ checkout_confirm:
 checkout_order:
     pattern:  /order
     defaults: { _controller: "SiteShopBundle:Checkout:order",  _locale: %locale% }
+    
+checkout_end:
+    pattern:  /end
+    defaults: { _controller: "SiteShopBundle:Checkout:end",  _locale: %locale% }
