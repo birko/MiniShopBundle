@@ -459,6 +459,9 @@ class Product extends TranslateEntity
     {
         $prices = $this->getPricesByCurrency($currency, $type);
         if ($priceGroup !== null) {
+            if ($prices->count() == 0 ) {
+                $prices = $this->getPrices($type);
+            }
             return $prices->filter(
                 function ($entry) use ($priceGroup) {
                     return ($entry->getPriceGroup()->getId() == $priceGroup->getId());
