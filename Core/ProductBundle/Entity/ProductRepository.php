@@ -190,4 +190,11 @@ class ProductRepository extends EntityRepository
 
         return $queryBuilder;
     }
+    
+    public function findMediaByProduct($product)
+    {
+        $result = $this->getEntityManager()->getRepository('CoreProductBundle:ProductMedia')->getProductsMediasArray(array($product));
+
+        return (!empty($result) && isset($result[$product])) ? $result[$product] : array();
+    }
 }
