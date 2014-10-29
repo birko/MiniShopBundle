@@ -444,7 +444,8 @@ class CheckoutController extends ShopController
             $order = $session->get('order-id');
             $em = $this->getDoctrine()->getManager();
             $orderEntity = $em->getRepository('CoreShopBundle:Order')->find($order);
-             
+            
+            $cart = $this->getCart();
             $cart->clearItems();
             $this->setCart($cart);
             
