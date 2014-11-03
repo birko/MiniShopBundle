@@ -88,7 +88,7 @@
             </trans-unit>
             <trans-unit id="80">
                 <source>Invoice</source>
-                <target>IRechnung</target>
+                <target>Rechnung</target>
             </trans-unit>
             <trans-unit id="81">
                 <source>Thank you for your order.</source>
