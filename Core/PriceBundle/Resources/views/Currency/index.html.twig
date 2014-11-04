@@ -28,7 +28,7 @@
             <td><a href="{{ path('currency_edit', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.symbol }}</td>
             <td>{{ entity.code }}</td>
-            <td>{{ entity.ratePercentage }}%</td>
+            <td>{{ entity.rate|number_format(2) }}</td>
             <td>
                  {% if entity.default %}
                     <span class="glyphicon glyphicon-ok"></span>
