@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>general.contact.verification_code %code%</source>
+                <target>prosím odpíšte overovací kód %code%</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>general.contact.submit</source>
+                <target>odoslať</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Verification code does not match. You must enter %code%</source>
+                <target>Overovací kód sa nezhoduje. Musíte zadať %code%</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Your message was sent succesfuly.</source>
+                <target>Vaša správa bola úspešne odoslaná.</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Message sent</source>
+                <target>Správa bola odoslaná</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Message</source>
+                <target>Vaša správa</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Fields marked with star are mandatory</source>
+                <target>Položky označené hviezdičkou sú povinné</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Send copy to your email</source>
+                <target>Odoslať kópiu na Váš email</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Order number</source>
+                <target>Číslo objednávky</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Product number</source>
+                <target>Číslo produktu</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Account number</source>
+                <target>Číslo účtu</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Home</source>
+                <target>Domov</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Search</source>
+                <target>Výhľadávanie</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Sort by</source>
+                <target>Zoradiť podľa</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Newie</source>
+                <target>Vytvorenie</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

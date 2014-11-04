@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Categories</source>
+                <target>Kategórie</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Create a new child category</source>
+                <target>Pridať podkategóriu</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Create a new top category</source>
+                <target>Pridať hlavnú kategóriu</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Move up</source>
+                <target>Presunúť hore</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Move down</source>
+                <target>Presunúť dole</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Home category</source>
+                <target>Hlavná kategória</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Back to the category list</source>
+                <target>Späť k zoznamu kategórii</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Raw</source>
+                <target>Externá</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Category creation</source>
+                <target>Tvorba kategórie</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Category edit</source>
+                <target>Úprava kategórie</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Category list</source>
+                <target>Zoznam kategórií</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>External</source>
+                <target>Externá</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Parent</source>
+                <target>Nadradená</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Category</source>
+                <target>Kategória</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

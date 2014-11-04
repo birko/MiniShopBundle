@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Orders</source>
+                <target>Objednávky</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>States</source>
+                <target>Štáty</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>State list</source>
+                <target>Zoznam štátov</target>
+            </trans-unit> 
+            <trans-unit id="4">
+                <source>Create a new state</source>
+                <target>Vytvoriť nový štát</target>
+            </trans-unit> 
+            <trans-unit id="5">
+                <source>State creation</source>
+                <target>Tvorba štátu</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>State edit</source>
+                <target>Úprava štátu</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Shipping</source>
+                <target>Doprava</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Shipping list</source>
+                <target>Zoznam dopráv</target>
+            </trans-unit> 
+            <trans-unit id="9">
+                <source>Create a new shipping</source>
+                <target>Vytvoriť novú dopravu</target>
+            </trans-unit> 
+            <trans-unit id="10">
+                <source>Shipping creation</source>
+                <target>Tvorba dopravy</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Shipping edit</source>
+                <target>Úprava dopravy</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Price system</source>
+                <target>Platobný systém</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Zero price limit</source>
+                <target>Limit nulovej ceny</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Payment</source>
+                <target>Platba</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Payment list</source>
+                <target>Zoznam platieb</target>
+            </trans-unit> 
+            <trans-unit id="16">
+                <source>Create a new payment</source>
+                <target>Vytvoriť novú platbu</target>
+            </trans-unit> 
+            <trans-unit id="17">
+                <source>Payment creation</source>
+                <target>Tvorba platby</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Paymet edit</source>
+                <target>Úprava platby</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Shop Users</source>
+                <target>Zákazníci</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Shop User list</source>
+                <target>Zoznam zákazníkov</target>
+            </trans-unit> 
+            <trans-unit id="21">
+                <source>Shop User edit</source>
+                <target>Úprava zákazníka</target>
+            </trans-unit> 
+            <trans-unit id="22">
+                <source>Order list</source>
+                <target>Zoznam zákazníkov</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Variable number</source>
+                <target>Variabilné číslo</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Invoice name</source>
+                <target>Fakturačné meno</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Invoice phone</source>
+                <target>Fakturačný telefón</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Invoice email</source>
+                <target>Fakturačný email</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Delivery name</source>
+                <target>Dodacie meno</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Delivery phone</source>
+                <target>Dodací telefón</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Delivery email</source>
+                <target>Dodací email</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Order status</source>
+                <target>Stav objednávky</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>Shipping status</source>
+                <target>Stav dodania</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>Invoice status</source>
+                <target>Stav faktúry</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>Shop</source>
+                <target>Obchod</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>Street</source>
+                <target>Ulica</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>City</source>
+                <target>Mesto</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>ZIP</source>
+                <target>PSČ</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>TIN</source>
+                <target>DIČ</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>OIN</source>
+                <target>IČO</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>VATIN</source>
+                <target>IČ DPH</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>Phone</source>
+                <target>Telefón</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>Delivery address</source>
+                <target>Dodacia adresa</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>Invoice address</source>
+                <target>Fakturačná adresa</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>Total price</source>
+                <target>Cena celkom</target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>Total price VAT</source>
+                <target>Cena celkom s DPH</target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>Add to cart</source>
+                <target>Pridať do košíka</target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>Create Address</source>
+                <target>Vytvoriť adresu</target>
+            </trans-unit>
+            <trans-unit id="62">
+                <source>Address creation</source>
+                <target>Tvorba adresy</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>Address edit</source>
+                <target>Úprava adresy</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>Address list</source>
+                <target>Zoznam adries</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>Name Surname</source>
+                <target>Meno Priezvisko</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>Comment</source>
+                <target>Komentár</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>Total Price</source>
+                <target>Cena celkom</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>Total Price VAT</source>
+                <target>Cena celkom s DPH</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>Your cart is empty.</source>
+                <target>Váš košík je prázdny</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>Shipping address</source>
+                <target>Dodacia adresa</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>Payment address</source>
+                <target>Fakturačná adresa</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>Addresses</source>
+                <target>Adresy</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>Back to shop</source>
+                <target>Zpět do obchodu</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>Checkout order</source>
+                <target>Potvrzení objednávky</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>Back to cart</source>
+                <target>Zpět do košíka</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>Continue</source>
+                <target>Pokračovať</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>Payment and shipping</source>
+                <target>Doprava a platba</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>Confirm order</source>
+                <target>Potvrzení objednávky</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>Company information</source>
+                <target>Firemné údaje</target>
+            </trans-unit>
+            <trans-unit id="80">
+                <source>Invoice</source>
+                <target>Faktúra</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>Thank you for your order.</source>
+                <target>Ďakujeme za objednávku</target>
+            </trans-unit>
+            <trans-unit id="82">
+                <source>%date% - New order No.: %title%</source>
+                <target>%date% - Nová objednávka Č.: %title%</target>
+            </trans-unit>
+            <trans-unit id="83">
+                <source>Coupon code</source>
+                <target>Kód zľavového kupónu</target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>Groupon code</source>
+                <target>Zľavový kupón</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

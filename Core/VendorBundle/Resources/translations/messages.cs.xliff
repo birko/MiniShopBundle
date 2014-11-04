@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Vendors</source>
+                <target>Výrobcovia</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Create a new vendor</source>
+                <target>Vytvoriť nového výrobcu</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Vendor list</source>
+                <target>Zoznam výrobcov</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Vendor creation</source>
+                <target>Tvorba výrobcu</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Vendor edit</source>
+                <target>Úprava výrobcu</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Vendor</source>
+                <target>Výrobca</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Vendor list</source>
+                <target>Zoznam výrobcov</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Abbreviation</source>
+                <target>Skratka</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Back to the vendor list</source>
+                <target>Späť k zoznamu výrobcov</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Product vendor</source>
+                <target>Výrobca produktu</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

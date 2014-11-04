@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Banner</source>
+                <target>Banner</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Link</source>
+                <target>Odkaz</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Create a new banner</source>
+                <target>Vytvoriť nový banner</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Banners</source>
+                <target>Bannery</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Banner list</source>
+                <target>Zoznam bannerov</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Banner creation</source>
+                <target>Tvora banneru</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Banner edit</source>
+                <target>Úprava banneru</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Banner position edit</source>
+                <target>Úprava pozície banneru</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

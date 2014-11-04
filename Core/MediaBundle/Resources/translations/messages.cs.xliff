@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Media</source>
+                <target>Média</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Media list</source>
+                <target>Zoznam médii</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Upload media</source>
+                <target>Nahraj médium</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Image upload</source>
+                <target>Nahratie obrázka</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Source</source>
+                <target>Zdroj</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Used count</source>
+                <target>Počet použití</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>File</source>
+                <target>Súbor</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Image creation</source>
+                <target>Tvorba obrázka</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Image edit</source>
+                <target>Úprava obrázka</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Back to the image list</source>
+                <target>Späť k zoznamu obrázkov</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Width</source>
+                <target>Šírka</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Height</source>
+                <target>Výška</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Create a new image</source>
+                <target>Vytvoriť nový obrázok</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Images</source>
+                <target>Obrázky</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Image list</source>
+                <target>Zoznam obrázkov</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Galleries</source>
+                <target>Galérie</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Gallery list</source>
+                <target>Zoznam galérií</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Create a gallery</source>
+                <target>Vytvoriť galériu</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Add Gallery</source>
+                <target>Pridať galériu</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Gallery creation</source>
+                <target>Tvorba galérie</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Gallery edit</source>
+                <target>Úprava galérie</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Gallery</source>
+                <target>Galéria</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Back to the gallery list</source>
+                <target>Späť k zoznamu galérii</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Add to gallery</source>
+                <target>Pridať do galérie</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Remove gallery</source>
+                <target>Odobrať galériu</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Add Existing Media</source>
+                <target>Pridať existujúce médium</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>No media</source>
+                <target>Bez média</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Image</source>
+                <target>Obrázok</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Create a new video</source>
+                <target>Vytvoriť nové video</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Video type</source>
+                <target>Typ videa</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Media edit</source>
+                <target>Úprava média</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Media creation</source>
+                <target>Tvorba média</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
