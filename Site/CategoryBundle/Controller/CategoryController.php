@@ -36,6 +36,9 @@ class CategoryController extends Controller
         if ($category->isHome()) {
             return $this->redirect($this->generateUrl('category_homepage'));
         }
+        if (!$category->isEnabled() && !$this->container->getParameter("site.category.show_disabled")) {
+            throw $this->createNotFoundException();
+        }
         $page = $this->getRequest()->get("page", 1);
         $cpage = $this->getRequest()->get("cpage", 1);
         $minishop  = $this->container->getParameter('minishop');

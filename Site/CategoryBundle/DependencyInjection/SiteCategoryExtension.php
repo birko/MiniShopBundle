@@ -21,6 +21,9 @@ class SiteCategoryExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        if (isset($config['show_disabled'])) {
+            $container->setParameter("site.category.show_disabled", $config['show_disabled']);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
