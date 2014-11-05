@@ -1,8 +1,8 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 {% set minishopkeys = minishop|keys %}
-{% if  product.productCategories | length > 0 %}
-{% render  controller("SiteCategoryBundle:Category:breadcrumb" , {'id': product.productCategories.0.category.id, 'end': product.title}) %}
+{% if  product.getProductCategories(1) | length > 0 %}
+{% render  controller("SiteCategoryBundle:Category:breadcrumb" , {'id': product.getProductCategories(1).0.category.id, 'end': product.title}) %}
 {% endif %}
 <div id="product">
     <div class="row">

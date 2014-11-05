@@ -260,10 +260,10 @@ class Product extends TranslateEntity
         return $productCategory;
     }
 
-    public function getCategories()
+    public function getCategories($onlyEnabled = false)
     {
         $list = new ArrayCollection();
-        foreach ($this->getProductCategories() as $productCategory) {
+        foreach ($this->getProductCategories($onlyEnabled) as $productCategory) {
             $list->add($productCategory->getCategory());
         }
 
@@ -291,9 +291,15 @@ class Product extends TranslateEntity
      *
      * @return ArrayCollection
      */
-    public function getProductCategories()
+    public function getProductCategories($onlyEnabled = false)
     {
-        return $this->productCategories;
+        if ($onlyEnabled) {
+            return $this->getProductCategories()->filter(function ($entry) {
+                return $entry->isEnabled();
+            })
+        } else {
+            return $this->productCategories;
+        }
     }
 
     public function getProductCategory($categoryID)
