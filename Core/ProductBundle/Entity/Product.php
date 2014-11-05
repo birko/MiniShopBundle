@@ -295,7 +295,7 @@ class Product extends TranslateEntity
     {
         if ($onlyEnabled) {
             return $this->getProductCategories()->filter(function ($entry) {
-                return $entry->isEnabled();
+                return $entry->getCategory()->isEnabled();
             });
         } else {
             return $this->productCategories;
