@@ -42,10 +42,10 @@ class AttributeRepository extends SortableRepository
         return $qb;
     }
 
-     public function getBySortableGroupsQuery(array $groupValues=array())
-     {
-         return $this->setHint($this->getBySortableGroupsQueryBuilder($groupValues))->getQuery();
-     }
+    public function getBySortableGroupsQuery(array $groupValues=array())
+    {
+        return $this->setHint($this->getBySortableGroupsQueryBuilder($groupValues))->getQuery();
+    }
 
     public function getAllAttributesByProductQueryBuilder($productId, array $groupValues=array())
     {
@@ -69,11 +69,6 @@ class AttributeRepository extends SortableRepository
     public function getVisibleAttributesByProductQuery($productId,array $groupValues=array())
     {
         $querybuilder = $this->getAllAttributesByProductQueryBuilder($productId, $groupValues);
-        $querybuilder
-                ->andWhere('n.visible = :avisible')
-                ->andWhere('n.system = :asystem')
-                ->setParameter('avisible', 1)
-                ->setParameter('asystem', 0);
         $query = $this->setHint($querybuilder->getQuery());
 
         return $query;
@@ -87,9 +82,6 @@ class AttributeRepository extends SortableRepository
     public function getAttributesByProductQuery($productId, array $groupValues=array())
     {
         $querybuilder = $this->getAllAttributesByProductQueryBuilder($productId, $groupValues);
-        $querybuilder
-                ->andWhere('n.system = :asystem')
-                ->setParameter('asystem', 0);
         $query = $querybuilder->getQuery();
 
         return $this->setHint($query);
@@ -112,8 +104,10 @@ class AttributeRepository extends SortableRepository
     public function getAttributesByProductsQueryBuilder($productIds = array(), $groupValues = array())
     {
         $querybuilder = $this->getBySortableGroupsQueryBuilder($groupValues);
-        $expr = $querybuilder->expr()->in('n.product', $productIds );
-        $querybuilder->andWhere($expr);
+        if (!empty($productIds)) {
+            $expr = $querybuilder->expr()->in('n.product', $productIds );
+            $querybuilder->andWhere($expr);
+        }
 
         return $querybuilder;
     }
@@ -128,18 +122,24 @@ class AttributeRepository extends SortableRepository
         return $this->getAttributesByProductsQuery($productIds, $groupValues)->getResult();
     }
 
-    public function getGroupedAttributesByProducts($productIds = array(), $groupValues = array())
+    public function getGroupedAttributesByProducts($productIds = array(), $groupValues = array(), $locale = null)
     {
         $query = $this->getAttributesByProductsQueryBuilder($productIds, $groupValues)
-            ->select("an.name, av.value, n.visible, n.system, n.group, n.position, p.id as product")
+            ->select("an.name, av.value, n.group, n.position, p.id as product")
             ->leftJoin("n.product", 'p')
             ->getQuery();
         $result = array();
         $query = $this->setHint($query);
+        if ($locale) {
+            $query->setHint(
+                \Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE,
+                $locale // take locale from session or request etc.
+            );
+        }
         $iterator = $query->iterate(array(), \Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY);
         foreach ($iterator as $key => $row) {
            $entity = $row[$key];
-           $result[$entity['product']][$entity['name']] = $entity;
+           $result[$entity['product']][$entity['name']][] = $entity;
         }
 
         return $result;

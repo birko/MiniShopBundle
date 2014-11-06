@@ -39,19 +39,19 @@ class ProductRepository extends EntityRepository
 
     public function findByCategoryQueryBuilder($category = null, $recursive = false, $onlyenabled = false, $join = true, $joindetail = true)
     {
-        $select = "p, ps";
+        $select = "p, ps, v";
         $queryBuilder = $this->getEntityManager()->createQueryBuilder()
             ->from("CoreProductBundle:Product", "p")
             ->leftJoin("p.productCategories", "pc")
             ->leftJoin("pc.category", "c")
             ->leftJoin("p.stock", "ps")
+            ->leftJoin("p.vendor", "v")
         ;
                 
         if ($join) {
             $select .= ", pc, c, pp, v, pg, cur, va";
             $queryBuilder
                 ->leftJoin("p.prices", "pp")
-                ->leftJoin("p.vendor", "v")
                 ->leftJoin("pp.priceGroup", "pg")
                 ->leftJoin("pp.currency", "cur")
                 ->leftJoin("pp.vat", "va")
