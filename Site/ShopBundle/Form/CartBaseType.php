@@ -12,18 +12,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class CartBaseType extends CartBaseAddressType
 {
-    protected $state = null;
+    protected $paymentState = null;
+    protected $shippingState = null;
 
-    public function __construct($sameaddress = false, $state = null)
+    public function __construct($sameaddress = false, $paymentState = null, $shippingState = null)
     {
         parent::__construct($sameaddress);
-        $this->state = $state;
+        $this->paymentState = $paymentState;
+        $this->shippingState = $shippingState;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $state = $this->state;
+        $state = $this->paymentState;
         $builder->add("payment", 'entity', array(
                 'class' => 'CoreShopBundle:Payment',
                 'expanded' => false,
@@ -37,7 +39,9 @@ class CartBaseType extends CartBaseAddressType
                     'class' => 'input-xlarge',
                 )
             ))
-            ->add("shipping", 'entity', array(
+        ;
+        $state = $this->shippingState;
+        $builder->add("shipping", 'entity', array(
             'class' => 'CoreShopBundle:Shipping',
             'expanded' => false,
             'multiple' => false,

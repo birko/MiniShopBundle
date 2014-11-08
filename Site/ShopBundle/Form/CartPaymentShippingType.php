@@ -19,7 +19,7 @@ class CartPaymentShippingType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $state = $options['state'];
+        $state = $options['paymentState'];
         if ($options['payment']) {
             $builder->add("payment", 'entity', array(
                     'class' => 'CoreShopBundle:Payment',
@@ -32,6 +32,7 @@ class CartPaymentShippingType extends AbstractType
                     },
                 ));
         }
+        $state = $options['shippingState'];
         if ($options['shipping']) {
             $builder->add("shipping", 'entity', array(
                 'class' => 'CoreShopBundle:Shipping',
@@ -57,7 +58,8 @@ class CartPaymentShippingType extends AbstractType
             'data_class' => 'Site\ShopBundle\Entity\Cart',
             'payment' => true,
             'shipping' => true,
-            'state' => null
+            'paymentState' => null,
+            'shippingState' => null
         ));
     }
 }
