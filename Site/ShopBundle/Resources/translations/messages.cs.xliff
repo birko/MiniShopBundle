@@ -8,23 +8,23 @@
             </trans-unit>
             <trans-unit id="2">
                 <source>States</source>
-                <target>Štáty</target>
+                <target>Státy</target>
             </trans-unit>
             <trans-unit id="3">
                 <source>State list</source>
-                <target>Zoznam štátov</target>
+                <target>Zoznam Státú</target>
             </trans-unit> 
             <trans-unit id="4">
                 <source>Create a new state</source>
-                <target>Vytvoriť nový štát</target>
+                <target>Vytvoriť nový stát</target>
             </trans-unit> 
             <trans-unit id="5">
                 <source>State creation</source>
-                <target>Tvorba štátu</target>
+                <target>Tvorba státu</target>
             </trans-unit>
             <trans-unit id="6">
                 <source>State edit</source>
-                <target>Úprava štátu</target>
+                <target>Úprava státu</target>
             </trans-unit>
             <trans-unit id="7">
                 <source>Shipping</source>
@@ -96,19 +96,19 @@
             </trans-unit>
             <trans-unit id="25">
                 <source>Invoice name</source>
-                <target>Fakturačné meno</target>
+                <target>Fakturační meno</target>
             </trans-unit>
             <trans-unit id="26">
                 <source>Invoice phone</source>
-                <target>Fakturačný telefón</target>
+                <target>Fakturační telefón</target>
             </trans-unit>
             <trans-unit id="27">
                 <source>Invoice email</source>
-                <target>Fakturačný email</target>
+                <target>Fakturační email</target>
             </trans-unit>
             <trans-unit id="28">
                 <source>Delivery name</source>
-                <target>Dodacie meno</target>
+                <target>Dodací meno</target>
             </trans-unit>
             <trans-unit id="29">
                 <source>Delivery phone</source>
@@ -136,11 +136,11 @@
             </trans-unit>
             <trans-unit id="49">
                 <source>Street</source>
-                <target>Ulica</target>
+                <target>Ulice</target>
             </trans-unit>
             <trans-unit id="50">
                 <source>City</source>
-                <target>Mesto</target>
+                <target>Město</target>
             </trans-unit>
             <trans-unit id="51">
                 <source>ZIP</source>
@@ -164,11 +164,11 @@
             </trans-unit>
             <trans-unit id="56">
                 <source>Delivery address</source>
-                <target>Dodacia adresa</target>
+                <target>Dodací adresa</target>
             </trans-unit>
             <trans-unit id="57">
                 <source>Invoice address</source>
-                <target>Fakturačná adresa</target>
+                <target>Fakturační adresa</target>
             </trans-unit>
             <trans-unit id="58">
                 <source>Total price</source>
@@ -200,15 +200,15 @@
             </trans-unit>
             <trans-unit id="65">
                 <source>Name Surname</source>
-                <target>Meno Priezvisko</target>
+                <target>Meno Příjmení</target>
             </trans-unit>
             <trans-unit id="66">
                 <source>Comment</source>
-                <target>Komentár</target>
+                <target>Komentář</target>
             </trans-unit>
             <trans-unit id="67">
                 <source>Total Price</source>
-                <target>Cena celkom</target>
+                <target>Cena celkem</target>
             </trans-unit>
             <trans-unit id="68">
                 <source>Total Price VAT</source>
@@ -220,11 +220,11 @@
             </trans-unit>
             <trans-unit id="70">
                 <source>Shipping address</source>
-                <target>Dodacia adresa</target>
+                <target>Dodací adresa</target>
             </trans-unit>
             <trans-unit id="71">
                 <source>Payment address</source>
-                <target>Fakturačná adresa</target>
+                <target>Fakturační adresa</target>
             </trans-unit>
             <trans-unit id="72">
                 <source>Addresses</source>
@@ -244,7 +244,7 @@
             </trans-unit>
             <trans-unit id="76">
                 <source>Continue</source>
-                <target>Pokračovať</target>
+                <target>Pokračovat</target>
             </trans-unit>
             <trans-unit id="77">
                 <source>Payment and shipping</source>
@@ -256,7 +256,7 @@
             </trans-unit>
             <trans-unit id="79">
                 <source>Company information</source>
-                <target>Firemné údaje</target>
+                <target>Firemní údaje</target>
             </trans-unit>
             <trans-unit id="80">
                 <source>Invoice</source>
@@ -264,7 +264,7 @@
             </trans-unit>
             <trans-unit id="81">
                 <source>Thank you for your order.</source>
-                <target>Ďakujeme za objednávku</target>
+                <target>Děkujeme Vám za nákup</target>
             </trans-unit>
             <trans-unit id="82">
                 <source>%date% - New order No.: %title%</source>

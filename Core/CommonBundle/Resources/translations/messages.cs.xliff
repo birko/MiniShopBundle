@@ -24,7 +24,7 @@
             </trans-unit>
             <trans-unit id="6">
                 <source>Title</source>
-                <target>Názov</target>
+                <target>Název</target>
             </trans-unit>
             <trans-unit id="7">
                 <source>Enabled</source>
@@ -129,7 +129,7 @@
             </trans-unit>
             <trans-unit id="37">
                 <source>Confirm</source>
-                <target>Potvrdiť</target>
+                <target>Potvrdit</target>
             </trans-unit>
             <trans-unit id="38">
                 <source>Change</source>

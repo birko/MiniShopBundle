@@ -60,7 +60,7 @@
             </trans-unit>
             <trans-unit id="15">
                 <source>Price VAT</source>
-                <target>Cena s DPH</target>
+                <target>Cena včetně DPH</target>
             </trans-unit>
             <trans-unit id="16">
                 <source>Prices</source>
@@ -96,7 +96,7 @@
             </trans-unit>
             <trans-unit id="24">
                 <source>Price amount</source>
-                <target>Cenové množstvo</target>
+                <target>Cenové množství</target>
             </trans-unit>
             <trans-unit id="25">
                 <source>Price creation</source>
@@ -108,7 +108,7 @@
             </trans-unit>
             <trans-unit id="27">
                 <source>Amount</source>
-                <target>Množstvo</target>
+                <target>Množství</target>
             </trans-unit>
             <trans-unit id="28">
                 <source>Availability</source>
