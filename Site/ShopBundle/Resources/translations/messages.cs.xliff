@@ -172,15 +172,15 @@
             </trans-unit>
             <trans-unit id="58">
                 <source>Total price</source>
-                <target>Cena celkom</target>
+                <target>Cena celkem</target>
             </trans-unit>
             <trans-unit id="59">
                 <source>Total price VAT</source>
-                <target>Cena celkom s DPH</target>
+                <target>Cena celkem včetně DPH</target>
             </trans-unit>
             <trans-unit id="60">
                 <source>Add to cart</source>
-                <target>Pridať do košíka</target>
+                <target>Přidat do košíku</target>
             </trans-unit>
             <trans-unit id="61">
                 <source>Create Address</source>
