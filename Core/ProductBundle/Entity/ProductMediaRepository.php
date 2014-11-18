@@ -62,7 +62,7 @@ class ProductMediaRepository extends EntityRepository
         return $numUpdated;
     }
 
-   public function getProductsMediasQueryBuilder($entities = null)
+   public function getProductsMediasQueryBuilder($entities = null, $types = array())
    {
         $querybuilder = $this->getEntityManager()->createQueryBuilder()
             ->select("m, pm")
@@ -76,18 +76,26 @@ class ProductMediaRepository extends EntityRepository
             $expr = $querybuilder->expr()->in("pm.product", $entities);
             $querybuilder->andWhere($expr);
         }
+        
+        if (!empty($types)) {
+            $expr = $querybuilder->expr()->orX();
+            foreach($types as $type) {
+                $expr->add("m INSTANCE OF Core\MediaBundle\Entity\\" . ucfirst(strtolower($type)));
+            }
+            $querybuilder->andWhere($expr);
+        }
 
        return $querybuilder;
    }
 
-    public function getProductsMediasQuery($entities = null)
+    public function getProductsMediasQuery($entities = null, $types = array())
     {
-        return $this->setHint($this->getProductsMediasQueryBuilder($entities)->getQuery());
+        return $this->setHint($this->getProductsMediasQueryBuilder($entities, $types)->getQuery());
     }
 
-    public function getProductsMediasArray($entities = null)
+    public function getProductsMediasArray($entities = null, $types = array())
     {
-        $query = $this->getProductsMediasQuery($entities);
+        $query = $this->getProductsMediasQuery($entities, $types);
         $result = array();
         
         foreach ($query->getResult() as $entity) {

@@ -155,6 +155,7 @@ class CheckoutController extends ShopController
             return $this->redirect($this->generateUrl('checkout_confirm'));
         } else {
             $state = $cart->getPaymentAddress()->getState();
+            $state2 = $cart->getShippingAddress()->getState();
             $em = $this->getDoctrine()->getManager();
             $payments =  $em->getRepository('CoreShopBundle:Payment')->getPaymentQueryBuilder(true)
                 ->getQuery()->getResult();
@@ -167,7 +168,8 @@ class CheckoutController extends ShopController
                 $cart->setShipping($shippings[0]);
             }
             $form = $this->createForm(new CartPaymentShippingType(), $cart, array(
-                'state' => $state->getId(),
+                'paymentState' => $state->getId(),
+                'shippingState' => $state2->getId(),
                 'payment' => !$cart->isSkipPayment(),
                 'shipping' => !$cart->isSkipShipping(),
             ));
@@ -190,8 +192,10 @@ class CheckoutController extends ShopController
         $pricegroup = $this->getPriceGroup();
         $currency = $this->getCurrency();
         $state = $cart->getShippingAddress()->getState();
+        $state2 = $cart->getShippingAddress()->getState();
         $form = $this->createForm(new CartPaymentShippingType(), $cart, array(
-            'state' => $state->getId(),
+            'paymentState' => $state->getId(),
+            'shippingState' => $state->getId(),
             'payment' => !$cart->isSkipPayment(),
             'shipping' => !$cart->isSkipShipping(),
         ));
