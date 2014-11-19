@@ -1,17 +1,18 @@
 {% if facebook.conversion is not empty  and order is not empty %}
-<!-- Facebook Conversion Code for Nakup -->
-<script type="text/javascript">
-var fb_param = {};
-fb_param.pixel_id = '{{facebook.conversion}}';
-fb_param.value = '{{order.priceVAT| number_format(2, '.')}}';
-fb_param.currency = 'EUR';
-(function(){
-  var fpw = document.createElement('script');
-  fpw.async = true;
-  fpw.src = '//connect.facebook.net/en_US/fp.js';
-  var ref = document.getElementsByTagName('script')[0];
-  ref.parentNode.insertBefore(fpw, ref);
+<!-- Facebook Conversion Code -->
+<script type="text/javascript">(function() {
+ var _fbq = window._fbq || (window._fbq = []);
+ if (!_fbq.loaded) {
+ var fbds = document.createElement('script');
+ fbds.async = true;
+ fbds.src = '//connect.facebook.net/en_US/fbds.js';
+ var s = document.getElementsByTagName('script')[0];
+ s.parentNode.insertBefore(fbds, s);
+ _fbq.loaded = true;
+ }
 })();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', '{{facebook.conversion}}', {'value':'{{order.priceVAT| number_format(2, '.', '')}}','currency':'{{order.currency.code}}'}]);
 </script>
-<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id={{facebook.conversion}}&amp;value={{order.priceVAT}}&amp;currency=EUR" /></noscript>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev={{facebook.conversion}}&amp;cd[value]={{order.priceVAT| number_format(2, '.', '')}}&amp;cd[currency]={{order.currency.code}}&amp;noscript=1" /></noscript>
 {% endif %}

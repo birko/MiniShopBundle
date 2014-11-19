@@ -7,7 +7,7 @@
 	  'revenue': '{{order.priceVAT}}',
 	  'shipping': '{{order.shipping.priceVAT}}',
 	  'tax': '{{order.priceVAT - order.price}}',
-	  'currency': 'EUR'
+	  'currency': '{{order.currency.code}}'
 	});
 	{% for item in order.items %}
 	{% if item.payment is empty and item.shipping is empty %}
@@ -22,7 +22,7 @@
 	  {% endif %}
 	  'price': '{{item.priceVAT}}',
 	  'quantity': '{{item.amount}}',
-	  'currency': 'EUR'
+	  'currency': '{{item.currency.code}}'
 	});
 	{% endif %}
 	{% endfor %}
