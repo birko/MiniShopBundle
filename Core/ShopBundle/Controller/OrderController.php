@@ -267,7 +267,8 @@ class OrderController extends BaseOrderController
         $request = $this->getRequest();
         $process = new Process();
         $export = $this->container->getParameter('admin.order.export');
-        $processForm = $this->createForm(new ProcessType(), $process, array('export' => $export));
+        $processConfig = $this->container->getParameter('admin.order.process');
+        $processForm = $this->createForm(new ProcessType(), $process, array('export' => $export, 'config' => $processConfig));
         $processForm->bind($request);
         if ($processForm->isValid()) {
             $orders = array();
