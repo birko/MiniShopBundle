@@ -3,7 +3,8 @@
 namespace Core\ShopBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Core\ShopBundle\Entity\Order;
 use Core\ShopBundle\Entity\OrderFilter;
 use Core\ShopBundle\Entity\Process;
@@ -367,26 +368,74 @@ class OrderController extends BaseOrderController
                     $querybuilder->resetDQLPart("join");
                     break;
             }
+            $charset = "";
+            $select = array();
+            foreach ($definition['fields'] as $key => $field) {
+                foreach ($field['value'] as $key => $val) {
+                    $select[]= $field['alias'].".".$val. " as " . $field['alias'].$val;
+                }
+            }
+            $entities = $querybuilder->select(implode(' ,', $select))->getQuery()->getScalarResult();
+            $response = new Response();
             switch ($type) {
+                case "excel":
+                    {
+                        $objPHPExcel = new \PHPExcel();
+                        \PHPExcel_Cell::setValueBinder(new \PHPExcel_Cell_AdvancedValueBinder());
+                        $objPHPExcel->getProperties()->setCreator("MiniShop")
+                            ->setLastModifiedBy("MiniShop")
+                            ->setTitle("MiniShop Order Export")
+                            ->setKeywords("office 2007 openxml php")
+                            ;
+                        $workSheet = $objPHPExcel->getActiveSheet();
+                        $workSheet->setTitle('Export');
+                        $i = 1;
+                        $j = 0;
+                        foreach ($definition['fields'] as $key => $field) {
+                            $workSheet->setCellValueByColumnAndRow($j , $i, $field['title']);
+                            $j++;
+                        }
+                        foreach ($entities as $entity) {
+                            $i++;
+                            $j = 0;
+                            foreach($definition['fields'] as $key => $field) {
+                                $data = array();
+                                foreach($field['value'] as $val) {
+                                    $data[] = strip_tags($entity[$field['alias'] . $val]);
+                                }
+                                $workSheet->setCellValueByColumnAndRow($j , $i, implode(" ", $data));
+                                $j++;
+                            }
+                        }
+                        $objPHPExcel->setActiveSheetIndex(0);
+                        //
+                        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+                        $response = new \Symfony\Component\HttpFoundation\StreamedResponse(
+                            function() use  ($objWriter) {
+                                $objWriter->save('php://output');
+                            }, 
+                            200,
+                            array(
+                                'Content-Type' => 'application/vnd.ms-excel; charset=utf-8',
+                                'Cache-Control' => ' max-age=1',
+                                'Pragma' => 'public'
+                            )
+                        );
+                        
+                    }
+                    break;
                 case "csv":
                 default:
                     {
-                        $select = array();
-                        foreach ($definition['fields'] as $key => $field) {
-                            foreach ($field['value'] as $key => $val) {
-                                $select[]= $field['alias'].".".$val. " as " . $field['alias'].$val;
-                            }
-                        }
-                        $entities = $querybuilder->select(implode(' ,', $select))->getQuery()->getScalarResult();
+                        $response = $this->render("CoreCommonBundle:Export:export." . $type . ".twig", array('entities' => $entities, 'fields' => $definition['fields']));
+                        $response->headers->set('Content-Type', 'text/' . $type . "; charset=utf-8");
                     }
                     break;
             }
-
-            $response = $this->render("CoreCommonBundle:Export:export." . $type . ".twig", array('entities' => $entities, 'fields' => $definition['fields']));
-            $response->headers->set('Content-Type', 'text/' . $type);
+            
             $date = new \DateTime();
-            $response->headers->set('Content-Disposition', 'attachment; filename="'.$date->format("U")."-" . $export . '.csv"');
-
+            $response->headers->set('Content-Disposition', 'attachment; filename="'. $date->format("U")."-" . $export .'.xls"');
+            
             return $response;
         }
 
