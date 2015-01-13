@@ -41,7 +41,7 @@ class ProcessProduct
         return $this->product;
     }
 
-    public function setProduct(product $product)
+    public function setProduct(Product $product)
     {
         $this->product = $product;
         if ($this->getProduct()) {
