@@ -22,10 +22,11 @@
 </div>
 </form>
 {{ knp_pagination_render(entities)}}
+<form action="{{path('product_process', {'category': category})}}" method="post">
 <table class="records_list table table-striped table-hover table-condensed">
     <thead>
     <tr>
-            <td colspan="3">
+            <td colspan="{% if process.offsetExists('action') %}4{% else %}3{% endif %}">
                 <div class="btn-group pull-right">
                     <a href="{{ path('product_new', {'category': category}) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %}</a>
                     {% if category is not empty %}
@@ -37,19 +38,44 @@
             </td>
         </tr>
         <tr>
-            <th></th>
+            {% if process.offsetExists('action') %}
+            <th class="include"></th>
+            {% endif %}
+            <th class="include"></th>
             <th>{% trans %}Title{% endtrans %}</th>
             <th>{% trans %}Actions{% endtrans %}</th>
         </tr>
     </thead>
     <tfoot>
+        {% if process.offsetExists('action') %}
+        <tr>
+            <td colspan="2">
+            </td>
+            <td>
+                {% if process.offsetExists('action') %}
+                {{ form_widget(process.action, {'attr': {'class': 'input-sm'}}) }}
+                {% endif %}
+            </td>
+            <td>
+                <button class="btn btn-sm btn-default" type="submit" value="Process"><span class="glyphicon glyphicon-refresh icon-white"></span> {% trans%}Process{% endtrans %}</button>
+            </td>
+        </tr>
+        {% endif %}
     </tfoot>
     <tbody>
     {% set minishopkeys = minishop|keys %}
     {% for entity in entities %}
-        {% include 'CoreProductBundle:Product:item.html.twig' with {'entity': entity, 'category': category, 'minishopkeys': minishopkeys} %}
+        {% set widget =  '' %}
+        {% if process.offsetExists('action') %}
+        {% set widget = process.processProducts[loop.index0] %}
+        {% endif %}
+        {% include 'CoreProductBundle:Product:item.html.twig' with {'entity': entity, 'category': category, 'minishopkeys': minishopkeys, 'widget': widget} %}
     {% endfor %}
     </tbody>
 </table>
+{% if process.offsetExists('action') %}
+{{ form_rest(process) }}
+{% endif %}
+</form>
 {{ knp_pagination_render(entities)}}
 {% endblock %}

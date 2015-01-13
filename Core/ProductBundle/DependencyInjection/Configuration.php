@@ -23,6 +23,18 @@ class Configuration implements ConfigurationInterface
                                     ->variableNode("tags")->defaultValue(array())->end()
                                     ->variableNode("images")->defaultValue(array('thumb', 'large', 'small'))->end()
                                     ->variableNode("prices")->defaultValue(array('normal'))->end()
+                                    ->arrayNode("process")
+                                        ->addDefaultsIfNotSet()
+                                        ->children()
+                                            ->arrayNode('actions')
+                                                ->prototype('array')
+                                                ->children()
+                                                    ->variableNode("name")->end()
+                                                    ->variableNode("action")->end()
+                                                ->end()
+                                            ->end()
+                                        ->end()
+                                    ->end()
                                 ->end();
 
         // Here you should define the parameters that are allowed to

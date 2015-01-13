@@ -11,8 +11,11 @@ use Core\ProductBundle\Entity\Attribute;
 use Core\ProductBundle\Entity\Filter;
 use Core\ProductBundle\Form\ProductType;
 use Core\ProductBundle\Form\FilterType;
+use Core\ProductBundle\Entity\Process;
+use Core\ProductBundle\Entity\ProcessProduct;
 use Core\ProductBundle\Form\ProductCategoryType;
 use Core\ProductBundle\Form\ProductCategoriesType;
+use Core\ProductBundle\Form\ProcessType;
 use Core\CommonBundle\Controller\TranslateController;
 
 /**
@@ -78,6 +81,18 @@ class ProductController extends TranslateController
             $page/*page number*/,
             100 /*limit per page*/
         );
+        
+        $processProducts = array();
+        foreach ($pagination->getItems() as $product) {
+            $processProduct = new ProcessProduct();
+            $processProduct->setProduct($product);
+            $processProducts[] = $processProduct;
+        }
+        $process = new Process();
+        $process->setProcessProducts($processProducts);
+
+        $actions = $this->container->getParameter('admin.product.actions');
+        $processForm = $this->createForm(new ProcessType(), $process, array('actions' => $actions));
 
         $minishop  = $this->container->getParameter('minishop');
 
@@ -85,6 +100,7 @@ class ProductController extends TranslateController
             'entities' => $pagination,
             'category' => $category,
             'filter' => $form->createView(),
+            'process' => $processForm->createView(),
             'minishop' => $minishop,
         ));
     }
@@ -578,5 +594,24 @@ class ProductController extends TranslateController
             'edit_form'   => $editForm->createView(),
             'category' => $category,
         ));
+    }
+    
+    public function processAction($category = null)
+    {
+        $request = $this->getRequest();
+        $process = new Process();
+        $actions = $this->container->getParameter('admin.product.actions');
+        $processForm = $this->createForm(new ProcessType(), $process, array('actions' => $actions));
+
+        $minishop  = $this->container->getParameter('minishop');
+        $processForm->bind($request);
+        if ($processForm->isValid()) {
+            $action = trim($process->getAction());
+            if($action) {
+               return $this->forward($action, array());
+            }
+        }
+
+        return $this->redirect($this->generateUrl('product', array('category' => $category)));
     }
 }

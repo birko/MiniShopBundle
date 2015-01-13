@@ -4,6 +4,13 @@ product:
     requirements:
         category: \d+
 
+product_process:
+    pattern:  /process/{category}
+    defaults: { _controller: "CoreProductBundle:Product:process" , category: ~}
+    requirements:
+        _method: post
+        category: \d+
+
 product_show:
     pattern:  /{id}/show
     defaults: { _controller: "CoreProductBundle:Product:show" }
