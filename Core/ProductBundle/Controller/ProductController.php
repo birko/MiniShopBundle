@@ -608,7 +608,7 @@ class ProductController extends TranslateController
         if ($processForm->isValid()) {
             $action = trim($process->getAction());
             if($action) {
-               return $this->forward($action, array());
+               return $this->forward($action, array('category' => $category));
             }
         }
 
