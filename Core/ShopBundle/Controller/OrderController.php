@@ -361,7 +361,10 @@ class OrderController extends BaseOrderController
             $querybuilder = $em->getRepository('CoreShopBundle:Order')->getOrdersByIdQueryBuilder($orderIds);
             switch ($definition['filter']) {
                 case "product":
-                    $expr = $querybuilder->expr()->isNotNull("oi.product");
+                    $expr = $querybuilder->expr()->andX(
+                        $querybuilder->expr()->isNull("oi.payment"),
+                        $querybuilder->expr()->isNull("oi.shipping")
+                    );                    
                     $querybuilder->andWhere($expr);
                     break;
                 case "order":
