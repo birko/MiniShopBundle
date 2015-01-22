@@ -12,12 +12,19 @@ class ProductController extends ShopController
 
     public function indexAction($slug)
     {
+        $minishop  = $this->container->getParameter('minishop');
         $priceGroup = $this->getPriceGroup();
         $currency = $this->getCurrency();
         $em = $this->getDoctrine()->getManager();
         $product  = $em->getRepository("CoreProductBundle:Product")->getBySlug($slug, false);
         if (!$product || (!$product->isEnabled() && !$this->container->getParameter("site.product.show_disabled"))) {
             throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+        $ordered  = array();
+        $media = $em->getRepository("CoreProductBundle:ProductMedia")->getProductsMediasArray(array($product->getId()));
+        $stocks = $em->getRepository("CoreProductBundle:Stock")->getStocksArray(array($product->getId()));
+        if (array_key_exists("shop", $minishop) && $minishop['shop']) {
+            $ordered  = $em->getRepository("CoreShopBundle:OrderItem")->getProductsOrderCount(array($product->getId()));
         }
         $options = array();
         $productOptions = $product->getOptions();
@@ -31,6 +38,9 @@ class ProductController extends ShopController
             'options' => $options,
             'pricegroup' => $priceGroup,
             'currency' => $currency,
+            'media' => $media,
+            'ordered' => $ordered,
+            'stock' => $stocks,
             'minishop'  => $minishop,
         ));
     }

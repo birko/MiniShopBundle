@@ -21,7 +21,7 @@ class ProductRepository extends EntityRepository
     {
         $qb = ($join) ? 
             $this->findByCategoryQueryBuilder() : 
-            $this->findByCategoryQueryBuilder(null, false, false, false, false);
+            $this->findByCategoryQueryBuilder(null, false, false, true, false);
         $query = $qb
             ->andWhere("p.slug = :slug")
             ->setParameter("slug", $slug)
@@ -34,7 +34,7 @@ class ProductRepository extends EntityRepository
     {
         $qb = ($join) ? 
             $this->findByCategoryQueryBuilder() : 
-            $this->findByCategoryQueryBuilder(null, false, false, false, false);
+            $this->findByCategoryQueryBuilder(null, false, false, true, false);
         $query = $qb
             ->andWhere("p.id = :id")
             ->setParameter("id", $id)
