@@ -395,7 +395,7 @@ class OrderController extends BaseOrderController
                         $i = 1;
                         $j = 0;
                         foreach ($definition['fields'] as $key => $field) {
-                            $workSheet->setCellValueByColumnAndRow($j , $i, $field['title']);
+                            $workSheet->setCellValueExplicitByColumnAndRow($j , $i, (string)$field['title']);
                             $j++;
                         }
                         foreach ($entities as $entity) {
@@ -406,7 +406,7 @@ class OrderController extends BaseOrderController
                                 foreach($field['value'] as $val) {
                                     $data[] = strip_tags($entity[$field['alias'] . $val]);
                                 }
-                                $workSheet->setCellValueByColumnAndRow($j , $i, implode(" ", $data));
+                                $workSheet->setCellValueExplicitByColumnAndRow($j , $i, (string)implode(" ", $data));
                                 $j++;
                             }
                         }
