@@ -17,9 +17,12 @@ class ProductRepository extends EntityRepository
         return $query->setHint(\Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER, 'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker');
     }
 
-    public function getBySlug($slug)
+    public function getBySlug($slug, $join = false)
     {
-        $query = $this->findByCategoryQueryBuilder()
+        $qb = ($join) ? 
+            $this->findByCategoryQueryBuilder() : 
+            $this->findByCategoryQueryBuilder(null, false, false, false, false);
+        $query = $qb
             ->andWhere("p.slug = :slug")
             ->setParameter("slug", $slug)
             ->getQuery();
@@ -27,9 +30,12 @@ class ProductRepository extends EntityRepository
         return $this->setHint($query)->getOneOrNullResult();
     }
 
-    public function getProduct($id)
+    public function getProduct($id, $join = false)
     {
-        $query = $this->findByCategoryQueryBuilder()
+        $qb = ($join) ? 
+            $this->findByCategoryQueryBuilder() : 
+            $this->findByCategoryQueryBuilder(null, false, false, false, false);
+        $query = $qb
             ->andWhere("p.id = :id")
             ->setParameter("id", $id)
             ->getQuery();
@@ -42,14 +48,19 @@ class ProductRepository extends EntityRepository
         $select = "p, ps, v";
         $queryBuilder = $this->getEntityManager()->createQueryBuilder()
             ->from("CoreProductBundle:Product", "p")
-            ->leftJoin("p.productCategories", "pc")
-            ->leftJoin("pc.category", "c")
             ->leftJoin("p.stock", "ps")
             ->leftJoin("p.vendor", "v")
         ;
+        if ($category !== null) {
+           $select .= ", pc, c";
+           $queryBuilder = $queryBuilder
+               ->leftJoin("p.productCategories", "pc")
+               ->leftJoin("pc.category", "c")
+           ;
+        }
                 
         if ($join) {
-            $select .= ", pc, c, pp, v, pg, cur, va";
+            $select .= ", pp, v, pg, cur, va";
             $queryBuilder
                 ->leftJoin("p.prices", "pp")
                 ->leftJoin("pp.priceGroup", "pg")
@@ -88,10 +99,10 @@ class ProductRepository extends EntityRepository
                 ->andWhere("p.enabled =:enabled")
                 ->setParameter("enabled", $onlyenabled);
         }
-        $queryBuilder
-            ->addOrderBy("pc.position", 'asc')
-            ->addOrderBy("p.id", 'asc')
-        ;
+        if ($category !== null) {
+           $queryBuilder->addOrderBy("pc.position", 'asc');
+        }
+        $queryBuilder->addOrderBy("p.id", 'asc');
         if ($join) {
             $queryBuilder
                 ->addOrderBy("pp.priceAmount", 'asc')
