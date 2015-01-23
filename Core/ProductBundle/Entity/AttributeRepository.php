@@ -105,8 +105,9 @@ class AttributeRepository extends SortableRepository
     {
         $querybuilder = $this->getBySortableGroupsQueryBuilder($groupValues);
         if (!empty($productIds)) {
-            $expr = $querybuilder->expr()->in('n.product', $productIds );
+            $expr = $querybuilder->expr()->in('n.product', ":productIds");
             $querybuilder->andWhere($expr);
+            $querybuilder->setParameter("productIds", $productIds);
         }
 
         return $querybuilder;

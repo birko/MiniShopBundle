@@ -18,8 +18,9 @@ class OrderItemRepository extends EntityRepository
             ->join("oi.product", "p")
             ->addGroupBy("p.id");
         if ($entities != null) {
-            $expr = $querybuilder->expr()->in("oi.product", $entities);
+            $expr = $querybuilder->expr()->in("oi.product", ":productIds");
             $querybuilder->andWhere($expr);
+            $querybuilder->setParameter("productIds", $entities);
         }
 
         $query = $querybuilder->getQuery();

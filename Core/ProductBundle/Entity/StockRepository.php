@@ -22,8 +22,9 @@ class StockRepository extends EntityRepository
         $querybuilder = $this->createQueryBuilder('s')
             ->select("s");
         if ($entities != null) {
-            $expr = $querybuilder->expr()->in("s.product", $entities);
+            $expr = $querybuilder->expr()->in("s.product", ":productIds");
             $querybuilder->andWhere($expr);
+            $querybuilder->setParameter("productIds", $entities);            
         }
 
         return $querybuilder;

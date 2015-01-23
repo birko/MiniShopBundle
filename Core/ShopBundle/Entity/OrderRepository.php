@@ -15,8 +15,8 @@ class OrderRepository extends EntityRepository
     public function getOrdersByIdQueryBuilder($orderIds)
     {
         $queryBuilder = $this->getEntityManager()->createQueryBuilder();
-        $expr = $queryBuilder->expr()->in('o.id', $orderIds);
-        $query = $queryBuilder->select('o')
+        $expr = $queryBuilder->expr()->in('o.id', ":orderIds");
+        $queryBuilder = $queryBuilder->select('o')
                 ->from('CoreShopBundle:Order', 'o')
                 ->leftJoin("o.items", 'oi')
                 ->leftJoin("o.shipping", 's')
@@ -25,8 +25,9 @@ class OrderRepository extends EntityRepository
                 ->leftJoin("o.payment", 'p')
                 ->leftJoin("o.delivery_state", 'ds')
                 ->leftJoin("o.invoice_state", 'is')
-                ->andWhere($expr);
-
+                ->andWhere($expr)
+                ->setParameter("orderIds", $orderIds);
+        
         return $queryBuilder ;
     }
 
@@ -39,12 +40,13 @@ class OrderRepository extends EntityRepository
     {
         if (!empty($orderIds)) {
             $queryBuilder = $this->getEntityManager()->createQueryBuilder();
-            $expr = $queryBuilder->expr()->in('o.id', $orderIds);
+            $expr = $queryBuilder->expr()->in('o.id', ":orderIds");
             $queryBuilder
                 ->update('CoreShopBundle:Order', 'o')
                 ->set("o.order_status", ":order_status")
                 ->andWhere($expr)
                 ->setParameter('order_status', $statusId)
+                ->setParameter("orderIds", $orderIds);
                 ;
             $numUpdated = $queryBuilder->getQuery()->execute();
 
@@ -58,12 +60,13 @@ class OrderRepository extends EntityRepository
     {
         if (!empty($orderIds)) {
             $queryBuilder = $this->getEntityManager()->createQueryBuilder();
-            $expr = $queryBuilder->expr()->in('o.id', $orderIds);
+            $expr = $queryBuilder->expr()->in('o.id', ":orderIds");
             $queryBuilder
                 ->update('CoreShopBundle:Order', 'o')
                 ->set("o.shipping_status", ":shipping_status")
                 ->andWhere($expr)
                 ->setParameter('shipping_status', $statusId)
+                ->setParameter("orderIds", $orderIds);
                 ;
             $numUpdated = $queryBuilder->getQuery()->execute();
 

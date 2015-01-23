@@ -73,8 +73,9 @@ class ProductMediaRepository extends EntityRepository
             ->addOrderBy("m.id", "asc")
         ;
         if ($entities != null) {
-            $expr = $querybuilder->expr()->in("pm.product", $entities);
+            $expr = $querybuilder->expr()->in("pm.product", ":productIds");
             $querybuilder->andWhere($expr);
+            $querybuilder->setParameter("productIds", $entities);
         }
         
         if (!empty($types)) {

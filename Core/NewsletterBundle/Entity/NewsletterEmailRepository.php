@@ -35,12 +35,14 @@ class NewsletterEmailRepository extends EntityRepository
     public function getEmailsInGroupsQueryBuilder($groups = array(), $not = false)
     {
         $querybuilder = $this->getEmailsQueryBuilder();
-
+        
         if ($not) {
-            $expr = $querybuilder->expr()->notIn("neg", $groups);
+            $expr = $querybuilder->expr()->notIn("neg", ":groups");
         } else {
-            $expr = $querybuilder->expr()->in("neg", $groups);
+            $expr = $querybuilder->expr()->in("neg", ":groups");
         }
+        $querybuilder->setParameter("groups", $groups);
+        
         $querybuilder = $querybuilder->distinct()
                 ->leftJoin("ne.groups", "neg")
                 //->leftJoin("neg", "ng")
