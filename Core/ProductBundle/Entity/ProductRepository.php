@@ -209,4 +209,24 @@ class ProductRepository extends EntityRepository
 
         return (!empty($result) && isset($result[$product])) ? $result[$product] : array();
     }
+    
+    public function getVendorArray($entities = null)
+    {
+        $querybuilder = $this->findByCategoryQueryBuilder(null, false, false, false, false);
+        if ($entities != null) {
+            $expr = $querybuilder->expr()->in("p.id", ":productIds");
+            $querybuilder->andWhere($expr);
+            $querybuilder->setParameter("productIds", $entities);            
+        }
+        $query = $querybuilder->getQuery();
+        
+        $result = array();
+        foreach ($query->getResult() as $entity) {
+            if ($entity->getVendor()) {
+                $result[$entity->getId()] = $entity->getVendor();
+            }
+        }
+
+        return $result;
+    }
 }
