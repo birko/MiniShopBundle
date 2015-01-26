@@ -27,4 +27,49 @@ class PriceRepository extends EntityRepository
 
         return $numUpdated;
     }
+    
+    public function getPricesQueryBuilder($entities = null)
+    {
+        $querybuilder = $this->createQueryBuilder('pp')
+            ->select("pp, pg, cur, va")
+            ->leftJoin("pp.priceGroup", "pg")
+            ->leftJoin("pp.currency", "cur")
+            ->leftJoin("pp.vat", "va");
+        if ($entities != null) {
+            $expr = $querybuilder->expr()->in("pp.product", ":productIds");
+            $querybuilder->andWhere($expr);
+            $querybuilder->setParameter("productIds", $entities);            
+        }
+
+        return $querybuilder;
+    }
+
+    public function getPricesQuery($entities = null)
+    {
+        return $this->getPricesQueryBuilder($entities)->getQuery();
+    }
+    public function getPrices($entities = null)
+    {
+        return $this->getPricesQuery($entities)->getResult();
+    }
+
+    public function getPricesArray($entities = null)
+    {
+        $query = $this->getPricesQueryBuilder($entities)
+        ->select("pp, pg, cur, va, p")
+        ->leftJoin("pp.product", "p")
+        ->getQuery();
+        
+        $result = array();
+        foreach ($query->getResult() as $entity) {
+            if ($entity->getProduct()) {
+                if (!isset($result[$entity->getProduct()->getId()])) {
+                    $result[$entity->getProduct()->getId()] = new Product();
+                }
+                $result[$entity->getProduct()->getId()]->getPrices()->add($entity);
+            }
+        }
+
+        return $result;
+    }
 }

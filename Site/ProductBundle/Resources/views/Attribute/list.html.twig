@@ -4,13 +4,13 @@
         <tbody>
         {% for attributearray in entities %}
         <tr>
-            <th>{{attributearray.0.name.name}}</th>
+            <th>{{attributearray.0.name}}</th>
             <td>
                 {% for attribute in attributearray %}
                     {% if loop.index0 != 0 %}
                     ,
                     {% endif %}
-                    {{ attribute.value.value}}
+                    {{ attribute.value}}
                 {% endfor %}
             </td>
         </tr>

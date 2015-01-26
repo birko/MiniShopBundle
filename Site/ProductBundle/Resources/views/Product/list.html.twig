@@ -13,7 +13,8 @@
     {% set o  = '' %}{% if ordered is defined and product.id in ordered|keys %}{% set o = ordered[product.id]  %}{% endif %}
     {% set s  = [] %}{% if stock is defined and product.id in stock|keys %}{% set s = stock[product.id]  %}{% endif %}
     {% set m  = [] %}{% if media is defined and product.id in media|keys %}{% set m = media[product.id]  %}{% endif %}
-    {% include 'SiteProductBundle:Product:item.html.twig' with {'entity': product, 'media': m, 'ordered' : o, 'stock': s} %}
+    {% set p  = [] %}{% if prices is defined and product.id in prices|keys %}{% set p = prices[product.id] %}{% endif %}
+    {% include 'SiteProductBundle:Product:item.html.twig' with {'entity': product, 'media': m, 'ordered' : o, 'stock': s, 'prices': p} %}
     {% endfor %}
     </div>
     <div class="row">

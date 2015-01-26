@@ -7,7 +7,7 @@
 <div id="product">
     <div class="row">
         <div class="image col-sm-4 col-md-4 col-lg-4">
-        {% if media is defined  and media[product.id] is not empty%}
+        {% if media is defined  and media is not empty and media[product.id] is not empty %}
             <div class="full-image">
              {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media[product.id].0, 'dir': 'small', 'link_path':'large', 'gallery': 'product-' ~ product.id} %}
             </div>
@@ -27,14 +27,14 @@
             <div id="shortdescription">
                 {{product.shortDescription|raw}}
             </div>
-            {% if 'price' in minishopkeys %}
+            {% if 'price' in minishopkeys and prices is defined and prices is not empty and prices[product.id] is not empty %}
             <div class="row">
-            {% set price  = product.getMinimalPrice(currency, pricegroup, 'normal') %}
+            {% set price = prices[product.id].getMinimalPrice(currency, pricegroup, 'normal') %}
             {% if price is not empty %}
             <div class="price pull-left lead col-sm-5 col-md-5 col-lg-5">
                 <strong>{{price.priceVAT |number_format(2)}} {{currency.symbol}}</strong>
                 <small>{% trans %}with VAT{% endtrans %}</small>
-                {% if stock is defined  and stock[product.id] is not empty%}
+                {% if stock is defined  and stock is not empty and stock[product.id] is not empty%}
                 {% include "SiteProductBundle:Stock:info.html.twig" with {'entity': stock[product.id].0 }%}
                 {% endif %}                
             </div>
@@ -54,7 +54,7 @@
     <hr />
     <div class="info row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-            {% if media is defined  and media[product.id] is not empty and (media[product.id]| length > 1 )%}
+            {% if media is defined and media is not empty and media[product.id] is not empty and (media[product.id]| length > 1 )%}
             <div class="product-gallery gallery col-sm-4 col-md-4 col-lg-4">
                 <div class="row">
                     {% for mediaEntity in media[product.id] %}
@@ -73,7 +73,9 @@
                 {{product.longDescription|raw}}
             </div>
             <div class="clearfix"></div>
-            {% include "SiteProductBundle:Attribute:list.html.twig" with {'entities': product.getGroupedAttributes()} %}
+            {% if attributes is defined and attributes is not empty and attributes[product.id] is not empty%}
+            {% include "SiteProductBundle:Attribute:list.html.twig" with {'entities': attributes[product.id]} %}
+            {% endif %}
         </div>
         <div class="clearfix"></div>
     </div>

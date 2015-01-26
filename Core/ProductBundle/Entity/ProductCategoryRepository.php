@@ -56,4 +56,32 @@ class ProductCategoryRepository extends EntityRepository
 
         return $numUpdated;
     }
+    
+    public function getCategoriesArray($entities = null)
+    {
+        $querybuilder = $this->getEntityManager()->createQueryBuilder()
+            ->select("pc, c, p")
+            ->from("CoreProductBundle:ProductCategory", "pc")
+            ->leftJoin("pc.product", "p")
+            ->leftJoin("pc.category", "c");
+        if ($entities != null) {
+            $expr = $querybuilder->expr()->in("pc.product", ":productIds");
+            $querybuilder->andWhere($expr);
+            $querybuilder->setParameter("productIds", $entities);            
+        }
+        $querybuilder->addOrderBy("pc.position", 'asc');
+        $query = $querybuilder->getQuery();
+        
+        $result = array();
+        foreach ($query->getResult() as $entity) {
+            if ($entity->getProduct()) {
+                if (!isset($result[$entity->getProduct()->getId()])) {
+                    $result[$entity->getProduct()->getId()] = new Product();
+                }
+                $result[$entity->getProduct()->getId()]->getProductCategories()->add($entity);
+            }
+        }
+
+        return $result;
+    }
 }

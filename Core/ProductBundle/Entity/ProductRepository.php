@@ -14,6 +14,7 @@ class ProductRepository extends EntityRepository
 {
     public function setHint(\Doctrine\ORM\Query $query)
     {
+        $query->setHint(\Doctrine\ORM\Query::HINT_FORCE_PARTIAL_LOAD, true);
         return $query->setHint(\Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER, 'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker');
     }
 
@@ -21,7 +22,7 @@ class ProductRepository extends EntityRepository
     {
         $qb = ($join) ? 
             $this->findByCategoryQueryBuilder() : 
-            $this->findByCategoryQueryBuilder(null, false, false, true, false);
+            $this->findByCategoryQueryBuilder(null, false, false, false, false);
         $query = $qb
             ->andWhere("p.slug = :slug")
             ->setParameter("slug", $slug)
@@ -34,7 +35,7 @@ class ProductRepository extends EntityRepository
     {
         $qb = ($join) ? 
             $this->findByCategoryQueryBuilder() : 
-            $this->findByCategoryQueryBuilder(null, false, false, true, false);
+            $this->findByCategoryQueryBuilder(null, false, false, false, false);
         $query = $qb
             ->andWhere("p.id = :id")
             ->setParameter("id", $id)
@@ -45,13 +46,12 @@ class ProductRepository extends EntityRepository
 
     public function findByCategoryQueryBuilder($category = null, $recursive = false, $onlyenabled = false, $join = true, $joindetail = true)
     {
-        $select = "p, ps, v";
+        $select = "p, v";
         $queryBuilder = $this->getEntityManager()->createQueryBuilder()
             ->from("CoreProductBundle:Product", "p")
-            ->leftJoin("p.stock", "ps")
             ->leftJoin("p.vendor", "v")
         ;
-        if ($category !== null) {
+        if ($category !== null || $joindetail) {
            $select .= ", pc, c";
            $queryBuilder = $queryBuilder
                ->leftJoin("p.productCategories", "pc")
@@ -60,7 +60,7 @@ class ProductRepository extends EntityRepository
         }
                 
         if ($join) {
-            $select .= ", pp, v, pg, cur, va";
+            $select .= ", pp, pg, cur, va";
             $queryBuilder
                 ->leftJoin("p.prices", "pp")
                 ->leftJoin("pp.priceGroup", "pg")
@@ -70,8 +70,9 @@ class ProductRepository extends EntityRepository
         }
 
         if ($joindetail) {
-            $select .= ", pm, m, pa, po";
+            $select .= ", pm, m, pa, po, ps";
             $queryBuilder
+                ->leftJoin("p.stock", "ps")
                 ->leftJoin("p.media", "pm")
                 ->leftJoin("pm.media", "m")
                 ->leftJoin("p.attributes", "pa")
@@ -99,7 +100,7 @@ class ProductRepository extends EntityRepository
                 ->andWhere("p.enabled =:enabled")
                 ->setParameter("enabled", $onlyenabled);
         }
-        if ($category !== null) {
+        if ($category !== null || $joindetail) {
            $queryBuilder->addOrderBy("pc.position", 'asc');
         }
         $queryBuilder->addOrderBy("p.id", 'asc');

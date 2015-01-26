@@ -2,7 +2,7 @@
     <div class="product thumbnail">
         <div class="row text-center">
             <a href="{{path('product_site', {'slug': entity.slug})}}" class="image">
-              {% if media is defined %}
+              {% if media is defined and media is not empty %}
               {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': media.0, 'dir': 'thumb', 'link_path':'', 'gallery': ''} %}
               {% elseif entity.media is not empty%}
               {% include "CoreMediaBundle:Media:display.html.twig" with {'entity': entity.media.0.media, 'dir': 'thumb', 'link_path':'', 'gallery': ''} %}
@@ -13,8 +13,9 @@
             <a href="{{path('product_site', {'slug': entity.slug})}}">{{entity.title}}</a>
         </h3>
         <div class="row">
-            {% set price  = entity.getMinimalPrice(currency, pricegroup, 'normal') %}
-            <div class="price pull-right col-sm-6 col-md-6 col-lg-6">
+          {% if prices is defined and prices is not empty %}
+          {% set price  = prices.getMinimalPrice(currency, pricegroup, 'normal') %}
+          <div class="price pull-right col-sm-6 col-md-6 col-lg-6">
               {% if price is not empty %}{{price.priceVAT |number_format(2)}}{% else %}0{% endif %} {{currency.symbol}}
             </div>
             <div class="price pull-left col-sm-6 col-md-6 col-lg-6">
@@ -22,6 +23,7 @@
                 {% include "SiteShopBundle:Cart:addsmall.html.twig" with {'productId': entity.id, 'type': 'normal'} %}
                 {% endif %}
             </div>
+          {% endif %}
         </div>
     </div>
 </div>

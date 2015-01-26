@@ -84,8 +84,14 @@ class ShopController extends BaseOrderController
         $user = $this->getShopUser();
         $em = $this->getDoctrine()->getManager();
         if ($user !== null) {
-            $pricegroup  = $user->getPriceGroup();
+            $pricegroup = $user->getPriceGroup();
         }
+         //session
+        if ($pricegroup === null) {
+            $session = $this->getRequest()->getSession();
+            $pricegroup = $session->get('pricegroup');
+        }
+        //defaults
         if ($pricegroup === null) {
            $pricegroup  =  $em->getRepository('CoreUserBundle:PriceGroup')->findOneByDefault(true);
         } else {
@@ -98,6 +104,7 @@ class ShopController extends BaseOrderController
             ->setMaxResults(1)
             ->getOneOrNullResult();
         }
+        $session->set('pricegroup', $pricegroup);
 
         return $pricegroup;
     }
