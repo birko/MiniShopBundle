@@ -8,6 +8,6 @@
     {% set s  = [] %}{% if stock is defined %}{% set s = stock %}{% endif %}
     {% set m  = [] %}{% if media is defined %}{% set m = media %}{% endif %}
     {% set p  = [] %}{% if prices is defined %}{% set p = prices %}{% endif %}
-    {% include 'SiteProductBundle:Product:list.html.twig' with {'entities': entities, 'recursive': 0, 'media': m, 'ordered': o, 'stock': s, 'prices': [} %}
+    {% include 'SiteProductBundle:Product:list.html.twig' with {'entities': entities, 'recursive': 0, 'media': m, 'ordered': o, 'stock': s, 'prices': p} %}
 </div>
 {% endblock %}
