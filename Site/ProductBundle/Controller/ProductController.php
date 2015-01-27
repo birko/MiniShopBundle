@@ -28,16 +28,10 @@ class ProductController extends ShopController
         if (array_key_exists("shop", $minishop) && $minishop['shop']) {
             $ordered  = $em->getRepository("CoreShopBundle:OrderItem")->getProductsOrderCount(array($product->getId()));
         }
-        $options = array();
-        $productOptions = $product->getOptions();
-        foreach ($productOptions as $option) {
-            $options[$option->getName()->getId()][] = $option;
-        }
         $minishop  = $this->container->getParameter('minishop');
 
         return $this->render('SiteProductBundle:Product:index.html.twig', array(
             'product'       => $product,
-            'options'       => $options,
             'pricegroup'    => $priceGroup,
             'currency'      => $currency,
             'attributes'    => $attributes,

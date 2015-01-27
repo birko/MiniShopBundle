@@ -14,7 +14,6 @@ class ProductRepository extends EntityRepository
 {
     public function setHint(\Doctrine\ORM\Query $query)
     {
-        $query->setHint(\Doctrine\ORM\Query::HINT_FORCE_PARTIAL_LOAD, true);
         return $query->setHint(\Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER, 'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker');
     }
 
@@ -116,7 +115,10 @@ class ProductRepository extends EntityRepository
 
     public function findByCategoryQuery($category = null, $recursive = false, $onlyenabled = false, $join = true, $joindetail = true)
     {
-        return $this->setHint($this->findByCategoryQueryBuilder($category, $recursive, $onlyenabled, $join, $joindetail)->getQuery());
+        $query = $this->findByCategoryQueryBuilder($category, $recursive, $onlyenabled, $join, $joindetail)->getQuery();
+        $query->setHint(\Doctrine\ORM\Query::HINT_FORCE_PARTIAL_LOAD, true);
+        
+        return $this->setHint($query);
     }
 
     public function findByCategory($category = null, $recursive = false, $onlyenabled = false, $join = true, $joindetail = true)
