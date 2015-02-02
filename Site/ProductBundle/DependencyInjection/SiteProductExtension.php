@@ -30,6 +30,9 @@ class SiteProductExtension extends Extension
         if (isset($config['show_disabled'])) {
             $container->setParameter("site.product.show_disabled", $config['show_disabled']);
         }
+        
+        $services = ($container->hasParameter('site_product.listservices')) ? $container->getParameter('site_product.listservices') : array();
+        $container->setParameter('site_product.listservices', $services);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

@@ -20,27 +20,23 @@ class ProductController extends ShopController
         if (!$product || (!$product->isEnabled() && !$this->container->getParameter("site.product.show_disabled"))) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
-        $ordered  = array();
-        $media = $em->getRepository("CoreProductBundle:ProductMedia")->getProductsMediasArray(array($product->getId()));
-        $attributes = $em->getRepository("CoreProductBundle:Attribute")->getGroupedAttributesByProducts(array($product->getId()),  array(), $this->getRequest()->get('_locale'));
-        $stocks = $em->getRepository("CoreProductBundle:Stock")->getStocksArray(array($product->getId()));
-        $prices = $em->getRepository("CoreProductBundle:Price")->getPricesArray(array($product->getId()));
-        if (array_key_exists("shop", $minishop) && $minishop['shop']) {
-            $ordered  = $em->getRepository("CoreShopBundle:OrderItem")->getProductsOrderCount(array($product->getId()));
-        }
-        $minishop  = $this->container->getParameter('minishop');
-
-        return $this->render('SiteProductBundle:Product:index.html.twig', array(
-            'product'       => $product,
-            'pricegroup'    => $priceGroup,
-            'currency'      => $currency,
-            'attributes'    => $attributes,
-            'prices'        => $prices,
-            'media'         => $media,
-            'ordered'       => $ordered,
-            'stock'         => $stocks,
-            'minishop'      => $minishop,
-        ));
+        $attributes = $em->getRepository("CoreProductBundle:Attribute")->getGroupedAttributesByProducts(
+            array($product->getId()), 
+            array(), 
+            $this->getRequest()->get('_locale')
+        );
+        
+        return $this->render('SiteProductBundle:Product:index.html.twig', 
+            $this->container->get('site_product.productservice')->loadResources(
+                array($product->getId()), 
+                array(
+                    'product'       => $product,
+                    'pricegroup'    => $priceGroup,
+                    'currency'      => $currency,
+                    'attributes'    => $attributes,
+                )
+            )
+        );
     }
 
     public function listAction($category, $page = 1)
@@ -61,31 +57,19 @@ class ProductController extends ShopController
         foreach ($pagination->getItems() as $entity) {
             $productIds[] = $entity->getId();
         }
-        
-        $media = array();
-        $ordered = array();
-        $stocks = array();
-        $prices = array();
-        if (!empty($productIds)) {
-            $media = $em->getRepository("CoreProductBundle:ProductMedia")->getProductsMediasArray($productIds);
-            $stocks = $em->getRepository("CoreProductBundle:Stock")->getStocksArray($productIds);
-            $prices = $em->getRepository("CoreProductBundle:Price")->getPricesArray($productIds);
-            if (array_key_exists("shop", $minishop) && $minishop['shop']) {
-                $ordered  = $em->getRepository("CoreShopBundle:OrderItem")->getProductsOrderCount($productIds);
-            }
-        }
 
-        return $this->render('SiteProductBundle:Product:list.html.twig', array(
-            'entities'      => $pagination,
-            'pricegroup'    => $priceGroup,
-            'currency'      => $currency,
-            'category'      =>$category,
-            'media'         => $media,
-            'ordered'       => $ordered,
-            'stock'         => $stocks,
-            'prices'        => $prices,
-            'recursive'     => $this->container->getParameter("site.product.recursive"),
-        ));
+        return $this->render('SiteProductBundle:Product:list.html.twig',
+            $this->container->get('site_product.productservice')->loadResources(
+                $productIds,
+                array(
+                    'entities'      => $pagination,
+                    'pricegroup'    => $priceGroup,
+                    'currency'      => $currency,
+                    'category'      =>$category,
+                    'recursive'     => $this->container->getParameter("site.product.recursive"),
+                )
+            )
+        );
     }
 
     public function vendorAction($vendor, $page = 1)
@@ -110,28 +94,16 @@ class ProductController extends ShopController
             $productIds[] = $entity->getId();
         }
         
-        $media = array();
-        $ordered = array();
-        $stocks = array();
-        $prices = array();
-        if  (!empty($productIds)) {
-            $media = $em->getRepository("CoreProductBundle:ProductMedia")->getProductsMediasArray($productIds);
-            $stocks = $em->getRepository("CoreProductBundle:Stock")->getStocksArray($productIds);
-            $prices = $em->getRepository("CoreProductBundle:Price")->getPricesArray($productIds);
-            if (array_key_exists("shop", $minishop) && $minishop['shop']) {
-                $ordered  = $em->getRepository("CoreShopBundle:OrderItem")->getProductsOrderCount($productIds);
-            }
-        }
-
-        return $this->render('SiteProductBundle:Product:list.html.twig', array(
-            'entities'      => $pagination,
-            'pricegroup'    => $priceGroup,
-            'currency'      => $currency,
-            'media'         => $media,
-            'stock'         => $stocks,
-            'ordered'       => $ordered,
-            'prices'        => $prices,
-        ));
+        return $this->render('SiteProductBundle:Product:list.html.twig', 
+            $this->container->get('site_product.productservice')->loadResources(
+                $productIds,
+                array(
+                    'entities'      => $pagination,
+                    'pricegroup'    => $priceGroup,
+                    'currency'      => $currency,
+                )
+            )
+        );
     }
 
     public function searchAction()
@@ -163,29 +135,17 @@ class ProductController extends ShopController
         foreach ($pagination->getItems() as $entity) {
             $productIds[] = $entity->getId();
         }
-        
-        $media = array();
-        $ordered = array();
-        $stocks = array();
-        $prices = array();
-        if  (!empty($productIds)) {
-            $media = $em->getRepository("CoreProductBundle:ProductMedia")->getProductsMediasArray($productIds);
-            $stocks = $em->getRepository("CoreProductBundle:Stock")->getStocksArray($productIds);
-            $prices = $em->getRepository("CoreProductBundle:Price")->getPricesArray($productIds);
-            if (array_key_exists("shop", $minishop) && $minishop['shop']) {
-                $ordered  = $em->getRepository("CoreShopBundle:OrderItem")->getProductsOrderCount($productIds);
-            }
-        }
 
-        return $this->render('SiteProductBundle:Product:search.html.twig', array(
-            'entities'      => $pagination,
-            'pricegroup'    => $priceGroup,
-            'currency'      => $currency,
-            'media'         => $media,
-            'stock'         => $stocks,
-            'ordered'       => $ordered,
-            'prices'        => $prices,            
-        ));
+        return $this->render('SiteProductBundle:Product:search.html.twig',
+            $this->container->get('site_product.productservice')->loadResources(
+                $productIds,
+                array(
+                    'entities'      => $pagination,
+                    'pricegroup'    => $priceGroup,
+                    'currency'      => $currency,            
+                )
+            )
+        );
     }
 
     public function topAction()
@@ -207,28 +167,16 @@ class ProductController extends ShopController
             $productIds[] = $e->getId();
         }
         
-        $media = array();
-        $ordered = array();
-        $stocks = array();
-        $prices = array();
-        if  (!empty($productIds)) {
-            $media = $em->getRepository("CoreProductBundle:ProductMedia")->getProductsMediasArray($productIds);
-            $stocks = $em->getRepository("CoreProductBundle:Stock")->getStocksArray($productIds);
-            $prices = $em->getRepository("CoreProductBundle:Price")->getPricesArray($productIds);
-            if (array_key_exists("shop", $minishop) && $minishop['shop']) {
-                $ordered  = $em->getRepository("CoreShopBundle:OrderItem")->getProductsOrderCount($productIds);
-            }
-        }
-        
-        return $this->render('SiteProductBundle:Product:top.html.twig', array(
-            'entities'      => $entities,
-            'pricegroup'    => $priceGroup,
-            'currency'      => $currency,
-            'media'         => $media,
-            'stock'         => $stocks,
-            'ordered'       => $ordered,
-            'prices'        => $prices,
-       ));
+        return $this->render('SiteProductBundle:Product:top.html.twig', 
+            $this->container->get('site_product.productservice')->loadResources(
+                $productIds,
+                array(
+                    'entities'      => $entities,
+                    'pricegroup'    => $priceGroup,
+                    'currency'      => $currency,
+                )    
+            )
+       );
     }
 
     public function tagAction($tag, $limit = null)
@@ -251,30 +199,18 @@ class ProductController extends ShopController
             $productIds[] = $e->getId();
         }
         
-        $media = array();
-        $ordered = array();
-        $stocks = array();
-        $prices = array();
-        if  (!empty($productIds)) {
-            $media = $em->getRepository("CoreProductBundle:ProductMedia")->getProductsMediasArray($productIds);
-            $stocks = $em->getRepository("CoreProductBundle:Stock")->getStocksArray($productIds);
-            $prices = $em->getRepository("CoreProductBundle:Price")->getPricesArray($productIds);
-            if (array_key_exists("shop", $minishop) && $minishop['shop']) {
-                $ordered  = $em->getRepository("CoreShopBundle:OrderItem")->getProductsOrderCount($productIds);
-            }
-        }
-        
-        return $this->render('SiteProductBundle:Product:top.html.twig', array(
-            'entities'      => $entities,
-            'pricegroup'        => $priceGroup,
-            'currency'      => $currency,
-            'tag'           => $tag,
-            'slug'          => GedmoUrlizer::urlize($tag),
-            'media'         => $media,
-            'stock'         => $stocks,
-            'ordered'       => $ordered,
-            'prices'        => $prices,
-        ));
+        return $this->render('SiteProductBundle:Product:top.html.twig',
+            $this->container->get('site_product.productservice')->loadResources(
+                $productIds,
+                array(
+                    'entities'      => $entities,
+                    'pricegroup'    => $priceGroup,
+                    'currency'      => $currency,
+                    'tag'           => $tag,
+                    'slug'          => GedmoUrlizer::urlize($tag),
+                )
+            )
+        );
     }
 
     public function productMainMediaAction($product, $type = 'thumb', $link_path=null, $gallery = null)

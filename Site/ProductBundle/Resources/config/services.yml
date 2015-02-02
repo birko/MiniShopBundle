@@ -2,6 +2,9 @@ parameters:
 #    site_product.example.class: Site\ProductBundle\Example
 
 services:
+    site_product.productservice:
+        class:  Site\ProductBundle\Service\ProductService
+        arguments: [@request_stack, @doctrine.orm.entity_manager, @service_container]
 #    site_product.example:
 #        class: %site_product.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

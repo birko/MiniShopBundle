@@ -51,7 +51,7 @@ class ProductRepository extends EntityRepository
             ->leftJoin("p.vendor", "v")
         ;
         if ($category !== null || $joindetail) {
-           $select .= ", pc, c";
+           $select .= "";
            $queryBuilder = $queryBuilder
                ->leftJoin("p.productCategories", "pc")
                ->leftJoin("pc.category", "c")
@@ -69,7 +69,7 @@ class ProductRepository extends EntityRepository
         }
 
         if ($joindetail) {
-            $select .= ", pm, m, pa, po, ps";
+            $select .= ", pc, c, pm, m, pa, po, ps";
             $queryBuilder
                 ->leftJoin("p.stock", "ps")
                 ->leftJoin("p.media", "pm")
