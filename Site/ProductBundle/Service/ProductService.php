@@ -29,7 +29,7 @@ class ProductService
         $result['prices'] = array();
         if (!empty($productIds)) {
             $result['media'] = $this->em ->getRepository("CoreProductBundle:ProductMedia")->getProductsMediasArray($productIds);
-            $result['stocks'] = $this->em ->getRepository("CoreProductBundle:Stock")->getStocksArray($productIds);
+            $result['stock'] = $this->em ->getRepository("CoreProductBundle:Stock")->getStocksArray($productIds);
             $result['prices'] = $this->em ->getRepository("CoreProductBundle:Price")->getPricesArray($productIds);
             if (array_key_exists("shop", $minishop) && $minishop['shop']) {
                 $result['ordered']  = $this->em ->getRepository("CoreShopBundle:OrderItem")->getProductsOrderCount($productIds);
