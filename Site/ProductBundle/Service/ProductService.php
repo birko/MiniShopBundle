@@ -25,7 +25,7 @@ class ProductService
         $result['minishop'] = $minishop;
         $result['media'] = array();
         $result['ordered'] = array();
-        $result['stocks'] = array();
+        $result['stock'] = array();
         $result['prices'] = array();
         if (!empty($productIds)) {
             $result['media'] = $this->em ->getRepository("CoreProductBundle:ProductMedia")->getProductsMediasArray($productIds);
