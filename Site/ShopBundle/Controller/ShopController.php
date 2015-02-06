@@ -87,8 +87,8 @@ class ShopController extends BaseOrderController
             $pricegroup = $user->getPriceGroup();
         }
          //session
+        $session = $this->getRequest()->getSession();
         if ($pricegroup === null) {
-            $session = $this->getRequest()->getSession();
             $pricegroup = $session->get('pricegroup');
         }
         //defaults
