@@ -71,12 +71,18 @@ class ProductOptionRepository extends SortableRepository
         return $this->setHint($this->getOptionsByProductQueryBuilder($productId)->getQuery());
     }
 
-    public function getOptionsNamesByProduct($prouctId)
+    public function getOptionsNamesByProduct($prouctId, $onlyOnStock = true)
     {
         $querybuilder = $this->getOptionsByProductQueryBuilder($prouctId)
             ->select("an.name")
             ->distinct()
             ->resetDQLPart("orderBy");
+        if ($onlyOnStock) {
+            $querybuilder->andWhere($querybuilder->expr()->orX(
+                $querybuilder->expr()->isNull("po.amount"),
+                $querybuilder->expr()->gt("po.amount", 0)
+            ));
+        }
         $arr = $this->setHint($querybuilder->getQuery())->getResult();
         $result = array();
         foreach ($arr as $value) {
