@@ -158,7 +158,9 @@ class ProductController extends ShopController
                 ->orderBy("p.createdAt", "desc")
                 ->distinct()
                 ->getQuery();
-        $entities = $em->getRepository("CoreProductBundle:Product")->setHint($query)
+        $query = $em->getRepository("CoreProductBundle:Product")->setHint($query);
+        $query = $query->setHint(\Doctrine\ORM\Query::HINT_FORCE_PARTIAL_LOAD, true);
+        $entities = $query
                 ->setMaxResults(6)
                 ->getResult();
 
@@ -190,6 +192,7 @@ class ProductController extends ShopController
            ->setParameter('tag', '%'.$tag.', %');
         $query = $qb->distinct()->getQuery();
         $query = $em->getRepository("CoreProductBundle:Product")->setHint($query);
+        $query = $query->setHint(\Doctrine\ORM\Query::HINT_FORCE_PARTIAL_LOAD, true);
         if ($limit) {
             $query->setMaxResults($limit);
         }

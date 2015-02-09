@@ -65,10 +65,9 @@ class ProductMediaRepository extends EntityRepository
    public function getProductsMediasQueryBuilder($entities = null, $types = array())
    {
         $querybuilder = $this->getEntityManager()->createQueryBuilder()
-            ->select("m, pm")
+            ->select("pm, m")
             ->from("CoreProductBundle:ProductMedia", "pm")
             ->leftJoin("pm.media", "m")
-            ->leftJoin("pm.product", "p")
             ->addOrderBy("pm.position", "asc")
             ->addOrderBy("m.id", "asc")
         ;
@@ -94,12 +93,22 @@ class ProductMediaRepository extends EntityRepository
         return $this->setHint($this->getProductsMediasQueryBuilder($entities, $types)->getQuery());
     }
 
-    public function getProductsMediasArray($entities = null, $types = array())
+    public function getProductsMediasArray($entities = null, $types = array(), $locale = null)
     {
-        $query = $this->getProductsMediasQuery($entities, $types);
+        $gb = $this->getProductsMediasQueryBuilder($entities, $types)
+            ->select("pm, m, p")
+            ->leftJoin("pm.product", "p");
+        $query =  $this->setHint($qb->getQuery());
+        if ($locale) {
+            $query->setHint(
+                \Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE,
+                $locale // take locale from session or request etc.
+            );
+        }
+        $query = $query->setHint(\Doctrine\ORM\Query::HINT_FORCE_PARTIAL_LOAD, true);
         $result = array();
         
-        foreach ($query->getResult() as $entity) {
+        foreach ($query->getResult() as $key => $entity) {
             $result[$entity->getProduct()->getId()][] = $entity->getMedia();
         }
 

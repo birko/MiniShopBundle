@@ -39,13 +39,19 @@ class StockRepository extends EntityRepository
         return $this->getStockQuery($entities)->getResult();
     }
 
-    public function getStocksArray($entities = null)
+    public function getStocksArray($entities = null, $locale = null)
     {
         $query = $this->getStockQueryBuilder($entities)
         ->select("s, p")
         ->leftJoin("s.product", "p")
         ->getQuery();
         $query = $this->setHint($query);
+        if ($locale) {
+            $query->setHint(
+                \Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE,
+                $locale // take locale from session or request etc.
+            );
+        }
         
         $result = array();
         foreach ($query->getResult() as $entity) {

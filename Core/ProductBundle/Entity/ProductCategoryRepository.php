@@ -57,7 +57,7 @@ class ProductCategoryRepository extends EntityRepository
         return $numUpdated;
     }
     
-    public function getCategoriesArray($entities = null)
+    public function getCategoriesArray($entities = null, $locale = null)
     {
         $querybuilder = $this->getEntityManager()->createQueryBuilder()
             ->select("pc, c, p")
@@ -71,6 +71,12 @@ class ProductCategoryRepository extends EntityRepository
         }
         $querybuilder->addOrderBy("pc.position", 'asc');
         $query = $querybuilder->getQuery();
+        if ($locale) {
+            $query->setHint(
+                \Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE,
+                $locale // take locale from session or request etc.
+            );
+        }
         
         $result = array();
         foreach ($query->getResult() as $entity) {
