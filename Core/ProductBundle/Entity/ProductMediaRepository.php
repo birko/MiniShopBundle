@@ -95,7 +95,7 @@ class ProductMediaRepository extends EntityRepository
 
     public function getProductsMediasArray($entities = null, $types = array(), $locale = null)
     {
-        $gb = $this->getProductsMediasQueryBuilder($entities, $types)
+        $qb = $this->getProductsMediasQueryBuilder($entities, $types)
             ->select("pm, m, p")
             ->leftJoin("pm.product", "p");
         $query =  $this->setHint($qb->getQuery());
