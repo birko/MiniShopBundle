@@ -147,6 +147,26 @@ class OrderRepository extends EntityRepository
                 $queryBuilder->andWhere('o.delivery_state =:sstate')
                         ->setParameter('sstate', $filter->getShippingState()->getId());
             }
+            
+            $itemWords = $filter->getItemWordsArray();
+            if (!empty($itemWords)) {
+                $queryBuilder->leftJoin("o.items", "foi", \Doctrine\ORM\Query\Expr\Join::WITH, $queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->isNull("foi.payment"),
+                    $queryBuilder->expr()->isNull("foi.shipping")
+                ));
+                $i = 0;
+                foreach ($itemWords as $word) {
+                    $itemswhere = $queryBuilder->expr()->orX(
+                        $queryBuilder->expr()->like("lower(foi.name)",          ':itemsword01i'.$i),
+                        $queryBuilder->expr()->like("lower(foi.description)",   ':itemsword02i'.$i)  
+                    );
+                    $queryBuilder->andWhere($itemswhere);
+                    $queryBuilder->setParameter('itemsword01i'.$i, '%' . strtolower($word) . '%');
+                    $queryBuilder->setParameter('itemsword02i'.$i, '%' . strtolower($word) . '%');
+                    $i ++;
+                }
+            }
+            
         }
 
         return $queryBuilder;

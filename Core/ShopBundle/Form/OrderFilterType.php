@@ -47,6 +47,12 @@ class OrderFilterType extends SearchType
                 'required'    => false,
                 'empty_value' => 'Choose state',
                 'empty_data'  => null))
+            ->add('itemWords', 'search',  array(
+                'required' => false,
+                'label' => 'Items',
+                'attr' => array(
+                    'placeholder' => "Items",
+            )));
         ;
     }
 

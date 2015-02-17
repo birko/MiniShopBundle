@@ -5,9 +5,10 @@ use Core\CommonBundle\Entity\Filter as BaseFilter;
 
 class OrderFilter  extends BaseFilter
 {
-   private $shipping_status = null;
-   private $order_status = null;
-   private $shipping_state = null;
+    private $shipping_status = null;
+    private $order_status = null;
+    private $shipping_state = null;
+    protected $item_words = null;
 
     public function setShippingStatus($shipping_status)
     {
@@ -37,6 +38,22 @@ class OrderFilter  extends BaseFilter
     public function getShippingState()
     {
         return $this->shipping_state;
+    }
+    
+    public function getItemWords()
+    {
+        return $this->item_words;
+    }
+
+    public function setItemWords($words)
+    {
+
+        $this->item_words = trim($words);
+    }
+
+    public function getItemWordsArray()
+    {
+        return preg_split('/([\s\-_,:;?!\/\(\)\[\]{}<>\r\n"]|(?<!\d)\.(?!\d))/', $this->getItemWords(), null, PREG_SPLIT_NO_EMPTY);
     }
 
 }

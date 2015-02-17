@@ -4,18 +4,24 @@
 <form action="" method="post" class="filter">
     <div class="row">
         <div class="col-sm-3 col-md-3 col-lg-3">
-             {{ form_row(form.words) }}
+            {{ form_row(form.words) }}
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3">
-             {{ form_row(form.orderStatus) }}
+            {{ form_row(form.orderStatus) }}
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3">
-             {{ form_row(form.shippingStatus) }}
+            {{ form_row(form.shippingStatus) }}
         </div>
-        <div class="col-sm-2 col-md-2 col-lg-2">
-             {{ form_row(form.shippingState) }}
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            {{ form_row(form.shippingState) }}
         </div>
-        <div class="col-sm-1 col-md-1 col-lg-1">
+       
+    </div>
+    <div class="row">
+        <div class="col-sm-9 col-md-9 col-lg-9">
+            {{ form_row(form.itemWords) }}            
+        </div>
+         <div class="col-sm-3 col-md-3 col-lg-3">
             <br />
             {{ form_rest(form) }}
             <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-ok icon-white"></span></button>

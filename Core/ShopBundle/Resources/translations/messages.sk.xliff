@@ -450,6 +450,10 @@
                 <source>Order</source>
                 <target>Objednávka</target>
             </trans-unit>
+            <trans-unit id="115">
+                <source>Items</source>
+                <target>Položky</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

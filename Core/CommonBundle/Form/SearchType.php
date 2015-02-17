@@ -25,7 +25,7 @@ class SearchType extends AbstractType
                 'label' => 'Search',
                 'attr' => array(
                     'placeholder' => "Search",
-                )));
+            )));
     }
 
     public function getName()
