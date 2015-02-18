@@ -3,7 +3,7 @@ namespace Core\ShopBundle\Entity;
 
 use Core\CommonBundle\Entity\Filter as BaseFilter;
 
-class OrderFilter  extends BaseFilter
+class OrderFilter  extends BaseFilter implements \Serializable
 {
     private $shipping_status = null;
     private $order_status = null;
@@ -12,7 +12,7 @@ class OrderFilter  extends BaseFilter
 
     public function setShippingStatus($shipping_status)
     {
-        $this->shipping_status= $shipping_status;
+        $this->shipping_status = $shipping_status;
     }
 
     public function getShippingStatus()
@@ -22,7 +22,7 @@ class OrderFilter  extends BaseFilter
 
     public function setOrderStatus($order_status)
     {
-        $this->order_status= $order_status;
+        $this->order_status = $order_status;
     }
 
     public function getOrderStatus()
@@ -32,7 +32,7 @@ class OrderFilter  extends BaseFilter
 
     public function setShippingState($shipping_state)
     {
-        $this->shipping_state= $shipping_state;
+        $this->shipping_state = $shipping_state;
     }
 
     public function getShippingState()
@@ -56,4 +56,27 @@ class OrderFilter  extends BaseFilter
         return preg_split('/([\s\-_,:;?!\/\(\)\[\]{}<>\r\n"]|(?<!\d)\.(?!\d))/', $this->getItemWords(), null, PREG_SPLIT_NO_EMPTY);
     }
 
+    public function serialize()
+    {
+        return serialize(array(
+            $this->words,
+            $this->page,
+            $this->shipping_status,
+            $this->order_status,
+            $this->shipping_state,
+            $this->item_words
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->words,
+            $this->page,
+            $this->shipping_status,
+            $this->order_status,
+            $this->shipping_state,
+            $this->item_words
+        ) = unserialize($serialized);
+    }
 }
