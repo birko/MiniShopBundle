@@ -410,9 +410,14 @@ class Product extends TranslateEntity
 
     public function getProductMedia($mediaID)
     {
-        return $this->getMedia()->filter(function ($entry) use ($mediaID) {
-            return ($entry->getMedia()->getId() == $mediaID);
-        })->first();
+        $media = $this->getMedia();
+        if ($media) {
+            return $media->filter(function ($entry) use ($mediaID) {
+                return ($entry->getMedia()->getId() == $mediaID);
+            })->first();
+        }
+        
+        return null;
     }
 
     /**
