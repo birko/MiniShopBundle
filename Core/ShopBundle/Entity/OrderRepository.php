@@ -150,21 +150,26 @@ class OrderRepository extends EntityRepository
             
             $itemWords = $filter->getItemWordsArray();
             if (!empty($itemWords)) {
-                $queryBuilder->leftJoin("o.items", "foi", \Doctrine\ORM\Query\Expr\Join::WITH, $queryBuilder->expr()->andX(
-                    $queryBuilder->expr()->isNull("foi.payment"),
-                    $queryBuilder->expr()->isNull("foi.shipping")
+                $queryBuilder2 = $this->getEntityManager()->createQueryBuilder()
+                 ->select("foi.id")
+                 ->from('CoreShopBundle:OrderItem', 'foi')
+                 ->andWhere("foi.order = o.id");
+                $queryBuilder2->andWhere($queryBuilder2->expr()->andX(
+                    $queryBuilder2->expr()->isNull("foi.payment"),
+                    $queryBuilder2->expr()->isNull("foi.shipping")
                 ));
                 $i = 0;
                 foreach ($itemWords as $word) {
-                    $itemswhere = $queryBuilder->expr()->orX(
-                        $queryBuilder->expr()->like("lower(foi.name)",          ':itemsword01i'.$i),
-                        $queryBuilder->expr()->like("lower(foi.description)",   ':itemsword02i'.$i)  
+                    $itemswhere = $queryBuilder2->expr()->orX(
+                        $queryBuilder2->expr()->like("lower(foi.name)",          ':itemsword01i'.$i),
+                        $queryBuilder2->expr()->like("lower(foi.description)",   ':itemsword02i'.$i)  
                     );
-                    $queryBuilder->andWhere($itemswhere);
+                    $queryBuilder2->andWhere($itemswhere);
                     $queryBuilder->setParameter('itemsword01i'.$i, '%' . strtolower($word) . '%');
                     $queryBuilder->setParameter('itemsword02i'.$i, '%' . strtolower($word) . '%');
                     $i ++;
                 }
+                $queryBuilder->andWhere($queryBuilder->expr()->exists($queryBuilder2));
             }
             
         }

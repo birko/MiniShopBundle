@@ -10,7 +10,13 @@ use Core\UserBundle\Entity\PriceGroup;
  * Core\ShopBundle\Entity\OrderItem
  *
  * @ORM\Table(indexes={
-        @ORM\Index(name="oorderitem_product_idx", columns={"product_id"})
+        @ORM\Index(name="oorderitem_product_idx", columns={"product_id"}),
+        @ORM\Index(name="oorderitem_payment_shipping_idx", columns={"payment_id", "shipping_id"}),
+        @ORM\Index(name="oorderitem_name_idx", columns={"name"}),
+        @ORM\Index(name="oorderitem_description_idx", columns={"description"}),
+        @ORM\Index(name="oorderitem_name_description_idx", columns={"name", "description"}),
+        @ORM\Index(name="oorderitem_prouct_search_idx", columns={"payment_id", "shipping_id", "name", "description"}),
+        @ORM\Index(name="oorderitem_order_idx", columns={"payment_id", "shipping_id", "order_id"})
    })
  * @ORM\Entity(repositoryClass="Core\ShopBundle\Entity\OrderItemRepository")
  */
