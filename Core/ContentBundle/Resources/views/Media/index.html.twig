@@ -39,7 +39,8 @@
                 <div class="btn-group">
                     <a href="{{ path('content_media_edit', { 'id': entity.id , 'category': category, 'content': content.id, 'type': entity.type}) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
                     <a href="{{ path('media_source', { 'id': entity.id, 'type': entity.type}) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Source{% endtrans %}</a>
-                    <a href="{{ path('content_media_position', { 'id': entity.id, 'category': category, 'content': content.id }) }}" class="btn btn-default btn-xs">{{content.getContentMedia(entity.id).position}}</a>
+                    {% set cm = content.getContentMedia(entity.id) %}
+                    <a href="{{ path('content_media_position', { 'id': entity.id, 'category': category, 'content': content.id }) }}" class="btn btn-default btn-xs">{% if cm is not empty %}{{cm.position}}{% else %}0{% endif %}</a>
                     <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#">{% trans %}Move{% endtrans%} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ path('content_media_up', { 'id': entity.id, 'category': category, 'position': 1, 'content': content.id }) }}" class="move-up"><span class="glyphicon glyphicon-arrow-up"></span> {% trans %}Move up{% endtrans %}</a></li>
