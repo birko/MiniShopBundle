@@ -11,6 +11,7 @@
                     {{ form_row(form.email) }}
                     {{ form_row(form.password) }}
                 </div>
+                {% if full and form.addresses is not empty %}
                 <div class="col-sm-4 col-md-4 col-lg-4 nolabel">
                     {% include "CoreShopBundle:Address:baseform.html.twig" with {'form': form.addresses.0} %}
                 </div>
@@ -18,6 +19,7 @@
                     {% include "CoreShopBundle:Address:contactform.html.twig" with {'form': form.addresses.0} %}
                     {% include "CoreShopBundle:Address:companyform.html.twig" with {'form': form.addresses.0} %}
                 </div>
+                {% endif %}
             </div>
         </div>
         <div class="row">

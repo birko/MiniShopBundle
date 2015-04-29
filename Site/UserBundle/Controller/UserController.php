@@ -47,19 +47,21 @@ class UserController extends Controller
     {
         $entity = new User();
         $minishop  = $this->container->getParameter('minishop');
+        $full = $this->container->getParameter("site.user.fullregistration");
         $options = array();
-        if ($minishop['shop']) {
+        if ($minishop['shop'] && $full) {
             $addressRequiredConfiguration = $this->container->getParameter("address.required");
             $options['address'] = array('required' => $addressRequiredConfiguration);
         }
         $form  = $this->createForm(new NewUserType(), $entity, $options);
-        if ($minishop['shop']) {
+        if ($minishop['shop'] && $full) {
             $form->get('addresses')->setData(array(new \Core\ShopBundle\Entity\Address()));
         }
 
         return $this->render('SiteUserBundle:User:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+            'full'  => $full,
         ));
     }
 
@@ -68,13 +70,14 @@ class UserController extends Controller
         $entity  = new User();
         $request = $this->getRequest();
         $minishop  = $this->container->getParameter('minishop');
+        $full = $this->container->getParameter("site.user.fullregistration");
         $options = array();
-        if ($minishop['shop']) {
+        if ($minishop['shop'] && $full) {
             $addressRequiredConfiguration = $this->container->getParameter("address.required");
             $options['address'] = array('required' => $addressRequiredConfiguration);
         }
         $form  = $this->createForm(new NewUserType(), $entity, $options);
-        if ($minishop['shop']) {
+        if ($minishop['shop'] && $full) {
             $form->get('addresses')->setData(array(new \Core\ShopBundle\Entity\Address()));
         }
         $form->bind($request);
@@ -92,7 +95,7 @@ class UserController extends Controller
             $entity->setEnabled(true);
             //user save
             $entity = $em->getRepository('CoreUserBundle:User')->createUser($entity);
-            if ($minishop['shop']) {
+            if ($minishop['shop'] && $full) {
                 $addresses =  $form->get('addresses')->getData();
                 $em->getRepository('CoreShopBundle:Address')->createUser($entity, $addresses);
             }
@@ -116,8 +119,8 @@ class UserController extends Controller
                 $cart = $session->get('cart');
                 $token = new UsernamePasswordToken($entity, $entity->getPassword(), 'secured_area', $entity->getRoles());
                 $this->get('security.context')->setToken($token);
-                if ($minishop['shop'] && $cart && !$cart->isEmpty()) {   $session->set('cart', $cart);
-
+                if ($minishop['shop'] && $cart && !$cart->isEmpty()) {  
+                    $session->set('cart', $cart);
                     return $this->redirect($this->generateUrl('cart'));
                 } else {
                     return $this->redirect($this->generateUrl('category_homepage'));
@@ -127,13 +130,16 @@ class UserController extends Controller
 
         return $this->render('SiteUserBundle:User:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+            'full'  => $full,
         ));
     }
 
     public function indexAction()
     {
-        return $this->render('SiteUserBundle:User:index.html.twig', array());
+        $minishop  = $this->container->getParameter('minishop');
+        
+        return $this->render('SiteUserBundle:User:index.html.twig', array('minishop' => $minishop));
     }
 
     public function passwordAction()

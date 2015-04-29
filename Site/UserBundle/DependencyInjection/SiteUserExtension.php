@@ -21,6 +21,9 @@ class SiteUserExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        if (isset($config['full_registration'])) {
+            $container->setParameter("site.user.fullregistration", $config['full_registration']);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

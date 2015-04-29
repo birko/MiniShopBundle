@@ -52,7 +52,7 @@
             </trans-unit>
             <trans-unit id="13">
                 <source>If you forgot your password, type in your email address and we will send you instructions for password recovery.</source>
-                <target>f you forgot your password, type in your email address and we will send you instructions for password recovery.</target>
+                <target>If you forgot your password, type in your email address and we will send you instructions for password recovery.</target>
             </trans-unit>
             <trans-unit id="14">
                 <source>Instructions for password recovery were sent to your email. Please follow instructions for password recovery.</source>

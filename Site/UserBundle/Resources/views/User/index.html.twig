@@ -1,11 +1,14 @@
 {% extends '::base.html.twig' %}
+{% set minishopkeys = minishop|keys %}
 {% block body %}
 <div id="content-container">
-<h1>{% trans %}Customer section{% endtrans %}</h1>
+<h2 class="text-center">{% trans %}Customer section{% endtrans %}</h1>
     <div class="well well-sm" >
         <ul>
+            {% if 'shop' in minishopkeys %}
             <li><a href="{{ path('order_index') }}">{% trans %}Orders{% endtrans %}</a></li>
             <li><a href="{{ path('address') }}">{% trans %}Addresses{% endtrans %}</a></li>
+            {% endif %}
             <li><a href="{{ path('SiteUserBundle_password') }}">{% trans %}Change password{% endtrans %}</a></li>
             <li><a href="{{ path("SiteUserBundle_logout") }}">{% trans %}general.logout{% endtrans %}</a></li>
         </ul>
