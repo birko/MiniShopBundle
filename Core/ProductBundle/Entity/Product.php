@@ -120,12 +120,6 @@ class Product extends TranslateEntity
      */
     private $tags;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Core\ShopBundle\Entity\OrderItem", mappedBy="product")
-     * @ORM\OrderBy({"id" = "ASC"})
-     **/
-    private $orderItems;
-
     public function __construct()
     {
         $this->setEnabled(true);
@@ -135,7 +129,6 @@ class Product extends TranslateEntity
         $this->options = new ArrayCollection();
         $this->media = new ArrayCollection();
         $this->attributes = new ArrayCollection();
-        $this->orderItems = new ArrayCollection();
     }
     /**
      * Get id
@@ -551,21 +544,6 @@ class Product extends TranslateEntity
         }
 
         return $result;
-    }
-
-    public function getOrderItems()
-    {
-        return $this->orderItems;
-    }
-
-    public function getOrderAmount()
-    {
-        $amount = 0;
-        foreach ($this->getOrderItems() as $item) {
-            $amount += $item->getAmount();
-        }
-
-        return $amount;
     }
 
     /**
