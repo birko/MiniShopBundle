@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\ProductBundle\Form;
+namespace Core\ShopMarketingBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -49,7 +49,7 @@ class GrouponType extends DiscountType
     {
         parent::setDefaultOptions($resolver);
         $resolver->setDefaults(array(
-            'data_class' => 'Core\ProductBundle\Entity\Groupon'
+            'data_class' => 'Core\ShopMarketingBundle\Entity\Groupon'
         ));
     }
 
@@ -58,6 +58,6 @@ class GrouponType extends DiscountType
      */
     public function getName()
     {
-        return 'core_productbundle_groupon';
+        return 'core_shopmarketingbundle_groupon';
     }
 }

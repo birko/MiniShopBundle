@@ -1,0 +1,30 @@
+groupon:
+    pattern:  /
+    defaults: { _controller: "CoreShopMarketingBundle:Groupon:index" }
+
+groupon_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreShopMarketingBundle:Groupon:show" }
+
+groupon_new:
+    pattern:  /new
+    defaults: { _controller: "CoreShopMarketingBundle:Groupon:new" }
+
+groupon_create:
+    pattern:  /create
+    defaults: { _controller: "CoreShopMarketingBundle:Groupon:create" }
+    requirements: { _method: post }
+
+groupon_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreShopMarketingBundle:Groupon:edit" }
+
+groupon_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreShopMarketingBundle:Groupon:update" }
+    requirements: { _method: post|put }
+
+groupon_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreShopMarketingBundle:Groupon:delete" }
+    requirements: { _method: post|delete }

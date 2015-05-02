@@ -1,0 +1,3 @@
+CoreShopMarketingBundle_groupon:
+    resource: "@CoreShopMarketingBundle/Resources/config/routing/groupon.yml"
+    prefix:   /product/{product}/groupon

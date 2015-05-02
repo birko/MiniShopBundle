@@ -41,7 +41,7 @@
             {% if 'shop' in minishopkeys %}
             <div class="cart pull-right col-sm-7 col-md-7 col-lg-7">
                 {% render controller("SiteShopBundle:Cart:add", {'product': product, 'price':  price }) %}
-                {% if 'marketing' in minishopkeys %}
+                {% if 'shopmarketing' in minishopkeys %}
                 {% render controller ("SiteShopBundle:Groupon:form", {'product': product.id}) %}
                 {% endif %}
             </div>

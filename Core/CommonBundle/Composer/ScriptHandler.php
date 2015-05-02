@@ -23,6 +23,7 @@ class ScriptHandler
             'price'         => array(),
             'product'       => array('common', 'category', 'attribute', 'media', 'price', 'marketing'),
             'shop'          => array('price', 'user'),
+            'shopmarketing' => array('price', 'marketing', 'shop', 'product'),
             'user'          => array(),
             'usertext'      => array('common'),
             'vendor'        => array('common', 'product'),

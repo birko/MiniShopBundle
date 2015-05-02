@@ -92,7 +92,7 @@ class OrderItem
     private $order;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Core\ProductBundle\Entity\Product", inversedBy="orderItems")
+     * @ORM\ManyToOne(targetEntity="Core\ProductBundle\Entity\Product")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $product;

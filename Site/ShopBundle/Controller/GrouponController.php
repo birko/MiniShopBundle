@@ -20,7 +20,7 @@ class GrouponController extends ShopController
             $form->bind($request);
             $form->isValid();
             $cart = $this->getCart();
-            $entities = $em->getRepository('CoreProductBundle:Groupon')->getProductGrouponsQueryBuilder($product, true)->getQuery()->getResult();
+            $entities = $em->getRepository('CoreShopMarketingBundle:Groupon')->getProductGrouponsQueryBuilder($product, true)->getQuery()->getResult();
             if ($entities) {
                 $coupon = current($entities);
                 $product = $coupon->getProduct();
@@ -66,7 +66,7 @@ class GrouponController extends ShopController
     {
         $form = $this->createForm(new CouponType());
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CoreProductBundle:Groupon')->getProductGrouponsQueryBuilder($product, true)->getQuery()->getResult();
+        $entities = $em->getRepository('CoreShopMarketingBundle:Groupon')->getProductGrouponsQueryBuilder($product, true)->getQuery()->getResult();
 
         return $this->render('SiteShopBundle:Groupon:form.html.twig', array(
             'form'   => $form->createView(),

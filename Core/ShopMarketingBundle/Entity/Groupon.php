@@ -1,15 +1,15 @@
 <?php
 
-namespace Core\ProductBundle\Entity;
+namespace Core\ShopMarketingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Core\MarketingBundle\Entity\Discount;
 /**
- * Core\ProductBundle\Entity\Groupon
+ * Core\ShopMarketingBundle\Entity\Groupon
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Core\ProductBundle\Entity\GrouponRepository")
+ * @ORM\Entity(repositoryClass="Core\ShopMarketingBundle\Entity\GrouponRepository")
  */
 class Groupon extends Discount
 {

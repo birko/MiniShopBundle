@@ -41,7 +41,7 @@
                 {% else %}
                 <li><a href="{{ path('stock_new', {'product': entity.id, 'category': category }) }}">{% trans %}Stock{% endtrans %}</a></li>
                 {% endif %}
-                {% if 'marketing' in minishopkeys %}
+                {% if 'shopmarketing' in minishopkeys %}
                 <li><a href="{{ path('groupon', { 'product': entity.id, 'category': category }) }}" >{% trans %}Groupons{% endtrans %}</a></li>
                 {% endif %}
                 {% endblock %}

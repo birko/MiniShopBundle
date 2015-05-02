@@ -21,7 +21,3 @@ CoreProductBundle_attribute:
 CoreProductBundle_stock:
     resource: "@CoreProductBundle/Resources/config/routing/stock.yml"
     prefix:   /product/{product}/stock
-
-CoreProductBundle_groupon:
-    resource: "@CoreProductBundle/Resources/config/routing/groupon.yml"
-    prefix:   /product/{product}/groupon

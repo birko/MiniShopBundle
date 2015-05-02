@@ -1,12 +1,12 @@
 <?php
 
-namespace Core\ProductBundle\Controller;
+namespace Core\ShopMarketingBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Core\ProductBundle\Entity\Groupon;
-use Core\ProductBundle\Form\GrouponType;
+use Core\ShopMarketingBundle\Entity\Groupon;
+use Core\ShopMarketingBundle\Form\GrouponType;
 
 /**
  * Groupon controller.
@@ -27,9 +27,9 @@ class GrouponController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
-        $entities = $em->getRepository('CoreProductBundle:Groupon')->getProductGrouponsQueryBuilder($product)->getQuery()->getResult();
+        $entities = $em->getRepository('CoreShopMarketingBundle:Groupon')->getProductGrouponsQueryBuilder($product)->getQuery()->getResult();
 
-        return $this->render('CoreProductBundle:Groupon:index.html.twig', array(
+        return $this->render('CoreShopMarketingBundle:Groupon:index.html.twig', array(
             'entities' => $entities,
             'category' => $category,
             'product' => $entity,
@@ -56,7 +56,7 @@ class GrouponController extends Controller
             return $this->redirect($this->generateUrl('groupon', array('category' => $category, 'product' => $product)));
         }
 
-        return $this->render('CoreProductBundle:Groupon:new.html.twig', array(
+        return $this->render('CoreShopMarketingBundle:Groupon:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'category' => $category,
@@ -94,7 +94,7 @@ class GrouponController extends Controller
         $entity = new Groupon();
         $form   = $this->createCreateForm($entity, $product, $category);
 
-        return $this->render('CoreProductBundle:Groupon:new.html.twig', array(
+        return $this->render('CoreShopMarketingBundle:Groupon:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'category' => $category,
@@ -110,7 +110,7 @@ class GrouponController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('CoreProductBundle:Groupon')->find($id);
+        $entity = $em->getRepository('CoreShopMarketingBundle:Groupon')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Groupon entity.');
@@ -131,7 +131,7 @@ class GrouponController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('CoreProductBundle:Groupon')->find($id);
+        $entity = $em->getRepository('CoreShopMarketingBundle:Groupon')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Groupon entity.');
@@ -140,7 +140,7 @@ class GrouponController extends Controller
         $editForm = $this->createEditForm($entity, $product, $category);
         $deleteForm = $this->createDeleteForm($id, $product, $category);
 
-        return $this->render('CoreProductBundle:Groupon:edit.html.twig', array(
+        return $this->render('CoreShopMarketingBundle:Groupon:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -178,7 +178,7 @@ class GrouponController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('CoreProductBundle:Groupon')->find($id);
+        $entity = $em->getRepository('CoreShopMarketingBundle:Groupon')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Groupon entity.');
@@ -195,7 +195,7 @@ class GrouponController extends Controller
             return $this->redirect($this->generateUrl('groupon_edit', array('id' => $id, 'category' => $category, 'product' => $product)));
         }
 
-        return $this->render('CoreProductBundle:Groupon:edit.html.twig', array(
+        return $this->render('CoreShopMarketingBundle:Groupon:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -207,14 +207,14 @@ class GrouponController extends Controller
      * Deletes a Groupon entity.
      *
      */
-    public function deleteAction(Request $request, $id, $product, $category = null)
+    public function deleteAction(Request $request, $id, $ShopMarketing, $category = null)
     {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('CoreProductBundle:Groupon')->find($id);
+            $entity = $em->getRepository('CoreShopMarketingBundle:Groupon')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Groupon entity.');

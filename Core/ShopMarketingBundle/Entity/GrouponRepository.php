@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\ProductBundle\Entity;
+namespace Core\ShopMarketingBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -16,7 +16,7 @@ class GrouponRepository extends EntityRepository
     {
         $queryBuilder = $this->getEntityManager()->createQueryBuilder()
                 ->select("gr, p")
-                ->from("CoreProductBundle:Groupon", "gr")
+                ->from("CoreShopMarketingBundle:Groupon", "gr")
                 ->join("gr.product", "p");
         if ($product !== null) {
             $queryBuilder->andWhere("gr.product = :product")

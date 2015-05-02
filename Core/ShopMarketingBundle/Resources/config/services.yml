@@ -1,0 +1,4 @@
+services:
+#    core_shop_marketing.example:
+#        class: Core\ShopMarketingBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
