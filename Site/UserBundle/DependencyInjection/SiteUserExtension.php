@@ -24,6 +24,9 @@ class SiteUserExtension extends Extension
         if (isset($config['full_registration'])) {
             $container->setParameter("site.user.fullregistration", $config['full_registration']);
         }
+        if (isset($config['registration_redirect'])) {
+            $container->setParameter("site.user.registrationredirect", $config['registration_redirect']);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

@@ -21,6 +21,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('site_user')
             ->children()
                 ->booleanNode('full_registration')->defaultTrue()->end()
+                ->scalarNode('registration_redirect')->defaultNull()->end()
             ->end();
 
         // Here you should define the parameters that are allowed to
