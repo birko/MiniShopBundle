@@ -1,4 +1,5 @@
 {% extends '::base.html.twig' %}
+{% set minishopkeys = minishop|keys %}
 {% block body %}
 <div id="contact">
     <div class="info">
@@ -7,15 +8,19 @@
         <div class="tabbable">
             <ul class="nav nav-tabs" id="contact-tabs">
                 <li class="active"><a href="#form-contact-multi" data-toggle="tab">{% trans %}Contact{% endtrans %}</a></li>
+                {% if 'shop' in minishopkeys %}
                 <li><a href="#form-contact-claim" data-toggle="tab">{% trans %}Claim{% endtrans %}</a></li>
+                {% endif %}
             </ul>
             <div class="tab-content well well-small">
                 <div class="tab-pane fade in active" id="form-contact-multi">
                     {% render controller('SiteMarketingBundle:Contact:contactMultiForm') %}
                 </div>
+                {% if 'shop' in minishopkeys %}
                 <div class="tab-pane" id="form-contact-claim">
                     {% render controller('SiteMarketingBundle:Contact:contactClaimForm') %}
                 </div>
+                {% endif %}
             </div>
         </div>
 </div>

@@ -14,17 +14,22 @@ class ContactController extends Controller
 
     public function contactAction()
     {
-        return $this->render("SiteMarketingBundle:Contact:contact.html.twig", array());
+        $minishop  = $this->container->getParameter('minishop');
+        return $this->render("SiteMarketingBundle:Contact:contact.html.twig", array(
+            'minishop' => $minishop,
+        ));
     }
 
     public function contactFormAction()
     {
+        $minishop  = $this->container->getParameter('minishop');
         $verificationCode = (string) $this->container->getParameter('contact.verification_code');
-        $form =$this->createForm(new ContactType());
+        $form = $this->createForm(new ContactType());
 
         return $this->render("SiteMarketingBundle:Contact:contactForm.html.twig", array(
             'form' => $form->createView(),
             'verification_code' => $verificationCode,
+            'minishop' => $minishop,
         ));
     }
 
