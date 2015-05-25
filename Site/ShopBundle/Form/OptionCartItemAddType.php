@@ -22,9 +22,14 @@ class OptionCartItemAddType extends AbstractType
                     'property' => 'value',
                     'empty_value' => (!$options['expanded']) ? $name : false,
                     'query_builder' => function (EntityRepository $er) use ($product, $name) {
-                            $qb = $er->getOptionsByProductQueryBuilder($product)
+                            $qb = $er->getOptionsByProductQueryBuilder($product);
+                            $qb->andWhere($qb->expr()->orX(
+                                    $qb->expr()->isNull("po.amount"),
+                                    $qb->expr()->gt("po.amount", 0)
+                                ))
                                 ->andWhere("an.name = :name")
-                                ->setParameter('name', $name);
+                                ->setParameter('name', $name)
+                            ;
 
                             return $qb;
                         },

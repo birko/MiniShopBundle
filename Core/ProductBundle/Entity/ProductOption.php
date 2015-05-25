@@ -124,9 +124,9 @@ class ProductOption implements \Serializable
      *
      * @param decimal $amount
      */
-    public function setAmount($amount)
+    public function setAmount($amount = null)
     {
-        $this->amount = ($amount > 0) ? $amount : 0;
+        $this->amount = ($amount === null || $amount > 0) ? $amount : 0;
     }
 
     /**
