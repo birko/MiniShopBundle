@@ -404,7 +404,11 @@ class OrderController extends BaseOrderController
                             foreach($definition['fields'] as $key => $field) {
                                 $data = array();
                                 foreach($field['value'] as $val) {
-                                    $data[] = strip_tags($entity[$field['alias'] . $val]);
+                                    $dataitem = strip_tags($entity[$field['alias'] . $val]);
+                                    if(in_array($val, array('price', 'priceVAT', 'totalPrice', 'totalPriceVAT'))) {
+                                        $dataitem = number_format($dataitem, 0, ',', '');
+                                    }
+                                    $data[] = $dataitem;
                                 }
                                 $workSheet->setCellValueExplicitByColumnAndRow($j , $i, (string)implode(" ", $data));
                                 $j++;
