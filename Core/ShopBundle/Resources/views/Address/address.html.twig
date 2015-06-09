@@ -1,7 +1,7 @@
 {% if entity is not empty %}
 <address>
     {{ entity.name }} {{ entity.surname }} <br />
-    {% if entity.company is not empty  %}{{ entity.company }}{% endif %}
+    {% if entity.company is not empty  %}{{ entity.company }}<br />{% endif %}
     {{ entity.street }} {{ entity.houseNumber }}<br />
     {{ entity.city }}<br />
     {{ entity.ZIP }}<br />
