@@ -108,17 +108,21 @@ class CartController extends ShopController
             $entity->setPrice($price->getPrice());
             $entity->setPriceVAT($price->getPriceVAT());
         }
-        $options = $em->getRepository('CoreProductBundle:ProductOption')->getOptionsNamesByProduct($product->getId());
+        $variations = $em->getRepository('CoreProductBundle:ProductVariation')->getProductVariationsCount($product->getId());
+        $options = ($variations  == 0) ? $em->getRepository('CoreProductBundle:ProductOption')->getOptionsNamesByProduct($product->getId()) : array();
         $form = $this->createForm(new CartItemAddType(), $entity, array(
             'product'=>$product->getId(),
             'options' => $options,
             'requireOptions' => $this->container->getParameter('site.shop.require_options'),
+            'variations' => $variations,
+            'requireVariations' => $this->container->getParameter('site.shop.require_options'),
         ));
 
         return $this->render('SiteShopBundle:Cart:add.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'options' => $options,
+            'variations' => $variations,
             'type' => ($price) ? $price->getType() : null,
         ));
     }
@@ -141,11 +145,14 @@ class CartController extends ShopController
             $entity->setPrice($price->getPrice());
             $entity->setPriceVAT($price->getPriceVAT());
         }
-        $options = $em->getRepository('CoreProductBundle:ProductOption')->getOptionsNamesByProduct($product->getId());
+        $variations = $em->getRepository('CoreProductBundle:ProductVariation')->getProductVariationsCount($product->getId());
+        $options = ($variations  == 0) ? $em->getRepository('CoreProductBundle:ProductOption')->getOptionsNamesByProduct($product->getId()) : array();
         $form = $this->createForm(new CartItemAddType(), $entity, array(
             'product'=>$product->getId(),
             'options' => $options,
             'requireOptions' => $this->container->getParameter('site.shop.require_options'),
+            'variations' => $variations,
+            'requireVariations' => $this->container->getParameter('site.shop.require_options'),
         ));
         if ($request->getMethod() == 'POST') {
             $cart = $this->getCart();

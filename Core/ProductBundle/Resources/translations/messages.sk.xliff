@@ -150,6 +150,34 @@
                 <source>pc</source>
                 <target>ks</target>
             </trans-unit>
+            <trans-unit id="38">
+                <source>Variations</source>
+                <target>Variacie</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>Variation</source>
+                <target>Variacia</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>Product Variation list</source>
+                <target>Zoznam produktových variacii</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>Back to the product options list</source>
+                <target>Späť na zoznam možností</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>Product Variation creation</source>
+                <target>Tvorba produktovej variacie</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>Product Variation edit</source>
+                <target>Úprava produktovej variacie</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>Back to the product variation list</source>
+                <target>Späť na zoznam variacii</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

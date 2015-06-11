@@ -13,6 +13,9 @@
           </div>
           {% endfor %}
           {% endif %}
+          {% if variations > 0 %}
+          {{form_widget(form.variations, {'attr': {'class': 'input-sm'}})}}
+          {% endif %}
           {{form_rest(form)}}
         </div>
         <div class="col-sm-5 col-md-5 col-lg-5 pull-right">

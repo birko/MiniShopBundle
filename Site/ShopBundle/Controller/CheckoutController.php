@@ -363,6 +363,11 @@ class CheckoutController extends ShopController
                     }
                     $orderItem->setOptions(implode(', ', $options));
                 }
+                // stock variations
+                $variation = $item->getVariations();
+                if (!empty($variation)) {
+                    $orderItem->setOptions((string)$variation);
+                }
             }
             if ($item instanceof CouponItem) {
                 $couponEntity = $em->getRepository("CoreShopBundle:Coupon")->findOneByCode($item->getCode());

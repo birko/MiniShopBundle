@@ -7,6 +7,7 @@
         <tr>
             <td colspan="4">
                 <a href="{{ path('option_new', {'category': category, 'product': product}) }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %} </a>
+                <a href="{{ path('product_variation', {'category': category, 'product': product}) }}" class="btn btn-xs btn-info pull-right"><span class="glyphicon glyphicon-list-alt"></span> {% trans %}Variations{% endtrans %} </a>
             </td>
         </tr>
         <tr>

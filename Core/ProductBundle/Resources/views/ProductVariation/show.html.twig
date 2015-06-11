@@ -1,0 +1,53 @@
+{% extends 'NeonusNwsProductStockBundle::layout.html.twig' %}
+{% block navigation %}
+{% render controller('NeonusNwsCategoryBundle:CategoryAdmin:navigation', {'id': category}) %}
+{% endblock %}
+{% block content %}
+<h1>StockVariation</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Variation</th>
+            <td>{{ entity.variation }}</td>
+        </tr>
+        <tr>
+            <th>Amount</th>
+            <td>{{ entity.amount }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ entity.price }}</td>
+        </tr>
+        <tr>
+            <th>Operator</th>
+            <td>{{ entity.operator }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+  <li>
+    <a href="{{ path('product_stockvariation', {'id': entity.product.id, 'category': category}) }}">
+      Back to the list
+    </a>
+  </li>
+  <li>
+    <a href="{{ path('product_stockvariation_edit', { 'id': entity.id, 'category': category }) }}" class="btn tbn-warning">
+      <i class="icon-edit"></i>  Edit
+    </a>
+  </li>
+  <li>
+    <form action="{{ path('product_stockvariation_delete', { 'id': entity.id, 'category': category }) }}" method="post">
+      {{ form_widget(delete_form) }}
+      <button type="submit" class="btn btn-danger">
+        <i class="icon-remove"></i> Delete
+      </button>
+    </form>
+  </li>
+</ul>
+{% endblock %}

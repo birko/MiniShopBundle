@@ -1,0 +1,30 @@
+product_variation:
+    pattern:  /
+    defaults: { _controller: "CoreProductBundle:ProductVariation:index", category: ~ }
+
+product_variation_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreProductBundle:ProductVariation:show" }
+
+product_variation_new:
+    pattern:  /new/{category}
+    defaults: { _controller: "CoreProductBundle:ProductVariation:new", category: ~ }
+
+product_variation_create:
+    pattern:  /create/{category}
+    defaults: { _controller: "CoreProductBundle:ProductVariation:create", category: ~ }
+    requirements: { _method: post }
+
+product_variation_edit:
+    pattern:  /{id}/edit/{category}
+    defaults: { _controller: "CoreProductBundle:ProductVariation:edit", category: ~ }
+
+product_variation_update:
+    pattern:  /{id}/update/{category}
+    defaults: { _controller: "CoreProductBundle:ProductVariation:update", category: ~ }
+    requirements: { _method: post }
+
+product_variation_delete:
+    pattern:  /{id}/delete/{category}
+    defaults: { _controller: "CoreProductBundle:ProductVariation:delete", category: ~ }
+    requirements: { _method: post }

@@ -1,0 +1,22 @@
+{% extends '::admin.html.twig' %}
+{% block body %}
+<h1>{%trans%}Product Variation creation{%endtrans%}</h1>
+
+<form action="{{ path('product_variation_create', {'product': product, 'category': category}) }}" method="post" {{ form_enctype(form) }}>
+	{{ form_row(form.variation) }}
+	{{ form_row(form.amount) }}
+    {{ form_rest(form) }}
+    <p>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {%trans%}Create{%endtrans%}</button>
+		<a href="{{path('product_variation', {'product': product, 'category': category})}}" class="btn btn-default">{% trans %}Back to the product variation list{% endtrans%}</a>
+    </p>
+</form>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+{% javascripts
+    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}

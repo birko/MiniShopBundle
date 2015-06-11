@@ -9,6 +9,10 @@ CoreProductBundle_price:
 CoreProductBundle_option:
     resource: "@CoreProductBundle/Resources/config/routing/productoption.yml"
     prefix:   /product/{product}/option
+    
+CoreProductBundle_variation:
+    resource: "@CoreProductBundle/Resources/config/routing/productvariation.yml"
+    prefix:   /product/{product}/variation
 
 CoreContentBundle_media:
     resource: "@CoreProductBundle/Resources/config/routing/media.yml"

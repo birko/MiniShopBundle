@@ -3,6 +3,7 @@ namespace Site\ShopBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * Description of CartItemType
@@ -19,7 +20,21 @@ class CartItemAddType extends CartItemType
         $builder->add('price', 'hidden');
         $builder->add('priceVAT', 'hidden');
         $builder->add('productId', 'hidden');
-        $builder->add('options', new OptionCartItemAddType(), array(
+        if ($options['variations'] > 0) {
+            $product = $options['product'];
+            $builder->add('variations', 'entity', array(
+                'label'   => false,
+                'expanded' => $options['expandedOptions'],
+                'class'=> "CoreProductBundle:ProductVariation",
+                'required' => $options['requireVariations'],
+                'query_builder' => function (EntityRepository $er) use ($product) {
+                        $qb = $er->getProductVariationsQueryBuilder($product);
+
+                        return $qb;
+                    },
+            ));
+        } elseif (!empty($options['options'])) {
+            $builder->add('options', new OptionCartItemAddType(), array(
                 'required' => $options['requireOptions'],
                 'expanded' => $options['expandedOptions'],
                 'multiple' => $options['multipleOptions'],
@@ -27,6 +42,7 @@ class CartItemAddType extends CartItemType
                 'product' => $options['product'],
                 'label' => false,
             ));
+        }
     }
 
     public function getName()
@@ -43,6 +59,8 @@ class CartItemAddType extends CartItemType
             'requireOptions' => true,
             'expandedOptions' => false,
             'multipleOptions' => false,
+            'variations' => false,
+            'requireVariations' => true,
         ));
     }
 }
