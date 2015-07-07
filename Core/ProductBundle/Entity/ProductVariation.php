@@ -156,10 +156,10 @@ class ProductVariation implements \Serializable
     /**
      * Add option
      *
-     * @param StockOption option
+     * @param ProductOption option
      */
 
-    public function addOptions(StockOption $option)
+    public function addOptions(ProductOption $option)
     {
         return $this->getOptions()->add($option);
     }
@@ -167,10 +167,10 @@ class ProductVariation implements \Serializable
     /**
      * Remove option
      *
-     * @param StockOption option
+     * @param ProductOption option
      */
 
-    public function removeOptions(StockOption $option)
+    public function removeOptions(ProductOption $option)
     {
         return $this->getOptions()->removeElement($option);
     }
