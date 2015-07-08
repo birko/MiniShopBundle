@@ -406,7 +406,7 @@ class OrderController extends BaseOrderController
                                 foreach($field['value'] as $val) {
                                     $dataitem = strip_tags($entity[$field['alias'] . $val]);
                                     if(in_array($val, array('price', 'priceVAT', 'totalPrice', 'totalPriceVAT'))) {
-                                        $dataitem = number_format($dataitem, 0, ',', '');
+                                        $dataitem = number_format($dataitem, 2, ',', '');
                                     }
                                     $data[] = $dataitem;
                                 }
