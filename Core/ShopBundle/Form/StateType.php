@@ -22,6 +22,7 @@ class StateType extends StateTranslationType
         } else {
             parent::buildForm($builder, $options);
         }
+        $builder->add('code', 'country')
     }
 
     public function getName()

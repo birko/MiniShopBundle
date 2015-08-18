@@ -5,12 +5,13 @@
 <table class="records_list table table-striped table-condensed">
     <thead>
         <tr>
-            <td colspan="2">
+            <td colspan="3">
                 <a href="{{ path('state_new') }}" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> {% trans %}Create a new entry{% endtrans %} </a>
             </td>
         </tr>
         <tr>
             <th>{% trans %}Name{% endtrans %}</th>
+            <th>{% trans %}Code{% endtrans %}</th>
             <th>{% trans %}Actions{% endtrans %}</th>
         </tr>
     </thead>
@@ -20,6 +21,7 @@
     {% for entity in entities %}
         <tr>
             <td>{{ entity.name }}</td>
+            <td>{{ entity.code }}</td>
             <td>
                 <a href="{{ path('state_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span> {% trans %}Edit{% endtrans %}</a>
             </td>

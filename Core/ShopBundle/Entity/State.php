@@ -31,6 +31,13 @@ class State extends TranslateEntity implements \Serializable
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
+    
+    /**
+     * @var string $code
+     *
+     * @ORM\Column(name="code", type="string", length=255, nullable = true)
+     */
+    private $code;
 
     /**
      * Get id
@@ -61,13 +68,34 @@ class State extends TranslateEntity implements \Serializable
     {
         return $this->name;
     }
+    
+    /**
+     * Set code
+     *
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
 
     public function serialize()
     {
         return serialize(array(
             $this->id,
             $this->name,
-            $this->locale
+            $this->locale,
+            $this->code
         ));
     }
 
@@ -76,12 +104,13 @@ class State extends TranslateEntity implements \Serializable
         list(
             $this->id,
             $this->name,
-            $this->locale
+            $this->locale,
+            $this->code
         )=unserialize($serialized);
     }
 
     public function __toString()
     {
-        return $this->getName();
+        return $this->getName(). " [" . $this->getCode() . "]";
     }
 }
