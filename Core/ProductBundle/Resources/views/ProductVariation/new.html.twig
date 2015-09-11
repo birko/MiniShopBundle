@@ -12,11 +12,3 @@
     </p>
 </form>
 {% endblock %}
-{% block javascripts %}
-{{ parent() }}
-{% javascripts
-    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
-%}
-<script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
-{% endblock %}
