@@ -367,6 +367,19 @@ class CheckoutController extends ShopController
                 $variation = $item->getVariations();
                 if (!empty($variation)) {
                     $orderItem->setOptions((string)$variation);
+                    $variationEntity = $em->getRepository('CoreProductBundle:ProductVariation')->find($variation->getId());
+                    if ($variationEntity && $variationEntity->getAmount() > 0) {
+                        $variationEntity->setAmount($variationEntity->getAmount() - $item->getAmount());
+                        $em->persist($variationEntity)
+                        if($variationEntity->getOptions() && $variationEntity->getOptions()->count() > 0) {
+                            foreach($variationEntity->getOptions() as $optionEntity) {
+                                if ($optionEntity && $optionEntity->getAmount() > 0) {
+                                    $optionEntity->setAmount($optionEntity->getAmount() - $item->getAmount());
+                                    $em->persist($optionEntity);
+                                }    
+                            }
+                        }
+                    }
                 }
             }
             if ($item instanceof CouponItem) {
