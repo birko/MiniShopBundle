@@ -370,7 +370,7 @@ class CheckoutController extends ShopController
                     $variationEntity = $em->getRepository('CoreProductBundle:ProductVariation')->find($variation->getId());
                     if ($variationEntity && $variationEntity->getAmount() > 0) {
                         $variationEntity->setAmount($variationEntity->getAmount() - $item->getAmount());
-                        $em->persist($variationEntity)
+                        $em->persist($variationEntity);
                         if($variationEntity->getOptions() && $variationEntity->getOptions()->count() > 0) {
                             foreach($variationEntity->getOptions() as $optionEntity) {
                                 if ($optionEntity && $optionEntity->getAmount() > 0) {
