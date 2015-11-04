@@ -25,6 +25,12 @@ class CartController extends ShopController
         $form = $this->createForm(new CartType(), $cart);
         $pricegroup = $this->getPriceGroup();
         $currency = $this->getCurrency();
+        
+        $request = $this->getRequest();
+        $session = $request->getSession();
+        $added = $session->get('added-entities', array());
+        $session->set('added-entities', null);
+        $session->remove('added-entities');
 
         return $this->render('SiteShopBundle:Cart:index.html.twig', array(
             'cart' => $cart,
@@ -32,6 +38,7 @@ class CartController extends ShopController
             'user' => $user,
             'pricegroup' => $priceGroup,
             'currency' => $currency,
+            'addedItems' => $added,
         ));
     }
 
@@ -164,6 +171,8 @@ class CartController extends ShopController
             }
             $cart->addItem($entity);
             $this->setCart($cart);
+            $session = $request->getSession();
+            $session->set('added-entities', array($entity));
         }
 
         return $this->redirect($this->generateUrl('cart'));
