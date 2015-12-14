@@ -29,7 +29,10 @@ class CartItemAddType extends CartItemType
                 'required' => $options['requireVariations'],
                 'query_builder' => function (EntityRepository $er) use ($product) {
                         $qb = $er->getProductVariationsQueryBuilder($product);
-
+                        $qb->andWhere($qb->expr()->orX(
+                            $qb->expr()->isNull("pv.amount"),
+                            $qb->expr()->gt("pv.amount", 0)
+                        ));
                         return $qb;
                     },
             ));
