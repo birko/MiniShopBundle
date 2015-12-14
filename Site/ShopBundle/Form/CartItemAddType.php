@@ -33,6 +33,7 @@ class CartItemAddType extends CartItemType
                             $qb->expr()->isNull("pv.amount"),
                             $qb->expr()->gt("pv.amount", 0)
                         ));
+                        
                         return $qb;
                     },
             ));
