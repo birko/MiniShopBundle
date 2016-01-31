@@ -46,8 +46,8 @@ class ProductVariation implements \Serializable
     /**
      * @ORM\ManyToMany(targetEntity="ProductOption")
      * @ORM\JoinTable(name="product_option_variation",
-     *      joinColumns={@ORM\JoinColumn(name="variation_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="option_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="variation_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="option_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      */
 
